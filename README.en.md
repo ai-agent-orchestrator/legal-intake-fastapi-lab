@@ -18,27 +18,66 @@ This small scope makes synchronous/asynchronous execution, dependency injection,
 
 Validated code, contracts, and tests can move into the next stage. This roadmap does not mean the later repositories have been implemented or deployed.
 
-## 2. Selected and excluded extension APIs
+## 2. Reuse the existing Legal Intake design — 11 selected APIs
 
-**Original 37 = selected 11 + excluded 26. Ten proposed additions produce a 21-API extension target.** These are roadmap counts, not the three implemented MVP APIs.
+Reuse API contracts, processing rules, reason codes, and test cases from the existing Legal Intake design. **Select only the following 11 of the original 37 APIs; exclude 26.** This is a plan to port contracts and logic into FastAPI, not to execute Java code directly. It is separate from the three implemented MVP endpoints.
 
-| Group | IDs and paths |
-|---|---|
-| Classification / guidance | C02 `POST /api/intakes/classify-preview`; C04 `POST /api/legal-intake/minimal` |
-| Legal references | R01 procedures list; R02 procedure details; R06 fixed criminal checklist |
-| Async AI | S01 `POST /api/ai/chat`; S02 `POST /api/ai/chat/stream` |
-| NeMo checks | S03 input and S04 output under `/api/legal/guardrail` |
-| Reduced lab queries | C14 `/api/lab/security-events`; C13 `/api/lab/marketing/summary` |
-| New health | H01 `GET /health` |
-| New board | B01–B05: post creation, list, details, modification, deletion |
-| New reviews | B06–B07: creation and list under a post |
-| AI marketing | M01 post AI summary; M02 review reply draft |
+| ID | Selected API | Reuse |
+|---|---|---|
+| C02 | `POST /api/intakes/classify-preview` | Classification/guidance rules |
+| C04 | `POST /api/legal-intake/minimal` | Minimal intake guidance |
+| R01 | `GET /api/legal/procedures` | Procedure list fixture |
+| R02 | `GET /api/legal/procedures/{code}` | Procedure detail fixture |
+| R06 | `GET /api/legal/criminal/checklist/supplementary-investigation` | Fixed criminal checklist |
+| S01 | `POST /api/ai/chat` | Port the JSON Chat contract to async processing |
+| S02 | `POST /api/ai/chat/stream` | Inspect the full response before SSE publication |
+| S03 | `POST /api/legal/guardrail/input` | Python/NeMo input checks |
+| S04 | `POST /api/legal/guardrail/output` | Python/NeMo output checks |
+| C13 | `GET /api/lab/marketing/summary` | Reduce the original marketing query to post/review aggregates |
+| C14 | `GET /api/lab/security-events` | Reduce security-event queries to an in-memory lab view |
 
-The proposed core group is C02/C04/R01/R02/R06/S01–S04/C14/H01. The board integration group is C13/B01–B07/M01/M02. Both belong to the future lab expansion rather than an optional hybrid-only feature. Eleven selected original APIs and eleven proposed core APIs have different members because health is new and C13 is in the board group.
+This section covers **only the 11 APIs selected from the existing design**. New health, board, review, AI marketing APIs, and the security-action expansion belong in section 3 below.
 
 Excluded for this experiment: Spring login/JWT/roles, operational case storage, external search, file storage, Agent/Incident operations, Actuator/Prometheus, Redis, Celery, Kafka, RAG/memvid, OCR, and automatic publishing. The existing Java service/database is not modified. See the [detailed design](docs/BACKEND_DESIGN.md) for the full ID mapping and exact paths.
 
-## 3. Implemented scope: two synchronous APIs and one asynchronous API
+## 3. Future expansion — nine NeMo security Python actions
+
+**Migration scope:** all nine actions below, not only the first three learning examples, belong in the FastAPI target. Login, JWT, roles, and resource ownership authorization are excluded. Settlement, slot release, and cancellation cleanup remain service responsibilities. See the [full flowchart](docs/assets/security-migration.svg) and [migration explanation](docs/SECURITY_MIGRATION_PLAN.md).
+
+An action is an executable check. A `reasonCode` is a value explaining a decision. Existing reason codes are preserved where applicable; they are not renamed into functions.
+
+| Action | Responsibility |
+|---|---|
+| `validate_request_context` | Bind request, target snapshot, and response; detect mixed A/B context |
+| `check_session_risk` | Inspect accumulated session risk and existing block state |
+| `check_input_policy` | Check harmful requests, jailbreaks, injection, secrets, and privacy risks |
+| `mask_personal_data` | Replace defined PII patterns before storage, external transmission, or publication |
+| `check_generation_admission` | Enforce bounded concurrency, waiting capacity, and waiting timeout |
+| `check_request_budget` | Atomically check and reserve budget under a short lock |
+| `check_output_policy` | Inspect complete output for empty/oversized or disallowed content |
+| `check_marketing_response` | Flag guarantee/exaggeration wording for human review |
+| `record_risk_event` | Record a confirmed policy block once |
+
+The context and admission actions extend the original seven into **nine accepted designs**, not nine implemented actions. Admission precedes budget reservation so waiting requests do not unnecessarily hold funds. A single-worker example uses two active calls, four waiters, and a 0.5-second waiting limit; those values are not operational guarantees.
+
+Timeout, disconnect cleanup, settlement, and slot release must be enforced by the service's `finally` path, not depend on a later action running successfully. Python `await` and NeMo's `execute_async` option are different; required check results must be available before generation starts.
+
+Internal policy decisions are ALLOW/BLOCK/TRANSFORM/REVIEW with `reasonCode/detailCode`. Context mismatch and overload are technical errors, not attack scores. Action unit tests and actual NeMo rail integration tests must be distinguished. Pattern masking does not guarantee complete PII detection, and marketing checks are not automatic legal-compliance judgments.
+
+**Marketing inspection remains mandatory for the expansion's M01/M02.** Inspect the complete output, mark review requirements, publish only a safe draft, and never automatically post it externally. Test normal wording, guarantees, negation/quotation, PII, and checker failure. These actions are intentionally not added to the small review coursework reference or current MVP.
+
+### Ten new APIs and the overall target
+
+| New area | APIs | Count |
+|---|---|---|
+| Health | H01 `GET /health` | 1 |
+| Legal marketing board | B01–B05: create/list/detail/update/delete under `/api/posts` | 5 |
+| Service-experience reviews | B06–B07: create/list under `/api/posts/{postId}/reviews` | 2 |
+| AI marketing | M01 `POST /api/posts/{postId}/ai-summary`; M02 `POST /api/reviews/{reviewId}/reply-draft` | 2 |
+
+**11 selected existing APIs + 10 new APIs = a 21-API expansion target.** The nine Python actions are internal checks, not additional HTTP endpoints. The three current intake MVP APIs and three review-reference APIs are separate contracts and are not added to this count. Board/marketing work belongs to the subsequent lab implementation; authentication and authorization are excluded.
+
+## 4. Implemented scope: two synchronous APIs and one asynchronous API
 
 The selected MVP adapts the review exercise's processing structure to Legal Intake. It is a small learning contract, not a fully compatible replacement for the existing Spring intake API.
 
@@ -104,7 +143,7 @@ In the future implementation, nonblocking AI I/O uses `await`, fake latency uses
 
 The current environment is localhost, one user, synthetic data, and one worker. Spring Boot, JWT, login, and role permissions are excluded for now. They belong to the hybrid stage. A `sessionId` and a content-checking action are not authentication.
 
-## 4. Course HOWTO chapters and their application
+## 5. Course HOWTO chapters and their application
 
 The course grows **one project through chap01 → chap02 → chap03**. It uses menu data to teach structure and verification; this repository applies those concepts to intakes and the planned board features.
 
@@ -188,7 +227,7 @@ The HOWTO's **20-passed example belongs to the course**, not this application's 
 
 The benchmark uses fake mode and fixed latency, checks that the server is fake, sends 100 requests each to sync/async and ten to blocking, and distributes load across five clients. Use `127.0.0.1` to avoid irrelevant address-resolution effects. Do not compare total duration alone across different batch sizes. Check whether the load generator is the bottleneck. Instructor measurements are not guaranteed performance for another machine.
 
-## 5. Planned Legal Intake expansion
+## 6. Planned Legal Intake expansion
 
 | Area | Intended behavior |
 |---|---|
@@ -200,32 +239,6 @@ The benchmark uses fake mode and fixed latency, checks that the server is fake, 
 | SSE | Inspected chunks and disconnect cleanup |
 
 The planned migration reuses Java contracts, rules, reason codes, and test scenarios; it does not execute Java inside Python. The actual source reference is `legal-ai-intake-security-server`. The local `legal-ai-intake-system` directory mainly contains introductory documentation.
-
-## 6. Nine accepted NeMo action designs
-
-**Migration scope:** all nine actions below, not only the first three learning examples, belong in the FastAPI target. Login, JWT, roles, and resource ownership authorization are excluded. Settlement, slot release, and cancellation cleanup remain service responsibilities. See the [full flowchart](docs/assets/security-migration.svg) and [migration explanation](docs/SECURITY_MIGRATION_PLAN.md).
-
-An action is an executable check. A `reasonCode` is a value explaining a decision. Existing reason codes are preserved where applicable; they are not renamed into functions.
-
-| Action | Responsibility |
-|---|---|
-| `validate_request_context` | Bind request, target snapshot, and response; detect mixed A/B context |
-| `check_session_risk` | Inspect accumulated session risk and existing block state |
-| `check_input_policy` | Check harmful requests, jailbreaks, injection, secrets, and privacy risks |
-| `mask_personal_data` | Replace defined PII patterns before storage, external transmission, or publication |
-| `check_generation_admission` | Enforce bounded concurrency, waiting capacity, and waiting timeout |
-| `check_request_budget` | Atomically check and reserve budget under a short lock |
-| `check_output_policy` | Inspect complete output for empty/oversized or disallowed content |
-| `check_marketing_response` | Flag guarantee/exaggeration wording for human review |
-| `record_risk_event` | Record a confirmed policy block once |
-
-The context and admission actions extend the original seven into **nine accepted designs**, not nine implemented actions. Admission precedes budget reservation so waiting requests do not unnecessarily hold funds. A single-worker example uses two active calls, four waiters, and a 0.5-second waiting limit; those values are not operational guarantees.
-
-Timeout, disconnect cleanup, settlement, and slot release must be enforced by the service's `finally` path, not depend on a later action running successfully. Python `await` and NeMo's `execute_async` option are different; required check results must be available before generation starts.
-
-Internal policy decisions are ALLOW/BLOCK/TRANSFORM/REVIEW with `reasonCode/detailCode`. Context mismatch and overload are technical errors, not attack scores. Action unit tests and actual NeMo rail integration tests must be distinguished. Pattern masking does not guarantee complete PII detection, and marketing checks are not automatic legal-compliance judgments.
-
-**Marketing inspection remains mandatory for the expansion's M01/M02.** Inspect the complete output, mark review requirements, publish only a safe draft, and never automatically post it externally. Test normal wording, guarantees, negation/quotation, PII, and checker failure. These actions are intentionally not added to the small review coursework reference or current MVP.
 
 ## 7. Cost, SSE, and error rules — expansion design
 

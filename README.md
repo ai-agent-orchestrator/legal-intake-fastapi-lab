@@ -18,27 +18,75 @@
 
 앞 단계의 코드·계약·테스트를 다음 단계로 가져옵니다. 세 저장소의 개발·배포가 완료되었다는 뜻은 아닙니다.
 
-## 2. API 선정과 제외
+## 2. 기존 Legal Intake 설계 활용 — API 11개 선정
 
-**원본 37개 = 선정 11개 + 제외 26개. 신규 10개를 합친 목표는 21개입니다.**
+기존 Legal Intake의 API·처리 규칙·사유 코드·테스트 사례를 활용합니다. **원본 37개 중 아래 11개만 선정하고 26개는 제외**합니다. Java 코드를 그대로 실행하는 것이 아니라 필요한 계약과 로직을 FastAPI로 옮기는 계획입니다. 현재 MVP 3개 구현과는 구분합니다.
 
-| 구분 | API |
-|---|---|
-| 분류·안내 | C02 POST /api/intakes/classify-preview · C04 POST /api/legal-intake/minimal |
-| 법률 참조 | R01 GET /api/legal/procedures · R02 GET /api/legal/procedures/{code} · R06 고정 형사 체크리스트 |
-| AI 비동기 | S01 POST /api/ai/chat · S02 POST /api/ai/chat/stream |
-| NeMo 검사 | S03 POST /api/legal/guardrail/input · S04 POST /api/legal/guardrail/output |
-| 축소·변경 | C14 GET /api/lab/security-events · C13 GET /api/lab/marketing/summary |
-| 신규 상태 | H01 GET /health |
-| 신규 게시판 | B01~B05: /api/posts 생성·목록, /api/posts/{postId} 상세·수정·삭제 |
-| 신규 후기 | B06~B07: /api/posts/{postId}/reviews 생성·목록 |
-| 신규 AI 마케팅 | M01 POST /api/posts/{postId}/ai-summary · M02 POST /api/reviews/{reviewId}/reply-draft |
+| ID | 활용할 API | 활용 내용 |
+|---|---|---|
+| C02 | POST `/api/intakes/classify-preview` | 사건 분류·안내 규칙 |
+| C04 | POST `/api/legal-intake/minimal` | 최소 접수 안내 |
+| R01 | GET `/api/legal/procedures` | 절차 목록 fixture |
+| R02 | GET `/api/legal/procedures/{code}` | 절차 상세 fixture |
+| R06 | GET `/api/legal/criminal/checklist/supplementary-investigation` | 고정 형사 체크리스트 |
+| S01 | POST `/api/ai/chat` | JSON Chat 계약을 비동기로 이전 |
+| S02 | POST `/api/ai/chat/stream` | 전체 검사 후 SSE로 변경 |
+| S03 | POST `/api/legal/guardrail/input` | Python/NeMo 입력 검사 |
+| S04 | POST `/api/legal/guardrail/output` | Python/NeMo 출력 검사 |
+| C13 | GET `/api/lab/marketing/summary` | 기존 마케팅 조회를 게시글·후기 집계로 축소·변경 |
+| C14 | GET `/api/lab/security-events` | 보안 이벤트 조회를 실험용 메모리 조회로 축소·변경 |
 
-**핵심 11개 우선**: C02/C04/R01/R02/R06/S01~S04/C14/H01. **이번 실험의 게시판 연동 10개**: C13/B01~B07/M01/M02. 이는 다음 hybrid 단계로 미루는 선택 기능이 아니라 **이번 fastapi-lab의 필수 범위**입니다. 샘플 구조를 확인해 세부 필드·경로를 확정합니다. 원본 선정 11개와 우선 구현 11개는 health·C13 위치 때문에 구성이 다릅니다.
+이 절은 **기존 설계에서 가져올 11개**만 다룹니다. 신규 상태·게시판·후기·AI 마케팅 API와 보안 action 확장은 다음 3번에서 정리합니다.
 
 제외: Spring 로그인·JWT·역할 권한·운영 사건 DB·외부 검색·파일 저장·Agent/Incident 운영·Actuator/Prometheus. Redis·Celery·Kafka·memvid/RAG·OCR·자동 게시도 제외합니다. 기존 Java 서버·DB는 수정하지 않습니다. 전체 ID와 정확한 경로는 [상세 설계](docs/BACKEND_DESIGN.md)를 봅니다.
 
-## 3. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개
+## 3. 앞으로 확장 — NeMo 보안 Python action 9개
+
+**이전 범위 확정:** 우선 복습할 3개뿐 아니라 아래 **9개 전체**를 FastAPI 내부로 이전하는 목표입니다. 로그인·JWT·역할·소유권 인가는 제외합니다. [전체 이전 흐름도](docs/assets/security-migration.svg)와 [책임·순서·확장 단계 해설](docs/SECURITY_MIGRATION_PLAN.md)에 남은 설계를 정리했습니다. action 외에 서비스의 정산·슬롯 반환·취소 정리도 구현 목표에 포함합니다.
+
+action은 **검사 함수**, reasonCode는 **판단 사유 값**입니다. 코드를 함수 이름으로 바꾸지 않고 기존 판정 로직을 Python으로 옮깁니다.
+
+| action | 역할 |
+|---|---|
+| validate_request_context | 서버가 만든 요청 문맥·분석 대상·응답 연결 확인, A/B 데이터 혼합 방지 |
+| check_session_risk | 세션 누적 위험·기존 차단 확인 |
+| check_input_policy | 법률 악용·jailbreak·injection·secret·privacy 검사 |
+| mask_personal_data | 저장·외부 전송·반환 전 정의한 PII 치환 |
+| check_generation_admission | 동시 실행·유한 대기열·대기 한도 정책, 실제 슬롯은 서비스 관리 |
+| check_request_budget | lock 안에서 예산 확인+예약 |
+| check_output_policy | 전체 답변 빈값·길이·정책 검사 |
+| check_marketing_response | 보장·과장 표현을 사람 검토 대상으로 표시 |
+| record_risk_event | 확정된 정책 차단을 한 번만 점수로 기록 |
+
+기존 7개에 추천한 문맥 검사·생성 진입 제어 2개를 **정식 설계 범위에 추가**했습니다. 아직 구현 완료는 아닙니다. API 21개 계획은 유지합니다. 문맥 격리·입력 정책·마스킹·용량·예산을 먼저 연결하고, real 호출 전 출력 정책까지 검증합니다. M API 활성화 전 마케팅 검사를 완료합니다. action 단위 테스트와 **실제 NeMo rail의 호출·결과 소비·차단/변환 통합 검증**을 구분합니다.
+
+### 왜 두 개를 추가했나요?
+
+- **문맥 검사:** 비동기로 A/B 요청이 겹쳐도 질문·후기·검사 결과가 섞이지 않도록 요청마다 독립 context를 사용하고, 반환 직전에도 연결을 확인합니다. requestId만 같다고 사용자 권한이 증명되지는 않습니다.
+- **생성 진입 제어:** 비동기는 동시 요청을 많이 받기 쉬우므로 예산뿐 아니라 실행 개수도 제한합니다. 서버 설정의 예시는 동시 2개·대기 4개·대기 한도 0.5초입니다. 분산 환경의 전역 한도가 아니라 단일 worker 실험값입니다.
+- **용량 먼저, 비용 나중:** 기다리는 요청이 예산을 오래 예약하지 않도록 슬롯 확보 후 비용을 예약합니다. 거절·취소 때는 이미 확보한 자원도 반환합니다.
+- **종료 책임 분리:** timeout·disconnect·정산·슬롯 반환은 서비스의 finally에서 보장합니다. 다음 action이 실행되어야만 정리되는 구조로 만들지 않습니다.
+
+자세한 이유·계약·사례·실험은 [비동기 보안 설계 해설](docs/async-security-explained.html)에 정리했습니다. NeMo의 execute_async 옵션과 Python await는 구분하며, 필수 검사 결과를 기다리지 않고 생성을 시작하지 않습니다.
+
+### 추천 5번도 이번 필수: check_marketing_response
+
+게시판·리뷰 샘플을 우리 변호사 마케팅 도구에 연결하는 만큼 **5번도 이번에 구현·검증**합니다. M01 요약과 M02 답변 초안은 전체 출력 검사 후 이 action을 반드시 통과하고, 최종 마스킹·문맥 확인을 마쳐야 반환합니다. 보장·과장 표현은 검토 필요로 표시하고 안전하게 정리한 초안만 제공하며 자동 게시하지 않습니다. 정상 문구·보장 표현·부정/인용 문맥·개인정보·검사 실패 사례를 테스트합니다. 샘플을 실행하는 것과 이 AI 보안 확장을 구현하는 것은 별도로 확인합니다.
+
+내부 결정은 ALLOW/BLOCK/TRANSFORM/REVIEW, 사유는 reasonCode/detailCode입니다. 기존 COST_LIMIT_BLOCKED·DYNAMIC_SESSION_BLOCKED 등과 신규 제안을 구분합니다. 패턴 마스킹의 완전성·표현 검사의 법률적 적합성을 보장한다고 가정하지 않습니다.
+
+### 추가할 API 10개와 전체 목표
+
+| 신규 영역 | API | 개수 |
+|---|---|---|
+| 상태 확인 | H01 GET `/health` | 1 |
+| 법률 마케팅 게시판 | B01~B05: `/api/posts`와 `/api/posts/{postId}` 생성·목록·상세·수정·삭제 | 5 |
+| 상담 서비스 후기 | B06~B07: `/api/posts/{postId}/reviews` 생성·목록 | 2 |
+| AI 마케팅 | M01 POST `/api/posts/{postId}/ai-summary` · M02 POST `/api/reviews/{reviewId}/reply-draft` | 2 |
+
+**기존 선정 API 11개 + 신규 API 10개 = 전체 확장 목표 21개**입니다. Python action 9개는 내부 검사 함수이므로 API 개수에 더하지 않습니다. 현재 접수 MVP 3개와 리뷰 참고본 3개도 이 계획에 합산하지 않습니다. 법률 게시판·마케팅 검사는 이번 lab의 후속 구현 범위이며, 인증·인가는 제외합니다.
+
+## 4. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개
 
 선택한 MVP는 학원 리뷰의 처리 구조를 Legal Intake로 바꾼 작은 개인 학습용 버전입니다. 기존 Spring 접수 API 전체와 호환되는 이전본이 아니며, 수업 도메인 변경 허용 여부는 별도 확인 대상입니다.
 
@@ -107,7 +155,7 @@ Swagger / 브라우저
 
 현재는 localhost·단일 사용자·합성 데이터·단일 worker 실험입니다. **Spring Boot·JWT·로그인·역할 권한은 이번 실행 경로에서 제외**합니다. 인증·인가는 hybrid 단계에서 다룹니다. sessionId와 내용 검사 action은 사용자 인증을 대신하지 않습니다.
 
-## 4. 학원 HOWTO 세 챕터와 연결
+## 5. 학원 HOWTO 세 챕터와 연결
 
 학원은 **하나의 프로젝트를 chap01 → chap02 → chap03으로 확장**합니다. 메뉴 예제로 구조와 검증 방법을 배우고 우리 프로젝트에서는 Legal Intake·게시판에 응용합니다.
 
@@ -119,7 +167,7 @@ Swagger / 브라우저
 
 원본 위치는 `C:\myLectureWs\08_fastapi-main\howto`입니다. 반영본은 **2026-11-04 / f1928c8**입니다. 수업 자료는 이 저장소에 복제하지 않고 학습 항목과 적용점을 요약합니다.
 
-### 4-1. chap01 — FastAPI 프로젝트의 뼈대
+### 5-1. chap01 — FastAPI 프로젝트의 뼈대
 
 | 항목 | 핵심 | 우리 프로젝트에 반영 |
 |---|---|---|
@@ -147,7 +195,7 @@ Swagger / 브라우저
 
 예외 응답의 code/description/detail과 Pydantic 오류의 loc를 읽습니다. reload·재시작 후 메모리 데이터는 초기화됩니다. Pyrefly search-path는 편집기의 모듈 인식 설정이며 실제 패키지 설치를 대신하지 않습니다.
 
-### 4-2. chap02 — LLM 호출과 동기·비동기 비교
+### 5-2. chap02 — LLM 호출과 동기·비동기 비교
 
 | 항목 | 핵심 | 우리 프로젝트에 반영 |
 |---|---|---|
@@ -178,7 +226,7 @@ Swagger / 브라우저
 
 LLM이 우리 메뉴·사건·게시글을 자동으로 아는 것은 아닙니다. 필요한 데이터를 검사·마스킹 후 전달합니다. memvid/RAG는 이번 범위에서 제외합니다.
 
-### 4-3. chap03 — 테스트·커버리지·성능 측정
+### 5-3. chap03 — 테스트·커버리지·성능 측정
 
 | 항목 | 핵심 | 우리 검증에 반영 |
 |---|---|---|
@@ -210,7 +258,7 @@ TestClient는 메모리에서 ASGI 앱을 호출할 수 있지만 **학원 벤�
 
 FAKE_LLM=true·고정 지연으로 측정합니다. 원본은 fake 여부 사전 확인, sync/async 각 100개·blocking 10개, client 5개 분산 구조입니다. 127.0.0.1로 주소 해석 지연을 줄이고 측정 도구의 병목도 살핍니다. **요청 수가 다른 결과의 전체 시간만 직접 비교하지 않으며**, 수업 PC 수치를 보장 성능으로 삼지 않습니다.
 
-## 5. HOWTO에서 확장하는 Legal Intake
+## 6. HOWTO에서 확장하는 Legal Intake
 
 | 기능 | 처리 |
 |---|---|
@@ -222,41 +270,6 @@ FAKE_LLM=true·고정 지연으로 측정합니다. 원본은 fake 여부 사전
 | SSE | 검사 완료 청크·단절 cleanup |
 
 Java의 계약·규칙·사유 코드·테스트 사례를 이전합니다. Java 코드를 Python에서 그대로 실행하지 않습니다. 실제 소스는 legal-ai-intake-security-server이며 로컬 legal-ai-intake-system은 소개 문서 중심입니다.
-
-## 6. NeMo 보안 Python action — 9개 설계 확정
-
-**이전 범위 확정:** 우선 복습할 3개뿐 아니라 아래 **9개 전체**를 FastAPI 내부로 이전하는 목표입니다. 로그인·JWT·역할·소유권 인가는 제외합니다. [전체 이전 흐름도](docs/assets/security-migration.svg)와 [책임·순서·확장 단계 해설](docs/SECURITY_MIGRATION_PLAN.md)에 남은 설계를 정리했습니다. action 외에 서비스의 정산·슬롯 반환·취소 정리도 구현 목표에 포함합니다.
-
-action은 **검사 함수**, reasonCode는 **판단 사유 값**입니다. 코드를 함수 이름으로 바꾸지 않고 기존 판정 로직을 Python으로 옮깁니다.
-
-| action | 역할 |
-|---|---|
-| validate_request_context | 서버가 만든 요청 문맥·분석 대상·응답 연결 확인, A/B 데이터 혼합 방지 |
-| check_session_risk | 세션 누적 위험·기존 차단 확인 |
-| check_input_policy | 법률 악용·jailbreak·injection·secret·privacy 검사 |
-| mask_personal_data | 저장·외부 전송·반환 전 정의한 PII 치환 |
-| check_generation_admission | 동시 실행·유한 대기열·대기 한도 정책, 실제 슬롯은 서비스 관리 |
-| check_request_budget | lock 안에서 예산 확인+예약 |
-| check_output_policy | 전체 답변 빈값·길이·정책 검사 |
-| check_marketing_response | 보장·과장 표현을 사람 검토 대상으로 표시 |
-| record_risk_event | 확정된 정책 차단을 한 번만 점수로 기록 |
-
-기존 7개에 추천한 문맥 검사·생성 진입 제어 2개를 **정식 설계 범위에 추가**했습니다. 아직 구현 완료는 아닙니다. API 21개 계획은 유지합니다. 문맥 격리·입력 정책·마스킹·용량·예산을 먼저 연결하고, real 호출 전 출력 정책까지 검증합니다. M API 활성화 전 마케팅 검사를 완료합니다. action 단위 테스트와 **실제 NeMo rail의 호출·결과 소비·차단/변환 통합 검증**을 구분합니다.
-
-### 왜 두 개를 추가했나요?
-
-- **문맥 검사:** 비동기로 A/B 요청이 겹쳐도 질문·후기·검사 결과가 섞이지 않도록 요청마다 독립 context를 사용하고, 반환 직전에도 연결을 확인합니다. requestId만 같다고 사용자 권한이 증명되지는 않습니다.
-- **생성 진입 제어:** 비동기는 동시 요청을 많이 받기 쉬우므로 예산뿐 아니라 실행 개수도 제한합니다. 서버 설정의 예시는 동시 2개·대기 4개·대기 한도 0.5초입니다. 분산 환경의 전역 한도가 아니라 단일 worker 실험값입니다.
-- **용량 먼저, 비용 나중:** 기다리는 요청이 예산을 오래 예약하지 않도록 슬롯 확보 후 비용을 예약합니다. 거절·취소 때는 이미 확보한 자원도 반환합니다.
-- **종료 책임 분리:** timeout·disconnect·정산·슬롯 반환은 서비스의 finally에서 보장합니다. 다음 action이 실행되어야만 정리되는 구조로 만들지 않습니다.
-
-자세한 이유·계약·사례·실험은 [비동기 보안 설계 해설](docs/async-security-explained.html)에 정리했습니다. NeMo의 execute_async 옵션과 Python await는 구분하며, 필수 검사 결과를 기다리지 않고 생성을 시작하지 않습니다.
-
-### 추천 5번도 이번 필수: check_marketing_response
-
-게시판·리뷰 샘플을 우리 변호사 마케팅 도구에 연결하는 만큼 **5번도 이번에 구현·검증**합니다. M01 요약과 M02 답변 초안은 전체 출력 검사 후 이 action을 반드시 통과하고, 최종 마스킹·문맥 확인을 마쳐야 반환합니다. 보장·과장 표현은 검토 필요로 표시하고 안전하게 정리한 초안만 제공하며 자동 게시하지 않습니다. 정상 문구·보장 표현·부정/인용 문맥·개인정보·검사 실패 사례를 테스트합니다. 샘플을 실행하는 것과 이 AI 보안 확장을 구현하는 것은 별도로 확인합니다.
-
-내부 결정은 ALLOW/BLOCK/TRANSFORM/REVIEW, 사유는 reasonCode/detailCode입니다. 기존 COST_LIMIT_BLOCKED·DYNAMIC_SESSION_BLOCKED 등과 신규 제안을 구분합니다. 패턴 마스킹의 완전성·표현 검사의 법률적 적합성을 보장한다고 가정하지 않습니다.
 
 ## 7. 비용·SSE·오류 처리
 
