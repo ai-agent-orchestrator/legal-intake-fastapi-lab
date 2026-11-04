@@ -18,7 +18,27 @@ This small scope makes synchronous/asynchronous execution, dependency injection,
 
 Validated code, contracts, and tests can move into the next stage. This roadmap does not mean the later repositories have been implemented or deployed.
 
-## 2. Implemented scope: two synchronous APIs and one asynchronous API
+## 2. Selected and excluded extension APIs
+
+**Original 37 = selected 11 + excluded 26. Ten proposed additions produce a 21-API extension target.** These are roadmap counts, not the three implemented MVP APIs.
+
+| Group | IDs and paths |
+|---|---|
+| Classification / guidance | C02 `POST /api/intakes/classify-preview`; C04 `POST /api/legal-intake/minimal` |
+| Legal references | R01 procedures list; R02 procedure details; R06 fixed criminal checklist |
+| Async AI | S01 `POST /api/ai/chat`; S02 `POST /api/ai/chat/stream` |
+| NeMo checks | S03 input and S04 output under `/api/legal/guardrail` |
+| Reduced lab queries | C14 `/api/lab/security-events`; C13 `/api/lab/marketing/summary` |
+| New health | H01 `GET /health` |
+| New board | B01–B05: post creation, list, details, modification, deletion |
+| New reviews | B06–B07: creation and list under a post |
+| AI marketing | M01 post AI summary; M02 review reply draft |
+
+The proposed core group is C02/C04/R01/R02/R06/S01–S04/C14/H01. The board integration group is C13/B01–B07/M01/M02. Both belong to the future lab expansion rather than an optional hybrid-only feature. Eleven selected original APIs and eleven proposed core APIs have different members because health is new and C13 is in the board group.
+
+Excluded for this experiment: Spring login/JWT/roles, operational case storage, external search, file storage, Agent/Incident operations, Actuator/Prometheus, Redis, Celery, Kafka, RAG/memvid, OCR, and automatic publishing. The existing Java service/database is not modified. See the [detailed design](docs/BACKEND_DESIGN.md) for the full ID mapping and exact paths.
+
+## 3. Implemented scope: two synchronous APIs and one asynchronous API
 
 The selected MVP adapts the review exercise's processing structure to Legal Intake. It is a small learning contract, not a fully compatible replacement for the existing Spring intake API.
 
@@ -84,7 +104,7 @@ In the future implementation, nonblocking AI I/O uses `await`, fake latency uses
 
 The current environment is localhost, one user, synthetic data, and one worker. Spring Boot, JWT, login, and role permissions are excluded for now. They belong to the hybrid stage. A `sessionId` and a content-checking action are not authentication.
 
-## 3. Course HOWTO chapters and their application
+## 4. Course HOWTO chapters and their application
 
 The course grows **one project through chap01 → chap02 → chap03**. It uses menu data to teach structure and verification; this repository applies those concepts to intakes and the planned board features.
 
@@ -168,7 +188,7 @@ The HOWTO's **20-passed example belongs to the course**, not this application's 
 
 The benchmark uses fake mode and fixed latency, checks that the server is fake, sends 100 requests each to sync/async and ten to blocking, and distributes load across five clients. Use `127.0.0.1` to avoid irrelevant address-resolution effects. Do not compare total duration alone across different batch sizes. Check whether the load generator is the bottleneck. Instructor measurements are not guaranteed performance for another machine.
 
-## 4. Planned Legal Intake expansion
+## 5. Planned Legal Intake expansion
 
 | Area | Intended behavior |
 |---|---|
@@ -180,26 +200,6 @@ The benchmark uses fake mode and fixed latency, checks that the server is fake, 
 | SSE | Inspected chunks and disconnect cleanup |
 
 The planned migration reuses Java contracts, rules, reason codes, and test scenarios; it does not execute Java inside Python. The actual source reference is `legal-ai-intake-security-server`. The local `legal-ai-intake-system` directory mainly contains introductory documentation.
-
-## 5. Selected and excluded extension APIs
-
-**Original 37 = selected 11 + excluded 26. Ten proposed additions produce a 21-API extension target.** These are roadmap counts, not the three implemented MVP APIs.
-
-| Group | IDs and paths |
-|---|---|
-| Classification / guidance | C02 `POST /api/intakes/classify-preview`; C04 `POST /api/legal-intake/minimal` |
-| Legal references | R01 procedures list; R02 procedure details; R06 fixed criminal checklist |
-| Async AI | S01 `POST /api/ai/chat`; S02 `POST /api/ai/chat/stream` |
-| NeMo checks | S03 input and S04 output under `/api/legal/guardrail` |
-| Reduced lab queries | C14 `/api/lab/security-events`; C13 `/api/lab/marketing/summary` |
-| New health | H01 `GET /health` |
-| New board | B01–B05: post creation, list, details, modification, deletion |
-| New reviews | B06–B07: creation and list under a post |
-| AI marketing | M01 post AI summary; M02 review reply draft |
-
-The proposed core group is C02/C04/R01/R02/R06/S01–S04/C14/H01. The board integration group is C13/B01–B07/M01/M02. Both belong to the future lab expansion rather than an optional hybrid-only feature. Eleven selected original APIs and eleven proposed core APIs have different members because health is new and C13 is in the board group.
-
-Excluded for this experiment: Spring login/JWT/roles, operational case storage, external search, file storage, Agent/Incident operations, Actuator/Prometheus, Redis, Celery, Kafka, RAG/memvid, OCR, and automatic publishing. The existing Java service/database is not modified. See the [detailed design](docs/BACKEND_DESIGN.md) for the full ID mapping and exact paths.
 
 ## 6. Nine accepted NeMo action designs
 
