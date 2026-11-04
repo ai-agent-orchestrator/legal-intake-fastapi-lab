@@ -77,6 +77,18 @@ Internal policy decisions are ALLOW/BLOCK/TRANSFORM/REVIEW with `reasonCode/deta
 
 **11 selected existing APIs + 10 new APIs = a 21-API expansion target.** The nine Python actions are internal checks, not additional HTTP endpoints. The three current intake MVP APIs and three review-reference APIs are separate contracts and are not added to this count. Board/marketing work belongs to the subsequent lab implementation; authentication and authorization are excluded.
 
+### Advanced legal marketing board — weekend extension goals
+
+Adapt the review exercise's three advanced tasks to **service-experience reviews and law-firm reply drafts**. These are planned extensions, not implemented features.
+
+| Exercise | Planned behavior | Acceptance criteria |
+|---|---|---|
+| Rating-based tone | Apology/empathy for 1–2, empathy/improvement for 3, gratitude for 4–5 | Rating boundaries verified; marketing inspection applies to every rating |
+| Save and retrieve drafts | Save M02's inspected, finally masked draft and review status; include them in B07 review lists | Generated draft appears on read; checker failures are not saved; no automatic external publication |
+| Compare sync/async | Keep M02 async with an async client; add a separate experiment using def and a sync client | Same inputs/fake delay, two Postman tabs, thread and concurrent-request observations |
+
+The synchronous comparison endpoint is a separate learning experiment outside the base 21-API target. Enabling one additional endpoint in the same app makes the total 22. FastAPI runs def handlers in a thread pool; one blocking handler does not imply that the entire server stops. See the [detailed advanced design](docs/LEGAL_MARKETING_BOARD.md) in Korean.
+
 ## 4. Implemented scope: two synchronous APIs and one asynchronous API
 
 The selected MVP adapts the review exercise's processing structure to Legal Intake. It is a small learning contract, not a fully compatible replacement for the existing Spring intake API.
