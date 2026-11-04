@@ -52,6 +52,14 @@ The selected MVP adapts the review exercise's processing structure to Legal Inta
 
 The dictionary repository uses a short thread lock. The asynchronous guidance service offloads its snapshot lookup with `to_thread`. The client's name is excluded from the AI prompt. Automatic masking of all narrative PII, NeMo, budgets, SSE, authentication, and persistent storage are **not implemented in this MVP**. Use synthetic data. Restarting the server clears stored intakes.
 
+### Agreed scope: option 1 today, extensions on the weekend
+
+- **Today (2026-11-04):** Complete option 1: synchronous intake creation/retrieval and asynchronous AI guidance, limited to the three APIs above. Implementation and 23 fake/mock tests are complete. The real OpenAI adapter is included, but paid API calls remain unverified.
+- **Weekend:** Review the MVP first, then add small increments starting with PII masking and input/output checking Python actions. NeMo integration, SSE, and the asynchronous board remain follow-up candidates; completing all of them in one weekend is not the agreed scope.
+- **Priority:** Litigation work remains first. Keep today's implementation within the MVP and defer extensions to the weekend. Spring Boot authentication/authorization belongs to the later hybrid stage.
+
+This small scope makes synchronous/asynchronous execution, dependency injection, and exception handling visible in one complete flow: create an intake, retrieve it, and generate guidance from its stored facts. Adding security actions and streaming individually later makes their effects and failures easier to compare.
+
 ### Review coursework contract
 
 The separate `ohgi-review-server/` follows the supplied structure: `main`, dependencies, configuration, exceptions, dataclass domain, dictionary repository, schemas, clients, services, and routers. Application packages contain empty `__init__.py` files.
