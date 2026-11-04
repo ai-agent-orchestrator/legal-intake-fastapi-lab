@@ -129,8 +129,10 @@ pages.append(('기존 API에서 가져올 핵심 11개','02 / API SELECTION · C
  '<p class="lead">경로와 응답 계약은 유지하고, Java 서비스 구현을 Python으로 이전한다.</p>'+table(['ID','선정한 API','이번 구현 범위','구분'],api_rows('core'),'api')+
  strip('실행 계약','Chat 입력 100자 · camelCase 응답 · Pydantic 오류 422 · 정책 차단은 기존 호환 응답')+
  strip('구현 순서','규칙/참조 → fake Chat → 입력 actions → 예산 → real Chat → 출력 검사 → SSE')))
-pages.append(('게시판·리뷰에서 AI 마케팅으로','03 / API SELECTION · SAMPLE EXTENSION',
+pages.append(('법률 마케팅 게시판 · 후기 · 답변 초안','03 / API SELECTION · SAMPLE EXTENSION',
  '<p class="lead">주력 B/M/C13은 비동기 확장. 수업 리뷰 API 3개는 별도 앱이며 21개에 합산하지 않음.</p>'+table(['ID','제안 API','동작','구분'],api_rows('sample'),'api')+
+ strip('법률 도메인','식당 샘플을 법률사무소 게시글·상담 서비스 후기·검토용 답변 초안으로 응용. 주말 구현 설계.')+
+ strip('필수 학습 3개','mask_personal_data → check_request_budget → await AI → check_marketing_response → 최종 마스킹. 기존 9개 중 우선 복습.')+
  strip('AI 재사용','M01·M02는 Chat과 같은 보안·예산 파이프라인 사용. 게시글·후기 내용은 지시가 아닌 분석 데이터.')+
  strip('집계 범위','C13은 게시글·후기 수와 분석 결과 스냅샷. 상담 전환율·기간별 이탈률은 이번에 제외.')))
 pages.append(('보안 Python action의 실행 경계','04 / SECURITY PIPELINE',

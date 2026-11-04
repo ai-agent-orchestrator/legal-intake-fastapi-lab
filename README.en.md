@@ -80,6 +80,20 @@ Chapter 02 configuration and client code can be used as references. Compare inde
 
 Live fake-mode Uvicorn checks confirmed `/docs`, the expected status codes, synchronous handlers on `AnyIO worker thread`, and the reply on `MainThread`. Independent-environment startup, manual Postman interaction, and actual paid provider calls are separate checks. Rating-dependent tone, persisted replies, and an additional synchronous LLM endpoint remain optional exercises and have not been added.
 
+### Legal marketing board: three required learning actions
+
+Adapt the restaurant review sample to **law-firm posts, service-experience reviews, and reply drafts for human review**. Preserve `ohgi-review-server/` as the course comparison reference. The legal marketing board is a weekend extension, separate from today's three-endpoint intake MVP.
+
+| Priority Python action | Purpose | Placement |
+|---|---|---|
+| `mask_personal_data` | Replace defined PII patterns, including phone numbers and email addresses | Before storage, before AI transmission, and before returning text |
+| `check_request_budget` | Port existing cost controls into atomic checking/reservation and settlement | Before each paid M01 summary or M02 reply-draft call |
+| `check_marketing_response` | Flag guarantees of success and exaggerated wording for review | After generation, before final masking and response |
+
+Flow: post/review → mask and store → reserve budget → await OpenAI → output/marketing checks → final masking → return a review draft and settle costs. Exceeded budgets prevent generation; failed mandatory checks prevent output release. Response fields such as `reviewRequired` are proposed extension contracts, not current MVP fields. Drafts are not published automatically.
+
+These three actions are the first learning subset of the existing nine-action design. They do not replace the full design. **NeMo actions are not installed or implemented yet; implementation is planned for the weekend.** See the [domain mapping, rationale, and acceptance criteria](docs/LEGAL_MARKETING_BOARD.md) in Korean.
+
 ### Subsequent expansion: design only
 
 The root MVP's three APIs, the review reference's three APIs, and the planned expansion's 21 APIs have separate contracts and implementation states. The future board and AI services are designed around asynchronous handling; this does not change the current synchronous MVP requirements.

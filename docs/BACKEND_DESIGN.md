@@ -43,6 +43,8 @@ S03·S04는 디버그용 진입점이다. `LLMRails`의 입력/출력 rail만 �
 
 ## 3. 신규 API — 10개
 
+**도메인 확정:** 식당 리뷰 샘플은 비교용으로 두고, 확장은 법률사무소 게시글·상담 서비스 후기·검토용 답변 초안으로 구성한다. 우선 복습할 필수 action은 `mask_personal_data`, `check_request_budget`, `check_marketing_response`다. 기존 9개 action 중 학습 순서이며 새 3개를 더하는 뜻은 아니다. [도메인 전환·상세 이유·주말 구현 기준](LEGAL_MARKETING_BOARD.md)을 따른다. 현재 MVP 3개 API는 유지한다.
+
 게시판·리뷰·마케팅 연동은 이번 fastapi-lab의 필수 범위다. 핵심 Chat 이후 구현하는 순서일 뿐 다음 hybrid 단계로 미루는 선택 기능은 아니다. 특히 추천 5번 check_marketing_response는 M01/M02 반환 전 필수 실행한다. 샘플의 실제 링크/저장 위치와 DTO는 확인 후 확정한다.
 
 강사의 게시판·리뷰 관리 샘플은 아직 받지 않았다. B/M API는 그 샘플에 따른 확정 전 제안이며, 기존 Legal Intake에서 이미 구현된 API가 아니다.
