@@ -1,0 +1,16 @@
+[project]
+name = "legal-intake-fastapi-lab"
+version = "0.1.0"
+description = "Legal Intake MVP: 동기 접수 등록·조회와 비동기 AI 안내"
+requires-python = ">=3.14"
+dependencies = ["fastapi[standard]", "pydantic-settings", "openai"]
+
+[dependency-groups]
+dev = ["pytest", "pytest-cov"]
+
+[tool.fastapi]
+entrypoint = "app.main:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

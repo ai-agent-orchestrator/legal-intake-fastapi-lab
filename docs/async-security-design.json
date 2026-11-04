@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "status": "DESIGN_ACCEPTED_NOT_IMPLEMENTED",
+  "acceptedDate": "2026-11-04",
+  "apiTargetCount": 21,
+  "executionSplit": {"syncBoardIds": [], "syncCount": 0, "asyncCount": 21, "aiActionsRunIn": "async_chat_and_marketing_pipeline", "courseworkApp": {"directory": "ohgi-review-server", "syncCount": 2, "asyncCount": 1, "includedInApiTargetCount": false}},
+  "actions": ["validate_request_context", "check_session_risk", "check_input_policy", "mask_personal_data", "check_generation_admission", "check_request_budget", "check_output_policy", "check_marketing_response", "record_risk_event"],
+  "designDefaults": {"AI_MAX_CONCURRENT": 2, "AI_MAX_WAITERS": 4, "AI_QUEUE_WAIT_SECONDS": 0.5, "AI_REQUEST_TIMEOUT_SECONDS": 30, "AI_CLEANUP_TIMEOUT_SECONDS": 2, "workers": 1},
+  "paidCallOrder": ["acquire_capacity", "reserve_budget", "await_provider", "settle_once", "release_capacity"],
+  "reservationStates": ["OPEN", "REPORTED", "ESTIMATED", "RELEASED"],
+  "newTechnicalErrors": {"REQUEST_CONTEXT_MISMATCH": 500, "GENERATION_CAPACITY_EXCEEDED": 503},
+  "sse": {"publishOnlyAfterFullInspection": true, "publishOnlyBoundSafeText": true, "technicalErrorsDoNotIncreaseRiskScore": true}
+}

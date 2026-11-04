@@ -1,0 +1,11 @@
+{
+  "info": {"name": "Legal Intake MVP - sync intake + async guidance", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable": [{"key": "baseUrl", "value": "http://127.0.0.1:8012"}, {"key": "intakeId", "value": "1"}],
+  "item": [
+    {"name": "1. Register intake (201)", "event": [{"listen": "test", "script": {"type": "text/javascript", "exec": ["pm.test('201 created', () => pm.response.to.have.status(201));", "if (pm.response.code === 201) pm.collectionVariables.set('intakeId', String(pm.response.json().intakeId));"]}}], "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/api/intakes", "body": {"mode": "raw", "raw": "{\n  \"clientName\": \"연습의뢰인\",\n  \"caseType\": \"CIVIL\",\n  \"coreStatement\": \"보증금 반환 상담에 필요한 자료를 준비하려고 합니다.\",\n  \"desiredNextStep\": \"상담 준비자료 정리\"\n}", "options": {"raw": {"language": "json"}}}}},
+    {"name": "2. Find intake (200)", "request": {"method": "GET", "url": "{{baseUrl}}/api/intakes/{{intakeId}}"}},
+    {"name": "3. Async AI guidance (200)", "request": {"method": "POST", "url": "{{baseUrl}}/api/intakes/{{intakeId}}/guidance"}},
+    {"name": "4. Invalid case type (422)", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/api/intakes", "body": {"mode": "raw", "raw": "{\"clientName\":\"연습\",\"caseType\":\"INVALID\",\"coreStatement\":\"연습 사건\"}", "options": {"raw": {"language": "json"}}}}},
+    {"name": "5. Missing intake (404)", "request": {"method": "GET", "url": "{{baseUrl}}/api/intakes/999999"}}
+  ]
+}

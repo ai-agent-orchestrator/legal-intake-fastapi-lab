@@ -1,0 +1,25 @@
+flowchart TD
+    Request["validated request"] --> Context["validate_request_context"]
+    Context --> Session["check_session_risk"]
+    Session --> Fixed["check_input_policy"]
+    Fixed --> MaskIn["mask_personal_data · input"]
+    MaskIn --> InputRail["NeMo input rail · local checks by default"]
+    InputRail --> Admission["check_generation_admission · bounded queue"]
+    Admission --> Reserve["check_request_budget · lock + reservation"]
+    Reserve --> Call["await OpenAI · no automatic retry by default"]
+    Call --> Usage["settle generation reservation"]
+    Usage --> Released["release slot · all exits via finally"]
+    Released --> Out["check_output_policy · complete content"]
+    Out --> Marketing["check_marketing_response · M endpoints only"]
+    Marketing --> MaskOut["mask_personal_data · output"]
+    MaskOut --> Bound["validate_request_context · output binding"]
+    Bound --> Safe["safe JSON / checked SSE chunks"]
+    Session -. BLOCK .-> Deny["safe stop · no later calls"]
+    Fixed -. BLOCK .-> Deny
+    Reserve -. BLOCK .-> Deny
+    Out -. BLOCK .-> Deny
+    Deny --> Risk["record_risk_event · policy blocks only"]
+    Call -. timeout/disconnect .-> Cleanup["cancel · bounded cleanup · settle once"]
+    InputRail -. failure .-> Error["fail closed · technical error"]
+    Context -. mismatch .-> Error
+    Admission -. overload .-> Error

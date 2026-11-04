@@ -1,0 +1,29 @@
+%% DRAFT 2026-11-04. 01 overview. All FastAPI APIs/actions are planned.
+flowchart TD
+    Client["Swagger / local browser"] --> ASGI["Uvicorn ASGI · middleware · trace"]
+    ASGI --> Schema["Pydantic validation · Depends"]
+    Schema --> Rules["C02 C04 R01 R02 R06 · rules / fixture"]
+    Schema --> AI["비동기 챗봇 · S01 S02 M01 M02 · async def / await"]
+    Schema --> Board["비동기 게시판 · B01-B07 C13 · async def"]
+    Schema --> Check["S03 S04 · input/output rails only"]
+    AI --> Input["validate context · session precheck · fixed input · mask"]
+    Input --> Capacity["bounded admission · acquire slot"]
+    Capacity --> Budget["atomic budget reserve"]
+    Budget --> Await["await OpenAI"]
+    Await --> Settle["settle reported/estimated usage"]
+    Settle --> Release["release slot · finally on every exit"]
+    Release --> Output["output rail · marketing checks · final mask"]
+    Output --> ContextOut["validate response context binding"]
+    ContextOut --> Reply["JSON / checked SSE chunks"]
+    Capacity -. overload .-> Error["503 / SSE error · no risk score"]
+    Board --> Store["async memory store · synthetic data · immutable snapshots"]
+    AI -. M endpoints read immutable snapshot .-> Store
+    Study["별도 ohgi-review-server 과제"] --> Pool["def · 리뷰 등록/조회 · 201/422/404"]
+    Study --> ReplyAsync["async def · 저장 리뷰 프롬프트 → await LLM · 실패 502"]
+    Rules --> Reply
+    Check --> Reply
+    Store --> Summary["C13 · snapshot summary"]
+    Input -. BLOCK .-> Stop["safe response · reasonCode/detailCode"]
+    Output -. BLOCK .-> Stop
+    Stop --> Risk["record_risk_event once"]
+    Risk --> Events["C14 · redacted security events"]

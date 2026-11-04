@@ -1,0 +1,979 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>legal-intake-fastapi-lab · README</title><style>
+:root{color-scheme:dark;--bg:#0e1725;--panel:#162438;--line:#2b405b;--text:#e8eff7;--muted:#adbed2;--cyan:#6bd6e8;--blue:#68a8ff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:#09101b;color:var(--text);font-family:"Malgun Gothic",system-ui,sans-serif;font-size:16px;line-height:1.95}a{color:var(--cyan);text-underline-offset:4px}a:hover{color:var(--text)}a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.top{max-width:1220px;margin:auto;padding:22px 26px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}.top strong{color:var(--cyan);letter-spacing:1px;margin-right:auto}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;max-width:1220px;margin:0 auto 40px;padding:0 22px}.toc{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.toc summary{font-weight:600;color:var(--cyan);cursor:pointer;padding-bottom:10px}.toc nav{display:grid;gap:3px}.toc a{font-size:13px;text-decoration:none;color:var(--muted);padding:6px 8px;border-radius:6px;line-height:1.7}.toc a:hover{background:#1b3a50;color:var(--text)}article{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:35px 42px;min-width:0}h1{font-size:32px;line-height:1.5;margin:0 0 20px;letter-spacing:-1px}h2{font-size:25px;line-height:1.55;margin:52px 0 18px;padding-top:24px;border-top:1px solid var(--line);color:var(--cyan)}h3{font-size:19px;line-height:1.7;margin:28px 0 12px;color:var(--blue)}p{margin:0 0 18px}li{margin-bottom:7px}strong{font-weight:600}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.8;margin:20px 0 26px;table-layout:auto}th{background:#1b3a50;color:var(--cyan);text-align:left}td,th{padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}tr:nth-child(even){background:#122033}pre{padding:20px 22px;background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow-x:auto;font-size:14px;line-height:1.85;margin:20px 0 25px;tab-size:4}code{font-family:Consolas,"Malgun Gothic",monospace}p code,li code,td code{font-size:.9em;color:#b8eaf2;background:#14283a;border-radius:4px;padding:1px 4px}img{width:100%;height:auto;display:block;border-radius:10px}article details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:15px 18px;margin:13px 0}article details summary{cursor:pointer;color:var(--cyan);font-size:15px;line-height:1.85}article details p{font-size:15px;margin:14px 0 4px;color:var(--text)}.table-wrap{overflow-x:auto}.bottom{border-top:1px solid var(--line);margin-top:45px;padding-top:20px;color:var(--muted);font-size:13px}.badge{display:inline-block;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:3px 12px;font-size:12px;color:var(--cyan);margin-bottom:20px}.jump{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:24px;font-size:13px}@media(max-width:950px){.layout{grid-template-columns:1fr;max-width:850px}.toc{position:static;max-height:280px}.toc nav{grid-template-columns:repeat(2,minmax(0,1fr))}article{padding:26px}.top{padding:20px 24px}h1{font-size:28px}}@media(max-width:560px){.layout{padding:0 10px;gap:12px}article{padding:23px 17px;border-radius:12px}h1{font-size:25px}h2{font-size:22px}body{font-size:16px}td,th{padding:9px}pre{padding:14px;font-size:13px}.toc nav{grid-template-columns:1fr}.top{padding:18px 15px}table{font-size:13px;min-width:460px}}@media print{@page{size:A4;margin:16mm}body{background:var(--bg);print-color-adjust:exact;-webkit-print-color-adjust:exact}.top,.toc,.jump{display:none}.layout{display:block;max-width:none;padding:0;margin:0}article{border:0;border-radius:0;padding:0}h1{font-size:24px}h2{font-size:20px;break-after:avoid}h3{break-after:avoid}body{font-size:12px;line-height:1.8}pre,table{font-size:10px}details{break-inside:avoid}details p{display:block}pre{white-space:pre-wrap}a{overflow-wrap:anywhere}}
+</style></head><body>
+<header class="top"><strong>LEGAL INTAKE / PROJECT README</strong><span>HOWTO 01 + 02 + 03 · 2026-11-04</span><a href="../README.md">Markdown 원문</a><a href="study-guide.html">공부자료</a><a href="backend-dark-tablet.html">흐름도</a></header>
+<div class="layout"><details class="toc" open><summary>README 목차</summary><nav aria-label="README 목차"><a href="#section-1">1. 먼저 볼 자료</a><a href="#section-2">2. 세 저장소의 발전 순서 — ① → ③ → ②</a><a href="#section-3">3. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개</a><a href="#section-4">4. 학원 HOWTO 세 챕터와 연결</a><a href="#section-5">5. HOWTO에서 확장하는 Legal Intake</a><a href="#section-6">6. API 선정과 제외</a><a href="#section-7">7. NeMo 보안 Python action — 9개 설계 확정</a><a href="#section-8">8. 비용·SSE·오류 처리</a><a href="#section-9">9. 제공된 리뷰 명세 반영과 확장 경계</a><a href="#section-10">10. 현재 상태</a><a href="#section-11">11. 지금 실행할 수 있는 것</a><a href="#section-12">12. 학원 원본 실습 명령</a><a href="#section-13">13. 구현·복습 순서와 완료 기준</a><a href="#section-14">14. 참고 자료와 원본 위치</a></nav></details><article><span class="badge">Legal Intake MVP 완성 · 테스트 23개 · fake 서버 실행</span><h1>legal-intake-fastapi-lab</h1>
+<p><a href="../README.md">한국어</a> | <a href="../README.en.md">English</a></p>
+<blockquote>
+<p><strong>현재 완성: Legal Intake MVP — 동기 접수 등록·조회 + 비동기 AI 안내</strong></p>
+<p>학원 <code>08_fastapi-main/howto/HOWTO-chap01·02·03</code>의 핵심을 복습하고, 기존 Legal Intake의 일부 기능을 <strong>Spring Boot 없이 실행하는 Python 비동기 백엔드</strong>로 재구성합니다. 비동기 챗봇·OpenAI·NeMo 보안 Python action을 먼저 검증한 뒤, 강사의 게시판 관리 샘플로 변호사 게시판·리뷰·마케팅 AI 기능을 확장합니다.</p>
+</blockquote>
+<p>사용자가 선택한 핵심 범위를 루트 app/에 구현했습니다. <strong>테스트 23개 통과</strong>, 프로젝트 전용 .venv·uv.lock 구성, 실제 개발 서버에서 201·200·422·404 및 async MainThread를 확인했습니다. 현재 fake-llm으로 실행하며 실제 OpenAI 유료 호출은 미검증입니다. 리뷰 과제 참고본은 ohgi-review-server에 보존했고, 확장 21개 API·NeMo action 9개는 후속 설계입니다.</p>
+<p><strong>바로 사용:</strong> <a href="RUN_MVP.md">실행·JSON·코드 읽기 안내</a> · <a href="http://127.0.0.1:8012/docs">실행 중인 Swagger</a> · <a href="legal-intake-mvp.postman_collection.json">Postman collection</a></p>
+<p>강사는 구조를 스스로 작성하고 AI는 자료구조·문법·오류 이해에 제한해 활용하도록 안내했습니다. 이미 AI로 만든 ohgi-review-server는 <strong>개인 복습용 참고본</strong>으로 구분하고, 제출용을 직접 구성할 때 비교 자료로 사용합니다. 이 참고본을 직접 작성한 제출물로 표시하지 않습니다.</p>
+<h2 id="section-1">1. 먼저 볼 자료</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>자료</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="RUN_MVP.md">현재 Legal Intake MVP 실행 안내</a></strong></td>
+<td>루트 app/의 동기 접수 2개·비동기 안내 1개. pytest 23개·실제 HTTP 검증</td>
+</tr>
+<tr>
+<td><strong><a href="../ohgi-review-server/README.md">수업 과제 리뷰 서버</a></strong></td>
+<td>제공 명세대로 동기 등록·조회 + 비동기 답글 3개 API 구현·11개 테스트 통과</td>
+</tr>
+<tr>
+<td><strong><a href="readme-preview.html">README 읽기 화면</a></strong></td>
+<td>이 문서를 dark tablet 톤으로 읽기</td>
+</tr>
+<tr>
+<td><strong><a href="study-guide.html">비전공자 공부자료</a></strong> · <a href="STUDY_GUIDE.md">원문</a></td>
+<td>전체 구조·Spring 비교·async/await·DI·lifespan·보안·비용·SSE·복습 8문항</td>
+</tr>
+<tr>
+<td><a href="backend-dark-tablet.html">Dark Tablet 백엔드 흐름도</a></td>
+<td>전체 흐름·API·보안·SSE·제외 범위, 8개 화면</td>
+</tr>
+<tr>
+<td><a href="BACKEND_DESIGN.md">상세 백엔드 설계</a></td>
+<td>API 계약·사유 코드·취소·비용 정산·검증 기준</td>
+</tr>
+<tr>
+<td><strong><a href="async-security-explained.html">비동기 보안 설계 해설</a></strong> · <a href="NEMO_ASYNC_ACTIONS.md">원문</a></td>
+<td>확정한 action 9개·도입 이유·실행 순서·실패/취소·비교 실험</td>
+</tr>
+<tr>
+<td><a href="api-catalog.json">API 선정 데이터</a></td>
+<td>원본 선정 11개·제외 26개·신규 제안 10개</td>
+</tr>
+<tr>
+<td>Mermaid 원본</td>
+<td><a href="assets/overview.mmd">전체</a> · <a href="assets/security-actions.mmd">보안</a> · <a href="assets/sse-lifecycle.mmd">SSE</a> · <a href="backend-flows.mmd">편집 묶음</a></td>
+</tr>
+<tr>
+<td><a href="../examples/async_wait_demo.py">비용 없는 비동기 예제</a></td>
+<td>순차 await와 gather 비교. 키·네트워크·외부 패키지 없이 실행</td>
+</tr>
+<tr>
+<td><a href="../examples/sync_board_demo.py">초기 동기 참고 예제</a></td>
+<td>GET /posts 하나. 과제 제출 범위는 아래 ohgi-review-server를 기준으로 함</td>
+</tr>
+</tbody>
+</table></div>
+<p>읽기 화면은 로컬 브라우저용 HTML입니다. Markdown 문서도 함께 관리합니다.</p>
+<h2 id="section-2">2. 세 저장소의 발전 순서 — ① → ③ → ②</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>저장소</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>첫 번째 · 현재 ①</td>
+<td><strong><code>legal-intake-fastapi-lab</code></strong></td>
+<td>HOWTO 복습·FastAPI 단독 비동기 실험·Legal Intake 일부 이전</td>
+</tr>
+<tr>
+<td>두 번째 ③</td>
+<td><strong><code>legal-intake-hybrid-lab</code></strong></td>
+<td>Spring Boot 인증·인가와 FastAPI AI 서비스를 연결하고 경계 검증</td>
+</tr>
+<tr>
+<td>세 번째 ②</td>
+<td><strong><code>legal-intake-ai-service</code></strong></td>
+<td>검증한 기능을 재사용 가능한 AI 서비스로 발전·운영 조건 보완</td>
+</tr>
+</tbody>
+</table></div>
+<p>앞 단계의 코드·계약·테스트를 다음 단계로 가져옵니다. 세 저장소의 개발·배포가 완료되었다는 뜻은 아닙니다.</p>
+<h2 id="section-3">3. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개</h2>
+<p>선택한 MVP는 학원 리뷰의 처리 구조를 Legal Intake로 바꾼 작은 개인 학습용 버전입니다. 기존 Spring 접수 API 전체와 호환되는 이전본이 아니며, 수업 도메인 변경 허용 여부는 별도 확인 대상입니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>현재 MVP API</th>
+<th>방식</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST /api/intakes</td>
+<td>def</td>
+<td>clientName·caseType·coreStatement·선택 desiredNextStep → 201/422</td>
+</tr>
+<tr>
+<td>GET /api/intakes/{intake_id}</td>
+<td>def</td>
+<td>camelCase 접수 → 200, 사용자 정의 404</td>
+</tr>
+<tr>
+<td>POST /api/intakes/{intake_id}/guidance</td>
+<td>async def</td>
+<td>저장 사실 → prompt → await AI → 200, LLM 실패 502</td>
+</tr>
+</tbody>
+</table></div>
+<p>동기 Repository는 짧은 lock으로 보호하고 async 서비스는 snapshot 조회를 to_thread로 분리합니다. 의뢰인 이름은 AI prompt에서 제외합니다. 나머지 사건 본문 자동 마스킹·NeMo·예산·SSE·인증·영속 DB는 아직 없습니다. 재시작하면 메모리 접수는 초기화됩니다.</p>
+<h3>참고: 학원 리뷰 과제 계약</h3>
+<p>사용자가 제공한 실제 과제 명세를 기준으로 <strong>ohgi-review-server</strong>를 구현했습니다. 이전의 단순 GET /posts 예제 대신 이 서버가 동기·비동기 과제의 기준입니다. 요청한 main/dependencies/core/domain/repositories/schemas/clients/services/routers 구조와 빈 <strong>init</strong>.py를 갖췄습니다. 학원 chap01·02의 구조를 참고해 제공된 요구사항으로 작성했으며 원본 전체 소스를 복제했다고 표시하지 않습니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>과제 API</th>
+<th>실행 방식</th>
+<th>검증한 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST /api/reviews</td>
+<td>def</td>
+<td>customerName·rating(정수 1~5)·content → 201, 잘못된 입력 422</td>
+</tr>
+<tr>
+<td>GET /api/reviews/{review_id}</td>
+<td>def</td>
+<td>camelCase 리뷰 반환, 사용자 정의 ReviewNotFoundError/처리기로 404</td>
+</tr>
+<tr>
+<td>POST /api/reviews/{review_id}/reply</td>
+<td>async def</td>
+<td>저장된 리뷰 → 프롬프트 → await LLM → 답글, 호출 실패 AiRequestError/처리기로 502</td>
+</tr>
+</tbody>
+</table></div>
+<h3>강사가 안내한 직접 작성 순서</h3>
+<ol>
+<li>프로젝트: 빈 폴더에서 uv init → uv add fastapi[standard] → 패키지·빈 <strong>init</strong>.py → pyproject entrypoint.</li>
+<li>리뷰: 엔티티 → 딕셔너리 저장소 → DTO → 예외·처리기 → 서비스 → 의존성 함수 → 라우터 → main 조립.</li>
+<li>답글: pydantic-settings·openai 추가 → 설정 → LLM client → 답글 서비스 → 의존성 함수 → async 핸들러 → lifespan.</li>
+</ol>
+<p>설정·LLM client는 chap02 파일을 참고할 수 있습니다. 직접 작성한 코드와 이 참고본을 위 순서로 비교합니다.</p>
+<h3>완성 기준과 선택 심화</h3>
+<p>실제 Uvicorn·fake LLM으로 /docs, 201·422·404와 답글을 확인했고, 로그에서 등록·조회는 AnyIO worker thread, 답글은 MainThread임을 확인했습니다. 독립 uv 환경의 uv run fastapi dev와 실제 OpenAI·수동 Postman은 별도 확인 대상으로 남깁니다.</p>
+<p>별점별 말투, 답글 저장·조회, 동기 LLM 답글 비교 API는 <strong>시간이 남을 때만 할 선택 심화</strong>이며 아직 추가하지 않았습니다. Postman 요청과 live 확인 명령은 <a href="../ohgi-review-server/README.md">참고본 README</a>에 있습니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>파트</th>
+<th>구현 방식</th>
+<th>범위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>현재 루트 MVP</strong></td>
+<td>def 2개 + async def 1개</td>
+<td>접수 등록·조회·저장된 접수 기반 AI 안내, 구현·23개 테스트 확인</td>
+</tr>
+<tr>
+<td>수업 과제 앱</td>
+<td>def 2개 + async def 1개</td>
+<td>ohgi-review-server, 딕셔너리 리뷰·LLM 답글, 인증·DB·NeMo 제외</td>
+</tr>
+<tr>
+<td>주력 비동기 게시판</td>
+<td>async def 핸들러·요청별 비동기 처리</td>
+<td>B01~B07 게시글·후기 관리, C13 로컬 집계</td>
+</tr>
+<tr>
+<td>비동기 챗봇</td>
+<td><code>async def</code>·비동기 client·<code>await</code></td>
+<td>S01/S02 Legal Intake Chat·SSE, NeMo·예산·용량·취소</td>
+</tr>
+<tr>
+<td>게시판 AI 확장</td>
+<td>비동기 챗봇 파트의 공통 AI 서비스 재사용</td>
+<td>M01 요약·M02 답변 초안·필수 마케팅 action</td>
+</tr>
+</tbody>
+</table></div>
+<p>현재 루트 MVP 3개, 리뷰 참고본 3개, 후속 확장 21개는 계약·구현 상태를 구분합니다. 현재 MVP의 등록·조회와 리뷰 과제의 등록·조회는 def로 유지합니다. 후속 확장 초안의 전체 비동기화·마케팅 action을 현재 MVP에 이미 구현한 것으로 표시하지 않습니다.</p>
+<h3>후속 21개 확장 흐름 — 아래 보안 기능은 아직 설계</h3>
+<pre><code class="language-text">Swagger / 브라우저
+ → Uvicorn / ASGI
+ → FastAPI: trace·Pydantic·Depends·APIRouter
+ → 요청 문맥·세션 위험·입력 정책 검사·개인정보 마스킹
+ → 생성 용량 확보 → 비용 예약
+ → await OpenAI 비동기 호출
+ → 사용량 정산·출력 검사·마케팅 검사·최종 마스킹
+ → 응답 문맥 재확인 → JSON 또는 검사 완료 SSE
+ → finally: 미종료 예약 정산·실행 슬롯 반환
+</code></pre>
+<ul>
+<li>주력 확장은 async def 기반입니다. 별도 리뷰 과제의 등록·조회는 요구대로 def를 사용합니다.</li>
+<li>OpenAI·NeMo·외부 I/O는 지원되는 비동기 API와 await로 연결합니다.</li>
+<li>비동기 AI의 가짜 대기는 await asyncio.sleep입니다. async 함수에서 동기 I/O로 이벤트 루프를 막지 않습니다. 별도 def 예제는 스레드 풀에서 실행됩니다.</li>
+<li>SSE는 async generator로 전송하고 timeout·연결 단절 시 취소와 정산을 마칩니다.</li>
+<li>짧은 규칙·검증·메모리 접근은 직접 처리하고 주력 공유 상태는 이벤트 루프 안에서 관리합니다. DB 도입 시 비동기 드라이버·요청별 세션을 사용합니다. CPU 작업은 async 선언만으로 빨라지지 않습니다.</li>
+<li>AI 대기 중에도 health·다른 요청이 처리되는지 검증합니다.</li>
+</ul>
+<p>현재는 localhost·단일 사용자·합성 데이터·단일 worker 실험입니다. <strong>Spring Boot·JWT·로그인·역할 권한은 이번 실행 경로에서 제외</strong>합니다. 인증·인가는 hybrid 단계에서 다룹니다. sessionId와 내용 검사 action은 사용자 인증을 대신하지 않습니다.</p>
+<h2 id="section-4">4. 학원 HOWTO 세 챕터와 연결</h2>
+<p>학원은 <strong>하나의 프로젝트를 chap01 → chap02 → chap03으로 확장</strong>합니다. 메뉴 예제로 구조와 검증 방법을 배우고 우리 프로젝트에서는 Legal Intake·게시판에 응용합니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>원본</th>
+<th>학원 핵심</th>
+<th>우리 적용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HOWTO-chap01</td>
+<td>프로젝트·계층·DTO·검증·예외·DI·라우터 조립</td>
+<td>분류·참조·게시판 구조·응답 계약</td>
+</tr>
+<tr>
+<td>HOWTO-chap02</td>
+<td>설정·동기/비동기 LLM·fake client·lifespan·비교</td>
+<td>비동기 AI pipeline·fake/real·자원 관리</td>
+</tr>
+<tr>
+<td>HOWTO-chap03</td>
+<td>fixture·단위/통합 테스트·의존성 교체·커버리지·벤치마크</td>
+<td>외부 API 격리·action·예산·SSE·동시성 검증</td>
+</tr>
+</tbody>
+</table></div>
+<p>원본 위치는 <code>C:\myLectureWs\08_fastapi-main\howto</code>입니다. 반영본은 <strong>2026-11-04 / f1928c8</strong>입니다. 수업 자료는 이 저장소에 복제하지 않고 학습 항목과 적용점을 요약합니다.</p>
+<h3>4-1. chap01 — FastAPI 프로젝트의 뼈대</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>핵심</th>
+<th>우리 프로젝트에 반영</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uv·가상환경</td>
+<td>pyproject.toml·.venv·uv.lock·인터프리터</td>
+<td>환경·버전 분리와 재현</td>
+</tr>
+<tr>
+<td>패키지·진입점</td>
+<td>app 하위 모듈·수업용 <code>__init__.py</code>·app.main:app</td>
+<td>파일 분리·서버 시작 위치</td>
+</tr>
+<tr>
+<td>도메인 엔티티</td>
+<td>데이터를 Python 객체로 표현</td>
+<td>게시글·후기 내부 데이터</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td>딕셔너리 조회·저장·추가, DB와 구분</td>
+<td>fixture·메모리 저장소</td>
+</tr>
+<tr>
+<td>Pydantic DTO</td>
+<td>요청/응답 분리·타입·길이·값 검증</td>
+<td>잘못된 요청과 업무 규칙 분리</td>
+</tr>
+<tr>
+<td>camelCase alias</td>
+<td>Python snake_case ↔ JSON camelCase</td>
+<td>Java·화면 필드와 연결</td>
+</tr>
+<tr>
+<td>예외·처리기</td>
+<td>사용자 정의 예외 → HTTP 상태·JSON</td>
+<td>404·422·기술 오류 계약</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>저장소 주입·업무 규칙 수행</td>
+<td>Router와 업무 순서 분리</td>
+</tr>
+<tr>
+<td>Depends·Annotated</td>
+<td>필요한 부품과 하위 의존성 선언</td>
+<td>진짜/가짜 부품 교체</td>
+</tr>
+<tr>
+<td>APIRouter·main.py</td>
+<td>prefix·경로·상태 코드·라우터·처리기 등록</td>
+<td>자동 탐색 대신 명시적 조립</td>
+</tr>
+<tr>
+<td>Swagger·Postman</td>
+<td>본문·응답 코드·필드 확인</td>
+<td>화면 없이 API부터 시험</td>
+</tr>
+</tbody>
+</table></div>
+<p>학원 chap01은 세 API입니다. <strong>메뉴 수정·삭제까지 있는 전체 CRUD 샘플은 아닙니다.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>학원 API</th>
+<th>확인할 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET <code>/api/menus</code></td>
+<td>초기 5개 메뉴·camelCase 응답</td>
+</tr>
+<tr>
+<td>GET <code>/api/menus/{menu_code}</code></td>
+<td>정상 200·없는 메뉴 404·정수 아닌 경로 422</td>
+</tr>
+<tr>
+<td>POST <code>/api/menus</code></td>
+<td>올바른 본문 201·잘못된 입력 422·목록 반영</td>
+</tr>
+</tbody>
+</table></div>
+<p>이동 순서는 <code>Router → Service → Repository → 응답 DTO</code>입니다. FastAPI가 선언된 의존성을 해석하지만 Spring Bean 자동 탐색·등록과 같지는 않습니다. <strong>요청 단위 dependency 캐시와 서버 전체 공유 객체는 구분</strong>합니다. 라우터·예외 처리기·객체 조립 위치를 찾아봅니다.</p>
+<p>예외 응답의 code/description/detail과 Pydantic 오류의 loc를 읽습니다. reload·재시작 후 메모리 데이터는 초기화됩니다. Pyrefly search-path는 편집기의 모듈 인식 설정이며 실제 패키지 설치를 대신하지 않습니다.</p>
+<h3>4-2. chap02 — LLM 호출과 동기·비동기 비교</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>핵심</th>
+<th>우리 프로젝트에 반영</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>설정</td>
+<td>pydantic-settings·BaseSettings·SecretStr·환경 변수·.env·기본값</td>
+<td>키·모드·모델·한도·timeout</td>
+</tr>
+<tr>
+<td>설정 재사용</td>
+<td>lru_cache로 읽기 반복 축소</td>
+<td>요청별 재생성 방지·변경 후 재시작</td>
+</tr>
+<tr>
+<td>동기 client</td>
+<td>동기 OpenAI 호출은 해당 흐름에서 대기</td>
+<td>비교 실험용</td>
+</tr>
+<tr>
+<td>비동기 client</td>
+<td>AsyncOpenAI·await·응답 텍스트</td>
+<td>실제 AI 경로 필수</td>
+</tr>
+<tr>
+<td>가짜 client</td>
+<td>같은 호출 규약·고정 지연·가짜 응답</td>
+<td>비용·네트워크 없는 재현</td>
+</tr>
+<tr>
+<td>코루틴</td>
+<td>호출만으로 결과가 즉시 나오지 않음</td>
+<td>Service→client까지 await 연결</td>
+</tr>
+<tr>
+<td>lifespan·app.state</td>
+<td>시작 시 생성·공유·종료 시 정리</td>
+<td>clients·NeMo·stores 수명 관리</td>
+</tr>
+<tr>
+<td>의존성 주입</td>
+<td>client→Service→Router</td>
+<td>테스트에서 교체</td>
+</tr>
+<tr>
+<td>예외 변환</td>
+<td>키·한도·연결·timeout → 프로젝트 오류</td>
+<td>정책 차단과 기술 실패 분리</td>
+</tr>
+<tr>
+<td>관찰</td>
+<td>시간·스레드 이름·토큰 usage</td>
+<td>HTTP 200과 실제 연결 성공 구분</td>
+</tr>
+</tbody>
+</table></div>
+<p>학원은 동일한 <code>{&quot;question&quot;:&quot;...&quot;}</code> 요청을 세 방식으로 비교합니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>학원 경로</th>
+<th>구현</th>
+<th>대기 중 동작</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST <code>/api/ai/ask/sync</code></td>
+<td>def + 동기 client</td>
+<td>스레드 풀에서 대기</td>
+</tr>
+<tr>
+<td>POST <code>/api/ai/ask/async</code></td>
+<td>async def + 비동기 client + await</td>
+<td>이벤트 루프가 다른 준비된 요청 처리</td>
+</tr>
+<tr>
+<td>POST <code>/api/ai/ask/blocking</code></td>
+<td>async def + 동기 client</td>
+<td>이벤트 루프를 막는 잘못된 예</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>우리 Chat은 <code>/api/ai/chat</code>, 입력은 message입니다.</strong> 학원 question과 혼동하지 않습니다. 비교용 sync/blocking 경로는 우리 실제 서비스 경로에 추가하지 않습니다.</p>
+<p>실험 1: 5초 가짜 AI 대기 중 메뉴 조회가 되는지 확인. 실험 2: THREAD_POOL_SIZE=1에서 sync 대기와 async 겹친 대기 비교. 수업의 기본 40은 AnyIO limiter의 동시 실행 토큰 수이며 모든 서버의 고정 처리량 상한은 아닙니다.</p>
+<p>학원은 키가 없으면 fake로 전환합니다. <strong>우리 설계는 fake/real 명시, real에서 키·가격 누락 시 호출 전 실패</strong>입니다. 모델 접근·실제 응답은 따로 확인합니다. .env는 Git에 올리지 않고 변경 후 서버를 재시작합니다. 환경 변수가 .env보다 우선할 수 있습니다.</p>
+<p>LLM이 우리 메뉴·사건·게시글을 자동으로 아는 것은 아닙니다. 필요한 데이터를 검사·마스킹 후 전달합니다. memvid/RAG는 이번 범위에서 제외합니다.</p>
+<h3>4-3. chap03 — 테스트·커버리지·성능 측정</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>핵심</th>
+<th>우리 검증에 반영</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pytest 설정</td>
+<td>dev 의존성·testpaths·pythonpath</td>
+<td>테스트 위치·모듈 경로</td>
+</tr>
+<tr>
+<td>conftest·fixture</td>
+<td>준비물·yield 뒤 정리</td>
+<td>메모리·예산·이벤트 격리</td>
+</tr>
+<tr>
+<td>dependency_overrides</td>
+<td>실제 부품을 가짜로 교체·정리</td>
+<td>유료 호출 없이 흐름 검증</td>
+</tr>
+<tr>
+<td>서비스 단위 테스트</td>
+<td>직접 부품 주입·assert·pytest.raises</td>
+<td>action·규칙·사유 코드·예산 상태</td>
+</tr>
+<tr>
+<td>API 통합 테스트</td>
+<td>TestClient의 상태·JSON·검증 오류</td>
+<td>정상·404·422·안전 응답</td>
+</tr>
+<tr>
+<td>parametrize</td>
+<td>여러 입력에 같은 검증 적용</td>
+<td>정상·공격·PII·마케팅 사례</td>
+</tr>
+<tr>
+<td>비동기 테스트</td>
+<td>학원 동기 테스트에서 asyncio.run</td>
+<td>서버 내부는 await·별도 async 동시성 검증</td>
+</tr>
+<tr>
+<td>장애 주입</td>
+<td>실패 client로 오류 변환 확인</td>
+<td>timeout·guardrail 실패·단절</td>
+</tr>
+<tr>
+<td>커버리지</td>
+<td>테스트가 실행한 코드 범위</td>
+<td>외부 연동 성공과 구분</td>
+</tr>
+<tr>
+<td>벤치마크</td>
+<td>실행 중인 서버에 AsyncClient·gather</td>
+<td>대기 겹침·응답성·실패·cleanup</td>
+</tr>
+</tbody>
+</table></div>
+<p>학원에는 <strong>20개 테스트 통과 예시</strong>가 있습니다. 원본 기록이며 우리 서버가 통과했다는 뜻은 아닙니다. 테스트별 새 저장소·가짜 client를 제공하고 override를 정리합니다. 실제 OpenAI 코드를 격리하면 그 코드의 커버리지가 낮을 수 있습니다. 수치만으로 완성을 판단하지 않습니다.</p>
+<p>asyncio.run은 독립된 동기 테스트·스크립트의 진입 방법입니다. Uvicorn이 이미 루프를 실행하는 핸들러 안에서는 다시 호출하지 않고 await합니다. lifespan이 필요한 테스트는 시작·종료도 관리합니다. TestClient 기본 응답 확인과 async 동시성 검증은 별개입니다.</p>
+<p>TestClient는 메모리에서 ASGI 앱을 호출할 수 있지만 <strong>학원 벤치마크는 실행 중인 서버</strong>에 연결하므로 터미널 두 개가 필요합니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>읽는 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전체 시간</td>
+<td>요청 묶음 완료 시간</td>
+</tr>
+<tr>
+<td>p50</td>
+<td>정렬한 응답 시간의 중간 지점</td>
+</tr>
+<tr>
+<td>p95</td>
+<td>약 95% 요청이 이 시간 안에 완료되는 지점</td>
+</tr>
+<tr>
+<td>최대 지연</td>
+<td>가장 오래 걸린 요청</td>
+</tr>
+<tr>
+<td>RPS</td>
+<td>초당 완료 요청 수</td>
+</tr>
+<tr>
+<td>실패 수</td>
+<td>비정상 상태·연결 실패·timeout 등</td>
+</tr>
+</tbody>
+</table></div>
+<p>FAKE_LLM=true·고정 지연으로 측정합니다. 원본은 fake 여부 사전 확인, sync/async 각 100개·blocking 10개, client 5개 분산 구조입니다. 127.0.0.1로 주소 해석 지연을 줄이고 측정 도구의 병목도 살핍니다. <strong>요청 수가 다른 결과의 전체 시간만 직접 비교하지 않으며</strong>, 수업 PC 수치를 보장 성능으로 삼지 않습니다.</p>
+<h2 id="section-5">5. HOWTO에서 확장하는 Legal Intake</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>기능</th>
+<th>처리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분류·간단 안내·법률 참조</td>
+<td>규칙·고정 fixture, AI 없음</td>
+</tr>
+<tr>
+<td>챗봇·요약·분류·답변 초안</td>
+<td>공통 비동기 AI pipeline</td>
+</tr>
+<tr>
+<td>입력 보안</td>
+<td>세션 위험·고정 규칙·마스킹</td>
+</tr>
+<tr>
+<td>비용 통제</td>
+<td>단계별 예약·보고/추정 정산·중복 종료 방지</td>
+</tr>
+<tr>
+<td>출력 보안</td>
+<td>전체 검사·마케팅 검토·최종 마스킹</td>
+</tr>
+<tr>
+<td>SSE</td>
+<td>검사 완료 청크·단절 cleanup</td>
+</tr>
+</tbody>
+</table></div>
+<p>Java의 계약·규칙·사유 코드·테스트 사례를 이전합니다. Java 코드를 Python에서 그대로 실행하지 않습니다. 실제 소스는 legal-ai-intake-security-server이며 로컬 legal-ai-intake-system은 소개 문서 중심입니다.</p>
+<h2 id="section-6">6. API 선정과 제외</h2>
+<p><strong>원본 37개 = 선정 11개 + 제외 26개. 신규 10개를 합친 목표는 21개입니다.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분류·안내</td>
+<td>C02 POST /api/intakes/classify-preview · C04 POST /api/legal-intake/minimal</td>
+</tr>
+<tr>
+<td>법률 참조</td>
+<td>R01 GET /api/legal/procedures · R02 GET /api/legal/procedures/{code} · R06 고정 형사 체크리스트</td>
+</tr>
+<tr>
+<td>AI 비동기</td>
+<td>S01 POST /api/ai/chat · S02 POST /api/ai/chat/stream</td>
+</tr>
+<tr>
+<td>NeMo 검사</td>
+<td>S03 POST /api/legal/guardrail/input · S04 POST /api/legal/guardrail/output</td>
+</tr>
+<tr>
+<td>축소·변경</td>
+<td>C14 GET /api/lab/security-events · C13 GET /api/lab/marketing/summary</td>
+</tr>
+<tr>
+<td>신규 상태</td>
+<td>H01 GET /health</td>
+</tr>
+<tr>
+<td>신규 게시판</td>
+<td>B01~B05: /api/posts 생성·목록, /api/posts/{postId} 상세·수정·삭제</td>
+</tr>
+<tr>
+<td>신규 후기</td>
+<td>B06~B07: /api/posts/{postId}/reviews 생성·목록</td>
+</tr>
+<tr>
+<td>신규 AI 마케팅</td>
+<td>M01 POST /api/posts/{postId}/ai-summary · M02 POST /api/reviews/{reviewId}/reply-draft</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>핵심 11개 우선</strong>: C02/C04/R01/R02/R06/S01~S04/C14/H01. <strong>이번 실험의 게시판 연동 10개</strong>: C13/B01~B07/M01/M02. 이는 다음 hybrid 단계로 미루는 선택 기능이 아니라 <strong>이번 fastapi-lab의 필수 범위</strong>입니다. 샘플 구조를 확인해 세부 필드·경로를 확정합니다. 원본 선정 11개와 우선 구현 11개는 health·C13 위치 때문에 구성이 다릅니다.</p>
+<p>제외: Spring 로그인·JWT·역할 권한·운영 사건 DB·외부 검색·파일 저장·Agent/Incident 운영·Actuator/Prometheus. Redis·Celery·Kafka·memvid/RAG·OCR·자동 게시도 제외합니다. 기존 Java 서버·DB는 수정하지 않습니다. 전체 ID와 정확한 경로는 <a href="BACKEND_DESIGN.md">상세 설계</a>를 봅니다.</p>
+<h2 id="section-7">7. NeMo 보안 Python action — 9개 설계 확정</h2>
+<p>action은 <strong>검사 함수</strong>, reasonCode는 <strong>판단 사유 값</strong>입니다. 코드를 함수 이름으로 바꾸지 않고 기존 판정 로직을 Python으로 옮깁니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>action</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validate_request_context</td>
+<td>서버가 만든 요청 문맥·분석 대상·응답 연결 확인, A/B 데이터 혼합 방지</td>
+</tr>
+<tr>
+<td>check_session_risk</td>
+<td>세션 누적 위험·기존 차단 확인</td>
+</tr>
+<tr>
+<td>check_input_policy</td>
+<td>법률 악용·jailbreak·injection·secret·privacy 검사</td>
+</tr>
+<tr>
+<td>mask_personal_data</td>
+<td>저장·외부 전송·반환 전 정의한 PII 치환</td>
+</tr>
+<tr>
+<td>check_generation_admission</td>
+<td>동시 실행·유한 대기열·대기 한도 정책, 실제 슬롯은 서비스 관리</td>
+</tr>
+<tr>
+<td>check_request_budget</td>
+<td>lock 안에서 예산 확인+예약</td>
+</tr>
+<tr>
+<td>check_output_policy</td>
+<td>전체 답변 빈값·길이·정책 검사</td>
+</tr>
+<tr>
+<td>check_marketing_response</td>
+<td>보장·과장 표현을 사람 검토 대상으로 표시</td>
+</tr>
+<tr>
+<td>record_risk_event</td>
+<td>확정된 정책 차단을 한 번만 점수로 기록</td>
+</tr>
+</tbody>
+</table></div>
+<p>기존 7개에 추천한 문맥 검사·생성 진입 제어 2개를 <strong>정식 설계 범위에 추가</strong>했습니다. 아직 구현 완료는 아닙니다. API 21개 계획은 유지합니다. 문맥 격리·입력 정책·마스킹·용량·예산을 먼저 연결하고, real 호출 전 출력 정책까지 검증합니다. M API 활성화 전 마케팅 검사를 완료합니다. action 단위 테스트와 <strong>실제 NeMo rail의 호출·결과 소비·차단/변환 통합 검증</strong>을 구분합니다.</p>
+<h3>왜 두 개를 추가했나요?</h3>
+<ul>
+<li><strong>문맥 검사:</strong> 비동기로 A/B 요청이 겹쳐도 질문·후기·검사 결과가 섞이지 않도록 요청마다 독립 context를 사용하고, 반환 직전에도 연결을 확인합니다. requestId만 같다고 사용자 권한이 증명되지는 않습니다.</li>
+<li><strong>생성 진입 제어:</strong> 비동기는 동시 요청을 많이 받기 쉬우므로 예산뿐 아니라 실행 개수도 제한합니다. 서버 설정의 예시는 동시 2개·대기 4개·대기 한도 0.5초입니다. 분산 환경의 전역 한도가 아니라 단일 worker 실험값입니다.</li>
+<li><strong>용량 먼저, 비용 나중:</strong> 기다리는 요청이 예산을 오래 예약하지 않도록 슬롯 확보 후 비용을 예약합니다. 거절·취소 때는 이미 확보한 자원도 반환합니다.</li>
+<li><strong>종료 책임 분리:</strong> timeout·disconnect·정산·슬롯 반환은 서비스의 finally에서 보장합니다. 다음 action이 실행되어야만 정리되는 구조로 만들지 않습니다.</li>
+</ul>
+<p>자세한 이유·계약·사례·실험은 <a href="async-security-explained.html">비동기 보안 설계 해설</a>에 정리했습니다. NeMo의 execute_async 옵션과 Python await는 구분하며, 필수 검사 결과를 기다리지 않고 생성을 시작하지 않습니다.</p>
+<h3>추천 5번도 이번 필수: check_marketing_response</h3>
+<p>게시판·리뷰 샘플을 우리 변호사 마케팅 도구에 연결하는 만큼 <strong>5번도 이번에 구현·검증</strong>합니다. M01 요약과 M02 답변 초안은 전체 출력 검사 후 이 action을 반드시 통과하고, 최종 마스킹·문맥 확인을 마쳐야 반환합니다. 보장·과장 표현은 검토 필요로 표시하고 안전하게 정리한 초안만 제공하며 자동 게시하지 않습니다. 정상 문구·보장 표현·부정/인용 문맥·개인정보·검사 실패 사례를 테스트합니다. 샘플을 실행하는 것과 이 AI 보안 확장을 구현하는 것은 별도로 확인합니다.</p>
+<p>내부 결정은 ALLOW/BLOCK/TRANSFORM/REVIEW, 사유는 reasonCode/detailCode입니다. 기존 COST_LIMIT_BLOCKED·DYNAMIC_SESSION_BLOCKED 등과 신규 제안을 구분합니다. 패턴 마스킹의 완전성·표현 검사의 법률적 적합성을 보장한다고 가정하지 않습니다.</p>
+<h2 id="section-8">8. 비용·SSE·오류 처리</h2>
+<ul>
+<li>입력 검사·생성·출력 검사를 구분하며 유료 검사는 각 호출을 예약·정산합니다.</li>
+<li>확인+예약은 원자 처리하고 OPEN → REPORTED/ESTIMATED/RELEASED 중 한 번만 종료합니다.</li>
+<li>생성 진입은 유한 대기열과 별도 timeout을 사용하고, 기다리는 동안 예산을 예약하지 않습니다. 과부하·문맥 오류는 공격 점수로 적립하지 않습니다.</li>
+<li>호출 전 취소는 해제, 시작 후 usage 미확인은 추정 정산입니다. usage를 모른다고 0원으로 쓰지 않습니다.</li>
+<li>출력 차단·timeout·단절에도 이미 발생한 호출을 정산합니다. 필수 검사·정산을 BackgroundTasks로 미루지 않습니다.</li>
+<li>camelCase 응답을 유지하고 원문 PII가 검증 오류·로그에 노출되지 않도록 정규화합니다.</li>
+<li>SSE 정상은 meta → 검사 완료 token 청크들 → done, 차단은 blocked, 기술 실패는 error로 종료합니다.</li>
+<li><strong>전체 생성·출력 검사·마스킹 후</strong> 전송합니다. 비동기와 미검사 토큰 실시간 공개는 다릅니다.</li>
+<li>POST SSE는 fetch로 읽고 시작 후 오류는 이벤트로 전달합니다.</li>
+<li>메모리 장부는 실험용이며 실제 제공자 청구 상한을 보장하지 않습니다.</li>
+</ul>
+<h2 id="section-9">9. 제공된 리뷰 명세 반영과 확장 경계</h2>
+<p>제공된 리뷰 API·폴더 명세는 ohgi-review-server에 반영했습니다. 과제 서버의 동기 리뷰 등록·조회와 비동기 답글은 구현·검증했습니다. 별도의 주력 게시판·마케팅 확장은 아래 절차로 연결하며, 추가 원본 코드가 제공되면 실제 필드와 대조합니다. 과제 서버에 운영 보안·비용 시스템을 모두 넣어 범위를 키우지 않습니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>반영 작업</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>출처·README·실행 조건·재사용 조건 확인</td>
+</tr>
+<tr>
+<td>2</td>
+<td>게시글/후기 모델·CRUD·저장 방식·의존성·테스트 확인</td>
+</tr>
+<tr>
+<td>3</td>
+<td>chap01과 비교해 B01~B07 필드·경로·응답 확정</td>
+</tr>
+<tr>
+<td>4</td>
+<td>주력 샘플의 비동기 구조와 DB 호출 방식을 확인, 동기 비교는 최소 예제로 분리</td>
+</tr>
+<tr>
+<td>5</td>
+<td>저장 전 마스킹·조회 계약·없는 ID 404 등 검증</td>
+</tr>
+<tr>
+<td>6</td>
+<td>M01 요약·M02 초안을 공통 AI pipeline 및 필수 check_marketing_response에 연결</td>
+</tr>
+<tr>
+<td>7</td>
+<td>C13 집계를 실제 구현 데이터 기준으로 확정</td>
+</tr>
+<tr>
+<td>8</td>
+<td>API 목록·흐름도·공부자료·README 갱신</td>
+</tr>
+</tbody>
+</table></div>
+<p>샘플 일반 게시판과 우리 AI 확장을 구분합니다. 게시글·후기는 분석 데이터이며 본문 지시를 시스템 명령으로 취급하지 않습니다. 답변은 검토용 초안이며 자동 외부 게시를 하지 않습니다.</p>
+<h2 id="section-10">10. 현재 상태</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>현재 Legal Intake MVP</strong></td>
+<td>루트 app/ 구현, 동기 등록·조회 + 비동기 AI 안내, 테스트 23개 통과</td>
+</tr>
+<tr>
+<td>MVP 실제 개발 서버</td>
+<td>uv run --no-sync fastapi dev로 실행, fake 모드 HTTP·MainThread 확인</td>
+</tr>
+<tr>
+<td>MVP Postman collection</td>
+<td>요청 파일 작성 완료, Postman 앱 수동 실행은 미확인</td>
+</tr>
+<tr>
+<td>학원 자료</td>
+<td>최신본 반영 완료 · f1928c8</td>
+</tr>
+<tr>
+<td>README·설계·API 목록</td>
+<td>작성 완료 · 구현 전 DRAFT</td>
+</tr>
+<tr>
+<td>Dark Tablet 흐름도</td>
+<td>8개 화면 작성·레이아웃 확인</td>
+</tr>
+<tr>
+<td>비전공자 공부자료</td>
+<td>16개 장·복습 8문항·목차·읽기 화면 작성</td>
+</tr>
+<tr>
+<td>asyncio 예제</td>
+<td>실행 확인: 순차 약 3.01초 / 동시 약 1.01초. 서버 성능 비교 아님</td>
+</tr>
+<tr>
+<td>최소 동기 예제</td>
+<td>별도 def GET /posts 구현. AI·DB 없음, 주력 앱과 분리</td>
+</tr>
+<tr>
+<td>제공된 리뷰 과제 서버</td>
+<td>동기 2·비동기 1 구현, 가짜·mock 테스트 11개 통과, 실제 유료 호출 미검증</td>
+</tr>
+<tr>
+<td>실제 로컬 서버 확인</td>
+<td>Uvicorn·fake로 /docs·201·422·404·답글 확인, async MainThread·sync worker 로그 확인</td>
+</tr>
+<tr>
+<td>별도 chap02 실습 폴더</td>
+<td>Python 3.14·의존성·가짜 API 3개·422·Swagger 확인</td>
+</tr>
+<tr>
+<td>후속 21개 확장 API</td>
+<td>설계 단계, 현재 MVP 3개와 구분</td>
+</tr>
+<tr>
+<td>실제 OpenAI</td>
+<td>아직 검증하지 않음</td>
+</tr>
+<tr>
+<td>NeMo 설치·9개 action 연결</td>
+<td>설계 확정 · 아직 구현·검증하지 않음</td>
+</tr>
+<tr>
+<td>리뷰 과제 자료</td>
+<td>API·폴더 명세 수령 및 반영. 원본 프로젝트 전체 코드와는 구분</td>
+</tr>
+<tr>
+<td>Spring 연결·배포</td>
+<td>후속 단계</td>
+</tr>
+</tbody>
+</table></div>
+<p>루트에는 Legal Intake MVP의 app·pyproject.toml·전용 .venv·uv.lock이 있고, ohgi-review-server에는 리뷰 참고본이 있습니다. Python 3.14로 MVP를 검증했으며 후속 NeMo의 호환성은 별도 검증 대상입니다.</p>
+<h2 id="section-11">11. 지금 실행할 수 있는 것</h2>
+<h3>현재 Legal Intake MVP — 루트에서 실행</h3>
+<pre><code class="language-powershell">cd C:\myLectureWs\legal-intake-fastapi-lab
+uv run fastapi dev --host 127.0.0.1 --port 8012
+</code></pre>
+<p>Swagger는 http://127.0.0.1:8012/docs입니다. uv 캐시 권한 문제 시 <code>.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8012</code>로 실행할 수 있습니다. 검증은 <code>.\.venv\Scripts\python.exe -m pytest -q</code>입니다. 실행 중인 서버가 있으면 중복 실행하지 않습니다.</p>
+<pre><code class="language-json">{&quot;clientName&quot;:&quot;연습의뢰인&quot;,&quot;caseType&quot;:&quot;CIVIL&quot;,&quot;coreStatement&quot;:&quot;보증금 반환 상담에 필요한 자료를 준비하려고 합니다.&quot;,&quot;desiredNextStep&quot;:&quot;상담 준비자료 정리&quot;}
+</code></pre>
+<p>POST /api/intakes의 intakeId로 GET 조회와 POST /api/intakes/{id}/guidance를 순서대로 실행합니다. 가짜 응답은 model=fake-llm이며 실제 연결 성공을 뜻하지 않습니다. 자세한 필드·키 설정은 <a href="RUN_MVP.md">MVP 안내</a>를 봅니다.</p>
+<h3>실제 리뷰 과제 서버: 동기 2개·비동기 1개</h3>
+<pre><code class="language-powershell">cd C:\myLectureWs\legal-intake-fastapi-lab\ohgi-review-server
+C:\myLectureWs\fastapi-openai-practice\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8011
+</code></pre>
+<p>http://127.0.0.1:8011/docs 에서 리뷰를 등록한 뒤 조회·답글을 실행합니다. 초기 FAKE_LLM=true이므로 비용이 발생하지 않습니다. 설치·JSON 예시·실제 키 연결은 <a href="../ohgi-review-server/README.md">과제 서버 README</a>를 봅니다. 초기 GET /posts 파일은 참고용으로만 남깁니다.</p>
+<pre><code class="language-powershell"># 위 과제 폴더에서 실행: 네트워크 없이 11개 테스트 확인
+C:\myLectureWs\fastapi-openai-practice\.venv\Scripts\python.exe -m unittest discover -s tests -v
+</code></pre>
+<h3>비용 없는 asyncio 예제</h3>
+<p>현재 PC의 PowerShell:</p>
+<pre><code class="language-powershell">cd C:\myLectureWs\legal-intake-fastapi-lab
+C:\myLectureWs\fastapi-openai-practice\.venv\Scripts\python.exe examples\async_wait_demo.py
+</code></pre>
+<p>일반 환경은 python examples/async_wait_demo.py로 실행합니다. 키·네트워크를 사용하지 않습니다.</p>
+<h3>기존 별도 학원 실습 서버</h3>
+<p>다음은 <strong>이 저장소가 아닌 fastapi-openai-practice의 chap02 서버</strong>입니다. .env의 FAKE_LLM=true를 확인합니다.</p>
+<pre><code class="language-powershell">cd C:\myLectureWs\fastapi-openai-practice
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
+</code></pre>
+<p>Swagger는 http://127.0.0.1:8001/docs입니다. 이 서버 입력은 question, model=fake-llm은 가짜 응답입니다. 실제 호출은 그 폴더의 실습안내.md를 봅니다.</p>
+<h2 id="section-12">12. 학원 원본 실습 명령</h2>
+<p><strong>학원 실습 프로젝트 안에서 사용하는 명령 모음입니다.</strong> 현재 루트 MVP에는 이미 프로젝트와 환경이 있으므로 uv init을 다시 실행하지 않습니다. uv init은 별도 빈 실습 폴더에서 사용합니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>명령</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chap01 빈 프로젝트</td>
+<td>uv init --no-package --python 3.14</td>
+</tr>
+<tr>
+<td>FastAPI 설치</td>
+<td>uv add &quot;fastapi[standard]&quot;</td>
+</tr>
+<tr>
+<td>chap02 추가</td>
+<td>uv add pydantic-settings openai</td>
+</tr>
+<tr>
+<td>chap03 추가</td>
+<td>uv add --dev pytest pytest-cov</td>
+</tr>
+<tr>
+<td>starter/complete 설치</td>
+<td>해당 챕터 폴더에서 uv sync --python 3.14</td>
+</tr>
+<tr>
+<td>서버</td>
+<td>uv run fastapi dev</td>
+</tr>
+<tr>
+<td>테스트·상세 출력</td>
+<td>uv run pytest · uv run pytest -v</td>
+</tr>
+<tr>
+<td>커버리지</td>
+<td>uv run pytest --cov=app</td>
+</tr>
+</tbody>
+</table></div>
+<p>진입점은 [tool.fastapi]의 entrypoint = &quot;app.main:app&quot;입니다. 테스트는 [tool.pytest.ini_options]의 testpaths = [&quot;tests&quot;], pythonpath = [&quot;.&quot;]를 설정합니다. 실제 파일 구조를 만든 뒤 사용합니다.</p>
+<p>학원 chap03 벤치마크는 두 터미널에서 실행합니다. 기본 8000은 기존 실습의 8001과 다릅니다.</p>
+<pre><code class="language-powershell"># 터미널 1: 학원 complete/chap03_test_benchmark 폴더
+$env:FAKE_LLM=&quot;true&quot;
+$env:FAKE_LLM_DELAY_SECONDS=&quot;1&quot;
+uv run fastapi dev
+</code></pre>
+<pre><code class="language-powershell"># 터미널 2: 같은 학원 챕터 폴더
+uv run python benchmark/benchmark.py
+</code></pre>
+<p>종료는 Ctrl+C입니다. 환경 변수가 터미널에 남으므로 실제 호출은 새 터미널에서 시작하거나 설정을 정리합니다. 현재 PC의 uv Python 바로가기 오류는 로컬 <code>C:\myLectureWs\fastapi-openai-practice\실습안내.md</code>의 실행 파일 직접 지정 방법을 참고합니다. 이 형제 폴더는 저장소 복제만으로 생기지 않으며 GitHub 링크로 제공하지 않습니다.</p>
+<h2 id="section-13">13. 구현·복습 순서와 완료 기준</h2>
+<ol>
+<li>chap01 계층과 규칙·참조 API의 요청 이동 설명.</li>
+<li>chap02 비교 후 우리 fake 비동기 Chat 구현.</li>
+<li>입력 action·마스킹·예산 연결 후 실제 OpenAI 단건 확인.</li>
+<li>출력 action·최종 마스킹·오류·정산 검증.</li>
+<li>chap03 테스트에 async 동시성·취소 검증 추가.</li>
+<li>검사 완료 SSE·미검사 본문 누출·단절 cleanup 확인.</li>
+<li>주력 비동기 게시판 샘플 구현·검증 후 비동기 AI 마케팅 API 연결.</li>
+<li>fake 부하 실험·복습 문서 갱신 후 hybrid 준비.</li>
+</ol>
+<ul>
+<li>[ ] fake는 외부 호출 0, real은 설정을 검증한다.</li>
+<li>[x] 선택한 MVP: 동기 접수 등록·조회와 비동기 AI 안내 구현, pytest 23개와 실제 HTTP 확인.</li>
+<li>[ ] AI 대기 중 다른 요청이 처리된다.</li>
+<li>[x] 과제 요구의 동기 리뷰 등록·조회, 비동기 답글, 201·422·404·502를 가짜·mock으로 검증했다.</li>
+<li>[ ] 주력 확장의 비동기 챗봇 AI 대기 중 게시판도 응답한다.</li>
+<li>[ ] 기존 Java 사유 코드와 신규 코드가 구분된다.</li>
+<li>[ ] NeMo 함수 단위/실제 rail 통합 테스트가 있다.</li>
+<li>[ ] 동시 A/B 요청의 문맥이 섞이지 않고, 생성 한도·대기 한도·취소 후 슬롯 반환을 검증한다.</li>
+<li>[ ] 정상·422·404·정책 차단·기술 오류를 구분한다.</li>
+<li>[ ] 동시 예약·중복 정산·호출 전후 취소·출력 차단 비용을 확인한다.</li>
+<li>[ ] SSE 본문 누출·terminal 중복이 없다.</li>
+<li>[ ] 오류·로그·health에 키·원문 PII가 노출되지 않는다.</li>
+<li>[ ] 게시판 출처·변경점·B/M API를 확정한다.</li>
+<li>[ ] 추천 5번 check_marketing_response를 M01/M02에서 우회할 수 없고 정상·검토·차단·실패 사례를 검증한다.</li>
+<li>[ ] 문서만 보고 실험을 재현한다.</li>
+</ul>
+<p>주말 복습은 <strong>전체 구조 → 비동기·DI → 보안·비용·SSE</strong> 순서입니다. 원본을 읽고 우리 설계의 대응 위치를 찾은 뒤 예제·테스트로 확인합니다.</p>
+<h2 id="section-14">14. 참고 자료와 원본 위치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>경로</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C:\myLectureWs\08_fastapi-main\howto\HOWTO-chap01.md</td>
+<td>프로젝트·DI·기본 API</td>
+</tr>
+<tr>
+<td>C:\myLectureWs\08_fastapi-main\howto\HOWTO-chap02.md</td>
+<td>LLM·설정·동기/비동기</td>
+</tr>
+<tr>
+<td>C:\myLectureWs\08_fastapi-main\howto\HOWTO-chap03.md</td>
+<td>테스트·커버리지·벤치마크</td>
+</tr>
+<tr>
+<td>C:\myLectureWs\08_fastapi-main\complete · starter</td>
+<td>완성본·작성 뼈대</td>
+</tr>
+<tr>
+<td>C:\myLectureWs\fastapi-openai-practice</td>
+<td>기존 가짜 LLM 환경·실습 안내</td>
+</tr>
+<tr>
+<td>C:\myLectureWs\legal-ai-intake-security-server</td>
+<td>실제 Java·API 명세</td>
+</tr>
+<tr>
+<td>C:\myLectureWs\legal-ai-intake-system</td>
+<td>서비스 소개·개요</td>
+</tr>
+</tbody>
+</table></div>
+<p>이 README는 원문 전체나 코드 복제본을 대신하지 않습니다. 세 챕터 핵심을 우리 설계에 연결한 요약이며 실제 파일 작성은 원본과 대조합니다.</p>
+<ul>
+<li><a href="https://github.com/20260728-saltlux-llm-agent-service-1st/08_fastapi">학원 저장소</a></li>
+<li><a href="https://fastapi.tiangolo.com/async/">FastAPI async</a> · <a href="https://fastapi.tiangolo.com/tutorial/dependencies/">Depends</a> · <a href="https://fastapi.tiangolo.com/advanced/events/">lifespan</a></li>
+<li><a href="https://developers.openai.com/api/reference/python">OpenAI 공식 Python 문서</a></li>
+<li><a href="https://docs.nvidia.com/nemo/guardrails/latest/configure-guardrails/actions/creating-actions">NeMo custom actions</a></li>
+</ul>
+<footer class="bottom">현재 MVP·리뷰 참고본·후속 확장 설계의 구현 상태를 구분합니다.</footer></article></div></body></html>

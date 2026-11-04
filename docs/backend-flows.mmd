@@ -1,0 +1,81 @@
+%% DRAFT 2026-11-04. 01 overview. All FastAPI APIs/actions are planned.
+flowchart TD
+    Client["Swagger / local browser"] --> ASGI["Uvicorn ASGI · middleware · trace"]
+    ASGI --> Schema["Pydantic validation · Depends"]
+    Schema --> Rules["C02 C04 R01 R02 R06 · rules / fixture"]
+    Schema --> AI["비동기 챗봇 · S01 S02 M01 M02 · async def / await"]
+    Schema --> Board["비동기 게시판 · B01-B07 C13 · async def"]
+    Schema --> Check["S03 S04 · input/output rails only"]
+    AI --> Input["validate context · session precheck · fixed input · mask"]
+    Input --> Capacity["bounded admission · acquire slot"]
+    Capacity --> Budget["atomic budget reserve"]
+    Budget --> Await["await OpenAI"]
+    Await --> Settle["settle reported/estimated usage"]
+    Settle --> Release["release slot · finally on every exit"]
+    Release --> Output["output rail · marketing checks · final mask"]
+    Output --> ContextOut["validate response context binding"]
+    ContextOut --> Reply["JSON / checked SSE chunks"]
+    Capacity -. overload .-> Error["503 / SSE error · no risk score"]
+    Board --> Store["async memory store · synthetic data · immutable snapshots"]
+    AI -. M endpoints read immutable snapshot .-> Store
+    Study["별도 ohgi-review-server 과제"] --> Pool["def · 리뷰 등록/조회 · 201/422/404"]
+    Study --> ReplyAsync["async def · 저장 리뷰 프롬프트 → await LLM · 실패 502"]
+    Rules --> Reply
+    Check --> Reply
+    Store --> Summary["C13 · snapshot summary"]
+    Input -. BLOCK .-> Stop["safe response · reasonCode/detailCode"]
+    Output -. BLOCK .-> Stop
+    Stop --> Risk["record_risk_event once"]
+    Risk --> Events["C14 · redacted security events"]
+
+%% 02 security actions. Split at this comment when rendering each diagram.
+flowchart TD
+    Request["validated request"] --> Context["validate_request_context"]
+    Context --> Session["check_session_risk"]
+    Session --> Fixed["check_input_policy"]
+    Fixed --> MaskIn["mask_personal_data · input"]
+    MaskIn --> InputRail["NeMo input rail · local checks by default"]
+    InputRail --> Admission["check_generation_admission · bounded queue"]
+    Admission --> Reserve["check_request_budget · lock + reservation"]
+    Reserve --> Call["await OpenAI · no automatic retry by default"]
+    Call --> Usage["settle generation reservation"]
+    Usage --> Released["release slot · all exits via finally"]
+    Released --> Out["check_output_policy · complete content"]
+    Out --> Marketing["check_marketing_response · M endpoints only"]
+    Marketing --> MaskOut["mask_personal_data · output"]
+    MaskOut --> Bound["validate_request_context · output binding"]
+    Bound --> Safe["safe JSON / checked SSE chunks"]
+    Session -. BLOCK .-> Deny["safe stop · no later calls"]
+    Fixed -. BLOCK .-> Deny
+    Reserve -. BLOCK .-> Deny
+    Out -. BLOCK .-> Deny
+    Deny --> Risk["record_risk_event · policy blocks only"]
+    Call -. timeout/disconnect .-> Cleanup["cancel · bounded cleanup · settle once"]
+    InputRail -. failure .-> Error["fail closed · technical error"]
+    Context -. mismatch .-> Error
+    Admission -. overload .-> Error
+
+%% 03 SSE lifecycle. Split at this comment when rendering each diagram.
+sequenceDiagram
+    participant C as POST fetch reader
+    participant F as FastAPI async generator
+    participant G as NeMo rails/actions
+    participant B as Budget store
+    participant A as Admission manager
+    participant O as OpenAI async client
+    C->>F: validated POST request
+    F-->>C: meta (no answer content)
+    F->>G: context, input checks and masking
+    G-->>F: allow
+    F->>A: acquire slot with bounded wait
+    F->>B: atomic reserve
+    F->>O: await full generation
+    O-->>F: full content and usage
+    F->>B: settle once
+    F->>A: release slot
+    F->>G: full output checks and final masking
+    G-->>F: safe content with matching request binding
+    F-->>C: token events (checked chunks)
+    F-->>C: done
+    Note over F,A: On failure or disconnect: cleanup reservation, waiter and slot once
+    Note over C,G: Policy blocked/error path emits no unchecked answer

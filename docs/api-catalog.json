@@ -1,0 +1,237 @@
+{
+  "status": "DRAFT_NOT_IMPLEMENTED",
+  "sourceDate": "2026-11-04",
+  "originalCount": 37,
+  "selectedOriginal": 11,
+  "excludedOriginal": 26,
+  "newProposed": 10,
+  "targetCount": 21,
+  "syncCount": 0,
+  "asyncCount": 21,
+  "courseworkApp": {
+    "directory": "ohgi-review-server",
+    "status": "IMPLEMENTED_FAKE_AND_MOCK_TESTED",
+    "syncCount": 2,
+    "asyncCount": 1,
+    "includedInApiTargetCount": false
+  },
+  "apis": [
+    {
+      "id": "C02",
+      "phase": "core",
+      "origin": "reuse",
+      "method": "POST",
+      "path": "/api/intakes/classify-preview",
+      "change": "100자 사건 분류 · 무저장·무LLM",
+      "executionModel": "async"
+    },
+    {
+      "id": "C04",
+      "phase": "core",
+      "origin": "reuse",
+      "method": "POST",
+      "path": "/api/legal-intake/minimal",
+      "change": "규칙 기반 안내 · 무저장·무LLM",
+      "executionModel": "async"
+    },
+    {
+      "id": "R01",
+      "phase": "core",
+      "origin": "reuse",
+      "method": "GET",
+      "path": "/api/legal/procedures",
+      "change": "절차 목록 · 고정 fixture",
+      "executionModel": "async"
+    },
+    {
+      "id": "R02",
+      "phase": "core",
+      "origin": "reuse",
+      "method": "GET",
+      "path": "/api/legal/procedures/{code}",
+      "change": "절차 상세 · 단계·양식 포함",
+      "executionModel": "async"
+    },
+    {
+      "id": "R06",
+      "phase": "core",
+      "origin": "reuse",
+      "method": "GET",
+      "path": "/api/legal/criminal/checklist/supplementary-investigation",
+      "change": "고정 형사 체크리스트",
+      "executionModel": "async"
+    },
+    {
+      "id": "S01",
+      "phase": "core",
+      "origin": "change",
+      "method": "POST",
+      "path": "/api/ai/chat",
+      "change": "기존 JSON 계약 → async Python",
+      "executionModel": "async"
+    },
+    {
+      "id": "S02",
+      "phase": "core",
+      "origin": "change",
+      "method": "POST",
+      "path": "/api/ai/chat/stream",
+      "change": "SseEmitter → 검사 후 StreamingResponse",
+      "executionModel": "async"
+    },
+    {
+      "id": "S03",
+      "phase": "core",
+      "origin": "change",
+      "method": "POST",
+      "path": "/api/legal/guardrail/input",
+      "change": "NeMo 입력 rail 단독 실험",
+      "executionModel": "async"
+    },
+    {
+      "id": "S04",
+      "phase": "core",
+      "origin": "change",
+      "method": "POST",
+      "path": "/api/legal/guardrail/output",
+      "change": "NeMo 출력 rail 단독 실험",
+      "executionModel": "async"
+    },
+    {
+      "id": "C14",
+      "phase": "core",
+      "origin": "change",
+      "method": "GET",
+      "path": "/api/lab/security-events",
+      "change": "관리자 API → 원문 없는 메모리 이벤트",
+      "executionModel": "async"
+    },
+    {
+      "id": "H01",
+      "phase": "core",
+      "origin": "new",
+      "method": "GET",
+      "path": "/health",
+      "change": "fake/real·정책 버전 · 비밀값 제외",
+      "executionModel": "async"
+    },
+    {
+      "id": "B01",
+      "phase": "sample",
+      "origin": "new",
+      "method": "POST",
+      "path": "/api/posts",
+      "change": "마스킹 후 메모리 게시글 생성",
+      "executionModel": "async"
+    },
+    {
+      "id": "B02",
+      "phase": "sample",
+      "origin": "new",
+      "method": "GET",
+      "path": "/api/posts",
+      "change": "limit·cursor 목록",
+      "executionModel": "async"
+    },
+    {
+      "id": "B03",
+      "phase": "sample",
+      "origin": "new",
+      "method": "GET",
+      "path": "/api/posts/{postId}",
+      "change": "마스킹된 게시글 상세",
+      "executionModel": "async"
+    },
+    {
+      "id": "B04",
+      "phase": "sample",
+      "origin": "new",
+      "method": "PATCH",
+      "path": "/api/posts/{postId}",
+      "change": "허용 필드 수정 · 저장 전 마스킹",
+      "executionModel": "async"
+    },
+    {
+      "id": "B05",
+      "phase": "sample",
+      "origin": "new",
+      "method": "DELETE",
+      "path": "/api/posts/{postId}",
+      "change": "게시글·연결 후기 제거 · AI 실행 불가",
+      "executionModel": "async"
+    },
+    {
+      "id": "B06",
+      "phase": "sample",
+      "origin": "new",
+      "method": "POST",
+      "path": "/api/posts/{postId}/reviews",
+      "change": "후기 생성 · rating/body",
+      "executionModel": "async"
+    },
+    {
+      "id": "B07",
+      "phase": "sample",
+      "origin": "new",
+      "method": "GET",
+      "path": "/api/posts/{postId}/reviews",
+      "change": "후기 목록 · 합성 데이터",
+      "executionModel": "async"
+    },
+    {
+      "id": "M01",
+      "phase": "sample",
+      "origin": "new",
+      "method": "POST",
+      "path": "/api/posts/{postId}/ai-summary",
+      "change": "요약·주제·만족/불만 요인",
+      "executionModel": "async"
+    },
+    {
+      "id": "M02",
+      "phase": "sample",
+      "origin": "new",
+      "method": "POST",
+      "path": "/api/reviews/{reviewId}/reply-draft",
+      "change": "검토용 답변 초안 · 자동 게시 제외",
+      "executionModel": "async"
+    },
+    {
+      "id": "C13",
+      "phase": "sample",
+      "origin": "change",
+      "method": "GET",
+      "path": "/api/lab/marketing/summary",
+      "change": "기존 퍼널 → 게시글·후기 스냅샷 집계",
+      "executionModel": "async"
+    }
+  ],
+  "excludedIds": [
+    "C01",
+    "C03",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "R03",
+    "R04",
+    "R05",
+    "S05",
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06"
+  ]
+}

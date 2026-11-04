@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant C as POST fetch reader
+    participant F as FastAPI async generator
+    participant G as NeMo rails/actions
+    participant B as Budget store
+    participant A as Admission manager
+    participant O as OpenAI async client
+    C->>F: validated POST request
+    F-->>C: meta (no answer content)
+    F->>G: context, input checks and masking
+    G-->>F: allow
+    F->>A: acquire slot with bounded wait
+    F->>B: atomic reserve
+    F->>O: await full generation
+    O-->>F: full content and usage
+    F->>B: settle once
+    F->>A: release slot
+    F->>G: full output checks and final masking
+    G-->>F: safe content with matching request binding
+    F-->>C: token events (checked chunks)
+    F-->>C: done
+    Note over F,A: On failure or disconnect: cleanup reservation, waiter and slot once
+    Note over C,G: Policy blocked/error path emits no unchecked answer
