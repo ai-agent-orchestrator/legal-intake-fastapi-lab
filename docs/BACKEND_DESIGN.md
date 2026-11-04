@@ -1,5 +1,7 @@
 # FastAPI 실험용 백엔드 설계 — DRAFT
 
+**최신 범위:** 인증·인가는 제외한다. AI 보안 action 9개와 서비스의 비용·위험·용량·취소 처리를 FastAPI로 이전하는 목표는 [전체 이전 계획](SECURITY_MIGRATION_PLAN.md)과 [흐름도](security-migration.html)를 기준으로 한다. 현재 MVP 코드와 확장 설계를 구분한다.
+
 **현재 구현 상태:** 사용자가 선택한 동기 접수 등록·조회 + 비동기 안내 3개 MVP는 루트 app/에 구현했다. 테스트 23개와 실제 uv 개발 서버·fake HTTP·MainThread를 확인했다. [MVP 실행 안내](RUN_MVP.md) 참조. 아래 21개 API·NeMo 9개 내용은 후속 확장 설계이며 현재 구현 목록과 다르다.
 
 기준: 2026-11-04. 이 문서는 **구현 전 설계**다. 원본 Java의 실제 Controller·DTO·비용·보안 서비스와 `docs/API_STATUS_SPEC.md`를 대조했다. 오래된 공개 소개 README보다 현재 소스를 우선한다. 원본 API 37개 중 11개를 선별하고 26개는 이번 실험에서 제외한다. 게시판·리뷰 관련 9개와 health 1개를 신규 제안해 전체 목표는 **21개**다.

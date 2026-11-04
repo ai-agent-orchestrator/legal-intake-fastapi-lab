@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "DESIGN_ACCEPTED_NOT_IMPLEMENTED",
+  "migrationScope": {"target": "FASTAPI_INTERNAL_AI_SECURITY", "authenticationIncluded": false, "authorizationIncluded": false, "implementedActionCount": 0, "plan": "SECURITY_MIGRATION_PLAN.md", "flowchart": "security-migration.html"},
   "acceptedDate": "2026-11-04",
   "apiTargetCount": 21,
   "executionSplit": {"syncBoardIds": [], "syncCount": 0, "asyncCount": 21, "aiActionsRunIn": "async_chat_and_marketing_pipeline", "courseworkApp": {"directory": "ohgi-review-server", "syncCount": 2, "asyncCount": 1, "includedInApiTargetCount": false}},

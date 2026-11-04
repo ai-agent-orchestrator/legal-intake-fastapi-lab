@@ -183,6 +183,8 @@ pages.append(('범위를 줄이고 검증 가능한 단위로','08 / EXCLUSIONS 
  '<p class="lead">기존 37개 = 선정 11개 + 제외 26개. 신규 10개를 합친 목표 21개 모두 현재 설계 상태다.</p>'+table(['원본 ID','제외 영역','이번 실험의 선택'],[(E(a),E(b),E(c)) for a,b,c in excluded_rows])+
  cards([('보안 검증','정상·공격·PII·마케팅 · 오류 원문 누출 0'),('비용 검증','동시 예약·단발 정산 · 호출 전후 취소'),('SSE 검증','검사 전 본문 0 · terminal 1회 · 단절 cleanup')])+
  '<p class="sources">근거: 원본 API_STATUS_SPEC · AiController/DTO · LegalFixedGuardService · LegalDynamicGuardService · AiCostControlService. 공식 근거와 전체 계약은 상세 설계서 참고.</p>'+
+ strip('다음 구현','기반 부품 → 보안 action 9개·NeMo rail → AI pipeline → 실호출 → 법률 게시판·SSE. 인증·인가 제외.')+
+ '<p><a href="security-migration.html">AI 보안 전체 이전 흐름도 · 설명 · 다음 구현 목표</a></p>'+
  strip('다음 단계','① fastapi-lab → ③ hybrid-lab → ② ai-service. 이번 문서는 첫 단계 구현을 위한 DRAFT.')))
 
 style='''

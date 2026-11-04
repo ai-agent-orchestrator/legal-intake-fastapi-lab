@@ -10,6 +10,8 @@
 
 **바로 사용:** [실행·JSON·코드 읽기 안내](docs/RUN_MVP.md) · [실행 중인 Swagger](http://127.0.0.1:8012/docs) · [Postman collection](docs/legal-intake-mvp.postman_collection.json)
 
+**최신 확장 범위: 인증·인가 제외.** AI 보안 9개 action과 비용·위험·동시 실행·취소 처리를 FastAPI/Python으로 이전하는 목표입니다. [전체 보안 흐름도·설명·다음 구현 목표](docs/security-migration.html) · [설계 원문](docs/SECURITY_MIGRATION_PLAN.md). 현재 MVP에 보안 9개가 이미 연결된 것은 아닙니다.
+
 강사는 구조를 스스로 작성하고 AI는 자료구조·문법·오류 이해에 제한해 활용하도록 안내했습니다. 이미 AI로 만든 ohgi-review-server는 **개인 복습용 참고본**으로 구분하고, 제출용을 직접 구성할 때 비교 자료로 사용합니다. 이 참고본을 직접 작성한 제출물로 표시하지 않습니다.
 
 ## 1. 먼저 볼 자료
@@ -17,6 +19,7 @@
 | 자료 | 내용 |
 |---|---|
 | **[현재 Legal Intake MVP 실행 안내](docs/RUN_MVP.md)** | 루트 app/의 동기 접수 2개·비동기 안내 1개. pytest 23개·실제 HTTP 검증 |
+| **[AI 보안 전체 이전 계획](docs/security-migration.html)** · [원문](docs/SECURITY_MIGRATION_PLAN.md) | 인증·인가 제외, action 9개·실패/취소 흐름·FastAPI 책임·다음 구현 목표 |
 | **[수업 과제 리뷰 서버](ohgi-review-server/README.md)** | 제공 명세대로 동기 등록·조회 + 비동기 답글 3개 API 구현·11개 테스트 통과 |
 | **[README 읽기 화면](docs/readme-preview.html)** | 이 문서를 dark tablet 톤으로 읽기 |
 | **[비전공자 공부자료](docs/study-guide.html)** · [원문](docs/STUDY_GUIDE.md) | 전체 구조·Spring 비교·async/await·DI·lifespan·보안·비용·SSE·복습 8문항 |
@@ -255,6 +258,8 @@ Java의 계약·규칙·사유 코드·테스트 사례를 이전합니다. Java
 
 ## 7. NeMo 보안 Python action — 9개 설계 확정
 
+**이전 범위 확정:** 우선 복습할 3개뿐 아니라 아래 **9개 전체**를 FastAPI 내부로 이전하는 목표입니다. 로그인·JWT·역할·소유권 인가는 제외합니다. [전체 이전 흐름도](docs/assets/security-migration.svg)와 [책임·순서·확장 단계 해설](docs/SECURITY_MIGRATION_PLAN.md)에 남은 설계를 정리했습니다. action 외에 서비스의 정산·슬롯 반환·취소 정리도 구현 목표에 포함합니다.
+
 action은 **검사 함수**, reasonCode는 **판단 사유 값**입니다. 코드를 함수 이름으로 바꾸지 않고 기존 판정 로직을 Python으로 옮깁니다.
 
 | action | 역할 |
@@ -442,10 +447,14 @@ uv run python benchmark/benchmark.py
 
 ## 13. 구현·복습 순서와 완료 기준
 
+### 다음 구현 목표 — 오늘 MVP 다음 단계
+
+현재 완료는 접수 MVP 3개·테스트 23개입니다. 주말 이후의 보안 확장은 **기반 부품 → action 9개·NeMo rail → 공통 AI pipeline → 실제 OpenAI 검증 → 법률 게시판·SSE** 순서로 진행합니다. Redis/DB·여러 worker는 이후 확장입니다. 인증·인가는 이 순서에 넣지 않습니다. 단계별 종료 기준은 [전체 이전 계획](docs/SECURITY_MIGRATION_PLAN.md)을 따릅니다.
+
 1. chap01 계층과 규칙·참조 API의 요청 이동 설명.
 2. chap02 비교 후 우리 fake 비동기 Chat 구현.
-3. 입력 action·마스킹·예산 연결 후 실제 OpenAI 단건 확인.
-4. 출력 action·최종 마스킹·오류·정산 검증.
+3. 요청 문맥·입력 action·마스킹·용량·예산을 fake AI에 연결.
+4. 출력 action·최종 마스킹·오류·정산 검증 후 실제 OpenAI 단건 확인.
 5. chap03 테스트에 async 동시성·취소 검증 추가.
 6. 검사 완료 SSE·미검사 본문 누출·단절 cleanup 확인.
 7. 주력 비동기 게시판 샘플 구현·검증 후 비동기 AI 마케팅 API 연결.

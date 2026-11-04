@@ -10,6 +10,8 @@ The root `app/` implements the selected MVP scope. **23 automated tests passed**
 
 **Start here:** [MVP runbook and JSON examples](docs/RUN_MVP.md) · [Local Swagger UI](http://127.0.0.1:8012/docs) · [Postman collection](docs/legal-intake-mvp.postman_collection.json)
 
+**Updated extension scope: authentication and authorization excluded.** The target is to migrate all nine AI-security actions, costs, risk, admission, and cancellation cleanup into FastAPI/Python. See the [complete flowchart and next implementation goals](docs/security-migration.html) and [design source](docs/SECURITY_MIGRATION_PLAN.md), in Korean. These nine actions are not connected to the current MVP yet.
+
 The instructor asks students to build the structure themselves and restrict AI use to understanding data structures, syntax, and errors. The AI-generated review server is identified as a **personal study reference**, not a submission claimed to have been independently authored. Whether an intake-domain adaptation meets the coursework requirements must be checked separately.
 
 ## 1. Documentation and examples
@@ -17,6 +19,7 @@ The instructor asks students to build the structure themselves and restrict AI u
 | Resource | Contents |
 |---|---|
 | **[Current MVP runbook](docs/RUN_MVP.md)** | Root application: two synchronous intake operations, one asynchronous guidance operation, and verification details |
+| **[Complete AI-security migration plan](docs/security-migration.html)** · [Source](docs/SECURITY_MIGRATION_PLAN.md) | Nine actions, failure/cancellation paths, FastAPI responsibilities, and implementation milestones; authentication/authorization excluded; Korean |
 | [Review coursework reference](ohgi-review-server/README.md) | Three review APIs following the supplied specification; 11 fake/mock tests passed |
 | [Korean README reading view](docs/readme-preview.html) | Dark Tablet document presentation |
 | [Beginner study guide](docs/study-guide.html) · [Markdown](docs/STUDY_GUIDE.md) | Architecture, Spring comparison, async/await, DI, lifespan, security, costs, SSE, and eight review questions; Korean |
@@ -233,6 +236,8 @@ Excluded for this experiment: Spring login/JWT/roles, operational case storage, 
 
 ## 7. Nine accepted NeMo action designs
 
+**Migration scope:** all nine actions below, not only the first three learning examples, belong in the FastAPI target. Login, JWT, roles, and resource ownership authorization are excluded. Settlement, slot release, and cancellation cleanup remain service responsibilities. See the [full flowchart](docs/assets/security-migration.svg) and [migration explanation](docs/SECURITY_MIGRATION_PLAN.md).
+
 An action is an executable check. A `reasonCode` is a value explaining a decision. Existing reason codes are preserved where applicable; they are not renamed into functions.
 
 | Action | Responsibility |
@@ -399,6 +404,10 @@ uv run python benchmark/benchmark.py
 Stop with Ctrl+C. Environment variables remain in that terminal session; reset them explicitly or open a new terminal before real-provider experiments. On the original PC, a broken uv Python shortcut was resolved by supplying the installed Python executable directly. No API keys belong in source control.
 
 ## 13. Implementation and review checkpoints
+
+### Next implementation goals after today's MVP
+
+Completed: the three-endpoint MVP and 23 tests. Weekend/later work proceeds through **shared foundations → nine actions and actual NeMo rails → common AI pipeline → real OpenAI verification → legal marketing board and inspected SSE**. Redis/DB persistence and multiple workers follow later. Authentication and authorization are excluded. Each milestone's acceptance criteria are in the [migration plan](docs/SECURITY_MIGRATION_PLAN.md).
 
 1. Explain chap01 layers and a request's path.
 2. Compare chap02 handlers, then verify fake async guidance.

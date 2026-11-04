@@ -1,0 +1,386 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FastAPI AI 보안 전체 이전 · 인증·인가 제외</title><style>
+:root{color-scheme:dark;--bg:#0e1725;--panel:#162438;--line:#2b405b;--text:#e8eff7;--muted:#adbed2;--cyan:#6bd6e8;--blue:#68a8ff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:#09101b;color:var(--text);font-family:"Malgun Gothic",system-ui,sans-serif;font-size:16px;line-height:1.95}a{color:var(--cyan);text-underline-offset:4px}a:hover{color:var(--text)}a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.top{max-width:1220px;margin:auto;padding:22px 26px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}.top strong{color:var(--cyan);letter-spacing:1px;margin-right:auto}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;max-width:1220px;margin:0 auto 40px;padding:0 22px}.toc{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.toc summary{font-weight:600;color:var(--cyan);cursor:pointer;padding-bottom:10px}.toc nav{display:grid;gap:3px}.toc a{font-size:13px;text-decoration:none;color:var(--muted);padding:6px 8px;border-radius:6px;line-height:1.7}.toc a:hover{background:#1b3a50;color:var(--text)}article{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:35px 42px;min-width:0}h1{font-size:32px;line-height:1.5;margin:0 0 20px;letter-spacing:-1px}h2{font-size:25px;line-height:1.55;margin:52px 0 18px;padding-top:24px;border-top:1px solid var(--line);color:var(--cyan)}h3{font-size:19px;line-height:1.7;margin:28px 0 12px;color:var(--blue)}p{margin:0 0 18px}li{margin-bottom:7px}strong{font-weight:600}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.8;margin:20px 0 26px;table-layout:auto}th{background:#1b3a50;color:var(--cyan);text-align:left}td,th{padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}tr:nth-child(even){background:#122033}pre{padding:20px 22px;background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow-x:auto;font-size:14px;line-height:1.85;margin:20px 0 25px;tab-size:4}code{font-family:Consolas,"Malgun Gothic",monospace}p code,li code,td code{font-size:.9em;color:#b8eaf2;background:#14283a;border-radius:4px;padding:1px 4px}img{width:100%;height:auto;display:block;border-radius:10px}article details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:15px 18px;margin:13px 0}article details summary{cursor:pointer;color:var(--cyan);font-size:15px;line-height:1.85}article details p{font-size:15px;margin:14px 0 4px;color:var(--text)}.table-wrap{overflow-x:auto}.bottom{border-top:1px solid var(--line);margin-top:45px;padding-top:20px;color:var(--muted);font-size:13px}.badge{display:inline-block;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:3px 12px;font-size:12px;color:var(--cyan);margin-bottom:20px}.jump{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:24px;font-size:13px}@media(max-width:950px){.layout{grid-template-columns:1fr;max-width:850px}.toc{position:static;max-height:280px}.toc nav{grid-template-columns:repeat(2,minmax(0,1fr))}article{padding:26px}.top{padding:20px 24px}h1{font-size:28px}}@media(max-width:560px){.layout{padding:0 10px;gap:12px}article{padding:23px 17px;border-radius:12px}h1{font-size:25px}h2{font-size:22px}body{font-size:16px}td,th{padding:9px}pre{padding:14px;font-size:13px}.toc nav{grid-template-columns:1fr}.top{padding:18px 15px}table{font-size:13px;min-width:460px}}@media print{@page{size:A4;margin:16mm}body{background:var(--bg);print-color-adjust:exact;-webkit-print-color-adjust:exact}.top,.toc,.jump{display:none}.layout{display:block;max-width:none;padding:0;margin:0}article{border:0;border-radius:0;padding:0}h1{font-size:24px}h2{font-size:20px;break-after:avoid}h3{break-after:avoid}body{font-size:12px;line-height:1.8}pre,table{font-size:10px}details{break-inside:avoid}details p{display:block}pre{white-space:pre-wrap}a{overflow-wrap:anywhere}}
+article img{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:14px}</style></head><body>
+<header class="top"><strong>LEGAL INTAKE / SECURITY MIGRATION</strong><a href="readme-preview.html">README</a><a href="backend-dark-tablet.html">전체 흐름도</a><a href="SECURITY_MIGRATION_PLAN.md">원문</a></header>
+<div class="layout"><details class="toc" open><summary>전체 이전 범위와 구현 목표</summary><nav aria-label="보안 이전 목차"><a href="#migration-1">1. 확정한 범위</a><a href="#migration-2">2. 전체 흐름도 읽기</a><a href="#migration-3">3. Spring에서 Python으로 가져올 것</a><a href="#migration-4">4. Python action 9개의 구현 계약</a><a href="#migration-5">5. action으로 만들지 않는 책임</a><a href="#migration-6">6. 정상·차단·오류·취소 흐름</a><a href="#migration-7">7. 비용과 비동기의 핵심</a><a href="#migration-8">8. 법률 마케팅 게시판과 챗봇 재사용</a><a href="#migration-9">9. 다음 구현 순서와 종료 기준</a><a href="#migration-10">10. 목표 파일 배치</a><a href="#migration-11">11. 환경·NeMo 연결의 완료 조건</a><a href="#migration-12">12. 비전공자용 한 번 더 설명</a><a href="#migration-13">13. 근거와 함께 읽을 자료</a></nav></details><article><span class="badge">목표 설계 · 인증·인가 제외 · 9개 action 미구현</span><h1>AI 보안을 FastAPI로 옮기는 전체 설계와 다음 구현 목표</h1>
+<p>2026-11-04 · 최신 범위: <strong>인증·인가 제외. AI 보안·개인정보·비용·비동기 자원 제어를 Python으로 이전한다.</strong></p>
+<p><strong>이 문서는 구현할 목표를 정리한 설계다.</strong> 현재 구현은 접수 등록·조회와 비동기 AI 안내 3개 API, fake/mock 테스트 23개다. OpenAI 비동기 어댑터는 있지만 유료 실호출은 미검증이다. 아래 NeMo action 9개·보안 저장소·SSE·법률 마케팅 게시판은 아직 실행 코드에 연결되지 않았다. 오늘 MVP, 주말 보안 확장, 이후 운영 확장을 구분한다.</p>
+<h2 id="migration-1">1. 확정한 범위</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>포함</th>
+<th>담당 위치</th>
+<th>제외</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>입력 공격·법률 악용·secret 요청 검사</td>
+<td>Python action과 NeMo 입력 rail</td>
+<td>로그인·회원가입</td>
+</tr>
+<tr>
+<td>개인정보 패턴 마스킹·출력 검사</td>
+<td>Python action과 NeMo 출력 rail</td>
+<td>JWT 발급·검증</td>
+</tr>
+<tr>
+<td>세션 누적 위험·중복 없는 위험 이벤트</td>
+<td>action + 메모리 위험 저장소</td>
+<td>역할별 권한·자원 소유권 검사</td>
+</tr>
+<tr>
+<td>예산 예약·정산·비용 차단</td>
+<td>action + 비용 서비스</td>
+<td>Spring Security 이전</td>
+</tr>
+<tr>
+<td>동시 생성 제한·유한 대기·취소 정리</td>
+<td>action + 비동기 자원 관리자</td>
+<td>공개 운영 배포</td>
+</tr>
+<tr>
+<td>법률 마케팅 표현 검사·검토 표시</td>
+<td>M01/M02 공통 출력 pipeline</td>
+<td>자동 외부 게시</td>
+</tr>
+</tbody>
+</table></div>
+<p>실험 경로는 <strong>브라우저/Swagger → Uvicorn → FastAPI → Python/NeMo → OpenAI</strong>다. Spring Boot를 거치지 않는다. 세션 식별자·문맥 검사는 신원이나 권한을 증명하지 않는다. 기존 로드맵 ① → ③ → ②는 유지하며 hybrid 인증 연동은 이번 구현 목표에서 뺀다.</p>
+<h2 id="migration-2">2. 전체 흐름도 읽기</h2>
+<p><img src="assets/security-migration.svg" alt="인증·인가를 제외한 FastAPI AI 보안 이전 흐름" /></p>
+<p><a href="security-migration.html">Dark Tablet 설명 화면</a> · <a href="assets/security-migration.mmd">Mermaid 편집 원본</a></p>
+<ol>
+<li>요청별 context를 만들고 Pydantic으로 형식·길이를 확인한다.</li>
+<li>현재 세션 위험과 입력 정책을 확인하고, 저장·외부 전송 전 개인정보를 가린다.</li>
+<li>실제 유료 단계가 실행될 때만 용량을 확보한 다음 비용을 예약한다.</li>
+<li><code>await</code>로 AI를 호출한다. 기다리는 동안 이벤트 루프는 다른 요청을 처리할 수 있다.</li>
+<li>생성 전체를 검사하고 마케팅 초안이면 표현 검사도 수행한다. 최종 마스킹한 동일 본문만 반환한다.</li>
+<li>실패·취소·검토 판정과 관계없이 발생한 비용을 정산하고 실행 슬롯을 반환한다.</li>
+</ol>
+<p>그림의 보안 단계는 <strong>목표 설계</strong>다. 현재 MVP 요청이 이미 이 9개 검사를 통과하는 것은 아니다.</p>
+<h2 id="migration-3">3. Spring에서 Python으로 가져올 것</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>기존 개념</th>
+<th>FastAPI 이전 책임</th>
+<th>그대로 두거나 달라지는 점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>고정 입력 방어 규칙</td>
+<td><code>check_input_policy</code></td>
+<td>기존 사유 코드·공격/정상 사례를 회귀 테스트로 보존</td>
+</tr>
+<tr>
+<td>동적 세션 방어</td>
+<td><code>check_session_risk</code>, <code>record_risk_event</code></td>
+<td>TTL·저장 용량과 중복 방지 추가; 로그인 기능은 아님</td>
+</tr>
+<tr>
+<td>비용 제어 서비스</td>
+<td><code>check_request_budget</code> + <code>BudgetStore</code></td>
+<td>Java 코드를 호출하지 않고 규칙·예약 상태를 Python으로 구현</td>
+</tr>
+<tr>
+<td>외부 NeMo HTTP 어댑터</td>
+<td>FastAPI 프로세스 내부 NeMo adapter</td>
+<td>직접 Python 함수를 부르는 시험과 실제 rail 시험을 구분</td>
+</tr>
+<tr>
+<td>출력 방어</td>
+<td><code>check_output_policy</code>, <code>mask_personal_data</code></td>
+<td>전체 검사 완료 본문만 JSON/SSE로 반환</td>
+</tr>
+<tr>
+<td>Java 응답 reasonCode</td>
+<td>Python enum/응답 DTO</td>
+<td>함수명과 판정 사유를 구분; 신규 코드도 구분</td>
+</tr>
+<tr>
+<td>스레드·종료 콜백</td>
+<td>async 자원 관리자·<code>finally</code></td>
+<td>네트워크 대기 중 lock을 잡지 않고 취소 때 정리</td>
+</tr>
+<tr>
+<td>기존에 없던 보강</td>
+<td>문맥 연결·용량 제어·마케팅 검사</td>
+<td>기존 Java 기능과 동일하다고 표시하지 않음</td>
+</tr>
+</tbody>
+</table></div>
+<p>원본 대조 기준은 로컬 <code>legal-ai-intake-security-server</code>의 API 명세와 Java 보안·비용 서비스다. Python으로 옮길 때는 Java 메서드 개수보다 <strong>같은 입력에서 같은 판정과 사유가 나오는지</strong>를 비교한다. 모든 Java 보안 구현을 복사·이전 완료했다는 의미는 아니다.</p>
+<h2 id="migration-4">4. Python action 9개의 구현 계약</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>action</th>
+<th>입력·실행 시점</th>
+<th>결과·실패 처리</th>
+<th>필요한 검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>validate_request_context</code></td>
+<td>서버 생성 traceId·요청·대상 snapshot, 진입/반환 직전</td>
+<td>불일치 <code>REQUEST_CONTEXT_MISMATCH</code>, 기술 오류로 중단</td>
+<td>동시 A/B 응답·검사 결과 혼합 방지</td>
+</tr>
+<tr>
+<td><code>check_session_risk</code></td>
+<td>정규화 세션 ID, 입력 검사 전</td>
+<td>기존 차단이면 <code>DYNAMIC_SESSION_BLOCKED</code></td>
+<td>차단 전후·TTL·저장 용량·세션 누락</td>
+</tr>
+<tr>
+<td><code>check_input_policy</code></td>
+<td>Chat/후기 본문과 서버 정책 profile</td>
+<td>기존 BLOCK 사유와 안전 응답</td>
+<td>정상·jailbreak·injection·privacy·secret 사례</td>
+</tr>
+<tr>
+<td><code>mask_personal_data</code></td>
+<td>저장·전송·최종 출력 경계의 본문</td>
+<td><code>TRANSFORM</code>과 <code>safeText</code></td>
+<td>전화·이메일·주민번호 패턴, 변환 본문 전달</td>
+</tr>
+<tr>
+<td><code>check_generation_admission</code></td>
+<td>각 유료 호출 직전의 서버 용량 정책</td>
+<td>lease 또는 <code>GENERATION_CAPACITY_EXCEEDED</code></td>
+<td>동시 2·대기 4·0.5초 예시, 취소 시 누수 0</td>
+</tr>
+<tr>
+<td><code>check_request_budget</code></td>
+<td>모델·단계·출력 상한, 용량 확보 후</td>
+<td>원자적 예약 또는 <code>COST_LIMIT_BLOCKED</code></td>
+<td>동시 초과 예약 방지·중복 정산 방지</td>
+</tr>
+<tr>
+<td><code>check_output_policy</code></td>
+<td>완성한 생성 본문</td>
+<td>ALLOW/BLOCK, 검사 오류 시 반환 중단</td>
+<td>빈값·길이·민감정보·정책 위반</td>
+</tr>
+<tr>
+<td><code>check_marketing_response</code></td>
+<td>M01/M02 전체 결과</td>
+<td><code>REVIEW</code>·검토 상태·안전 초안</td>
+<td>보장·과장·인용/부정문·정상·검사기 실패</td>
+</tr>
+<tr>
+<td><code>record_risk_event</code></td>
+<td>확정 정책 차단의 traceId+단계</td>
+<td>중복 없는 점수·요약 이벤트</td>
+<td>동일 위험 1회, 기술 오류·과부하·검토 판정 제외</td>
+</tr>
+</tbody>
+</table></div>
+<p>첫 학습 묶음은 <strong>마스킹·비용·마케팅 3개</strong>, 나머지 6개도 이전 목표에 포함한다. 입력/출력/문맥 검사 등 필수 경계를 갖추기 전에는 세 함수만으로 보안 이전 완료라 표시하지 않는다.</p>
+<h2 id="migration-5">5. action으로 만들지 않는 책임</h2>
+<p>action은 정책을 판단하는 함수다. 슬롯 점유·예산 장부·종료 처리를 전부 action에 넣으면 뒤 단계가 실패했을 때 자원이 남을 수 있다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>부품</th>
+<th>책임</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FastAPI DTO·예외 처리기</td>
+<td>형식·길이·422·오류 메시지 정규화</td>
+<td>입력값이 오류 응답으로 노출되는 경계까지 관리</td>
+</tr>
+<tr>
+<td>요청별 context/envelope</td>
+<td>본문·snapshot·검사 버전 묶기</td>
+<td>공유 client에 현재 질문을 저장하지 않음</td>
+</tr>
+<tr>
+<td><code>AdmissionManager</code></td>
+<td>유한 대기열·실행 lease 획득/반환</td>
+<td>semaphore 하나만으로 대기열 크기는 제한되지 않음</td>
+</tr>
+<tr>
+<td><code>BudgetStore</code></td>
+<td>원자 예약·단발 정산·장부</td>
+<td>정책 ALLOW와 실제 예약 상태를 일치시킴</td>
+</tr>
+<tr>
+<td>AI pipeline service</td>
+<td>action 순서·공급자 호출·반환 본문 확정</td>
+<td>사용자가 action 이름·정책·검사 생략을 지정하지 못함</td>
+</tr>
+<tr>
+<td><code>finally</code>/async context manager</td>
+<td>timeout·취소·정산·슬롯 반환</td>
+<td>다음 action 실행 여부와 무관하게 정리</td>
+</tr>
+<tr>
+<td>lifespan</td>
+<td>공유 client·NeMo·저장소 생성과 종료</td>
+<td>요청 데이터와 공유 연결의 수명을 구분</td>
+</tr>
+</tbody>
+</table></div>
+<p>일반 <code>def</code> helper를 async 함수 안에서 호출한다고 자동으로 스레드 풀로 이동하지 않는다. 기존 동기 Repository의 잠금 대기는 <code>to_thread</code>로 분리하고, 외부 HTTP/DB는 비동기 client를 선택한다. CPU 작업이 커지면 별도 실행 자원을 검토한다.</p>
+<h2 id="migration-6">6. 정상·차단·오류·취소 흐름</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>상황</th>
+<th>반환/처리 원칙</th>
+<th>위험 점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>정상</td>
+<td>검사 완료 <code>safeText</code>와 적용한 정책 정보를 응답 계약에 맞춰 반환</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>입력/출력 정책 차단</td>
+<td>기존 BLOCK 사유 + 안전 응답, 원문 출력 금지</td>
+<td>해당 정책만 중복 없이 기록</td>
+</tr>
+<tr>
+<td>예산 초과</td>
+<td>생성하지 않고 비용 제한 사유 반환</td>
+<td>공격 점수로 적립하지 않음</td>
+</tr>
+<tr>
+<td>마케팅 검토</td>
+<td>검토 상태와 마스킹한 초안, 자동 게시 없음</td>
+<td>적립하지 않음</td>
+</tr>
+<tr>
+<td>문맥 불일치</td>
+<td>500 기술 오류, 다른 요청 본문 반환 금지</td>
+<td>적립하지 않음</td>
+</tr>
+<tr>
+<td>용량 초과</td>
+<td>503 기술/자원 오류</td>
+<td>적립하지 않음</td>
+</tr>
+<tr>
+<td>OpenAI 실패</td>
+<td>기존 502 계약 유지, 원문 예외·키 노출 금지</td>
+<td>적립하지 않음</td>
+</tr>
+<tr>
+<td>필수 rail 장애</td>
+<td>안전하게 중단, 허용으로 우회하지 않음</td>
+<td>장애를 공격으로 기록하지 않음</td>
+</tr>
+<tr>
+<td>사용자 취소·timeout</td>
+<td>호출 취소 요청 후 bounded cleanup; 이미 발생한 사용량 처리</td>
+<td>적립하지 않음</td>
+</tr>
+</tbody>
+</table></div>
+<p>기존 차단 응답과 추가 endpoint의 HTTP/JSON 계약은 각각 고정한다. 모든 정책 차단을 무조건 500으로 바꾸거나, 모든 기술 오류를 정책 BLOCK으로 합치지 않는다.</p>
+<h2 id="migration-7">7. 비용과 비동기의 핵심</h2>
+<p>각 유료 단계는 <strong>용량 확보 → 비용 예약 → 호출 → 정산 → 슬롯 반환</strong> 순서다. 유료 입력·출력 검사를 켜면 각각 별도 단계를 사용한다. 로컬 규칙 검사는 비용 예약이 필요 없다.</p>
+<p>예약 상태는 <code>OPEN → REPORTED | ESTIMATED | RELEASED</code> 중 한 번만 전이한다. 호출 전 중단은 해제, 공급자가 사용량을 보고하면 설정 단가로 계산, 호출 시작 뒤 사용량을 모르면 추정 정산한다. 사용량 미확인을 0원으로 쓰지 않는다. 실제 제공자 청구액을 완벽히 보장하는 장부라고 설명하지 않는다.</p>
+<p>슬롯은 네트워크 호출 구간에만 점유한다. 출력 검사가 유료면 새 lease를 얻는다. 슬롯을 잡은 채 같은 한도의 하위 유료 검사를 다시 기다리는 교착 구조를 피한다. 정산·반환 작업은 취소 중에도 끝나도록 제한 시간이 있는 cleanup을 사용한다.</p>
+<p>단일 worker 메모리 장부부터 검증한다. 여러 worker·재시작 이후 전역 한도는 이후 Redis/DB 등 공유 저장소와 원자 연산으로 확장할 목표다.</p>
+<h2 id="migration-8">8. 법률 마케팅 게시판과 챗봇 재사용</h2>
+<ul>
+<li>Chat/SSE, M01 게시글·후기 요약, M02 답변 초안이 공통 보안 pipeline을 사용한다.</li>
+<li>입력 profile은 Chat과 후기 분석을 구분한다. 후기 속 문장을 시스템 지시로 승격하지 않는다.</li>
+<li>마케팅 검사는 M01/M02에서 필수이며 정상 판정이어도 자동 게시하지 않는다.</li>
+<li>SSE는 <strong>전체 생성 → 전체 출력 검사 → 최종 마스킹 → 안전 청크 전송</strong>이다. 비동기라고 미검사 토큰부터 보내지 않는다.</li>
+<li>식당 리뷰 원형은 비교 자료로 보존한다. 법률 도메인 변경 내용은 <a href="LEGAL_MARKETING_BOARD.md">게시판 해설</a>을 따른다.</li>
+</ul>
+<h2 id="migration-9">9. 다음 구현 순서와 종료 기준</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>구현 목표</th>
+<th>끝났다고 판단할 증거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 · 현재</td>
+<td>접수 MVP 3개와 OpenAI 비동기 어댑터</td>
+<td>기존 23개 테스트·fake HTTP 완료; 실호출 미검증</td>
+</tr>
+<tr>
+<td>1 · 주말 첫 작업</td>
+<td>action 결정 DTO·요청 context·마스킹·공유 위험/비용/용량 저장소</td>
+<td>합성 데이터 단위 시험, 경쟁·중복·취소 시험</td>
+</tr>
+<tr>
+<td>2</td>
+<td>우선 3개와 나머지 6개 action 구현, NeMo 등록·입출력 rail 연결</td>
+<td>9개 실제 호출과 결과 소비·차단/변환 통합 시험</td>
+</tr>
+<tr>
+<td>3</td>
+<td>현재 안내/주력 Chat에 공통 보안 pipeline 연결</td>
+<td>fake 외부 호출 0, 차단·장애 시 AI 호출 0 또는 안전 중단, A/B 격리</td>
+</tr>
+<tr>
+<td>4</td>
+<td>실제 OpenAI 단건 검증</td>
+<td>계정 접근 가능한 모델·키로 응답·오류·정산 확인; 실비와 가짜 검증 구분</td>
+</tr>
+<tr>
+<td>5</td>
+<td>비동기 법률 게시판·M01/M02·검사 후 SSE</td>
+<td>검토 플래그·안전 본문 일치, 미검사 본문 누출 0, 단절 정리</td>
+</tr>
+<tr>
+<td>6 · 이후 확장</td>
+<td>Redis/DB 공유 장부·영속 이벤트·여러 worker 검증</td>
+<td>재시작·프로세스 간 동시성·실패 복구 시험</td>
+</tr>
+</tbody>
+</table></div>
+<p>이전 21개 API는 계획 목록으로 유지한다. 현재 MVP 3개와 과제 참고본 3개를 여기에 합산하지 않는다. 인증 API를 추가하거나 이번 21개 목록에 슬쩍 포함하지 않는다. 주말에 모든 단계를 끝낸다고 약속하는 일정도 아니다. 소송업무 우선순위를 유지하며 한 단계씩 검증한다.</p>
+<h2 id="migration-10">10. 목표 파일 배치</h2>
+<pre><code class="language-text">app/                         # 아래 security 관련 항목은 생성할 목표
+  security/
+    decisions.py             # ALLOW/BLOCK/TRANSFORM/REVIEW, 사유 enum
+    context.py               # 요청별 불변 context·snapshot envelope
+    actions.py               # 프로젝트 사용자 정의 action 9개
+    nemo_adapter.py          # @action 등록·rail 호출·결정 검증
+    budget_store.py          # Decimal·예약·단발 정산
+    risk_store.py            # TTL·용량·중복 없는 위험 이벤트
+    admission.py             # 유한 대기·실행 lease
+  services/
+    ai_pipeline.py           # 공통 검사·호출·검사·정리
+  core/
+    exceptions.py            # 정책 결과와 기술 오류 분리 확장
+  main.py                    # lifespan 조립 확장
+tests/
+  test_security_actions.py   # 생성할 목표
+  test_security_pipeline.py
+  test_nemo_integration.py
+</code></pre>
+<p>위 파일 배치는 계획이며 파일이 이미 존재한다는 뜻이 아니다. 현재 <code>app/clients/llm_client.py</code>와 접수 계층은 재사용한다. 원본 Spring을 수정할 필요 없이 FastAPI 안에서 실험한다.</p>
+<h2 id="migration-11">11. 환경·NeMo 연결의 완료 조건</h2>
+<p>NeMo는 <code>@action()</code> 등록만으로 임의 dict 반환값을 자동 차단으로 해석하지 않는다. Colang 흐름 또는 설치 버전에 맞는 명시적 rail 결정 API가 결과를 소비해야 한다. Python 함수 시험, NeMo 등록 시험, 실제 rail 통합 시험을 따로 수행한다. 필수 검사는 완료를 기다리고 다음 단계로 진행한다. Python <code>await</code>와 Colang 2의 백그라운드 실행 옵션은 구분한다.</p>
+<p>현재 MVP는 Python 3.14다. 확인한 NeMo 0.24.1 배포 안내에는 Python 3.10~3.13이 명시되어 있으므로, 3.14에서 된다고 가정하지 않는다. 기존 MVP 환경을 덮어쓰지 않고 별도 3.12/3.13 환경에서 설치·Colang·비동기 호출을 검증한 뒤 버전과 lock을 고정한다. 이 문서 작업에서는 NeMo 설치나 실행 코드를 변경하지 않았다.</p>
+<h2 id="migration-12">12. 비전공자용 한 번 더 설명</h2>
+<p><strong>action은 검사원</strong>, <strong>서비스는 검사 순서를 정하는 진행자</strong>, <strong>저장소는 장부</strong>, <strong>finally는 퇴실 정리</strong>라고 생각하면 된다. 검사원이 “예산 OK”라고 말하는 것과 장부에 실제 예약을 남기는 것은 연결되어야 한다. 진행이 중단되어도 장부와 자리는 정리해야 한다.</p>
+<p>“비동기”는 검사 생략이 아니다. AI 응답을 기다리는 동안 다른 요청을 처리하는 방식이다. 각 요청의 질문과 결과는 별도로 보관하고, 검사 결과가 나온 뒤에만 다음 단계로 진행한다. “인증 없음”도 “아무 보안 없음”이라는 뜻은 아니다. 이번에는 <strong>누가 접속했는가</strong>를 다루지 않고 <strong>무슨 내용을 보내고 무엇을 반환하며 비용·자원을 어떻게 제한하는가</strong>를 실험한다.</p>
+<h2 id="migration-13">13. 근거와 함께 읽을 자료</h2>
+<ul>
+<li><a href="https://docs.nvidia.com/nemo/guardrails/latest/configure-guardrails/actions/creating-actions">NVIDIA: 사용자 정의 action 생성</a> · <a href="https://docs.nvidia.com/nemo/guardrails/latest/configure-guardrails/actions/registering-actions">action 등록</a></li>
+<li><a href="https://pypi.org/project/nemoguardrails/0.24.1/">NeMo 배포·Python 요구사항</a></li>
+<li><a href="https://fastapi.tiangolo.com/async/">FastAPI: 동기·비동기와 일반 helper 실행</a></li>
+<li><a href="NEMO_ASYNC_ACTIONS.md">9개 action 상세 설계</a> · <a href="BACKEND_DESIGN.md">전체 API 설계</a> · <a href="RUN_MVP.md">현재 MVP 실행</a></li>
+</ul>
+<footer class="bottom">현재 MVP와 계획을 구분합니다. 주말 이후 단계별 구현·검증을 진행합니다.</footer></article></div></body></html>

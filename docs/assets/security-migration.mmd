@@ -1,0 +1,26 @@
+%% Target design only. Authentication and authorization excluded.
+flowchart TD
+    A[Swagger / 클라이언트] --> B[FastAPI: DTO · 요청별 context · DI]
+    B --> C[validate_request_context]
+    C --> D[check_session_risk]
+    D --> E[check_input_policy]
+    E --> F[mask_personal_data: 저장·전송 전]
+    F --> G[check_generation_admission: 용량 확보]
+    G --> H[check_request_budget: 원자적 예약]
+    H --> I[await OpenAI]
+    I --> J[호출 정산 · 생성 슬롯 반환]
+    J --> K[check_output_policy: 전체 출력]
+    K --> L{M01 / M02 마케팅인가?}
+    L -->|예| M[check_marketing_response]
+    L -->|아니오| N[최종 마스킹 · 응답 문맥 재확인]
+    M --> N
+    N --> O[안전 JSON / 전체 검사 후 SSE]
+    E -. 확정 정책 차단 .-> P[record_risk_event: 중복 없이 기록]
+    K -. 확정 정책 차단 .-> P
+    P --> Q[원문 없는 안전 차단 응답]
+    C -. 오류·취소 .-> R[서비스 finally: 미종료 예약·lease 정리]
+    G -. 오류·취소 .-> R
+    H -. 오류·취소 .-> R
+    I -. 오류·취소 .-> R
+    K -. 오류·취소 .-> R
+    M -. 오류·취소 .-> R

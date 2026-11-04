@@ -1,5 +1,7 @@
 # 비동기 보안 설계 해설 — action 9개와 자원 관리
 
+**최신 범위:** 인증·인가 제외. 아래 9개 전체를 FastAPI/Python으로 이전하는 목표이며 서비스 정산·취소 처리도 포함한다. [전체 흐름도·설명·다음 구현 목표](security-migration.html) · [원문](SECURITY_MIGRATION_PLAN.md).
+
 **주말 확장 도메인:** 식당 리뷰 원형을 법률 마케팅 게시판으로 응용한다. `mask_personal_data`·`check_request_budget`·`check_marketing_response`를 우선 학습할 필수 3개로 묶는다. 기존 9개 설계는 유지하며 아직 구현 상태는 아니다. [법률 게시판 적용 이유·실행 순서·완성 기준](LEGAL_MARKETING_BOARD.md)을 함께 읽는다.
 
 2026-11-04 · **추천안을 채택해 설계 범위를 확정했다. 구현·설치는 아직 하지 않았다.** 기존 7개에 validate_request_context와 check_generation_admission을 추가해 총 9개다. API 21개 계획은 유지한다. action 이름은 NVIDIA 내장 함수가 아니라 이 프로젝트의 사용자 정의 이름이다.
