@@ -1,18 +1,12 @@
-# legal-intake-fastapi-lab
+# Agreed scope: option 1 today, extensions on the weekend
+
+- **Today (2026-11-04):** Complete option 1: synchronous intake creation/retrieval and asynchronous AI guidance, limited to three APIs. Implementation and 23 fake/mock tests are complete. The real OpenAI adapter is included, but paid API calls remain unverified.
+- **Weekend:** Review the MVP first, then add small increments starting with PII masking and input/output checking Python actions. NeMo integration, SSE, and the asynchronous board remain follow-up candidates; completing all of them in one weekend is not the agreed scope.
+- **Priority:** Litigation work remains first. Keep today's implementation within the MVP and defer extensions to the weekend. Authentication and authorization are excluded from this implementation.
+
+This small scope makes synchronous/asynchronous execution, dependency injection, and exception handling visible in one complete flow: create an intake, retrieve it, and generate guidance from its stored facts. Adding security actions and streaming individually later makes their effects and failures easier to compare.
 
 [한국어](README.md) | [English](README.en.md)
-
-> **Implemented: Legal Intake MVP — synchronous intake creation/retrieval and asynchronous AI guidance.**
->
-> This learning project applies the main concepts from the academy's FastAPI HOWTO chapters 01–03 to a small Legal Intake backend. Spring Boot is not required to run the MVP. A larger asynchronous application, OpenAI integration, NeMo security actions, and board/review marketing features form the subsequent roadmap.
-
-The root `app/` implements the selected MVP scope. **23 automated tests passed**, and live development-server requests verified 201, 200, 422, 404, and asynchronous execution on `MainThread`. The project has its own virtual environment and `uv.lock`. The current server uses `fake-llm`; real paid OpenAI requests have not been verified. The separate review coursework reference is preserved under `ohgi-review-server/`. The 21-API expansion and nine NeMo actions remain designs.
-
-**Start here:** [MVP runbook and JSON examples](docs/RUN_MVP.md) · [Local Swagger UI](http://127.0.0.1:8012/docs) · [Postman collection](docs/legal-intake-mvp.postman_collection.json)
-
-**Updated extension scope: authentication and authorization excluded.** The target is to migrate all nine AI-security actions, costs, risk, admission, and cancellation cleanup into FastAPI/Python. See the [complete flowchart and next implementation goals](docs/security-migration.html) and [design source](docs/SECURITY_MIGRATION_PLAN.md), in Korean. These nine actions are not connected to the current MVP yet.
-
-The instructor asks students to build the structure themselves and restrict AI use to understanding data structures, syntax, and errors. The AI-generated review server is identified as a **personal study reference**, not a submission claimed to have been independently authored. Whether an intake-domain adaptation meets the coursework requirements must be checked separately.
 
 ## 1. Documentation and examples
 
@@ -54,14 +48,6 @@ The selected MVP adapts the review exercise's processing structure to Legal Inta
 | `POST /api/intakes/{intake_id}/guidance` | `async def` | Build a prompt from stored facts, await the LLM, and return guidance; 200 or 502 on provider failure |
 
 The dictionary repository uses a short thread lock. The asynchronous guidance service offloads its snapshot lookup with `to_thread`. The client's name is excluded from the AI prompt. Automatic masking of all narrative PII, NeMo, budgets, SSE, authentication, and persistent storage are **not implemented in this MVP**. Use synthetic data. Restarting the server clears stored intakes.
-
-### Agreed scope: option 1 today, extensions on the weekend
-
-- **Today (2026-11-04):** Complete option 1: synchronous intake creation/retrieval and asynchronous AI guidance, limited to the three APIs above. Implementation and 23 fake/mock tests are complete. The real OpenAI adapter is included, but paid API calls remain unverified.
-- **Weekend:** Review the MVP first, then add small increments starting with PII masking and input/output checking Python actions. NeMo integration, SSE, and the asynchronous board remain follow-up candidates; completing all of them in one weekend is not the agreed scope.
-- **Priority:** Litigation work remains first. Keep today's implementation within the MVP and defer extensions to the weekend. Spring Boot authentication/authorization belongs to the later hybrid stage.
-
-This small scope makes synchronous/asynchronous execution, dependency injection, and exception handling visible in one complete flow: create an intake, retrieve it, and generate guidance from its stored facts. Adding security actions and streaming individually later makes their effects and failures easier to compare.
 
 ### Review coursework contract
 
