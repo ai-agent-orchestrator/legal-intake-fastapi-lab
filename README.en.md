@@ -2,7 +2,7 @@
 
 - **Today (2026-11-04):** Complete option 1: synchronous intake creation/retrieval and asynchronous AI guidance, limited to three APIs. Implementation and 23 fake/mock tests are complete. The real OpenAI adapter is included, but paid API calls remain unverified.
 - **Weekend:** Review the MVP first, then add small increments starting with PII masking and input/output checking Python actions. NeMo integration, SSE, and the asynchronous board remain follow-up candidates; completing all of them in one weekend is not the agreed scope.
-- **Priority:** Litigation work remains first. Keep today's implementation within the MVP and defer extensions to the weekend. Authentication and authorization are excluded from this implementation.
+- **Implementation scope:** Keep today's implementation within the MVP and defer extensions to the weekend. Authentication and authorization are excluded from this implementation.
 
 This small scope makes synchronous/asynchronous execution, dependency injection, and exception handling visible in one complete flow: create an intake, retrieve it, and generate guidance from its stored facts. Adding security actions and streaming individually later makes their effects and failures easier to compare.
 
