@@ -8,26 +8,7 @@ This small scope makes synchronous/asynchronous execution, dependency injection,
 
 [한국어](README.md) | [English](README.en.md)
 
-## 1. Documentation and examples
-
-| Resource | Contents |
-|---|---|
-| **[Current MVP runbook](docs/RUN_MVP.md)** | Root application: two synchronous intake operations, one asynchronous guidance operation, and verification details |
-| **[Complete AI-security migration plan](docs/security-migration.html)** · [Source](docs/SECURITY_MIGRATION_PLAN.md) | Nine actions, failure/cancellation paths, FastAPI responsibilities, and implementation milestones; authentication/authorization excluded; Korean |
-| [Review coursework reference](ohgi-review-server/README.md) | Three review APIs following the supplied specification; 11 fake/mock tests passed |
-| [Korean README reading view](docs/readme-preview.html) | Dark Tablet document presentation |
-| [Beginner study guide](docs/study-guide.html) · [Markdown](docs/STUDY_GUIDE.md) | Architecture, Spring comparison, async/await, DI, lifespan, security, costs, SSE, and eight review questions; Korean |
-| [Backend flowcharts](docs/backend-dark-tablet.html) | Eight Dark Tablet screens describing the extension design; Korean |
-| [Detailed backend design](docs/BACKEND_DESIGN.md) | API contracts, reason codes, cancellation, accounting, and acceptance criteria; Korean |
-| [Async security explanation](docs/async-security-explained.html) · [Markdown](docs/NEMO_ASYNC_ACTIONS.md) | Nine accepted action designs, rationale, lifecycle rules, and experiments; Korean |
-| [API catalog](docs/api-catalog.json) | Eleven selected original APIs, 26 excluded APIs, and ten proposed additions |
-| Mermaid sources | [Overview](docs/assets/overview.mmd) · [Security](docs/assets/security-actions.mmd) · [SSE](docs/assets/sse-lifecycle.mmd) · [Editing bundle](docs/backend-flows.mmd) |
-| [Async waiting example](examples/async_wait_demo.py) | Sequential awaits versus `gather`; no API key, network, or external dependencies |
-| [Initial synchronous example](examples/sync_board_demo.py) | A historical single `GET /posts` example; the review reference follows the actual coursework specification |
-
-HTML documents are intended for local browser viewing. Their Markdown sources are available alongside them. The detailed study documents currently remain in Korean; this English README covers the project overview and operating instructions.
-
-## 2. Repository roadmap — ① → ③ → ②
+## 1. Repository roadmap — ① → ③ → ②
 
 | Order | Repository | Purpose |
 |---|---|---|
@@ -37,7 +18,7 @@ HTML documents are intended for local browser viewing. Their Markdown sources ar
 
 Validated code, contracts, and tests can move into the next stage. This roadmap does not mean the later repositories have been implemented or deployed.
 
-## 3. Implemented scope: two synchronous APIs and one asynchronous API
+## 2. Implemented scope: two synchronous APIs and one asynchronous API
 
 The selected MVP adapts the review exercise's processing structure to Legal Intake. It is a small learning contract, not a fully compatible replacement for the existing Spring intake API.
 
@@ -103,7 +84,7 @@ In the future implementation, nonblocking AI I/O uses `await`, fake latency uses
 
 The current environment is localhost, one user, synthetic data, and one worker. Spring Boot, JWT, login, and role permissions are excluded for now. They belong to the hybrid stage. A `sessionId` and a content-checking action are not authentication.
 
-## 4. Course HOWTO chapters and their application
+## 3. Course HOWTO chapters and their application
 
 The course grows **one project through chap01 → chap02 → chap03**. It uses menu data to teach structure and verification; this repository applies those concepts to intakes and the planned board features.
 
@@ -187,7 +168,7 @@ The HOWTO's **20-passed example belongs to the course**, not this application's 
 
 The benchmark uses fake mode and fixed latency, checks that the server is fake, sends 100 requests each to sync/async and ten to blocking, and distributes load across five clients. Use `127.0.0.1` to avoid irrelevant address-resolution effects. Do not compare total duration alone across different batch sizes. Check whether the load generator is the bottleneck. Instructor measurements are not guaranteed performance for another machine.
 
-## 5. Planned Legal Intake expansion
+## 4. Planned Legal Intake expansion
 
 | Area | Intended behavior |
 |---|---|
@@ -200,7 +181,7 @@ The benchmark uses fake mode and fixed latency, checks that the server is fake, 
 
 The planned migration reuses Java contracts, rules, reason codes, and test scenarios; it does not execute Java inside Python. The actual source reference is `legal-ai-intake-security-server`. The local `legal-ai-intake-system` directory mainly contains introductory documentation.
 
-## 6. Selected and excluded extension APIs
+## 5. Selected and excluded extension APIs
 
 **Original 37 = selected 11 + excluded 26. Ten proposed additions produce a 21-API extension target.** These are roadmap counts, not the three implemented MVP APIs.
 
@@ -220,7 +201,7 @@ The proposed core group is C02/C04/R01/R02/R06/S01–S04/C14/H01. The board inte
 
 Excluded for this experiment: Spring login/JWT/roles, operational case storage, external search, file storage, Agent/Incident operations, Actuator/Prometheus, Redis, Celery, Kafka, RAG/memvid, OCR, and automatic publishing. The existing Java service/database is not modified. See the [detailed design](docs/BACKEND_DESIGN.md) for the full ID mapping and exact paths.
 
-## 7. Nine accepted NeMo action designs
+## 6. Nine accepted NeMo action designs
 
 **Migration scope:** all nine actions below, not only the first three learning examples, belong in the FastAPI target. Login, JWT, roles, and resource ownership authorization are excluded. Settlement, slot release, and cancellation cleanup remain service responsibilities. See the [full flowchart](docs/assets/security-migration.svg) and [migration explanation](docs/SECURITY_MIGRATION_PLAN.md).
 
@@ -246,7 +227,7 @@ Internal policy decisions are ALLOW/BLOCK/TRANSFORM/REVIEW with `reasonCode/deta
 
 **Marketing inspection remains mandatory for the expansion's M01/M02.** Inspect the complete output, mark review requirements, publish only a safe draft, and never automatically post it externally. Test normal wording, guarantees, negation/quotation, PII, and checker failure. These actions are intentionally not added to the small review coursework reference or current MVP.
 
-## 8. Cost, SSE, and error rules — expansion design
+## 7. Cost, SSE, and error rules — expansion design
 
 - Separate paid input inspection, generation, and output inspection; each needs its own accounting boundary when enabled.
 - Atomically check/reserve; close OPEN exactly once as REPORTED, ESTIMATED, or RELEASED.
@@ -259,7 +240,7 @@ Internal policy decisions are ALLOW/BLOCK/TRANSFORM/REVIEW with `reasonCode/deta
 - Read POST SSE with fetch. After headers are sent, report failures through events instead of changing the HTTP status.
 - Do not delegate required checks/accounting to BackgroundTasks. An in-memory ledger is not a provider billing cap.
 
-## 9. Review specification and board integration
+## 8. Review specification and board integration
 
 The supplied review API/folder specification is implemented in `ohgi-review-server/`. Full upstream project source has not been claimed to have been cloned. The larger board/marketing integration follows this sequence:
 
@@ -274,7 +255,7 @@ The supplied review API/folder specification is implemented in `ohgi-review-serv
 
 Review/post text is analysis data, not a system instruction. Drafts are for review; automatic external publishing is excluded. Do not expand the simple coursework server into the full operational security system.
 
-## 10. Current status
+## 9. Current status
 
 | Item | Status |
 |---|---|
@@ -294,7 +275,7 @@ Review/post text is analysis data, not a system instruction. Drafts are for revi
 
 Python 3.14 runs the MVP. NeMo compatibility must be checked independently; a separate compatible Python environment may be required. The root MVP, review reference, and future expansion are distinct implementation scopes.
 
-## 11. Run the implemented code
+## 10. Run the implemented code
 
 ### Legal Intake MVP
 
@@ -356,7 +337,7 @@ python examples/async_wait_demo.py
 
 The earlier local `fastapi-openai-practice` directory is not included in this repository. On the original study PC, that separate exercise runs on port 8001 and accepts `question`; do not confuse it with either application above.
 
-## 12. Course command reference
+## 11. Course command reference
 
 These are course commands, not instructions to reinitialize the existing repository. Run `uv init` only in a separate empty directory.
 
@@ -389,7 +370,7 @@ uv run python benchmark/benchmark.py
 
 Stop with Ctrl+C. Environment variables remain in that terminal session; reset them explicitly or open a new terminal before real-provider experiments. On the original PC, a broken uv Python shortcut was resolved by supplying the installed Python executable directly. No API keys belong in source control.
 
-## 13. Implementation and review checkpoints
+## 12. Implementation and review checkpoints
 
 ### Next implementation goals after today's MVP
 
@@ -419,7 +400,7 @@ Completed: the three-endpoint MVP and 23 tests. Weekend/later work proceeds thro
 
 Review in this order: **architecture → async/DI → security/costs/SSE**. Read the course source, locate its counterpart in this design, and confirm behavior through examples/tests. Do not treat planned features as implemented.
 
-## 14. Source references and local study material
+## 13. Source references and local study material
 
 The original PC used `C:\myLectureWs` as its workspace. These sibling directories are not created by cloning this repository:
 

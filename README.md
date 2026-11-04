@@ -8,26 +8,7 @@
 
 [한국어](README.md) | [English](README.en.md)
 
-## 1. 먼저 볼 자료
-
-| 자료 | 내용 |
-|---|---|
-| **[현재 Legal Intake MVP 실행 안내](docs/RUN_MVP.md)** | 루트 app/의 동기 접수 2개·비동기 안내 1개. pytest 23개·실제 HTTP 검증 |
-| **[AI 보안 전체 이전 계획](docs/security-migration.html)** · [원문](docs/SECURITY_MIGRATION_PLAN.md) | 인증·인가 제외, action 9개·실패/취소 흐름·FastAPI 책임·다음 구현 목표 |
-| **[수업 과제 리뷰 서버](ohgi-review-server/README.md)** | 제공 명세대로 동기 등록·조회 + 비동기 답글 3개 API 구현·11개 테스트 통과 |
-| **[README 읽기 화면](docs/readme-preview.html)** | 이 문서를 dark tablet 톤으로 읽기 |
-| **[비전공자 공부자료](docs/study-guide.html)** · [원문](docs/STUDY_GUIDE.md) | 전체 구조·Spring 비교·async/await·DI·lifespan·보안·비용·SSE·복습 8문항 |
-| [Dark Tablet 백엔드 흐름도](docs/backend-dark-tablet.html) | 전체 흐름·API·보안·SSE·제외 범위, 8개 화면 |
-| [상세 백엔드 설계](docs/BACKEND_DESIGN.md) | API 계약·사유 코드·취소·비용 정산·검증 기준 |
-| **[비동기 보안 설계 해설](docs/async-security-explained.html)** · [원문](docs/NEMO_ASYNC_ACTIONS.md) | 확정한 action 9개·도입 이유·실행 순서·실패/취소·비교 실험 |
-| [API 선정 데이터](docs/api-catalog.json) | 원본 선정 11개·제외 26개·신규 제안 10개 |
-| Mermaid 원본 | [전체](docs/assets/overview.mmd) · [보안](docs/assets/security-actions.mmd) · [SSE](docs/assets/sse-lifecycle.mmd) · [편집 묶음](docs/backend-flows.mmd) |
-| [비용 없는 비동기 예제](examples/async_wait_demo.py) | 순차 await와 gather 비교. 키·네트워크·외부 패키지 없이 실행 |
-| [초기 동기 참고 예제](examples/sync_board_demo.py) | GET /posts 하나. 과제 제출 범위는 아래 ohgi-review-server를 기준으로 함 |
-
-읽기 화면은 로컬 브라우저용 HTML입니다. Markdown 문서도 함께 관리합니다.
-
-## 2. 세 저장소의 발전 순서 — ① → ③ → ②
+## 1. 세 저장소의 발전 순서 — ① → ③ → ②
 
 | 순서 | 저장소 | 역할 |
 |---|---|---|
@@ -37,7 +18,7 @@
 
 앞 단계의 코드·계약·테스트를 다음 단계로 가져옵니다. 세 저장소의 개발·배포가 완료되었다는 뜻은 아닙니다.
 
-## 3. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개
+## 2. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개
 
 선택한 MVP는 학원 리뷰의 처리 구조를 Legal Intake로 바꾼 작은 개인 학습용 버전입니다. 기존 Spring 접수 API 전체와 호환되는 이전본이 아니며, 수업 도메인 변경 허용 여부는 별도 확인 대상입니다.
 
@@ -106,7 +87,7 @@ Swagger / 브라우저
 
 현재는 localhost·단일 사용자·합성 데이터·단일 worker 실험입니다. **Spring Boot·JWT·로그인·역할 권한은 이번 실행 경로에서 제외**합니다. 인증·인가는 hybrid 단계에서 다룹니다. sessionId와 내용 검사 action은 사용자 인증을 대신하지 않습니다.
 
-## 4. 학원 HOWTO 세 챕터와 연결
+## 3. 학원 HOWTO 세 챕터와 연결
 
 학원은 **하나의 프로젝트를 chap01 → chap02 → chap03으로 확장**합니다. 메뉴 예제로 구조와 검증 방법을 배우고 우리 프로젝트에서는 Legal Intake·게시판에 응용합니다.
 
@@ -118,7 +99,7 @@ Swagger / 브라우저
 
 원본 위치는 `C:\myLectureWs\08_fastapi-main\howto`입니다. 반영본은 **2026-11-04 / f1928c8**입니다. 수업 자료는 이 저장소에 복제하지 않고 학습 항목과 적용점을 요약합니다.
 
-### 4-1. chap01 — FastAPI 프로젝트의 뼈대
+### 3-1. chap01 — FastAPI 프로젝트의 뼈대
 
 | 항목 | 핵심 | 우리 프로젝트에 반영 |
 |---|---|---|
@@ -146,7 +127,7 @@ Swagger / 브라우저
 
 예외 응답의 code/description/detail과 Pydantic 오류의 loc를 읽습니다. reload·재시작 후 메모리 데이터는 초기화됩니다. Pyrefly search-path는 편집기의 모듈 인식 설정이며 실제 패키지 설치를 대신하지 않습니다.
 
-### 4-2. chap02 — LLM 호출과 동기·비동기 비교
+### 3-2. chap02 — LLM 호출과 동기·비동기 비교
 
 | 항목 | 핵심 | 우리 프로젝트에 반영 |
 |---|---|---|
@@ -177,7 +158,7 @@ Swagger / 브라우저
 
 LLM이 우리 메뉴·사건·게시글을 자동으로 아는 것은 아닙니다. 필요한 데이터를 검사·마스킹 후 전달합니다. memvid/RAG는 이번 범위에서 제외합니다.
 
-### 4-3. chap03 — 테스트·커버리지·성능 측정
+### 3-3. chap03 — 테스트·커버리지·성능 측정
 
 | 항목 | 핵심 | 우리 검증에 반영 |
 |---|---|---|
@@ -209,7 +190,7 @@ TestClient는 메모리에서 ASGI 앱을 호출할 수 있지만 **학원 벤�
 
 FAKE_LLM=true·고정 지연으로 측정합니다. 원본은 fake 여부 사전 확인, sync/async 각 100개·blocking 10개, client 5개 분산 구조입니다. 127.0.0.1로 주소 해석 지연을 줄이고 측정 도구의 병목도 살핍니다. **요청 수가 다른 결과의 전체 시간만 직접 비교하지 않으며**, 수업 PC 수치를 보장 성능으로 삼지 않습니다.
 
-## 5. HOWTO에서 확장하는 Legal Intake
+## 4. HOWTO에서 확장하는 Legal Intake
 
 | 기능 | 처리 |
 |---|---|
@@ -222,7 +203,7 @@ FAKE_LLM=true·고정 지연으로 측정합니다. 원본은 fake 여부 사전
 
 Java의 계약·규칙·사유 코드·테스트 사례를 이전합니다. Java 코드를 Python에서 그대로 실행하지 않습니다. 실제 소스는 legal-ai-intake-security-server이며 로컬 legal-ai-intake-system은 소개 문서 중심입니다.
 
-## 6. API 선정과 제외
+## 5. API 선정과 제외
 
 **원본 37개 = 선정 11개 + 제외 26개. 신규 10개를 합친 목표는 21개입니다.**
 
@@ -242,7 +223,7 @@ Java의 계약·규칙·사유 코드·테스트 사례를 이전합니다. Java
 
 제외: Spring 로그인·JWT·역할 권한·운영 사건 DB·외부 검색·파일 저장·Agent/Incident 운영·Actuator/Prometheus. Redis·Celery·Kafka·memvid/RAG·OCR·자동 게시도 제외합니다. 기존 Java 서버·DB는 수정하지 않습니다. 전체 ID와 정확한 경로는 [상세 설계](docs/BACKEND_DESIGN.md)를 봅니다.
 
-## 7. NeMo 보안 Python action — 9개 설계 확정
+## 6. NeMo 보안 Python action — 9개 설계 확정
 
 **이전 범위 확정:** 우선 복습할 3개뿐 아니라 아래 **9개 전체**를 FastAPI 내부로 이전하는 목표입니다. 로그인·JWT·역할·소유권 인가는 제외합니다. [전체 이전 흐름도](docs/assets/security-migration.svg)와 [책임·순서·확장 단계 해설](docs/SECURITY_MIGRATION_PLAN.md)에 남은 설계를 정리했습니다. action 외에 서비스의 정산·슬롯 반환·취소 정리도 구현 목표에 포함합니다.
 
@@ -277,7 +258,7 @@ action은 **검사 함수**, reasonCode는 **판단 사유 값**입니다. 코�
 
 내부 결정은 ALLOW/BLOCK/TRANSFORM/REVIEW, 사유는 reasonCode/detailCode입니다. 기존 COST_LIMIT_BLOCKED·DYNAMIC_SESSION_BLOCKED 등과 신규 제안을 구분합니다. 패턴 마스킹의 완전성·표현 검사의 법률적 적합성을 보장한다고 가정하지 않습니다.
 
-## 8. 비용·SSE·오류 처리
+## 7. 비용·SSE·오류 처리
 
 - 입력 검사·생성·출력 검사를 구분하며 유료 검사는 각 호출을 예약·정산합니다.
 - 확인+예약은 원자 처리하고 OPEN → REPORTED/ESTIMATED/RELEASED 중 한 번만 종료합니다.
@@ -290,7 +271,7 @@ action은 **검사 함수**, reasonCode는 **판단 사유 값**입니다. 코�
 - POST SSE는 fetch로 읽고 시작 후 오류는 이벤트로 전달합니다.
 - 메모리 장부는 실험용이며 실제 제공자 청구 상한을 보장하지 않습니다.
 
-## 9. 제공된 리뷰 명세 반영과 확장 경계
+## 8. 제공된 리뷰 명세 반영과 확장 경계
 
 ### 우리 도메인: 법률 마케팅 게시판 + 필수 action 3개
 
@@ -321,7 +302,7 @@ action은 **검사 함수**, reasonCode는 **판단 사유 값**입니다. 코�
 
 샘플 일반 게시판과 우리 AI 확장을 구분합니다. 게시글·후기는 분석 데이터이며 본문 지시를 시스템 명령으로 취급하지 않습니다. 답변은 검토용 초안이며 자동 외부 게시를 하지 않습니다.
 
-## 10. 현재 상태
+## 9. 현재 상태
 
 | 항목 | 상태 |
 |---|---|
@@ -345,7 +326,7 @@ action은 **검사 함수**, reasonCode는 **판단 사유 값**입니다. 코�
 
 루트에는 Legal Intake MVP의 app·pyproject.toml·전용 .venv·uv.lock이 있고, ohgi-review-server에는 리뷰 참고본이 있습니다. Python 3.14로 MVP를 검증했으며 후속 NeMo의 호환성은 별도 검증 대상입니다.
 
-## 11. 지금 실행할 수 있는 것
+## 10. 지금 실행할 수 있는 것
 
 ### 현재 Legal Intake MVP — 루트에서 실행
 
@@ -398,7 +379,7 @@ cd C:\myLectureWs\fastapi-openai-practice
 
 Swagger는 http://127.0.0.1:8001/docs입니다. 이 서버 입력은 question, model=fake-llm은 가짜 응답입니다. 실제 호출은 그 폴더의 실습안내.md를 봅니다.
 
-## 12. 학원 원본 실습 명령
+## 11. 학원 원본 실습 명령
 
 **학원 실습 프로젝트 안에서 사용하는 명령 모음입니다.** 현재 루트 MVP에는 이미 프로젝트와 환경이 있으므로 uv init을 다시 실행하지 않습니다. uv init은 별도 빈 실습 폴더에서 사용합니다.
 
@@ -431,7 +412,7 @@ uv run python benchmark/benchmark.py
 
 종료는 Ctrl+C입니다. 환경 변수가 터미널에 남으므로 실제 호출은 새 터미널에서 시작하거나 설정을 정리합니다. 현재 PC의 uv Python 바로가기 오류는 로컬 `C:\myLectureWs\fastapi-openai-practice\실습안내.md`의 실행 파일 직접 지정 방법을 참고합니다. 이 형제 폴더는 저장소 복제만으로 생기지 않으며 GitHub 링크로 제공하지 않습니다.
 
-## 13. 구현·복습 순서와 완료 기준
+## 12. 구현·복습 순서와 완료 기준
 
 ### 다음 구현 목표 — 오늘 MVP 다음 단계
 
@@ -464,7 +445,7 @@ uv run python benchmark/benchmark.py
 
 주말 복습은 **전체 구조 → 비동기·DI → 보안·비용·SSE** 순서입니다. 원본을 읽고 우리 설계의 대응 위치를 찾은 뒤 예제·테스트로 확인합니다.
 
-## 14. 참고 자료와 원본 위치
+## 13. 참고 자료와 원본 위치
 
 | 경로 | 용도 |
 |---|---|

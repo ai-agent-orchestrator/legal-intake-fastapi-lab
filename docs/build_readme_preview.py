@@ -38,7 +38,7 @@ html = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name
 <header class="top"><strong>LEGAL INTAKE / PROJECT README</strong><span>HOWTO 01 + 02 + 03 · 2026-11-04</span><a href="../README.md">Markdown 원문</a><a href="study-guide.html">공부자료</a><a href="backend-dark-tablet.html">흐름도</a></header>
 <div class="layout"><details class="toc" open><summary>README 목차</summary><nav aria-label="README 목차">{nav}</nav></details><article>{body}<footer class="bottom">현재 MVP·리뷰 참고본·후속 확장 설계의 구현 상태를 구분합니다.</footer></article></div></body></html>'''
 (DOCS / 'readme-preview.html').write_text(html, encoding='utf-8')
-assert len(toc) == 14
+assert len(toc) == 13
 missing = [str(p) for p in local_targets if not p.exists()]
 assert not missing, missing
 assert len(re.findall(r'^```', source, flags=re.M)) % 2 == 0
