@@ -2,7 +2,7 @@
 :root{color-scheme:dark;--bg:#0e1725;--panel:#162438;--line:#2b405b;--text:#e8eff7;--muted:#adbed2;--cyan:#6bd6e8;--blue:#68a8ff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:#09101b;color:var(--text);font-family:"Malgun Gothic",system-ui,sans-serif;font-size:16px;line-height:1.95}a{color:var(--cyan);text-underline-offset:4px}a:hover{color:var(--text)}a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.top{max-width:1220px;margin:auto;padding:22px 26px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}.top strong{color:var(--cyan);letter-spacing:1px;margin-right:auto}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;max-width:1220px;margin:0 auto 40px;padding:0 22px}.toc{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.toc summary{font-weight:600;color:var(--cyan);cursor:pointer;padding-bottom:10px}.toc nav{display:grid;gap:3px}.toc a{font-size:13px;text-decoration:none;color:var(--muted);padding:6px 8px;border-radius:6px;line-height:1.7}.toc a:hover{background:#1b3a50;color:var(--text)}article{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:35px 42px;min-width:0}h1{font-size:32px;line-height:1.5;margin:0 0 20px;letter-spacing:-1px}h2{font-size:25px;line-height:1.55;margin:52px 0 18px;padding-top:24px;border-top:1px solid var(--line);color:var(--cyan)}h3{font-size:19px;line-height:1.7;margin:28px 0 12px;color:var(--blue)}p{margin:0 0 18px}li{margin-bottom:7px}strong{font-weight:600}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.8;margin:20px 0 26px;table-layout:auto}th{background:#1b3a50;color:var(--cyan);text-align:left}td,th{padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}tr:nth-child(even){background:#122033}pre{padding:20px 22px;background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow-x:auto;font-size:14px;line-height:1.85;margin:20px 0 25px;tab-size:4}code{font-family:Consolas,"Malgun Gothic",monospace}p code,li code,td code{font-size:.9em;color:#b8eaf2;background:#14283a;border-radius:4px;padding:1px 4px}img{width:100%;height:auto;display:block;border-radius:10px}article details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:15px 18px;margin:13px 0}article details summary{cursor:pointer;color:var(--cyan);font-size:15px;line-height:1.85}article details p{font-size:15px;margin:14px 0 4px;color:var(--text)}.table-wrap{overflow-x:auto}.bottom{border-top:1px solid var(--line);margin-top:45px;padding-top:20px;color:var(--muted);font-size:13px}.badge{display:inline-block;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:3px 12px;font-size:12px;color:var(--cyan);margin-bottom:20px}.jump{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:24px;font-size:13px}@media(max-width:950px){.layout{grid-template-columns:1fr;max-width:850px}.toc{position:static;max-height:280px}.toc nav{grid-template-columns:repeat(2,minmax(0,1fr))}article{padding:26px}.top{padding:20px 24px}h1{font-size:28px}}@media(max-width:560px){.layout{padding:0 10px;gap:12px}article{padding:23px 17px;border-radius:12px}h1{font-size:25px}h2{font-size:22px}body{font-size:16px}td,th{padding:9px}pre{padding:14px;font-size:13px}.toc nav{grid-template-columns:1fr}.top{padding:18px 15px}table{font-size:13px;min-width:460px}}@media print{@page{size:A4;margin:16mm}body{background:var(--bg);print-color-adjust:exact;-webkit-print-color-adjust:exact}.top,.toc,.jump{display:none}.layout{display:block;max-width:none;padding:0;margin:0}article{border:0;border-radius:0;padding:0}h1{font-size:24px}h2{font-size:20px;break-after:avoid}h3{break-after:avoid}body{font-size:12px;line-height:1.8}pre,table{font-size:10px}details{break-inside:avoid}details p{display:block}pre{white-space:pre-wrap}a{overflow-wrap:anywhere}}
 </style></head><body>
 <header class="top"><strong>LEGAL INTAKE / PROJECT README</strong><span>HOWTO 01 + 02 + 03 · 2026-11-04</span><a href="../README.md">Markdown 원문</a><a href="study-guide.html">공부자료</a><a href="backend-dark-tablet.html">흐름도</a></header>
-<div class="layout"><details class="toc" open><summary>README 목차</summary><nav aria-label="README 목차"><a href="#section-1">1. 세 저장소의 발전 순서 — ① → ③ → ②</a><a href="#section-2">2. 기존 Legal Intake 설계 활용 — API 11개 선정</a><a href="#section-3">3. 앞으로 확장 — NeMo 보안 Python action 9개</a><a href="#section-4">4. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개</a><a href="#section-5">5. 학원 HOWTO 세 챕터와 연결</a><a href="#section-6">6. HOWTO에서 확장하는 Legal Intake</a><a href="#section-7">7. 비용·SSE·오류 처리</a><a href="#section-8">8. 제공된 리뷰 명세 반영과 확장 경계</a><a href="#section-9">9. 현재 상태</a><a href="#section-10">10. 지금 실행할 수 있는 것</a><a href="#section-11">11. 학원 원본 실습 명령</a><a href="#section-12">12. 구현·복습 순서와 완료 기준</a><a href="#section-13">13. 참고 자료와 원본 위치</a></nav></details><article><h1>확정한 진행 범위: 오늘 1안, 주말 추가 구현</h1>
+<div class="layout"><details class="toc" open><summary>README 목차</summary><nav aria-label="README 목차"><a href="#section-1">1. 공개 저장소의 발전 순서 — ① → ③ → ②</a><a href="#section-2">2. 기존 Legal Intake 설계 활용 — API 최대 11개</a><a href="#section-3">3. 앞으로 확장 — NeMo 보안 Python action 9개</a><a href="#section-4">4. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개</a><a href="#section-5">5. 학원 HOWTO 세 챕터와 연결</a><a href="#section-6">6. HOWTO에서 확장하는 Legal Intake</a><a href="#section-7">7. 비용·SSE·오류 처리</a><a href="#section-8">8. 제공된 리뷰 명세 반영과 확장 경계</a><a href="#section-9">9. 현재 상태</a><a href="#section-10">10. 지금 실행할 수 있는 것</a><a href="#section-11">11. 학원 원본 실습 명령</a><a href="#section-12">12. 구현·복습 순서와 완료 기준</a><a href="#section-13">13. 참고 자료와 원본 위치</a></nav></details><article><h1>확정한 진행 범위: 오늘 1안, 주말 추가 구현</h1>
 <ul>
 <li><strong>오늘(2026-11-04):</strong> 1안인 동기 접수 등록·조회와 비동기 AI 안내, 3개 API까지 완성합니다. 현재 구현과 fake/mock 기반 테스트 23개는 완료했습니다. 실제 OpenAI 어댑터도 포함하지만 유료 API 호출 검증은 별도입니다.</li>
 <li><strong>주말:</strong> 현재 MVP를 먼저 복습한 뒤 개인정보 마스킹·입력/출력 검사 Python action부터 작은 단위로 추가합니다. NeMo 연동·SSE·비동기 게시판은 후속 후보이며, 주말에 전부 완성하는 범위로 잡지 않습니다.</li>
@@ -10,36 +10,47 @@
 </ul>
 <p>오늘 범위를 작게 잡는 이유는 등록 → 조회 → 저장 사실 기반 AI 안내라는 한 흐름에서 동기/비동기·DI·예외 처리를 확인하기 위해서입니다. 보안 action과 스트리밍을 이후에 하나씩 붙여야 변경 효과와 오류 원인을 비교하기 쉽습니다.</p>
 <p><a href="../README.md">한국어</a> | <a href="../README.en.md">English</a></p>
-<h2 id="section-1">1. 세 저장소의 발전 순서 — ① → ③ → ②</h2>
+<h2 id="section-1">1. 공개 저장소의 발전 순서 — ① → ③ → ②</h2>
 <div class="table-wrap"><table>
 <thead>
 <tr>
 <th>순서</th>
 <th>저장소</th>
+<th>공개 여부</th>
 <th>역할</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>첫 번째 · 현재 ①</td>
-<td><strong><code>legal-intake-fastapi-lab</code></strong></td>
-<td>HOWTO 복습·FastAPI 단독 비동기 실험·Legal Intake 일부 이전</td>
+<td>① · 현재</td>
+<td><a href="https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab">legal-intake-fastapi-lab</a></td>
+<td>공개</td>
+<td>FastAPI 단독. 보안 action 9개 + memvid 추가 + 법률 마케팅 게시판. <strong>앱 API는 최대 11개</strong></td>
 </tr>
 <tr>
-<td>두 번째 ③</td>
-<td><strong><code>legal-intake-hybrid-lab</code></strong></td>
-<td>Spring Boot 인증·인가와 FastAPI AI 서비스를 연결하고 경계 검증</td>
+<td>③</td>
+<td><a href="https://github.com/ai-agent-orchestrator/python-memvid-guardrail">python-memvid-guardrail</a></td>
+<td>공개</td>
+<td>guardrail과 memvid를 재사용 가능한 모듈로 분리. ①에서 검증한 구현·계약·테스트 정리</td>
 </tr>
 <tr>
-<td>세 번째 ②</td>
-<td><strong><code>legal-intake-ai-service</code></strong></td>
-<td>검증한 기능을 재사용 가능한 AI 서비스로 발전·운영 조건 보완</td>
+<td>②</td>
+<td><a href="https://github.com/ai-agent-orchestrator/spring-fastapi-async-refactor">spring-fastapi-async-refactor</a></td>
+<td>공개</td>
+<td>Spring Boot 인증·인가 + FastAPI AI 서비스 연결, 서비스 경계·비동기 처리 검증</td>
+</tr>
+<tr>
+<td>최종</td>
+<td>별도 저장소</td>
+<td><strong>비공개</strong></td>
+<td>검증한 기능을 바탕으로 상업화 개발</td>
 </tr>
 </tbody>
 </table></div>
-<p>앞 단계의 코드·계약·테스트를 다음 단계로 가져옵니다. 세 저장소의 개발·배포가 완료되었다는 뜻은 아닙니다.</p>
-<h2 id="section-2">2. 기존 Legal Intake 설계 활용 — API 11개 선정</h2>
-<p>기존 Legal Intake의 API·처리 규칙·사유 코드·테스트 사례를 활용합니다. <strong>원본 37개 중 아래 11개만 선정하고 26개는 제외</strong>합니다. Java 코드를 그대로 실행하는 것이 아니라 필요한 계약과 로직을 FastAPI로 옮기는 계획입니다. 현재 MVP 3개 구현과는 구분합니다.</p>
+<p>공개 프로젝트 3개와 비공개 상업화 프로젝트를 분리합니다. 이 표는 개발·공개 방향이며, 저장소 공개 설정이나 개발 완료를 확인했다는 뜻은 아닙니다. 이번 변경은 문서에 반영하며 저장소 공개 설정은 변경하지 않습니다. ①에는 인증·인가를 넣지 않고 ②에서 연결합니다.</p>
+<p>상세 설계·흐름도에 남아 있는 21개 API 수치는 이전 설계입니다. 현재 개발 범위는 이 README의 <strong>API 최대 11개·memvid 포함</strong> 결정을 우선합니다.</p>
+<h2 id="section-2">2. 기존 Legal Intake 설계 활용 — API 최대 11개</h2>
+<p>기존 Legal Intake의 API·처리 규칙·사유 코드·테스트 사례를 활용합니다. 아래는 <strong>원본 37개 중 선정했던 11개 재사용 후보</strong>입니다. 최종 공개 앱은 현재 MVP·게시판·상태 확인·AI 기능을 모두 합쳐 <strong>API 최대 11개</strong>로 제한하며, 후보를 전부 추가한 뒤 새 API를 더하지 않습니다. 게시판을 넣을 때는 우선순위가 낮은 후보를 교체·보류합니다. Java 코드를 그대로 실행하는 것이 아니라 필요한 계약과 로직을 FastAPI로 옮기는 계획입니다. 현재 MVP 3개 구현과는 구분합니다.</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -106,8 +117,8 @@
 </tr>
 </tbody>
 </table></div>
-<p>이 절은 <strong>기존 설계에서 가져올 11개</strong>만 다룹니다. 신규 상태·게시판·후기·AI 마케팅 API와 보안 action 확장은 다음 3번에서 정리합니다.</p>
-<p>제외: Spring 로그인·JWT·역할 권한·운영 사건 DB·외부 검색·파일 저장·Agent/Incident 운영·Actuator/Prometheus. Redis·Celery·Kafka·memvid/RAG·OCR·자동 게시도 제외합니다. 기존 Java 서버·DB는 수정하지 않습니다. 전체 ID와 정확한 경로는 <a href="BACKEND_DESIGN.md">상세 설계</a>를 봅니다.</p>
+<p>이 절은 <strong>기존 설계에서 가져올 11개 후보</strong>를 다룹니다. 신규 상태·게시판·후기·AI 마케팅 API와 보안 action 확장은 다음 3번에서 정리합니다.</p>
+<p>제외: Spring 로그인·JWT·역할 권한·운영 사건 DB·외부 검색·파일 저장·Agent/Incident 운영·Actuator/Prometheus. Redis·Celery·Kafka·일반 외부 RAG·OCR·자동 게시는 제외합니다. <strong>memvid는 ①의 추가 개발 범위에 포함</strong>합니다. 기존 Java 서버·DB는 수정하지 않습니다. 전체 ID와 정확한 경로는 <a href="BACKEND_DESIGN.md">상세 설계</a>를 봅니다.</p>
 <h2 id="section-3">3. 앞으로 확장 — NeMo 보안 Python action 9개</h2>
 <p><strong>이전 범위 확정:</strong> 우선 복습할 3개뿐 아니라 아래 <strong>9개 전체</strong>를 FastAPI 내부로 이전하는 목표입니다. 로그인·JWT·역할·소유권 인가는 제외합니다. <a href="assets/security-migration.svg">전체 이전 흐름도</a>와 <a href="SECURITY_MIGRATION_PLAN.md">책임·순서·확장 단계 해설</a>에 남은 설계를 정리했습니다. action 외에 서비스의 정산·슬롯 반환·취소 정리도 구현 목표에 포함합니다.</p>
 <p>action은 <strong>검사 함수</strong>, reasonCode는 <strong>판단 사유 값</strong>입니다. 코드를 함수 이름으로 바꾸지 않고 기존 판정 로직을 Python으로 옮깁니다.</p>
@@ -157,7 +168,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>기존 7개에 추천한 문맥 검사·생성 진입 제어 2개를 <strong>정식 설계 범위에 추가</strong>했습니다. 아직 구현 완료는 아닙니다. API 21개 계획은 유지합니다. 문맥 격리·입력 정책·마스킹·용량·예산을 먼저 연결하고, real 호출 전 출력 정책까지 검증합니다. M API 활성화 전 마케팅 검사를 완료합니다. action 단위 테스트와 <strong>실제 NeMo rail의 호출·결과 소비·차단/변환 통합 검증</strong>을 구분합니다.</p>
+<p>기존 7개에 추천한 문맥 검사·생성 진입 제어 2개를 <strong>정식 설계 범위에 추가</strong>했습니다. 아직 구현 완료는 아닙니다. 종전 21개 확장 계획을 <strong>API 최대 11개 공개 앱</strong>으로 축소합니다. 문맥 격리·입력 정책·마스킹·용량·예산을 먼저 연결하고, real 호출 전 출력 정책까지 검증합니다. M API 활성화 전 마케팅 검사를 완료합니다. action 단위 테스트와 <strong>실제 NeMo rail의 호출·결과 소비·차단/변환 통합 검증</strong>을 구분합니다.</p>
 <h3>왜 두 개를 추가했나요?</h3>
 <ul>
 <li><strong>문맥 검사:</strong> 비동기로 A/B 요청이 겹쳐도 질문·후기·검사 결과가 섞이지 않도록 요청마다 독립 context를 사용하고, 반환 직전에도 연결을 확인합니다. requestId만 같다고 사용자 권한이 증명되지는 않습니다.</li>
@@ -169,7 +180,7 @@
 <h3>추천 5번도 이번 필수: check_marketing_response</h3>
 <p>게시판·리뷰 샘플을 우리 변호사 마케팅 도구에 연결하는 만큼 <strong>5번도 이번에 구현·검증</strong>합니다. M01 요약과 M02 답변 초안은 전체 출력 검사 후 이 action을 반드시 통과하고, 최종 마스킹·문맥 확인을 마쳐야 반환합니다. 보장·과장 표현은 검토 필요로 표시하고 안전하게 정리한 초안만 제공하며 자동 게시하지 않습니다. 정상 문구·보장 표현·부정/인용 문맥·개인정보·검사 실패 사례를 테스트합니다. 샘플을 실행하는 것과 이 AI 보안 확장을 구현하는 것은 별도로 확인합니다.</p>
 <p>내부 결정은 ALLOW/BLOCK/TRANSFORM/REVIEW, 사유는 reasonCode/detailCode입니다. 기존 COST_LIMIT_BLOCKED·DYNAMIC_SESSION_BLOCKED 등과 신규 제안을 구분합니다. 패턴 마스킹의 완전성·표현 검사의 법률적 적합성을 보장한다고 가정하지 않습니다.</p>
-<h3>추가할 API 10개와 전체 목표</h3>
+<h3>게시판·상태·AI 기능 후보 — API 11개 한도 안에서 선정</h3>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -201,7 +212,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>기존 선정 API 11개 + 신규 API 10개 = 전체 확장 목표 21개</strong>입니다. Python action 9개는 내부 검사 함수이므로 API 개수에 더하지 않습니다. 현재 접수 MVP 3개와 리뷰 참고본 3개도 이 계획에 합산하지 않습니다. 법률 게시판·마케팅 검사는 이번 lab의 후속 구현 범위이며, 인증·인가는 제외합니다.</p>
+<p><strong>이 표는 추가 후보이며 전부 더하는 계획이 아닙니다.</strong> 현재 MVP와 재사용 후보를 포함해 배포 앱 API는 최대 11개로 확정합니다. 보안 action 9개와 memvid 저장·검색은 내부 모듈을 우선 활용하며 API 개수에 더하지 않습니다. 별도 리뷰 참고본은 독립 앱입니다. 인증·인가는 ②에서 다룹니다.</p>
 <h3>법률 마케팅 게시판 심화 — 주말 확장 목표</h3>
 <p>식당 리뷰 과제의 심화 3가지를 우리 <strong>상담 서비스 후기·법률사무소 답변 초안</strong>에 적용합니다. 아래 항목은 아직 구현하지 않은 확장 목표입니다.</p>
 <div class="table-wrap"><table>
@@ -230,7 +241,9 @@
 </tr>
 </tbody>
 </table></div>
-<p>비교용 동기 API는 기본 21개 목표에 포함하지 않는 별도 학습 실험입니다. 같은 앱에 1개를 추가 활성화하면 총 22개로 표시합니다. 동기 핸들러도 FastAPI의 스레드 풀에서 처리되므로, 동기 요청 하나가 서버 전체를 멈춘다고 설명하지 않습니다. <a href="LEGAL_MARKETING_BOARD.md">심화 설계·저장 계약·검증 순서</a>를 따릅니다.</p>
+<p>비교용 동기 API도 같은 공개 앱에 활성화하면 11개 한도에 포함합니다. 별도 학습 서버의 실험은 독립적으로 구분합니다. 동기 핸들러도 FastAPI의 스레드 풀에서 처리되므로, 동기 요청 하나가 서버 전체를 멈춘다고 설명하지 않습니다. <a href="LEGAL_MARKETING_BOARD.md">심화 설계·저장 계약·검증 순서</a>를 따릅니다.</p>
+<h3>memvid 집중 개발과 모듈 분리</h3>
+<p>①에서 합성 게시글·후기의 마스킹된 내용을 memvid에 저장·검색하고, 검색 문맥을 공통 guardrail pipeline을 거쳐 AI에 전달하는 흐름을 검증합니다. memvid도 아직 구현 전입니다. ③에서는 검증한 저장·검색 어댑터와 보안 action을 재사용 가능한 Python 모듈로 분리합니다. ②에서는 이 AI 서비스를 Spring Boot 인증·인가와 연결하고 경계를 검증합니다. 최종 상업화 기능은 별도 비공개 저장소로 관리합니다.</p>
 <h2 id="section-4">4. 현재 완성 범위: Legal Intake 동기 2개 + 비동기 1개</h2>
 <p>선택한 MVP는 학원 리뷰의 처리 구조를 Legal Intake로 바꾼 작은 개인 학습용 버전입니다. 기존 Spring 접수 API 전체와 호환되는 이전본이 아니며, 수업 도메인 변경 허용 여부는 별도 확인 대상입니다.</p>
 <div class="table-wrap"><table>
@@ -334,8 +347,8 @@
 </tr>
 </tbody>
 </table></div>
-<p>현재 루트 MVP 3개, 리뷰 참고본 3개, 후속 확장 21개는 계약·구현 상태를 구분합니다. 현재 MVP의 등록·조회와 리뷰 과제의 등록·조회는 def로 유지합니다. 후속 확장 초안의 전체 비동기화·마케팅 action을 현재 MVP에 이미 구현한 것으로 표시하지 않습니다.</p>
-<h3>후속 21개 확장 흐름 — 아래 보안 기능은 아직 설계</h3>
+<p>현재 루트 MVP 3개, 리뷰 참고본 3개, 후속 확장 최대 11개는 계약·구현 상태를 구분합니다. 현재 MVP의 등록·조회와 리뷰 과제의 등록·조회는 def로 유지합니다. 후속 확장 초안의 전체 비동기화·마케팅 action을 현재 MVP에 이미 구현한 것으로 표시하지 않습니다.</p>
+<h3>후속 최대 11개 확장 흐름 — 아래 보안 기능은 아직 설계</h3>
 <pre><code class="language-text">Swagger / 브라우저
  → Uvicorn / ASGI
  → FastAPI: trace·Pydantic·Depends·APIRouter
@@ -568,7 +581,7 @@
 <p><strong>우리 Chat은 <code>/api/ai/chat</code>, 입력은 message입니다.</strong> 학원 question과 혼동하지 않습니다. 비교용 sync/blocking 경로는 우리 실제 서비스 경로에 추가하지 않습니다.</p>
 <p>실험 1: 5초 가짜 AI 대기 중 메뉴 조회가 되는지 확인. 실험 2: THREAD_POOL_SIZE=1에서 sync 대기와 async 겹친 대기 비교. 수업의 기본 40은 AnyIO limiter의 동시 실행 토큰 수이며 모든 서버의 고정 처리량 상한은 아닙니다.</p>
 <p>학원은 키가 없으면 fake로 전환합니다. <strong>우리 설계는 fake/real 명시, real에서 키·가격 누락 시 호출 전 실패</strong>입니다. 모델 접근·실제 응답은 따로 확인합니다. .env는 Git에 올리지 않고 변경 후 서버를 재시작합니다. 환경 변수가 .env보다 우선할 수 있습니다.</p>
-<p>LLM이 우리 메뉴·사건·게시글을 자동으로 아는 것은 아닙니다. 필요한 데이터를 검사·마스킹 후 전달합니다. memvid/RAG는 이번 범위에서 제외합니다.</p>
+<p>LLM이 우리 메뉴·사건·게시글을 자동으로 아는 것은 아닙니다. 필요한 데이터를 검사·마스킹 후 전달합니다. memvid 저장·검색 연동은 ①의 확장 목표입니다. 검색 결과도 검사·마스킹 후 AI에 전달하며 아직 구현 전입니다.</p>
 <h3>5-3. chap03 — 테스트·커버리지·성능 측정</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -851,8 +864,8 @@
 <td>Python 3.14·의존성·가짜 API 3개·422·Swagger 확인</td>
 </tr>
 <tr>
-<td>후속 21개 확장 API</td>
-<td>설계 단계, 현재 MVP 3개와 구분</td>
+<td>후속 최대 11개 확장 API</td>
+<td>API 한도 11개로 재선정할 설계 단계; memvid·보안 action은 미구현</td>
 </tr>
 <tr>
 <td>실제 OpenAI</td>

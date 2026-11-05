@@ -8,19 +8,22 @@ This small scope makes synchronous/asynchronous execution, dependency injection,
 
 [한국어](README.md) | [English](README.en.md)
 
-## 1. Repository roadmap — ① → ③ → ②
+## 1. Public repository roadmap — ① → ③ → ②
 
-| Order | Repository | Purpose |
-|---|---|---|
-| First, current ① | **`legal-intake-fastapi-lab`** | Review the course HOWTOs, experiment with FastAPI, and adapt selected Legal Intake functionality |
-| Second ③ | **`legal-intake-hybrid-lab`** | Connect Spring Boot authentication/authorization to FastAPI AI services and verify service boundaries |
-| Third ② | **`legal-intake-ai-service`** | Develop verified functionality into reusable AI services and address operational requirements |
+| Order | Repository | Visibility | Purpose |
+|---|---|---|---|
+| ① · Current | [legal-intake-fastapi-lab](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab) | Public | Standalone FastAPI: nine security actions, memvid integration, and a legal marketing board. **At most 11 application APIs** |
+| ③ | [python-memvid-guardrail](https://github.com/ai-agent-orchestrator/python-memvid-guardrail) | Public | Extract reusable guardrail and memvid modules from the implementation, contracts, and tests verified in ① |
+| ② | [spring-fastapi-async-refactor](https://github.com/ai-agent-orchestrator/spring-fastapi-async-refactor) | Public | Connect Spring Boot authentication/authorization to FastAPI AI services; verify service boundaries and asynchronous processing |
+| Final | Separate repository | **Private** | Commercial development using the validated components |
 
-Validated code, contracts, and tests can move into the next stage. This roadmap does not mean the later repositories have been implemented or deployed.
+Keep the three public projects separate from the private commercial project. This table expresses the development/publication plan, not verified repository settings or implementation completion. This documentation change does not change repository visibility. Authentication/authorization stays outside ① and is connected in ②.
 
-## 2. Reuse the existing Legal Intake design — 11 selected APIs
+Any 21-API counts in older detailed designs/flowcharts describe the previous proposal. This README's **11-API cap and memvid inclusion** take precedence for current development.
 
-Reuse API contracts, processing rules, reason codes, and test cases from the existing Legal Intake design. **Select only the following 11 of the original 37 APIs; exclude 26.** This is a plan to port contracts and logic into FastAPI, not to execute Java code directly. It is separate from the three implemented MVP endpoints.
+## 2. Reuse the Legal Intake design — at most 11 APIs
+
+Reuse API contracts, processing rules, reason codes, and test cases from the existing Legal Intake design. The table lists **11 reuse candidates selected from the original 37 APIs**. The final public app is capped at **11 APIs total**, including the current MVP, board, health, and AI endpoints. Replace or defer lower-priority candidates instead of adding all candidates plus new endpoints. This is a plan to port contracts and logic into FastAPI, not to execute Java code directly. It is separate from the three implemented MVP endpoints.
 
 | ID | Selected API | Reuse |
 |---|---|---|
@@ -38,7 +41,7 @@ Reuse API contracts, processing rules, reason codes, and test cases from the exi
 
 This section covers **only the 11 APIs selected from the existing design**. New health, board, review, AI marketing APIs, and the security-action expansion belong in section 3 below.
 
-Excluded for this experiment: Spring login/JWT/roles, operational case storage, external search, file storage, Agent/Incident operations, Actuator/Prometheus, Redis, Celery, Kafka, RAG/memvid, OCR, and automatic publishing. The existing Java service/database is not modified. See the [detailed design](docs/BACKEND_DESIGN.md) for the full ID mapping and exact paths.
+Excluded for this experiment: Spring login/JWT/roles, operational case storage, external search, file storage, Agent/Incident operations, Actuator/Prometheus, Redis, Celery, Kafka, general external RAG, OCR, and automatic publishing. **memvid is included in the planned scope of ①**. The existing Java service/database is not modified. See the [detailed design](docs/BACKEND_DESIGN.md) for the full ID mapping and exact paths.
 
 ## 3. Future expansion — nine NeMo security Python actions
 
@@ -66,7 +69,7 @@ Internal policy decisions are ALLOW/BLOCK/TRANSFORM/REVIEW with `reasonCode/deta
 
 **Marketing inspection remains mandatory for the expansion's M01/M02.** Inspect the complete output, mark review requirements, publish only a safe draft, and never automatically post it externally. Test normal wording, guarantees, negation/quotation, PII, and checker failure. These actions are intentionally not added to the small review coursework reference or current MVP.
 
-### Ten new APIs and the overall target
+### Board, health, and AI candidates — select within the 11-API cap
 
 | New area | APIs | Count |
 |---|---|---|
@@ -75,7 +78,7 @@ Internal policy decisions are ALLOW/BLOCK/TRANSFORM/REVIEW with `reasonCode/deta
 | Service-experience reviews | B06–B07: create/list under `/api/posts/{postId}/reviews` | 2 |
 | AI marketing | M01 `POST /api/posts/{postId}/ai-summary`; M02 `POST /api/reviews/{reviewId}/reply-draft` | 2 |
 
-**11 selected existing APIs + 10 new APIs = a 21-API expansion target.** The nine Python actions are internal checks, not additional HTTP endpoints. The three current intake MVP APIs and three review-reference APIs are separate contracts and are not added to this count. Board/marketing work belongs to the subsequent lab implementation; authentication and authorization are excluded.
+**These are candidates, not ten additional committed endpoints.** Cap the public app at 11 APIs total, including the current MVP and selected reuse candidates. The nine security actions and memvid storage/retrieval should use internal modules first. The review reference remains a separate app. Authentication/authorization belongs to ②.
 
 ### Advanced legal marketing board — weekend extension goals
 
@@ -87,7 +90,11 @@ Adapt the review exercise's three advanced tasks to **service-experience reviews
 | Save and retrieve drafts | Save M02's inspected, finally masked draft and review status; include them in B07 review lists | Generated draft appears on read; checker failures are not saved; no automatic external publication |
 | Compare sync/async | Keep M02 async with an async client; add a separate experiment using def and a sync client | Same inputs/fake delay, two Postman tabs, thread and concurrent-request observations |
 
-The synchronous comparison endpoint is a separate learning experiment outside the base 21-API target. Enabling one additional endpoint in the same app makes the total 22. FastAPI runs def handlers in a thread pool; one blocking handler does not imply that the entire server stops. See the [detailed advanced design](docs/LEGAL_MARKETING_BOARD.md) in Korean.
+A synchronous comparison endpoint counts toward the 11-API cap if enabled in the same public app. Experiments on a separate learning server are counted separately. FastAPI runs def handlers in a thread pool; one blocking handler does not imply that the entire server stops. See the [detailed advanced design](docs/LEGAL_MARKETING_BOARD.md) in Korean.
+
+### Focus on memvid, then extract reusable modules
+
+In ①, validate storage/retrieval of masked synthetic posts/reviews in memvid and pass retrieved context through the common guardrail pipeline before AI generation. memvid is not implemented yet. In ③, extract the validated storage/retrieval adapter and security actions as reusable Python modules. In ②, connect the AI service to Spring Boot authentication/authorization and verify boundaries. Keep final commercial features in a separate private repository.
 
 ## 4. Implemented scope: two synchronous APIs and one asynchronous API
 
@@ -137,7 +144,7 @@ These three actions are the first learning subset of the existing nine-action de
 
 ### Subsequent expansion: design only
 
-The root MVP's three APIs, the review reference's three APIs, and the planned expansion's 21 APIs have separate contracts and implementation states. The future board and AI services are designed around asynchronous handling; this does not change the current synchronous MVP requirements.
+The root MVP's three APIs, the review reference's three APIs, and the planned public app's maximum of 11 APIs have separate contracts and implementation states. The future board and AI services are designed around asynchronous handling; this does not change the current synchronous MVP requirements.
 
 ```text
 Swagger / browser
@@ -207,7 +214,7 @@ The first course experiment tests whether menu queries can respond during a five
 
 Course `question`, the future chat request's `message`, and the MVP's saved `coreStatement` are different contracts. The MVP guidance endpoint takes an intake ID and no additional request body. Comparison-only blocking/synchronous LLM endpoints are not part of the MVP.
 
-Unlike the course's missing-key fake fallback, this implementation uses an explicit fake/real setting and refuses real-client startup without a key. Provider/model access still needs verification. Do not commit `.env`; environment variables may override it, and changes require restart. An LLM does not automatically know application data: stored facts must be deliberately supplied. RAG/memvid remains outside the current scope.
+Unlike the course's missing-key fake fallback, this implementation uses an explicit fake/real setting and refuses real-client startup without a key. Provider/model access still needs verification. Do not commit `.env`; environment variables may override it, and changes require restart. An LLM does not automatically know application data: stored facts must be deliberately supplied. memvid storage/retrieval is a planned extension of ①, not implemented yet; retrieved context must pass the common security pipeline.
 
 ### Chapter 03 — tests, coverage, and benchmarks
 
@@ -295,7 +302,7 @@ Review/post text is analysis data, not a system instruction. Drafts are for revi
 | Async waiting example | Observed roughly 3.01 s sequential and 1.01 s concurrent; not a server benchmark |
 | Old separate chap02 exercise | Environment, fake endpoints, validation, and Swagger previously checked |
 | Real paid OpenAI call | Not verified |
-| 21-API expansion and nine NeMo actions | Design only; NeMo installation/compatibility not verified |
+| Up-to-11-API expansion, memvid, and nine NeMo actions | Design only; NeMo installation/compatibility not verified |
 | Spring integration / deployment | Later stages |
 
 Python 3.14 runs the MVP. NeMo compatibility must be checked independently; a separate compatible Python environment may be required. The root MVP, review reference, and future expansion are distinct implementation scopes.
