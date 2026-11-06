@@ -1,0 +1,16 @@
+{
+  "indexVersion": "e5-v1",
+  "file": "e5-v1.mv2",
+  "sha256": "635ce23b261e2e68524b09e55f6736e1d217551de1af264521d2cb3492a4ac0e",
+  "embeddingModel": "intfloat/multilingual-e5-large-instruct",
+  "pinnedRevision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+  "dimension": 1024,
+  "normalization": "l2",
+  "createdAt": "2026-11-06T07:26:43.106739+00:00",
+  "activationCheck": {
+    "expected": 30,
+    "totalHits": 30,
+    "selfTop1": 30,
+    "batchMaximum": 8
+  }
+}

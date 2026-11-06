@@ -1,0 +1,53 @@
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (517 > 512). Running this sequence through the model will result in indexing errors
+[
+  {
+    "documentId": "G01",
+    "caseType": "CIVIL",
+    "tokens": 666
+  },
+  {
+    "documentId": "G02",
+    "caseType": "CIVIL",
+    "tokens": 648
+  },
+  {
+    "documentId": "G03",
+    "caseType": "CIVIL",
+    "tokens": 623
+  },
+  {
+    "documentId": "G04",
+    "caseType": "CRIMINAL",
+    "tokens": 626
+  },
+  {
+    "documentId": "G05",
+    "caseType": "CRIMINAL",
+    "tokens": 611
+  },
+  {
+    "documentId": "G06",
+    "caseType": "CRIMINAL",
+    "tokens": 607
+  },
+  {
+    "documentId": "G07",
+    "caseType": "FAMILY",
+    "tokens": 606
+  },
+  {
+    "documentId": "G08",
+    "caseType": "FAMILY",
+    "tokens": 608
+  },
+  {
+    "documentId": "G09",
+    "caseType": "OTHER",
+    "tokens": 620
+  },
+  {
+    "documentId": "G10",
+    "caseType": "OTHER",
+    "tokens": 603
+  }
+]

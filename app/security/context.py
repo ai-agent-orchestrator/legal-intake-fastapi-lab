@@ -21,7 +21,8 @@ class RequestContext:
     def create(cls, session_id: str | None, snapshot: str, profile: str):
         # Identifiers are untrusted grouping keys, never authentication credentials.
         trace = uuid4().hex
-        return cls(trace, fingerprint((session_id or trace).strip()), snapshot, profile)
+        normalized_session = (session_id or "").strip() or trace
+        return cls(trace, fingerprint(normalized_session), snapshot, profile)
 
 
 @dataclass(frozen=True)

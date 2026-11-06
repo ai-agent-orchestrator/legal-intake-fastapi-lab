@@ -1,0 +1,62 @@
+{
+  "device": "cpu",
+  "dtype": "float32",
+  "batchSize": 2,
+  "torchThreads": 4,
+  "count": 30,
+  "dimension": 1024,
+  "maxFinalTokens": 293,
+  "encodeSeconds": 15.973730799974874,
+  "meanEmbeddingMs": 532.4576933324958,
+  "queryInstructionApplied": false,
+  "normalized": true,
+  "actualE5": true,
+  "phase": "documents",
+  "ids": [
+    "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+    "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+    "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+    "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+    "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+    "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+    "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+    "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+    "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+    "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+    "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+    "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+    "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+    "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+    "G05:synthetic-1:e5-paragraph-300-overlap40-v1:471:cf9f53165d394cdf",
+    "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+    "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+    "G06:synthetic-1:e5-paragraph-300-overlap40-v1:467:bc37283bfd1c7d1f",
+    "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+    "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+    "G07:synthetic-1:e5-paragraph-300-overlap40-v1:466:939c55d2eeaf6108",
+    "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+    "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+    "G08:synthetic-1:e5-paragraph-300-overlap40-v1:468:5a8e4783b326997a",
+    "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+    "G09:synthetic-1:e5-paragraph-300-overlap40-v1:197:522e1e0370e650fa",
+    "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+    "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+    "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+    "G10:synthetic-1:e5-paragraph-300-overlap40-v1:463:551c463f0b93661e"
+  ],
+  "loadSeconds": 11.72240539995255,
+  "offline": true,
+  "pythonSocketsBlocked": true
+}
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:   1%|▏         | 5/391 [00:00<00:21, 18.16it/s]
+Loading weights:  23%|██▎       | 91/391 [00:00<00:01, 293.48it/s]
+Loading weights:  36%|███▌      | 139/391 [00:00<00:00, 341.87it/s]
+Loading weights:  47%|████▋     | 184/391 [00:00<00:00, 374.85it/s]
+Loading weights:  59%|█████▊    | 229/391 [00:00<00:00, 378.29it/s]
+Loading weights:  70%|██████▉   | 273/391 [00:00<00:00, 386.64it/s]
+Loading weights:  81%|████████  | 317/391 [00:00<00:00, 394.25it/s]
+Loading weights:  93%|█████████▎| 363/391 [00:01<00:00, 400.73it/s]
+Loading weights: 100%|██████████| 391/391 [00:01<00:00, 358.09it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (664 > 512). Running this sequence through the model will result in indexing errors

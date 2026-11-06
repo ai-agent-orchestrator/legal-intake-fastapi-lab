@@ -10,3 +10,8 @@ htmlcov/
 data/
 *.mv2
 *.mv2.*
+*.npy
+*.npz
+*.safetensors
+*.bin
+evaluation-output/

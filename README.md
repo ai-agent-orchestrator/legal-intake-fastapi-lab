@@ -4,11 +4,11 @@ FastAPI 기반 상담 준비 안내와 법률 마케팅 도구를 만드는 공�
 
 [한국어](README.md) | [English](README.en.md)
 
-> **2026-11-06 진행 상황:** Codex는 S0·B01을 완료하고 B02a 검증에서 조건 정지했습니다. Claude의 B03~B05 뼈대는 main에 반영됐으며, 실제 모델·검색·보안 흐름의 통합 완료와 구분합니다. [확정 v1](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/blob/5609bf98e053869699beefff58515af71415f4a8/docs/RAG_V1_PLAN.md) · [Codex 실행 증거](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/blob/5609bf98e053869699beefff58515af71415f4a8/docs/evidence/SUMMARY.md) · [Claude 검색 개발 브랜치](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/tree/claude/rag-corpus-b01)
+> **2026-11-06 개발 브랜치 최신:** B02a 우회 조건부 통과 후 **실제 E5+memvid B02b 완료**. 합성 안내문10·청크30·평가30, 확인 근거6개에서 vector Hit@1/3 6/6, lex 5/6. vector도 임계값으로 근거1개를 거절했으므로 순위와 판정은 구분합니다. [실측 결과](docs/evidence/B02b/README.md) · [실행 보고](docs/evidence/SUMMARY.md) · [초보용 임베딩·의미 검색·코사인·Golden Set](docs/EMBEDDING_RETRIEVAL_STUDY.md) · [태블릿 다크 모드](docs/embedding-retrieval-dark-tablet.html). 실제 접수·guidance API에는 연결하지 않았습니다.
 
 ## 1. 개발 방향과 필수 구성
 
-현재 v1 범위는 **합성 안내문 10개로 E5 임베딩·memvid 벡터 검색을 구현하고 공부하는 것**입니다. 실제 접수 데이터나 guidance API에는 연결하지 않습니다. 검색 모델은 `intfloat/multilingual-e5-large-instruct`이며 revision `274baa43b0e13e37fafa6428dbc7938e62e5c439`로 고정했습니다. 생성은 Llama 계열을 검토하지만 아직 모델을 선정하거나 설치하지 않았습니다. Qwen은 기본 실행 범위에서 제외합니다.
+현재 범위는 **합성 안내문 10개로 임베딩·검색을 구현하고 공부하는 것**입니다. 실제 E5 고정 revision·CPU float32·memvid 검색 평가를 완료했습니다. 기존 안내 API 연결과 Llama 생성은 후속이며 Llama는 설치하지 않았습니다. Qwen은 기본 실행 범위에서 제외합니다.
 
 | 구성 | 역할 | 최소 적용 |
 |---|---|---|
@@ -24,35 +24,21 @@ FastAPI 기반 상담 준비 안내와 법률 마케팅 도구를 만드는 공�
 
 ## 2. 현재 구현과 검증 범위
 
-2026-11-06 기준입니다. 아래 결과의 **브랜치와 실제/fake 범위**를 구분합니다. main에 모든 개발 브랜치가 합쳐진 것은 아닙니다.
+2026-11-06 기준입니다. 공개 커밋과 로컬 미커밋 작업을 구분합니다.
 
 | 구분 | 상태 |
 |---|---|
 | 루트 MVP | 동기 접수 등록·조회 + 비동기 안내 3개 API 구현. 기존 테스트 23개 |
 | 선별 기반 `4fcc698` | 결정 DTO·불변 문맥·용량 관리자·예산 장부·위험 저장소 |
-| L01 NeMo 래퍼 / L02 문맥·세션 위험 | `feat/security-input-actions`의 `2808606`에 커밋·push 완료. 공백 세션 분리와 입력 정책 차단만 위험 적립하는 계약 포함 |
+| L01 NeMo 래퍼 / L02 문맥·세션 위험 | 개발 브랜치의 별도 기준 커밋으로 보존. 실제 NeMo 포함 기존 시험 기록은 95 passed; 재실행·추가 시험은 docs/evidence에 구분 |
 | S0 환경·회귀 | Codex 브랜치: 별도 Python 3.12 RAG lock·환경. 설치 후 기존 95개 통과. L02 추가 9개는 별도 실행에서 통과 |
 | B01 합성 자료·분할 | Codex 브랜치: 안내문 10개(603~666토큰), 청크 30개(최대 293토큰), 평가 30개. 오프라인 시험 6개 통과 |
-| B02a memvid | Codex 기존 probe는 구조화 metadata 반환 검증 실패로 정지. 이후 Windows에서 대량 적재 유실과 8개 묶음 보존을 재현. 아래 재검수 결과 참조 |
-| B02b 실제 E5 평가 | Codex에서는 미착수. 실제 E5 가중치·Hit@3·확인 세트 평가 결과 없음 |
-| B03~B05 LangChain·LangGraph·LangSmith | Claude 뼈대가 PR #2로 main에 병합됨. 실모델·실검색·LangSmith 원격 평가·접수 통합 완료를 뜻하지 않음 |
+| E5·memvid 검색 | 이 브랜치에서 실제 E5 오프라인 임베딩·30청크 활성화·lex/vector 30질문 평가 완료. 결과와 한계는 B02b 증거 참조 |
+| LangChain·LangGraph·LangSmith | 최종 필수 범위. Claude의 B03~B05 뼈대와의 통합·실생성·원격 평가는 이 브랜치에서 미실행 |
 | 법률 마케팅 게시판·M01/M02 | 후속 구현. 보존본의 실패한 마케팅 검사 코드를 완료본으로 사용하지 않음 |
 | 생성 모델 | 현재 OpenAI 비동기 어댑터와 fake client. Llama 어댑터는 개발 예정 |
 
-95개는 기존 API와 보안 경계의 회귀 시험이며 새 RAG의 완료 증거가 아닙니다. AI 응답은 fake/mock이고 실제 NeMo rail은 포함됩니다. 95개·추가 9개·B01 6개는 서로 다른 실행의 결과입니다. 보존 브랜치 `wip/codex-legal-snapshot`(`e6df050`)는 복구용이며 main에 합치지 않습니다. [기존 L01/L02 설명](docs/L01_L02_IMPLEMENTATION.md)보다 [최신 실행 증거](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/blob/5609bf98e053869699beefff58515af71415f4a8/docs/evidence/SUMMARY.md)를 우선합니다.
-
-### memvid 2.0.160 재검수 — Windows 실측
-
-seal·close·재오픈 후 `k=전체 수` 검색과 모든 벡터의 자기 검색 1위를 확인했습니다. 자료와 벡터는 합성입니다.
-
-| 전체 청크 | 한 번에 적재 | 검색 가능한 청크 / 전체 | 자기 벡터 top1 / 전체 |
-|---|---|---|---|
-| 60 | 60개 | 6/60 | 6/60 |
-| 60 | 30개 | 49/60 | 49/60 |
-| 60 | 8개 | 60/60 | 60/60 |
-| 120 | 8개 | 120/120 | 120/120 |
-
-적재는 **8개 이하 묶음**으로 제한하고, 재오픈 후 전체 수와 모든 자기 검색을 통과해야 활성화합니다. 이는 제한된 합성 벡터 시험 결과이며 실제 E5 연동 통과가 아닙니다. 출처는 `title=chunkId`를 manifest와 대조하는 방안으로 검수 중입니다. lex는 caseType·마스크·연산자 토큰을 제외한 키워드를 OR로 결합하는 기준선을 검증합니다. `MEMVID_TELEMETRY=0`을 강제하고 `put_many`에는 `opts={"enable_embedding": False}`를 명시해야 합니다. 현재 참고 probe의 5개 벡터 검사는 30개 이상으로 보강해야 합니다.
+95개 기록은 새 RAG 기능의 완료 증거가 아닙니다. 보존 브랜치 `wip/codex-legal-snapshot`은 복구용이며 `main`에 합치지 않습니다. [로컬 L01/L02 범위와 검증 기록](docs/L01_L02_IMPLEMENTATION.md).
 
 현재 루트 앱의 API:
 
@@ -75,8 +61,6 @@ seal·close·재오픈 후 `k=전체 수` 검색과 모든 벡터의 자기 검�
 
 ## 4. 기본 처리 흐름
 
-아래는 최종 연결 목표입니다. 현재 합성 학습 범위와 main의 B03~B05 뼈대를 운영 안내 흐름에 연결한 상태는 아닙니다.
-
 ```text
 미리 적재:
 합성 안내문 → 검사·마스킹 → 토큰 분할 → E5 문서 임베딩 → memvid
@@ -92,7 +76,7 @@ seal·close·재오픈 후 `k=전체 수` 검색과 모든 벡터의 자기 검�
 LangSmith: 각 단계의 추적·합성 dataset 평가, 전송 전 기록 정보 처리
 ```
 
-E5의 길이 제한을 고려해 문서를 나누고 출처·문서 버전·모델 revision을 보존합니다. 구조화 출력은 내부 DTO에 먼저 적용할 계획입니다. 서빙 tracing은 기본 OFF이고, LangSmith 원격 전송은 현재 실행하지 않습니다. 이후 승인한 합성 평가에서만 원격 trace를 검증합니다. 접수 유래 입력·출력·예외·metadata를 원격 전송하는 흐름은 이번 범위에 포함하지 않습니다.
+E5의 길이 제한을 고려해 문서를 나누고 출처·문서 버전·모델 revision을 보존합니다. 구조화 출력은 내부 DTO에 먼저 적용하고 기존 정상 응답 계약을 유지합니다. 민감한 원문·키·예외·metadata가 trace로 전송되지 않도록 처리합니다. 실제 LangSmith trace 확인과 평가 실험을 완료 조건에 포함합니다.
 
 ## 5. 보안 action 9개는 전체 필수
 
@@ -106,7 +90,7 @@ E5의 길이 제한을 고려해 문서를 나누고 출처·문서 버전·모�
 | `check_request_budget` | 원자 예산 확인·예약 |
 | `check_output_policy` | 생성 전체의 빈값·길이·정책 검사 |
 | `check_marketing_response` | 보장·과장 표현의 사람 검토 표시 |
-| `record_risk_event` | 사용자 입력 정책 차단만 중복 없이 위험 적립. 출력·검색 자료 차단은 점수 없이 기록 |
+| `record_risk_event` | 확정 정책 차단의 중복 없는 위험 기록 |
 
 서비스가 **용량 확보 → 예산 예약 → 호출 → 정산 → 슬롯 반환**을 관리합니다. timeout·취소·실패에서도 정리를 보장하고, 검사 함수 단위 시험과 실제 NeMo rail의 호출·결과 소비 시험을 구분합니다. 모든 action이 이미 구현·연결됐다는 뜻은 아닙니다.
 
@@ -131,11 +115,11 @@ E5의 길이 제한을 고려해 문서를 나누고 출처·문서 버전·모�
 | AI 마케팅 | POST `/api/posts/{postId}/ai-summary`, POST `/api/reviews/{reviewId}/reply-draft` | 2 |
 | 합계 | 메서드와 경로의 조합 | **11** |
 
-API 수는 사용자 정의 업무 API의 메서드·경로 조합으로 셉니다. `/docs`·`/openapi.json` 같은 자동 경로는 제외합니다. 이전 상세 설계의 21개는 과거 후보 목록입니다. 게시글 수정·삭제·독립 Chat/SSE·단독 guardrail API를 여기에 더하지 않습니다. 동기 비교는 별도 학습 앱에서 진행합니다.
+이전 상세 설계의 21개는 과거 후보 목록입니다. 게시글 수정·삭제·독립 Chat/SSE·단독 guardrail API를 여기에 더하지 않습니다. 동기 비교는 별도 학습 앱에서 진행합니다.
 
 ## 7. 진행 순서와 최소 학습 요구사항
 
-Codex 확정 범위는 **S0 → B01 → B02a → B02b**이며 B02a 필수 실패로 정지했습니다. [확정 v1](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/blob/5609bf98e053869699beefff58515af71415f4a8/docs/RAG_V1_PLAN.md)이 종전 초안보다 우선합니다. Claude는 별도 브랜치에서 B03~B05 뼈대를 병렬 개발했습니다. 통합 시 DTO·manifest·증거 계약을 먼저 맞춥니다. 실제 접수를 넣기 전에는 입력 정책·마스킹 → 추론 동시성 제한 → 출력 정책을 반드시 연결·검증해야 합니다.
+개발은 **설계 검수 → 필수 보안 경계 → 문서 적재 → E5·memvid → LangChain·Llama → LangGraph → LangSmith 평가 → guidance 연결** 순서입니다. [구조 설계](docs/RAG_ARCHITECTURE_REVIEW.md)와 [Claude 검수 요청](docs/CLAUDE_RAG_DESIGN_REVIEW.md)을 기준으로 최종안을 확정합니다.
 
 기초 리뷰·답글 예제는 다음 순서만 유지합니다.
 
@@ -163,15 +147,13 @@ uv run fastapi dev
 Swagger: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ```powershell
-# 기존 MVP 23개 회귀 시험. B03~B05 시험은 해당 의존성 환경에서 별도로 실행합니다.
-uv run pytest -q tests/test_mvp.py
+# local 범위의 회귀 시험. 실제 NeMo 시험은 별도 환경으로 구분합니다.
+uv run pytest -q -m "not nemo"
 ```
 
-실제 OpenAI·Llama·E5 가중치 추론·LangSmith 원격 연결은 Codex에서 검증하지 않았습니다. memvid는 위의 실제 SDK·합성 벡터 검사까지만 확인했습니다. Python 3.12 NeMo/RAG 환경과 전체 회귀 명령은 개발 브랜치의 [S0 증거](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/blob/5609bf98e053869699beefff58515af71415f4a8/docs/evidence/S0/env.txt)에 있습니다. main 기본 환경에 아직 없는 선택 의존성이 필요한 시험을 기존 MVP 시험과 구분합니다.
+실제 OpenAI 키·모델 접근·Llama·E5·memvid·LangSmith 연결은 별도 검증합니다. 로컬 L01/L02 전용 환경과 전체 시험 방법은 [구현 기록](docs/L01_L02_IMPLEMENTATION.md)에 있으며, 해당 미커밋 코드의 공개 반영 여부를 먼저 확인합니다.
 
 ## 9. 공부 자료와 검수 문서
-
-- [확정 개발안 v1](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/blob/5609bf98e053869699beefff58515af71415f4a8/docs/RAG_V1_PLAN.md) · [단계별 실행 보고](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/blob/5609bf98e053869699beefff58515af71415f4a8/docs/evidence/SUMMARY.md) · [미확인·다음 결정](https://github.com/ai-agent-orchestrator/legal-intake-fastapi-lab/blob/5609bf98e053869699beefff58515af71415f4a8/docs/evidence/OPEN_QUESTIONS.md)
 
 - [30쪽 태블릿 다크 모드 공부 PDF](docs/LEGAL_INTAKE_RAG_DESIGN_DARK_TABLET.pdf)
 - [다크 태블릿 기본안](docs/rag-basic-dark-tablet.html) · [Markdown](docs/RAG_BASIC_DESIGN.md)
@@ -179,7 +161,7 @@ uv run pytest -q tests/test_mvp.py
 - [Claude 검수 요청서](docs/claude-rag-review-dark-tablet.html) · [Markdown](docs/CLAUDE_RAG_DESIGN_REVIEW.md)
 - [전체 보안 이전 목표](docs/SECURITY_MIGRATION_PLAN.md) · [마케팅 게시판 계약](docs/LEGAL_MARKETING_BOARD.md)
 
-HTML은 내려받아 브라우저에서 엽니다. GitHub에서 바로 읽으려면 Markdown이나 PDF를 이용합니다. PDF·HTML은 기본 개념 학습 자료입니다. 이후 검수·실측으로 달라진 실행 범위와 수치는 확정 v1 및 단계별 증거를 우선합니다. Claude 검수 의견은 반영했으며, 설계 검수와 실제 연동·시험 완료는 구분합니다.
+HTML은 내려받아 브라우저에서 엽니다. GitHub에서 바로 읽으려면 Markdown이나 PDF를 이용합니다. Claude 검수 의견과 사용자 최종 지시를 반영한 [확정 RAG v1](docs/RAG_V1_PLAN.md)이 종전 초안보다 우선합니다. 이번 구현은 합성 자료의 S0~B02b이며 실제 접수 연결과 LangChain·LangGraph·LangSmith 설치는 B03 이후입니다. 계획 검수와 코드 시험 통과는 구분합니다.
 
 ## 10. 저장소 발전 순서
 

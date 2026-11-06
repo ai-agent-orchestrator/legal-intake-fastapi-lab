@@ -24,8 +24,8 @@ def get_intake_service(repository: RepositoryDep) -> IntakeService:
     return IntakeService(repository)
 
 
-def get_guidance_service(repository: RepositoryDep, llm: LlmDep) -> GuidanceService:
-    return GuidanceService(repository, llm)
+def get_guidance_service(request: Request, repository: RepositoryDep, llm: LlmDep) -> GuidanceService:
+    return GuidanceService(repository, llm, request.app.state.session_guard)
 
 
 IntakeServiceDep = Annotated[IntakeService, Depends(get_intake_service)]

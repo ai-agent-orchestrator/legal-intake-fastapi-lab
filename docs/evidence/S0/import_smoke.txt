@@ -1,0 +1,3 @@
+torch 2.15.0+cpu 2.108177500020247
+sentence-transformers 6.2.0 7.381584600021597
+memvid/numpy PASS 2.5.4 7.40654659998836

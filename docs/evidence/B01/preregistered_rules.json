@@ -1,0 +1,19 @@
+{
+  "fixedBeforeRetrieval": true,
+  "modes": ["lex", "vector"],
+  "noHybridRrfOrWeightedScore": true,
+  "documentScore": "maximum chunk score; stable documentId tie break",
+  "hitAt3": "documentId deduplicated top3 intersects expected IDs; positive questions only",
+  "vectorRelevant": "top1 >= tau_abs AND top1-top2 >= tau_gap",
+  "lexRelevant": "nonempty AND top1 >= tau_lex",
+  "thresholdCandidates": "observed compare20 scores/gaps plus next representable greater values and reject-all boundary; no heldout values",
+  "objective": ["zero false evidence on compare20 negatives", "minimize false no-evidence on compare20 positives", "on ties choose larger tau_abs then larger tau_gap (lex larger tau_lex)"],
+  "heldout": "apply frozen thresholds once; never retune; create exclusive evaluation marker before reading heldout scores",
+  "randomBaseline": {"probability": 0.3, "assumptions": "10 docs, exactly one relevant doc, uniformly sampled 3 distinct docs"},
+  "confusablePairs": [["G01", "G02"], ["G03", "G04"], ["G07", "G08"]],
+  "chunking": {"maxTotalTokens": 300, "targetOverlapTokens": 40, "boundary": "prefer paragraphs, preserve title on each chunk"},
+  "futureRetrievedPolicy": "check_retrieved_material(chunk), profile retrieved; exclude and audit BLOCK chunks only; no record_risk_event; all excluded -> EMPTY; connection B03+",
+  "e5Execution": {"device": "cpu", "maxBatchSize": 2, "retryBatchSize": 1, "encodeWallTimeoutSeconds": 180, "torchThreads": 4, "processTerminationOnTimeout": true},
+  "legalAdvice": false,
+  "operationalData": false
+}

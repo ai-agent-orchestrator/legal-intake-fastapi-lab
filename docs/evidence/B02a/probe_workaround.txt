@@ -1,0 +1,26 @@
+{
+  "workaroundGatePassed": true,
+  "cases": [
+    {
+      "count": 60,
+      "batch": 60,
+      "totalHits": 6,
+      "selfTop1": 6,
+      "executionError": null
+    },
+    {
+      "count": 60,
+      "batch": 8,
+      "totalHits": 60,
+      "selfTop1": 60,
+      "executionError": null
+    },
+    {
+      "count": 120,
+      "batch": 8,
+      "totalHits": 120,
+      "selfTop1": 120,
+      "executionError": null
+    }
+  ]
+}

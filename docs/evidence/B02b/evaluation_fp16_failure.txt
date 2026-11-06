@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\myLectureWs\legal-intake-fastapi-lab\scripts\evaluate_retrieval.py", line 136, in <module>
+    main()
+  File "C:\myLectureWs\legal-intake-fastapi-lab\scripts\evaluate_retrieval.py", line 81, in main
+    document_vectors, document_report = encode("documents",work)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\myLectureWs\legal-intake-fastapi-lab\scripts\evaluate_retrieval.py", line 46, in encode
+    raise RuntimeError("Offline E5 worker failed; see encode evidence")
+RuntimeError: Offline E5 worker failed; see encode evidence

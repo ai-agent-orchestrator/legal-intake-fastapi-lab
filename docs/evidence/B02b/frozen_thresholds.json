@@ -1,0 +1,37 @@
+{
+  "calibratedOn": "compare20 ONLY",
+  "thresholds": {
+    "lex": {
+      "tau_abs": 7.832847595214844,
+      "tau_gap": 0.0
+    },
+    "vector": {
+      "tau_abs": 0.7867621183395386,
+      "tau_gap": 0.020680606365203857
+    }
+  },
+  "trainingCounts": {
+    "lex": {
+      "tau_abs": 7.832847595214844,
+      "tau_gap": 0.0,
+      "falseEvidenceCompare": 0,
+      "falseNoEvidenceCompare": 0
+    },
+    "vector": {
+      "tau_abs": 0.7867621183395386,
+      "tau_gap": 0.020680606365203857,
+      "falseEvidenceCompare": 0,
+      "falseNoEvidenceCompare": 0
+    }
+  },
+  "evaluationSha256": "7b37c81c77a79b59ead8f5afe5ce868c89791f816c901d095b8cea979dcf9643",
+  "indexVersion": "e5-v1",
+  "model": {
+    "embeddingModel": "intfloat/multilingual-e5-large-instruct",
+    "pinnedRevision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+    "dimension": 1024,
+    "maxInputTokens": 512,
+    "queryInstruction": "Given a legal intake summary, retrieve relevant synthetic legal preparation guides.",
+    "source": "https://huggingface.co/intfloat/multilingual-e5-large-instruct/tree/274baa43b0e13e37fafa6428dbc7938e62e5c439"
+  }
+}

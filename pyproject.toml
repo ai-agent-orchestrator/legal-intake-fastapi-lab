@@ -14,3 +14,4 @@ entrypoint = "app.main:app"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+markers = ["nemo: real NeMo rail tests; run with the locked security-runtime environment"]

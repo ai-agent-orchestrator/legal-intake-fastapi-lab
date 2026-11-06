@@ -1,0 +1,16 @@
+Captured 2026-11-06, Windows CIM + nvidia-smi (read-only)
+CPU: Intel Core i5-14400F, 10 physical cores / 16 logical processors
+RAM: 16970178560 bytes (15.80 GiB)
+GPU: NVIDIA GeForce RTX 5060
+VRAM: nvidia-smi 8151 MiB, driver 610.88
+Note: Win32_VideoController.AdapterRAM reported 4293918720, truncated/inaccurate;
+       use nvidia-smi for actual dedicated memory.
+C: free 369845022720 bytes at capture (344.44 GiB)
+Commands:
+Get-CimInstance Win32_Processor | Format-List Name,NumberOfCores,NumberOfLogicalProcessors
+Get-CimInstance Win32_ComputerSystem | Format-List TotalPhysicalMemory
+Get-CimInstance Win32_VideoController | Format-List Name,AdapterRAM
+nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
+Get-PSDrive C | Format-List Free,Used
+No Llama selected or installed. User will choose after this report.
+E5 initial target: CPU, to avoid CUDA/toolchain changes to existing runtime.

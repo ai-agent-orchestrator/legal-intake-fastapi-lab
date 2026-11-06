@@ -1,0 +1,31 @@
+{
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "packages": {
+    "memvid-sdk": "2.0.160",
+    "sentence-transformers": "6.2.0",
+    "torch": "2.15.0+cpu",
+    "numpy": "2.5.4",
+    "transformers": "5.22.1",
+    "nemoguardrails": "0.24.1"
+  },
+  "ragLockSha256": "5c400c084f04be84b095929baa262a3b2a755d78185e0724be0a23d3140b3b2f",
+  "model": {
+    "embeddingModel": "intfloat/multilingual-e5-large-instruct",
+    "pinnedRevision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+    "dimension": 1024,
+    "maxInputTokens": 512,
+    "queryInstruction": "Given a legal intake summary, retrieve relevant synthetic legal preparation guides.",
+    "source": "https://huggingface.co/intfloat/multilingual-e5-large-instruct/tree/274baa43b0e13e37fafa6428dbc7938e62e5c439"
+  },
+  "weightFileSha256": "dd6b6e4f52db0a7aff83a13d10e6c5342ef9f6ab799bad3221f4b35ef390fa85",
+  "weightFileBytes": 1119825680,
+  "modelCacheOutsideRepository": true,
+  "device": "cpu",
+  "dtype": "float32",
+  "maxBatchSize": 2,
+  "queryMeasuredBatchSize": 1,
+  "threads": 4,
+  "workerWallLimitSeconds": 180,
+  "socketGuard": "Python socket/DNS, not OS firewall",
+  "newRemoteTracing": false
+}
