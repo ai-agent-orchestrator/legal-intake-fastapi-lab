@@ -11,3 +11,7 @@
 *.pdf binary
 .gitattributes text eol=lf
 .gitignore text eol=lf
+# Preserve the exact Windows snapshot bytes already bound by evidence SHA256.
+# Otherwise Git LF normalization breaks verification after clone on any OS.
+fixtures/rag/evaluation.json -text -eol
+docs/evidence/B02b/frozen_thresholds.json -text -eol
