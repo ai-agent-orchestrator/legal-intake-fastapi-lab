@@ -1,5 +1,7 @@
 # Legal Intake RAG v1 — 확정 실행 계획
 
+> **2026-11-06 추가 승인:** 아래 최초 B02a 실패 정지는 이력으로 보존한다. 사용자가 전달한 Claude 판정에 따라 **우회 조건부 통과 후 B02b 진행**을 승인했다. 적재 8개 이하+각 `put_many`의 `opts={"enable_embedding": False}`, seal/read_only 재오픈 후 전체 total_hits·모든 자기 벡터 top1 검증, 실패 시 active.json 불변을 필수 계약으로 추가한다. 구조화 metadata 대신 `title=chunkId`와 해시로 연결된 자체 manifest를 사용한다. 60개 대량 1회(실패 기대)와 8개 묶음 60/120개(통과 기대)를 증거로 남긴다. B02b는 실제 고정 E5로 lex OR 대 vector, Hit@1·Hit@3·혼동표·유형별 결과·지연을 평가한다. 비교20으로 고정 후 confirm10에 1회 적용. **18:00 KST 이전 정리·커밋·feat/security-input-actions push를 승인**했다. main 변경·운영 API 연결·B03 이후 구현은 이번 재착수에 포함하지 않는다.
+
 2026-11-06 · 사용자 최종 지시 반영 · Claude 재검수 의견과 구체화 포함
 
 이 문서가 종전 RAG v0.1 문서와 충돌하면 이 문서를 따른다. 검수 의견을 반영한 계획이며, 구현이나 시험 통과를 증명하는 문서는 아니다. 완료 여부는 `docs/evidence/`의 실제 실행 증거로 구분한다.

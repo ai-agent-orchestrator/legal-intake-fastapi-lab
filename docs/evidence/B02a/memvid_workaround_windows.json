@@ -1,0 +1,1271 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "sdk": "2.0.160",
+  "vectorSource": "synthetic random unit vectors, NOT E5",
+  "batchLimit": 8,
+  "explicitPutOptions": {
+    "enable_embedding": false
+  },
+  "telemetry": "MEMVID_TELEMETRY=0",
+  "pythonSocketsBlocked": true,
+  "expectedLargeBatchFailure": true,
+  "cases": [
+    {
+      "count": 60,
+      "batch": 60,
+      "totalHits": 6,
+      "returnedHits": 6,
+      "selfTop1": 6,
+      "selfChecks": [
+        {
+          "chunkId": "chunk-000",
+          "top1": "chunk-057",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-001",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-002",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-003",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-004",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-005",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-006",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-007",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-008",
+          "top1": "chunk-058",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-009",
+          "top1": "chunk-057",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-010",
+          "top1": "chunk-057",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-011",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-012",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-013",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-014",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-015",
+          "top1": "chunk-058",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-016",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-017",
+          "top1": "chunk-058",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-018",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-019",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-020",
+          "top1": "chunk-058",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-021",
+          "top1": "chunk-058",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-022",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-023",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-024",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-025",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-026",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-027",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-028",
+          "top1": "chunk-054",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-029",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-030",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-031",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-032",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-033",
+          "top1": "chunk-054",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-034",
+          "top1": "chunk-054",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-035",
+          "top1": "chunk-054",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-036",
+          "top1": "chunk-057",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-037",
+          "top1": "chunk-058",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-038",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-039",
+          "top1": "chunk-057",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-040",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-041",
+          "top1": "chunk-054",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-042",
+          "top1": "chunk-057",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-043",
+          "top1": "chunk-054",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-044",
+          "top1": "chunk-059",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-045",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-046",
+          "top1": "chunk-057",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-047",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-048",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-049",
+          "top1": "chunk-057",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-050",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-051",
+          "top1": "chunk-056",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-052",
+          "top1": "chunk-054",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-053",
+          "top1": "chunk-055",
+          "pass": false
+        },
+        {
+          "chunkId": "chunk-054",
+          "top1": "chunk-054",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-055",
+          "top1": "chunk-055",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-056",
+          "top1": "chunk-056",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-057",
+          "top1": "chunk-057",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-058",
+          "top1": "chunk-058",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-059",
+          "top1": "chunk-059",
+          "pass": true
+        }
+      ],
+      "complete": false,
+      "executionAttempts": [
+        {
+          "attempt": 1,
+          "exitCode": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "count": 60,
+      "batch": 8,
+      "totalHits": 60,
+      "returnedHits": 60,
+      "selfTop1": 60,
+      "selfChecks": [
+        {
+          "chunkId": "chunk-000",
+          "top1": "chunk-000",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-001",
+          "top1": "chunk-001",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-002",
+          "top1": "chunk-002",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-003",
+          "top1": "chunk-003",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-004",
+          "top1": "chunk-004",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-005",
+          "top1": "chunk-005",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-006",
+          "top1": "chunk-006",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-007",
+          "top1": "chunk-007",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-008",
+          "top1": "chunk-008",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-009",
+          "top1": "chunk-009",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-010",
+          "top1": "chunk-010",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-011",
+          "top1": "chunk-011",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-012",
+          "top1": "chunk-012",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-013",
+          "top1": "chunk-013",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-014",
+          "top1": "chunk-014",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-015",
+          "top1": "chunk-015",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-016",
+          "top1": "chunk-016",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-017",
+          "top1": "chunk-017",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-018",
+          "top1": "chunk-018",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-019",
+          "top1": "chunk-019",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-020",
+          "top1": "chunk-020",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-021",
+          "top1": "chunk-021",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-022",
+          "top1": "chunk-022",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-023",
+          "top1": "chunk-023",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-024",
+          "top1": "chunk-024",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-025",
+          "top1": "chunk-025",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-026",
+          "top1": "chunk-026",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-027",
+          "top1": "chunk-027",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-028",
+          "top1": "chunk-028",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-029",
+          "top1": "chunk-029",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-030",
+          "top1": "chunk-030",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-031",
+          "top1": "chunk-031",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-032",
+          "top1": "chunk-032",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-033",
+          "top1": "chunk-033",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-034",
+          "top1": "chunk-034",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-035",
+          "top1": "chunk-035",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-036",
+          "top1": "chunk-036",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-037",
+          "top1": "chunk-037",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-038",
+          "top1": "chunk-038",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-039",
+          "top1": "chunk-039",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-040",
+          "top1": "chunk-040",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-041",
+          "top1": "chunk-041",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-042",
+          "top1": "chunk-042",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-043",
+          "top1": "chunk-043",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-044",
+          "top1": "chunk-044",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-045",
+          "top1": "chunk-045",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-046",
+          "top1": "chunk-046",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-047",
+          "top1": "chunk-047",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-048",
+          "top1": "chunk-048",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-049",
+          "top1": "chunk-049",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-050",
+          "top1": "chunk-050",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-051",
+          "top1": "chunk-051",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-052",
+          "top1": "chunk-052",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-053",
+          "top1": "chunk-053",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-054",
+          "top1": "chunk-054",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-055",
+          "top1": "chunk-055",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-056",
+          "top1": "chunk-056",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-057",
+          "top1": "chunk-057",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-058",
+          "top1": "chunk-058",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-059",
+          "top1": "chunk-059",
+          "pass": true
+        }
+      ],
+      "complete": true,
+      "executionAttempts": [
+        {
+          "attempt": 1,
+          "exitCode": 0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "count": 120,
+      "batch": 8,
+      "totalHits": 120,
+      "returnedHits": 120,
+      "selfTop1": 120,
+      "selfChecks": [
+        {
+          "chunkId": "chunk-000",
+          "top1": "chunk-000",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-001",
+          "top1": "chunk-001",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-002",
+          "top1": "chunk-002",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-003",
+          "top1": "chunk-003",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-004",
+          "top1": "chunk-004",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-005",
+          "top1": "chunk-005",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-006",
+          "top1": "chunk-006",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-007",
+          "top1": "chunk-007",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-008",
+          "top1": "chunk-008",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-009",
+          "top1": "chunk-009",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-010",
+          "top1": "chunk-010",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-011",
+          "top1": "chunk-011",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-012",
+          "top1": "chunk-012",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-013",
+          "top1": "chunk-013",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-014",
+          "top1": "chunk-014",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-015",
+          "top1": "chunk-015",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-016",
+          "top1": "chunk-016",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-017",
+          "top1": "chunk-017",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-018",
+          "top1": "chunk-018",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-019",
+          "top1": "chunk-019",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-020",
+          "top1": "chunk-020",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-021",
+          "top1": "chunk-021",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-022",
+          "top1": "chunk-022",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-023",
+          "top1": "chunk-023",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-024",
+          "top1": "chunk-024",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-025",
+          "top1": "chunk-025",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-026",
+          "top1": "chunk-026",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-027",
+          "top1": "chunk-027",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-028",
+          "top1": "chunk-028",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-029",
+          "top1": "chunk-029",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-030",
+          "top1": "chunk-030",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-031",
+          "top1": "chunk-031",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-032",
+          "top1": "chunk-032",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-033",
+          "top1": "chunk-033",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-034",
+          "top1": "chunk-034",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-035",
+          "top1": "chunk-035",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-036",
+          "top1": "chunk-036",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-037",
+          "top1": "chunk-037",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-038",
+          "top1": "chunk-038",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-039",
+          "top1": "chunk-039",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-040",
+          "top1": "chunk-040",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-041",
+          "top1": "chunk-041",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-042",
+          "top1": "chunk-042",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-043",
+          "top1": "chunk-043",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-044",
+          "top1": "chunk-044",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-045",
+          "top1": "chunk-045",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-046",
+          "top1": "chunk-046",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-047",
+          "top1": "chunk-047",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-048",
+          "top1": "chunk-048",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-049",
+          "top1": "chunk-049",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-050",
+          "top1": "chunk-050",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-051",
+          "top1": "chunk-051",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-052",
+          "top1": "chunk-052",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-053",
+          "top1": "chunk-053",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-054",
+          "top1": "chunk-054",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-055",
+          "top1": "chunk-055",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-056",
+          "top1": "chunk-056",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-057",
+          "top1": "chunk-057",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-058",
+          "top1": "chunk-058",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-059",
+          "top1": "chunk-059",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-060",
+          "top1": "chunk-060",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-061",
+          "top1": "chunk-061",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-062",
+          "top1": "chunk-062",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-063",
+          "top1": "chunk-063",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-064",
+          "top1": "chunk-064",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-065",
+          "top1": "chunk-065",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-066",
+          "top1": "chunk-066",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-067",
+          "top1": "chunk-067",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-068",
+          "top1": "chunk-068",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-069",
+          "top1": "chunk-069",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-070",
+          "top1": "chunk-070",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-071",
+          "top1": "chunk-071",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-072",
+          "top1": "chunk-072",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-073",
+          "top1": "chunk-073",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-074",
+          "top1": "chunk-074",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-075",
+          "top1": "chunk-075",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-076",
+          "top1": "chunk-076",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-077",
+          "top1": "chunk-077",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-078",
+          "top1": "chunk-078",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-079",
+          "top1": "chunk-079",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-080",
+          "top1": "chunk-080",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-081",
+          "top1": "chunk-081",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-082",
+          "top1": "chunk-082",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-083",
+          "top1": "chunk-083",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-084",
+          "top1": "chunk-084",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-085",
+          "top1": "chunk-085",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-086",
+          "top1": "chunk-086",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-087",
+          "top1": "chunk-087",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-088",
+          "top1": "chunk-088",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-089",
+          "top1": "chunk-089",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-090",
+          "top1": "chunk-090",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-091",
+          "top1": "chunk-091",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-092",
+          "top1": "chunk-092",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-093",
+          "top1": "chunk-093",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-094",
+          "top1": "chunk-094",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-095",
+          "top1": "chunk-095",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-096",
+          "top1": "chunk-096",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-097",
+          "top1": "chunk-097",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-098",
+          "top1": "chunk-098",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-099",
+          "top1": "chunk-099",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-100",
+          "top1": "chunk-100",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-101",
+          "top1": "chunk-101",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-102",
+          "top1": "chunk-102",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-103",
+          "top1": "chunk-103",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-104",
+          "top1": "chunk-104",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-105",
+          "top1": "chunk-105",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-106",
+          "top1": "chunk-106",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-107",
+          "top1": "chunk-107",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-108",
+          "top1": "chunk-108",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-109",
+          "top1": "chunk-109",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-110",
+          "top1": "chunk-110",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-111",
+          "top1": "chunk-111",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-112",
+          "top1": "chunk-112",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-113",
+          "top1": "chunk-113",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-114",
+          "top1": "chunk-114",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-115",
+          "top1": "chunk-115",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-116",
+          "top1": "chunk-116",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-117",
+          "top1": "chunk-117",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-118",
+          "top1": "chunk-118",
+          "pass": true
+        },
+        {
+          "chunkId": "chunk-119",
+          "top1": "chunk-119",
+          "pass": true
+        }
+      ],
+      "complete": true,
+      "executionAttempts": [
+        {
+          "attempt": 1,
+          "exitCode": 1,
+          "error": "Traceback (most recent call last):\n  File \"C:\\myLectureWs\\legal-intake-fastapi-lab\\scripts\\probe_memvid_workaround.py\", line 94, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"C:\\myLectureWs\\legal-intake-fastapi-lab\\scripts\\probe_memvid_workaround.py\", line 63, in main\n    print(json.dumps(run_case(count, batch)))\n                     ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\myLectureWs\\legal-intake-fastapi-lab\\scripts\\probe_memvid_workaround.py\", line 35, in run_case\n    memory.put_many(records[start:start+batch], embeddings=vectors[start:start+batch],\n  File \"C:\\myLectureWs\\legal-intake-fastapi-lab\\rag-runtime\\.venv\\Lib\\site-packages\\memvid_sdk\\__init__.py\", line 1884, in put_many\n    frame_ids = self._core.put_many(validated_requests, embeddings, opts_dict if opts_dict else None)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmemvid_sdk.MemvidError: MV999: Tantivy error: An IO error occurred: '\uc561\uc138\uc2a4\uac00 \uac70\ubd80\ub418\uc5c8\uc2b5\ub2c8\ub2e4. (os error 5)'\n"
+        },
+        {
+          "attempt": 2,
+          "exitCode": 0,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "workaroundGatePassed": true
+}

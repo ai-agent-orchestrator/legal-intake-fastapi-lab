@@ -1,4 +1,7 @@
-"""B02a: real SDK, deterministic artificial vectors; no E5 inference or fallback."""
+"""Legacy initial B02a probe (3 vectors); superseded by probe_memvid_workaround.py.
+
+Preserved to reproduce the initial stop, not the approved activation gate.
+"""
 import gc
 import json
 import os
