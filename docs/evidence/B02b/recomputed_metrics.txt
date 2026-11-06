@@ -1,0 +1,102 @@
+{
+  "compare": {
+    "lex": {
+      "evidenceQuestions": 14,
+      "totalQuestions": 20,
+      "Hit@1": {
+        "n": 12,
+        "total": 14,
+        "fraction": "12/14"
+      },
+      "Hit@3": {
+        "n": 14,
+        "total": 14,
+        "fraction": "14/14"
+      },
+      "confusionCounts": {
+        "evidence_accepted": 14,
+        "evidence_rejected": 0,
+        "noEvidence_accepted": 0,
+        "noEvidence_rejected": 6
+      },
+      "searchLatencyMs": {
+        "mean": 1.7642249935306609,
+        "p95": 3.2424000091850758
+      }
+    },
+    "vector": {
+      "evidenceQuestions": 14,
+      "totalQuestions": 20,
+      "Hit@1": {
+        "n": 14,
+        "total": 14,
+        "fraction": "14/14"
+      },
+      "Hit@3": {
+        "n": 14,
+        "total": 14,
+        "fraction": "14/14"
+      },
+      "confusionCounts": {
+        "evidence_accepted": 14,
+        "evidence_rejected": 0,
+        "noEvidence_accepted": 0,
+        "noEvidence_rejected": 6
+      },
+      "searchLatencyMs": {
+        "mean": 0.7102549949195236,
+        "p95": 0.8297999738715589
+      }
+    }
+  },
+  "holdout": {
+    "lex": {
+      "evidenceQuestions": 6,
+      "totalQuestions": 10,
+      "Hit@1": {
+        "n": 5,
+        "total": 6,
+        "fraction": "5/6"
+      },
+      "Hit@3": {
+        "n": 5,
+        "total": 6,
+        "fraction": "5/6"
+      },
+      "confusionCounts": {
+        "evidence_accepted": 4,
+        "evidence_rejected": 2,
+        "noEvidence_accepted": 0,
+        "noEvidence_rejected": 4
+      },
+      "searchLatencyMs": {
+        "mean": 1.4496499963570386,
+        "p95": 2.229299978353083
+      }
+    },
+    "vector": {
+      "evidenceQuestions": 6,
+      "totalQuestions": 10,
+      "Hit@1": {
+        "n": 6,
+        "total": 6,
+        "fraction": "6/6"
+      },
+      "Hit@3": {
+        "n": 6,
+        "total": 6,
+        "fraction": "6/6"
+      },
+      "confusionCounts": {
+        "evidence_accepted": 5,
+        "evidence_rejected": 1,
+        "noEvidence_accepted": 0,
+        "noEvidence_rejected": 4
+      },
+      "searchLatencyMs": {
+        "mean": 0.7611400040332228,
+        "p95": 0.9355000220239162
+      }
+    }
+  }
+}

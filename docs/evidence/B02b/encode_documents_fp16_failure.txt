@@ -1,0 +1,20 @@
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:   4%|▎         | 14/391 [00:00<00:02, 131.35it/s]
+Loading weights:   8%|▊         | 30/391 [00:00<00:02, 145.15it/s]
+Loading weights:  12%|█▏        | 45/391 [00:00<00:02, 136.52it/s]
+Loading weights:  17%|█▋        | 65/391 [00:00<00:02, 158.96it/s]
+Loading weights:  21%|██▏       | 84/391 [00:00<00:01, 165.81it/s]
+Loading weights:  27%|██▋       | 106/391 [00:00<00:01, 180.61it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 540.55it/s]
+This model was loaded in torch.float16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (664 > 512). Running this sequence through the model will result in indexing errors
+Traceback (most recent call last):
+  File "C:\myLectureWs\legal-intake-fastapi-lab\scripts\encode_e5.py", line 57, in <module>
+    main()
+  File "C:\myLectureWs\legal-intake-fastapi-lab\scripts\encode_e5.py", line 37, in main
+    vectors, report = embedder.encode(texts,queries=False,batch_size=args.batch)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\myLectureWs\legal-intake-fastapi-lab\app\rag\embeddings.py", line 32, in encode
+    raise ValueError("Invalid E5 shape/finite values/normalization")
+ValueError: Invalid E5 shape/finite values/normalization

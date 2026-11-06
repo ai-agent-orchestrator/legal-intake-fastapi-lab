@@ -1,0 +1,4324 @@
+{
+  "actualE5": true,
+  "actualMemvid": true,
+  "syntheticCorpusOnly": true,
+  "model": {
+    "embeddingModel": "intfloat/multilingual-e5-large-instruct",
+    "pinnedRevision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+    "dimension": 1024,
+    "maxInputTokens": 512,
+    "queryInstruction": "Given a legal intake summary, retrieve relevant synthetic legal preparation guides.",
+    "source": "https://huggingface.co/intfloat/multilingual-e5-large-instruct/tree/274baa43b0e13e37fafa6428dbc7938e62e5c439"
+  },
+  "indexVersion": "e5-v1",
+  "thresholds": {
+    "lex": {
+      "tau_abs": 7.832847595214844,
+      "tau_gap": 0.0
+    },
+    "vector": {
+      "tau_abs": 0.7867621183395386,
+      "tau_gap": 0.020680606365203857
+    }
+  },
+  "scoreMeaning": "native memvid semantic score, NOT raw cosine or legal correctness probability",
+  "evaluationSha256": "7b37c81c77a79b59ead8f5afe5ce868c89791f816c901d095b8cea979dcf9643",
+  "confirmAppliedOnce": true,
+  "randomHit3Baseline": {
+    "n": 3,
+    "total": 10,
+    "assumptions": "10 docs, one relevant, uniform sampling without replacement"
+  },
+  "rows": [
+    {
+      "questionId": "Q01",
+      "split": "compare",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G01"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 246.56509998021647,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 15.6821870803833
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 3.504152774810791
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 15.6821870803833
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 3.504152774810791
+          }
+        ],
+        "status": "OK",
+        "searchMs": 10.441599995829165
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.8049725890159607
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7738138437271118
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7670423984527588
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.8049725890159607
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7738138437271118
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7670423984527588
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7648048400878906
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7551586627960205
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7507232427597046
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 0.7492542862892151
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 0.7474578619003296
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.7462432384490967
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7438409924507141
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.0461999918334186
+      }
+    },
+    {
+      "questionId": "Q02",
+      "split": "compare",
+      "tags": [
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [
+        "G02"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 170.93290004413575,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 10.289596557617188
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 8.130067825317383
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 6.485038757324219
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 10.289596557617188
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 8.130067825317383
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 6.485038757324219
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 3.504152774810791
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:471:cf9f53165d394cdf",
+            "score": 2.0755844116210938
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 2.0755844116210938
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 1.9768407344818115
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.5057999989949167
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 0.8202383518218994
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.7742249965667725
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7710690498352051
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 0.8202383518218994
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.7742249965667725
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7710690498352051
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7525272369384766
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7493276596069336
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7469973564147949
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7442463636398315
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7383153438568115
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7370197176933289
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7285294532775879
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.7018999895080924
+      }
+    },
+    {
+      "questionId": "Q03",
+      "split": "compare",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G03"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 172.90150001645088,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 16.41403579711914
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 16.41403579711914
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.12439994700253
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7920786738395691
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.7590836882591248
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7515951991081238
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7920786738395691
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.7590836882591248
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7515951991081238
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 0.7488147020339966
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 0.7463114261627197
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7452317476272583
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.7450230121612549
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7402926683425903
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.733773946762085
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.728283166885376
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.681100005749613
+      }
+    },
+    {
+      "questionId": "Q04",
+      "split": "compare",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G04"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 150.02419997472316,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 15.36827564239502
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 7.286752223968506
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 3.301586389541626
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 15.36827564239502
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 7.286752223968506
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 3.301586389541626
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 1.1574485301971436
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 1.1574485301971436
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 1.150679349899292
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 1.150679349899292
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.150679349899292
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.3188999728299677
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.8170034885406494
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7832764387130737
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7707344889640808
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.8170034885406494
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7832764387130737
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7707344889640808
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7653517723083496
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7620627284049988
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7585394382476807
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7554197907447815
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7546911239624023
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7465351223945618
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7427891492843628
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.6566999945789576
+      }
+    },
+    {
+      "questionId": "Q05",
+      "split": "compare",
+      "tags": [
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [
+        "G05"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 174.61679998086765,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:471:cf9f53165d394cdf",
+            "score": 8.314279556274414
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 2.386875629425049
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 2.326338768005371
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:471:cf9f53165d394cdf",
+            "score": 8.314279556274414
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 2.386875629425049
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 2.326338768005371
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 1.8352956771850586
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 1.8352956771850586
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 1.8009006977081299
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 1.8009006977081299
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.3700000126846135
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 0.8399382829666138
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7875479459762573
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7713319659233093
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 0.8399382829666138
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7875479459762573
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7713319659233093
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7699125409126282
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7663842439651489
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.766160786151886
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7652204036712646
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.764659583568573
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7559847831726074
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7529080510139465
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.6694000330753624
+      }
+    },
+    {
+      "questionId": "Q06",
+      "split": "compare",
+      "tags": [
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [
+        "G06"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 164.29970000172034,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 15.85222053527832
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 7.862131118774414
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 2.188690185546875
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 15.85222053527832
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 7.862131118774414
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 2.188690185546875
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 2.188690185546875
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 2.188690185546875
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.2434000382199883
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.8404087424278259
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7768974304199219
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.776570200920105
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.8404087424278259
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7768974304199219
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.776570200920105
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7726442813873291
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7715384364128113
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7680599689483643
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.7636017799377441
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.763385534286499
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7577510476112366
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7498294115066528
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.8297999738715589
+      }
+    },
+    {
+      "questionId": "Q07",
+      "split": "compare",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G07"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 169.0565000171773,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 20.83257293701172
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:468:5a8e4783b326997a",
+            "score": 7.039491653442383
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 4.9953436851501465
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 20.83257293701172
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:468:5a8e4783b326997a",
+            "score": 7.039491653442383
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 4.9953436851501465
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 4.9953436851501465
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 4.525609016418457
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 3.6116943359375
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 3.504152774810791
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:467:bc37283bfd1c7d1f",
+            "score": 2.0755844116210938
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.9768407344818115
+          }
+        ],
+        "status": "OK",
+        "searchMs": 3.2424000091850758
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.8303350806236267
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7736180424690247
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7713871002197266
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.8303350806236267
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7736180424690247
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7713871002197266
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7702074646949768
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 0.7689317464828491
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7689300775527954
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7647947669029236
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7610905170440674
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7548312544822693
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7488943934440613
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.7283999584615231
+      }
+    },
+    {
+      "questionId": "Q08",
+      "split": "compare",
+      "tags": [
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [
+        "G08"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 159.43719999631867,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 20.95587730407715
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 7.851232051849365
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:468:5a8e4783b326997a",
+            "score": 6.335780143737793
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 20.95587730407715
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 7.851232051849365
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:468:5a8e4783b326997a",
+            "score": 6.335780143737793
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 4.1097211837768555
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 3.6116943359375
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:471:cf9f53165d394cdf",
+            "score": 1.3718730211257935
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.3377333879470825
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 1.3377333879470825
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.366299984510988
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 0.8494607210159302
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.7709731459617615
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7639830112457275
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 0.8494607210159302
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.7709731459617615
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7639830112457275
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.762103796005249
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.761329174041748
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7566190958023071
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:197:522e1e0370e650fa",
+            "score": 0.7550622820854187
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7536723017692566
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7530182600021362
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.7456505298614502
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.7330999942496419
+      }
+    },
+    {
+      "questionId": "Q09",
+      "split": "compare",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G09"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 158.8449000264518,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 7.832847595214844
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 7.832847595214844
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.996899965684861
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.824674129486084
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7663683891296387
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7603781223297119
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.824674129486084
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7663683891296387
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7603781223297119
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7586860060691833
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7560210227966309
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7537177801132202
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7481423020362854
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.7423611879348755
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7408807277679443
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.737269401550293
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.6700000376440585
+      }
+    },
+    {
+      "questionId": "Q10",
+      "split": "compare",
+      "tags": [
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [
+        "G10"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 178.29599999822676,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 11.099946975708008
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 7.170631408691406
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.9515800476074219
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 11.099946975708008
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 7.170631408691406
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.9515800476074219
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 1.9515800476074219
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 1.150679349899292
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:467:bc37283bfd1c7d1f",
+            "score": 1.1328539848327637
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.3854000135324895
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 0.8086341619491577
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7879535555839539
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.781058669090271
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 0.8086341619491577
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7879535555839539
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.781058669090271
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.777965247631073
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:197:522e1e0370e650fa",
+            "score": 0.7779508233070374
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7694694995880127
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7637166976928711
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7608718872070312
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7607622742652893
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.7574902772903442
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.6560999900102615
+      }
+    },
+    {
+      "questionId": "Q11",
+      "split": "compare",
+      "tags": [
+        "합성 PII",
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [
+        "G01"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 204.48810001835227,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 8.122458457946777
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 4.398785591125488
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 4.160115718841553
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 8.122458457946777
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 4.398785591125488
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 4.160115718841553
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 4.134920597076416
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.738321304321289
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.205699983984232
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.8036731481552124
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 0.7809319496154785
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7711156606674194
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.8036731481552124
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 0.7809319496154785
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7711156606674194
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7693653106689453
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7639484405517578
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.755415141582489
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7552985548973083
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7540587782859802
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7525829076766968
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7470424175262451
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.6606999668292701
+      }
+    },
+    {
+      "questionId": "Q12",
+      "split": "compare",
+      "tags": [
+        "합성 PII",
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G02"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 178.17040003137663,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 16.25210189819336
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 5.6288557052612305
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 5.52565860748291
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 16.25210189819336
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 5.6288557052612305
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 5.52565860748291
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 3.125196933746338
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 2.345025062561035
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:471:cf9f53165d394cdf",
+            "score": 2.302582263946533
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.6947999829426408
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 0.7867621183395386
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7657215595245361
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.7622134685516357
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 0.7867621183395386
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7657215595245361
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.7622134685516357
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7620036602020264
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7584302425384521
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.7559326887130737
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7518076300621033
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7514481544494629
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7511147260665894
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.743252158164978
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.6741000106558204
+      }
+    },
+    {
+      "questionId": "Q13",
+      "split": "compare",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G05"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 166.1986000253819,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 10.206384658813477
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 10.206384658813477
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.464200031477958
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 0.7988867163658142
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7697349786758423
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.7541534900665283
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 0.7988867163658142
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7697349786758423
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.7541534900665283
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7526595592498779
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7526342868804932
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7521142959594727
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7466312646865845
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7447059154510498
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7376372814178467
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7357088327407837
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.8052999619394541
+      }
+    },
+    {
+      "questionId": "Q14",
+      "split": "compare",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G09"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 210.91880003223196,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 14.822443008422852
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 2.974510669708252
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 2.8932061195373535
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 14.822443008422852
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 2.974510669708252
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 2.8932061195373535
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.6102995872497559
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 1.6102995872497559
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 1.6102995872497559
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 1.6102995872497559
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.4255999703891575
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7887614369392395
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.748870313167572
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7445923089981079
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7887614369392395
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.748870313167572
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7445923089981079
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7387481927871704
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7313976883888245
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7313770055770874
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7235870361328125
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.722707986831665
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7226449251174927
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7219796180725098
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.6954999989829957
+      }
+    },
+    {
+      "questionId": "Q15",
+      "split": "compare",
+      "tags": [
+        "무근거"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 172.74830001406372,
+      "lex": {
+        "top3": [],
+        "allDocumentScores": [],
+        "status": "EMPTY",
+        "searchMs": 0.7732999511063099
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7298417687416077
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7256256937980652
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7203544974327087
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7298417687416077
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7256256937980652
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7203544974327087
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.718483567237854
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7163063287734985
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.7146846055984497
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7144256830215454
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7133569717407227
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7123477458953857
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7117347121238708
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6729000015184283
+      }
+    },
+    {
+      "questionId": "Q16",
+      "split": "compare",
+      "tags": [
+        "무근거"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 163.57829998014495,
+      "lex": {
+        "top3": [],
+        "allDocumentScores": [],
+        "status": "EMPTY",
+        "searchMs": 0.7565999985672534
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7182828783988953
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7160799503326416
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7125847935676575
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7182828783988953
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7160799503326416
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7125847935676575
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7125391960144043
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 0.711356520652771
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.710982620716095
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7099020481109619
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.706773579120636
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7051376104354858
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7041707038879395
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6679999642074108
+      }
+    },
+    {
+      "questionId": "Q17",
+      "split": "compare",
+      "tags": [
+        "무근거",
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 180.01900002127513,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 4.270818710327148
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 4.270818710327148
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.9865000029094517
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7393302917480469
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.736760675907135
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7323886156082153
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7393302917480469
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.736760675907135
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7323886156082153
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7319148778915405
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7271321415901184
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7246572971343994
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7235811948776245
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7221137285232544
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7218261361122131
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7215603590011597
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6626999820582569
+      }
+    },
+    {
+      "questionId": "Q18",
+      "split": "compare",
+      "tags": [
+        "무근거"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 184.2670000041835,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 4.177031517028809
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 1.1574485301971436
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.150679349899292
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 4.177031517028809
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 1.1574485301971436
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.150679349899292
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 1.150679349899292
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 1.150679349899292
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 1.150679349899292
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.150679349899292
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 1.211299968417734
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7298025488853455
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7281574010848999
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7271391153335571
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7298025488853455
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7281574010848999
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7271391153335571
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7232837677001953
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7203782796859741
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7201030254364014
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7191939353942871
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7142825126647949
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7138726711273193
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7102360725402832
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6525000208057463
+      }
+    },
+    {
+      "questionId": "Q19",
+      "split": "compare",
+      "tags": [
+        "무근거",
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 166.3750999723561,
+      "lex": {
+        "top3": [],
+        "allDocumentScores": [],
+        "status": "EMPTY",
+        "searchMs": 0.744100019801408
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7245509624481201
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7231686115264893
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.721566915512085
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7245509624481201
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7231686115264893
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.721566915512085
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7209362983703613
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7204880714416504
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7196009159088135
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.7146507501602173
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7139571905136108
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7055959701538086
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7031278014183044
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6683000246994197
+      }
+    },
+    {
+      "questionId": "Q20",
+      "split": "compare",
+      "tags": [
+        "무근거",
+        "합성 PII"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 180.54319999646395,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.630084753036499
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 1.5723323822021484
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 1.563888430595398
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.630084753036499
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 1.5723323822021484
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 1.563888430595398
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 1.563888430595398
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 1.410341501235962
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 1.410341501235962
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 1.3934447765350342
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 1.0273000225424767
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.739405632019043
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7230976223945618
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.720863938331604
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.739405632019043
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7230976223945618
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.720863938331604
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7189518213272095
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7166420221328735
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7147291898727417
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7143121361732483
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7127801179885864
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7106183171272278
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7085456848144531
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6723999977111816
+      }
+    },
+    {
+      "questionId": "Q21",
+      "split": "holdout",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G01"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 280.0478999852203,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 3.2432785034179688
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 3.2432785034179688
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 1.2481000158004463
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.791313648223877
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7676368355751038
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7670570611953735
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 0.791313648223877
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7676368355751038
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7670570611953735
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7657654881477356
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7597464323043823
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7516307830810547
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7509069442749023
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 0.747796893119812
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7467473745346069
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7461639642715454
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.9355000220239162
+      }
+    },
+    {
+      "questionId": "Q22",
+      "split": "holdout",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G04"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 202.16079999227077,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 16.02800178527832
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 11.021352767944336
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 6.935009002685547
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 16.02800178527832
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 11.021352767944336
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:0:783bf1eda8e5746f",
+            "score": 6.935009002685547
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:467:bc37283bfd1c7d1f",
+            "score": 3.0938844680786133
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.2006783485412598
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 1.2006783485412598
+          }
+        ],
+        "status": "OK",
+        "searchMs": 2.229299978353083
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.8036727905273438
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7900794744491577
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7744981646537781
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.8036727905273438
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7900794744491577
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7744981646537781
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7598989605903625
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7572911381721497
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7556204795837402
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7548542618751526
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7526311278343201
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7388156652450562
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7376738786697388
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.908799993339926
+      }
+    },
+    {
+      "questionId": "Q23",
+      "split": "holdout",
+      "tags": [
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G07"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 191.6137000080198,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 4.83278751373291
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 4.20058536529541
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 3.6941068172454834
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 4.83278751373291
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 4.20058536529541
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 3.6941068172454834
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 3.1178817749023438
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 2.8932061195373535
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 1.8972663879394531
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 1.8352956771850586
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 1.814893364906311
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 1.8976000137627125
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.8097904920578003
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7567472457885742
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 0.7523003220558167
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.8097904920578003
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7567472457885742
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 0.7523003220558167
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7520942687988281
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7483800649642944
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7465648651123047
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.746448814868927
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7435010671615601
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7407881021499634
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7296618819236755
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.8077999809756875
+      }
+    },
+    {
+      "questionId": "Q24",
+      "split": "holdout",
+      "tags": [
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [
+        "G08"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 172.5999999907799,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 17.867158889770508
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 17.867158889770508
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 8.86994743347168
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 17.867158889770508
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 17.867158889770508
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 8.86994743347168
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 1.9128341674804688
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 1.9128341674804688
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 1.6981532573699951
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.6981532573699951
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.678000029642135
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 0.8361630439758301
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.7538079023361206
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7499955892562866
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:0:425f5a69ca805bc1",
+            "score": 0.8361630439758301
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 0.7538079023361206
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7499955892562866
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 0.7495665550231934
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7453235387802124
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7406026124954224
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7403290867805481
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7395251989364624
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:197:522e1e0370e650fa",
+            "score": 0.7362447381019592
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7299432158470154
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.7159999804571271
+      }
+    },
+    {
+      "questionId": "Q25",
+      "split": "holdout",
+      "tags": [
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [
+        "G10"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 185.38439995609224,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 9.997186660766602
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 4.588972568511963
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 4.235158920288086
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 9.997186660766602
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 4.588972568511963
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 4.235158920288086
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 4.005678176879883
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 1.731006145477295
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.4905999996699393
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 0.80256587266922
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7753221988677979
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.767755389213562
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:0:dcd985558c1bc98e",
+            "score": 0.80256587266922
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 0.7753221988677979
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.767755389213562
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7657647132873535
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7647562026977539
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7554023861885071
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7521443367004395
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7512802481651306
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7488742470741272
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7447452545166016
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.812700018286705
+      }
+    },
+    {
+      "questionId": "Q26",
+      "split": "holdout",
+      "tags": [
+        "합성 PII",
+        "의역"
+      ],
+      "expectedDocumentIds": [
+        "G03"
+      ],
+      "hasEvidence": true,
+      "queryEmbeddingMs": 187.25620000623167,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 14.271429061889648
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 4.109384536743164
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 4.022035598754883
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 14.271429061889648
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 4.109384536743164
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 4.022035598754883
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 2.3687262535095215
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 2.3687262535095215
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:471:cf9f53165d394cdf",
+            "score": 2.155599594116211
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 1.9409186840057373
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.9409186840057373
+          }
+        ],
+        "status": "OK",
+        "searchMs": 1.6876999870873988
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7975538372993469
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7654145359992981
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.7615302801132202
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 0.7975538372993469
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7654145359992981
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:0:f04e3dec99214ecd",
+            "score": 0.7615302801132202
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 0.7568041086196899
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.752389669418335
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7499700784683228
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7476475238800049
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7476276159286499
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7436219453811646
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.736615002155304
+          }
+        ],
+        "status": "OK",
+        "searchMs": 0.692599976900965
+      }
+    },
+    {
+      "questionId": "Q27",
+      "split": "holdout",
+      "tags": [
+        "무근거"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 231.89880000427365,
+      "lex": {
+        "top3": [],
+        "allDocumentScores": [],
+        "status": "EMPTY",
+        "searchMs": 0.8042999543249607
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.73798668384552
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7351399064064026
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7315182685852051
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.73798668384552
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7351399064064026
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7315182685852051
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7260727882385254
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 0.7246341705322266
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7227776050567627
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7208613753318787
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7195403575897217
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7186604738235474
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7177021503448486
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6835000240243971
+      }
+    },
+    {
+      "questionId": "Q28",
+      "split": "holdout",
+      "tags": [
+        "무근거",
+        "법률 용어"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 164.93000002810732,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 4.068795204162598
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 3.6690049171447754
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 3.6690049171447754
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:0:c33db1941b62a599",
+            "score": 4.068795204162598
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 3.6690049171447754
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 3.6690049171447754
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:243:ae2c3d87593bfa91",
+            "score": 3.6116943359375
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 2.0475120544433594
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:200:de8051557da82bf7",
+            "score": 2.0475120544433594
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:203:87cc2ca4e0334367",
+            "score": 2.0475120544433594
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 2.0475120544433594
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 2.0475120544433594
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 1.5928000211715698
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7213912606239319
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7210566401481628
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7164875268936157
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7213912606239319
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7210566401481628
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7164875268936157
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7144735455513
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 0.7144430875778198
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7133647799491882
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7111600637435913
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.710163950920105
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7096891403198242
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7078540325164795
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.7066000252962112
+      }
+    },
+    {
+      "questionId": "Q29",
+      "split": "holdout",
+      "tags": [
+        "무근거"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 204.53160000033677,
+      "lex": {
+        "top3": [],
+        "allDocumentScores": [],
+        "status": "EMPTY",
+        "searchMs": 0.7600999670103192
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7497615814208984
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7433029413223267
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7415459156036377
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:236:296f8bbde508625e",
+            "score": 0.7497615814208984
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.7433029413223267
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7415459156036377
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7415449023246765
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7392247915267944
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:457:c9e4cf86fda5be07",
+            "score": 0.7385908961296082
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 0.736595630645752
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:429:5fd6622afd3d7420",
+            "score": 0.7346251010894775
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7275078892707825
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7236186265945435
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6821000133641064
+      }
+    },
+    {
+      "questionId": "Q30",
+      "split": "holdout",
+      "tags": [
+        "무근거",
+        "합성 PII"
+      ],
+      "expectedDocumentIds": [],
+      "hasEvidence": false,
+      "queryEmbeddingMs": 203.12010002089664,
+      "lex": {
+        "top3": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 4.61652135848999
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.630084753036499
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 1.563888430595398
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 4.61652135848999
+          },
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 1.630084753036499
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:0:e89bb5e3cd35461a",
+            "score": 1.563888430595398
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:0:fe422e74fe7b42f0",
+            "score": 1.410341501235962
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:0:3e6613356745568f",
+            "score": 1.410341501235962
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 1.3934447765350342
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 1.1079999967478216
+      },
+      "vector": {
+        "top3": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7362084984779358
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7313816547393799
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7292056679725647
+          }
+        ],
+        "allDocumentScores": [
+          {
+            "document_id": "G06",
+            "chunk_id": "G06:synthetic-1:e5-paragraph-300-overlap40-v1:0:b57508e55d6871a7",
+            "score": 0.7362084984779358
+          },
+          {
+            "document_id": "G10",
+            "chunk_id": "G10:synthetic-1:e5-paragraph-300-overlap40-v1:232:76b582061c0248a3",
+            "score": 0.7313816547393799
+          },
+          {
+            "document_id": "G08",
+            "chunk_id": "G08:synthetic-1:e5-paragraph-300-overlap40-v1:237:7f120833a13b5e60",
+            "score": 0.7292056679725647
+          },
+          {
+            "document_id": "G05",
+            "chunk_id": "G05:synthetic-1:e5-paragraph-300-overlap40-v1:240:7b33497bfd0a99a3",
+            "score": 0.7276242971420288
+          },
+          {
+            "document_id": "G02",
+            "chunk_id": "G02:synthetic-1:e5-paragraph-300-overlap40-v1:225:c39916f45ad334fe",
+            "score": 0.7253973484039307
+          },
+          {
+            "document_id": "G07",
+            "chunk_id": "G07:synthetic-1:e5-paragraph-300-overlap40-v1:235:88fd8ef3b2d5e628",
+            "score": 0.7226275205612183
+          },
+          {
+            "document_id": "G09",
+            "chunk_id": "G09:synthetic-1:e5-paragraph-300-overlap40-v1:0:8e37109bc2b34dba",
+            "score": 0.7223743200302124
+          },
+          {
+            "document_id": "G03",
+            "chunk_id": "G03:synthetic-1:e5-paragraph-300-overlap40-v1:432:19afee152bb6901b",
+            "score": 0.721872091293335
+          },
+          {
+            "document_id": "G04",
+            "chunk_id": "G04:synthetic-1:e5-paragraph-300-overlap40-v1:435:281616e1b420612a",
+            "score": 0.7208194136619568
+          },
+          {
+            "document_id": "G01",
+            "chunk_id": "G01:synthetic-1:e5-paragraph-300-overlap40-v1:475:2dc15a7738c32d9c",
+            "score": 0.71919184923172
+          }
+        ],
+        "status": "BELOW_THRESHOLD",
+        "searchMs": 0.6658000056631863
+      }
+    }
+  ],
+  "metrics": {
+    "compare": {
+      "lex": {
+        "evidenceQuestions": 14,
+        "totalQuestions": 20,
+        "Hit@1": {
+          "n": 12,
+          "total": 14,
+          "fraction": "12/14"
+        },
+        "Hit@3": {
+          "n": 14,
+          "total": 14,
+          "fraction": "14/14"
+        },
+        "confusionCounts": {
+          "evidence_accepted": 14,
+          "evidence_rejected": 0,
+          "noEvidence_accepted": 0,
+          "noEvidence_rejected": 6
+        },
+        "searchLatencyMs": {
+          "mean": 1.7642249935306609,
+          "p95": 3.2424000091850758
+        }
+      },
+      "vector": {
+        "evidenceQuestions": 14,
+        "totalQuestions": 20,
+        "Hit@1": {
+          "n": 14,
+          "total": 14,
+          "fraction": "14/14"
+        },
+        "Hit@3": {
+          "n": 14,
+          "total": 14,
+          "fraction": "14/14"
+        },
+        "confusionCounts": {
+          "evidence_accepted": 14,
+          "evidence_rejected": 0,
+          "noEvidence_accepted": 0,
+          "noEvidence_rejected": 6
+        },
+        "searchLatencyMs": {
+          "mean": 0.7102549949195236,
+          "p95": 0.8297999738715589
+        }
+      }
+    },
+    "holdout": {
+      "lex": {
+        "evidenceQuestions": 6,
+        "totalQuestions": 10,
+        "Hit@1": {
+          "n": 5,
+          "total": 6,
+          "fraction": "5/6"
+        },
+        "Hit@3": {
+          "n": 5,
+          "total": 6,
+          "fraction": "5/6"
+        },
+        "confusionCounts": {
+          "evidence_accepted": 4,
+          "evidence_rejected": 2,
+          "noEvidence_accepted": 0,
+          "noEvidence_rejected": 4
+        },
+        "searchLatencyMs": {
+          "mean": 1.4496499963570386,
+          "p95": 2.229299978353083
+        }
+      },
+      "vector": {
+        "evidenceQuestions": 6,
+        "totalQuestions": 10,
+        "Hit@1": {
+          "n": 6,
+          "total": 6,
+          "fraction": "6/6"
+        },
+        "Hit@3": {
+          "n": 6,
+          "total": 6,
+          "fraction": "6/6"
+        },
+        "confusionCounts": {
+          "evidence_accepted": 5,
+          "evidence_rejected": 1,
+          "noEvidence_accepted": 0,
+          "noEvidence_rejected": 4
+        },
+        "searchLatencyMs": {
+          "mean": 0.7611400040332228,
+          "p95": 0.9355000220239162
+        }
+      }
+    },
+    "byTag": {
+      "의역": {
+        "compare": {
+          "lex": {
+            "evidenceQuestions": 8,
+            "totalQuestions": 8,
+            "Hit@1": {
+              "n": 8,
+              "total": 8,
+              "fraction": "8/8"
+            },
+            "Hit@3": {
+              "n": 8,
+              "total": 8,
+              "fraction": "8/8"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 8,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 0
+            },
+            "searchLatencyMs": {
+              "mean": 2.7135999844176695,
+              "p95": 10.441599995829165
+            }
+          },
+          "vector": {
+            "evidenceQuestions": 8,
+            "totalQuestions": 8,
+            "Hit@1": {
+              "n": 8,
+              "total": 8,
+              "fraction": "8/8"
+            },
+            "Hit@3": {
+              "n": 8,
+              "total": 8,
+              "fraction": "8/8"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 8,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 0
+            },
+            "searchLatencyMs": {
+              "mean": 0.7446624949807301,
+              "p95": 1.0461999918334186
+            }
+          }
+        },
+        "holdout": {
+          "lex": {
+            "evidenceQuestions": 4,
+            "totalQuestions": 4,
+            "Hit@1": {
+              "n": 3,
+              "total": 4,
+              "fraction": "3/4"
+            },
+            "Hit@3": {
+              "n": 3,
+              "total": 4,
+              "fraction": "3/4"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 2,
+              "evidence_rejected": 2,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 0
+            },
+            "searchLatencyMs": {
+              "mean": 1.7656749987509102,
+              "p95": 2.229299978353083
+            }
+          },
+          "vector": {
+            "evidenceQuestions": 4,
+            "totalQuestions": 4,
+            "Hit@1": {
+              "n": 4,
+              "total": 4,
+              "fraction": "4/4"
+            },
+            "Hit@3": {
+              "n": 4,
+              "total": 4,
+              "fraction": "4/4"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 3,
+              "evidence_rejected": 1,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 0
+            },
+            "searchLatencyMs": {
+              "mean": 0.8361749933101237,
+              "p95": 0.9355000220239162
+            }
+          }
+        }
+      },
+      "법률 용어": {
+        "compare": {
+          "lex": {
+            "evidenceQuestions": 6,
+            "totalQuestions": 8,
+            "Hit@1": {
+              "n": 4,
+              "total": 6,
+              "fraction": "4/6"
+            },
+            "Hit@3": {
+              "n": 6,
+              "total": 6,
+              "fraction": "6/6"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 6,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 2
+            },
+            "searchLatencyMs": {
+              "mean": 1.225900006829761,
+              "p95": 1.5057999989949167
+            }
+          },
+          "vector": {
+            "evidenceQuestions": 6,
+            "totalQuestions": 8,
+            "Hit@1": {
+              "n": 6,
+              "total": 6,
+              "fraction": "6/6"
+            },
+            "Hit@3": {
+              "n": 6,
+              "total": 6,
+              "fraction": "6/6"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 6,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 2
+            },
+            "searchLatencyMs": {
+              "mean": 0.697749994287733,
+              "p95": 0.8297999738715589
+            }
+          }
+        },
+        "holdout": {
+          "lex": {
+            "evidenceQuestions": 2,
+            "totalQuestions": 3,
+            "Hit@1": {
+              "n": 2,
+              "total": 2,
+              "fraction": "2/2"
+            },
+            "Hit@3": {
+              "n": 2,
+              "total": 2,
+              "fraction": "2/2"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 2,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 1
+            },
+            "searchLatencyMs": {
+              "mean": 1.5871333501612146,
+              "p95": 1.678000029642135
+            }
+          },
+          "vector": {
+            "evidenceQuestions": 2,
+            "totalQuestions": 3,
+            "Hit@1": {
+              "n": 2,
+              "total": 2,
+              "fraction": "2/2"
+            },
+            "Hit@3": {
+              "n": 2,
+              "total": 2,
+              "fraction": "2/2"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 2,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 1
+            },
+            "searchLatencyMs": {
+              "mean": 0.7451000080133477,
+              "p95": 0.812700018286705
+            }
+          }
+        }
+      },
+      "합성 PII": {
+        "compare": {
+          "lex": {
+            "evidenceQuestions": 2,
+            "totalQuestions": 3,
+            "Hit@1": {
+              "n": 2,
+              "total": 2,
+              "fraction": "2/2"
+            },
+            "Hit@3": {
+              "n": 2,
+              "total": 2,
+              "fraction": "2/2"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 2,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 1
+            },
+            "searchLatencyMs": {
+              "mean": 1.3092666631564498,
+              "p95": 1.6947999829426408
+            }
+          },
+          "vector": {
+            "evidenceQuestions": 2,
+            "totalQuestions": 3,
+            "Hit@1": {
+              "n": 2,
+              "total": 2,
+              "fraction": "2/2"
+            },
+            "Hit@3": {
+              "n": 2,
+              "total": 2,
+              "fraction": "2/2"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 2,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 1
+            },
+            "searchLatencyMs": {
+              "mean": 0.6690666583987573,
+              "p95": 0.6741000106558204
+            }
+          }
+        },
+        "holdout": {
+          "lex": {
+            "evidenceQuestions": 1,
+            "totalQuestions": 2,
+            "Hit@1": {
+              "n": 1,
+              "total": 1,
+              "fraction": "1/1"
+            },
+            "Hit@3": {
+              "n": 1,
+              "total": 1,
+              "fraction": "1/1"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 1,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 1
+            },
+            "searchLatencyMs": {
+              "mean": 1.3978499919176102,
+              "p95": 1.6876999870873988
+            }
+          },
+          "vector": {
+            "evidenceQuestions": 1,
+            "totalQuestions": 2,
+            "Hit@1": {
+              "n": 1,
+              "total": 1,
+              "fraction": "1/1"
+            },
+            "Hit@3": {
+              "n": 1,
+              "total": 1,
+              "fraction": "1/1"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 1,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 1
+            },
+            "searchLatencyMs": {
+              "mean": 0.6791999912820756,
+              "p95": 0.692599976900965
+            }
+          }
+        }
+      },
+      "무근거": {
+        "compare": {
+          "lex": {
+            "evidenceQuestions": 0,
+            "totalQuestions": 6,
+            "Hit@1": {
+              "n": 0,
+              "total": 0,
+              "fraction": "N/A (no evidence questions)"
+            },
+            "Hit@3": {
+              "n": 0,
+              "total": 0,
+              "fraction": "N/A (no evidence questions)"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 0,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 6
+            },
+            "searchLatencyMs": {
+              "mean": 0.916516660557439,
+              "p95": 1.211299968417734
+            }
+          },
+          "vector": {
+            "evidenceQuestions": 0,
+            "totalQuestions": 6,
+            "Hit@1": {
+              "n": 0,
+              "total": 0,
+              "fraction": "N/A (no evidence questions)"
+            },
+            "Hit@3": {
+              "n": 0,
+              "total": 0,
+              "fraction": "N/A (no evidence questions)"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 0,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 6
+            },
+            "searchLatencyMs": {
+              "mean": 0.6661333318334073,
+              "p95": 0.6729000015184283
+            }
+          }
+        },
+        "holdout": {
+          "lex": {
+            "evidenceQuestions": 0,
+            "totalQuestions": 4,
+            "Hit@1": {
+              "n": 0,
+              "total": 0,
+              "fraction": "N/A (no evidence questions)"
+            },
+            "Hit@3": {
+              "n": 0,
+              "total": 0,
+              "fraction": "N/A (no evidence questions)"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 0,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 4
+            },
+            "searchLatencyMs": {
+              "mean": 1.0662999848136678,
+              "p95": 1.5928000211715698
+            }
+          },
+          "vector": {
+            "evidenceQuestions": 0,
+            "totalQuestions": 4,
+            "Hit@1": {
+              "n": 0,
+              "total": 0,
+              "fraction": "N/A (no evidence questions)"
+            },
+            "Hit@3": {
+              "n": 0,
+              "total": 0,
+              "fraction": "N/A (no evidence questions)"
+            },
+            "confusionCounts": {
+              "evidence_accepted": 0,
+              "evidence_rejected": 0,
+              "noEvidence_accepted": 0,
+              "noEvidence_rejected": 4
+            },
+            "searchLatencyMs": {
+              "mean": 0.6845000170869753,
+              "p95": 0.7066000252962112
+            }
+          }
+        }
+      }
+    }
+  }
+}

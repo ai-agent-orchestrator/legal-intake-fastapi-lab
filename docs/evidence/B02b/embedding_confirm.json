@@ -1,0 +1,42 @@
+{
+  "device": "cpu",
+  "dtype": "float32",
+  "batchSize": 1,
+  "torchThreads": 4,
+  "count": 10,
+  "dimension": 1024,
+  "maxFinalTokens": 60,
+  "encodeSeconds": 2.023543499992229,
+  "meanEmbeddingMs": 202.3543499992229,
+  "queryInstructionApplied": true,
+  "normalized": true,
+  "actualE5": true,
+  "individualQueryEmbeddingMs": [
+    280.0478999852203,
+    202.16079999227077,
+    191.6137000080198,
+    172.5999999907799,
+    185.38439995609224,
+    187.25620000623167,
+    231.89880000427365,
+    164.93000002810732,
+    204.53160000033677,
+    203.12010002089664
+  ],
+  "phase": "confirm",
+  "ids": [
+    "Q21",
+    "Q22",
+    "Q23",
+    "Q24",
+    "Q25",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q29",
+    "Q30"
+  ],
+  "loadSeconds": 11.901546299981419,
+  "offline": true,
+  "pythonSocketsBlocked": true
+}

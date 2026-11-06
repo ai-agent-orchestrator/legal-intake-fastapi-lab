@@ -1,0 +1,513 @@
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (664 > 512). Running this sequence through the model will result in indexing errors
+{
+  "compare": {
+    "lex": {
+      "evidenceQuestions": 14,
+      "totalQuestions": 20,
+      "Hit@1": {
+        "n": 12,
+        "total": 14,
+        "fraction": "12/14"
+      },
+      "Hit@3": {
+        "n": 14,
+        "total": 14,
+        "fraction": "14/14"
+      },
+      "confusionCounts": {
+        "evidence_accepted": 14,
+        "evidence_rejected": 0,
+        "noEvidence_accepted": 0,
+        "noEvidence_rejected": 6
+      },
+      "searchLatencyMs": {
+        "mean": 1.7642249935306609,
+        "p95": 3.2424000091850758
+      }
+    },
+    "vector": {
+      "evidenceQuestions": 14,
+      "totalQuestions": 20,
+      "Hit@1": {
+        "n": 14,
+        "total": 14,
+        "fraction": "14/14"
+      },
+      "Hit@3": {
+        "n": 14,
+        "total": 14,
+        "fraction": "14/14"
+      },
+      "confusionCounts": {
+        "evidence_accepted": 14,
+        "evidence_rejected": 0,
+        "noEvidence_accepted": 0,
+        "noEvidence_rejected": 6
+      },
+      "searchLatencyMs": {
+        "mean": 0.7102549949195236,
+        "p95": 0.8297999738715589
+      }
+    }
+  },
+  "holdout": {
+    "lex": {
+      "evidenceQuestions": 6,
+      "totalQuestions": 10,
+      "Hit@1": {
+        "n": 5,
+        "total": 6,
+        "fraction": "5/6"
+      },
+      "Hit@3": {
+        "n": 5,
+        "total": 6,
+        "fraction": "5/6"
+      },
+      "confusionCounts": {
+        "evidence_accepted": 4,
+        "evidence_rejected": 2,
+        "noEvidence_accepted": 0,
+        "noEvidence_rejected": 4
+      },
+      "searchLatencyMs": {
+        "mean": 1.4496499963570386,
+        "p95": 2.229299978353083
+      }
+    },
+    "vector": {
+      "evidenceQuestions": 6,
+      "totalQuestions": 10,
+      "Hit@1": {
+        "n": 6,
+        "total": 6,
+        "fraction": "6/6"
+      },
+      "Hit@3": {
+        "n": 6,
+        "total": 6,
+        "fraction": "6/6"
+      },
+      "confusionCounts": {
+        "evidence_accepted": 5,
+        "evidence_rejected": 1,
+        "noEvidence_accepted": 0,
+        "noEvidence_rejected": 4
+      },
+      "searchLatencyMs": {
+        "mean": 0.7611400040332228,
+        "p95": 0.9355000220239162
+      }
+    }
+  },
+  "byTag": {
+    "의역": {
+      "compare": {
+        "lex": {
+          "evidenceQuestions": 8,
+          "totalQuestions": 8,
+          "Hit@1": {
+            "n": 8,
+            "total": 8,
+            "fraction": "8/8"
+          },
+          "Hit@3": {
+            "n": 8,
+            "total": 8,
+            "fraction": "8/8"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 8,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 0
+          },
+          "searchLatencyMs": {
+            "mean": 2.7135999844176695,
+            "p95": 10.441599995829165
+          }
+        },
+        "vector": {
+          "evidenceQuestions": 8,
+          "totalQuestions": 8,
+          "Hit@1": {
+            "n": 8,
+            "total": 8,
+            "fraction": "8/8"
+          },
+          "Hit@3": {
+            "n": 8,
+            "total": 8,
+            "fraction": "8/8"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 8,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 0
+          },
+          "searchLatencyMs": {
+            "mean": 0.7446624949807301,
+            "p95": 1.0461999918334186
+          }
+        }
+      },
+      "holdout": {
+        "lex": {
+          "evidenceQuestions": 4,
+          "totalQuestions": 4,
+          "Hit@1": {
+            "n": 3,
+            "total": 4,
+            "fraction": "3/4"
+          },
+          "Hit@3": {
+            "n": 3,
+            "total": 4,
+            "fraction": "3/4"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 2,
+            "evidence_rejected": 2,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 0
+          },
+          "searchLatencyMs": {
+            "mean": 1.7656749987509102,
+            "p95": 2.229299978353083
+          }
+        },
+        "vector": {
+          "evidenceQuestions": 4,
+          "totalQuestions": 4,
+          "Hit@1": {
+            "n": 4,
+            "total": 4,
+            "fraction": "4/4"
+          },
+          "Hit@3": {
+            "n": 4,
+            "total": 4,
+            "fraction": "4/4"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 3,
+            "evidence_rejected": 1,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 0
+          },
+          "searchLatencyMs": {
+            "mean": 0.8361749933101237,
+            "p95": 0.9355000220239162
+          }
+        }
+      }
+    },
+    "법률 용어": {
+      "compare": {
+        "lex": {
+          "evidenceQuestions": 6,
+          "totalQuestions": 8,
+          "Hit@1": {
+            "n": 4,
+            "total": 6,
+            "fraction": "4/6"
+          },
+          "Hit@3": {
+            "n": 6,
+            "total": 6,
+            "fraction": "6/6"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 6,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 2
+          },
+          "searchLatencyMs": {
+            "mean": 1.225900006829761,
+            "p95": 1.5057999989949167
+          }
+        },
+        "vector": {
+          "evidenceQuestions": 6,
+          "totalQuestions": 8,
+          "Hit@1": {
+            "n": 6,
+            "total": 6,
+            "fraction": "6/6"
+          },
+          "Hit@3": {
+            "n": 6,
+            "total": 6,
+            "fraction": "6/6"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 6,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 2
+          },
+          "searchLatencyMs": {
+            "mean": 0.697749994287733,
+            "p95": 0.8297999738715589
+          }
+        }
+      },
+      "holdout": {
+        "lex": {
+          "evidenceQuestions": 2,
+          "totalQuestions": 3,
+          "Hit@1": {
+            "n": 2,
+            "total": 2,
+            "fraction": "2/2"
+          },
+          "Hit@3": {
+            "n": 2,
+            "total": 2,
+            "fraction": "2/2"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 2,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 1
+          },
+          "searchLatencyMs": {
+            "mean": 1.5871333501612146,
+            "p95": 1.678000029642135
+          }
+        },
+        "vector": {
+          "evidenceQuestions": 2,
+          "totalQuestions": 3,
+          "Hit@1": {
+            "n": 2,
+            "total": 2,
+            "fraction": "2/2"
+          },
+          "Hit@3": {
+            "n": 2,
+            "total": 2,
+            "fraction": "2/2"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 2,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 1
+          },
+          "searchLatencyMs": {
+            "mean": 0.7451000080133477,
+            "p95": 0.812700018286705
+          }
+        }
+      }
+    },
+    "합성 PII": {
+      "compare": {
+        "lex": {
+          "evidenceQuestions": 2,
+          "totalQuestions": 3,
+          "Hit@1": {
+            "n": 2,
+            "total": 2,
+            "fraction": "2/2"
+          },
+          "Hit@3": {
+            "n": 2,
+            "total": 2,
+            "fraction": "2/2"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 2,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 1
+          },
+          "searchLatencyMs": {
+            "mean": 1.3092666631564498,
+            "p95": 1.6947999829426408
+          }
+        },
+        "vector": {
+          "evidenceQuestions": 2,
+          "totalQuestions": 3,
+          "Hit@1": {
+            "n": 2,
+            "total": 2,
+            "fraction": "2/2"
+          },
+          "Hit@3": {
+            "n": 2,
+            "total": 2,
+            "fraction": "2/2"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 2,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 1
+          },
+          "searchLatencyMs": {
+            "mean": 0.6690666583987573,
+            "p95": 0.6741000106558204
+          }
+        }
+      },
+      "holdout": {
+        "lex": {
+          "evidenceQuestions": 1,
+          "totalQuestions": 2,
+          "Hit@1": {
+            "n": 1,
+            "total": 1,
+            "fraction": "1/1"
+          },
+          "Hit@3": {
+            "n": 1,
+            "total": 1,
+            "fraction": "1/1"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 1,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 1
+          },
+          "searchLatencyMs": {
+            "mean": 1.3978499919176102,
+            "p95": 1.6876999870873988
+          }
+        },
+        "vector": {
+          "evidenceQuestions": 1,
+          "totalQuestions": 2,
+          "Hit@1": {
+            "n": 1,
+            "total": 1,
+            "fraction": "1/1"
+          },
+          "Hit@3": {
+            "n": 1,
+            "total": 1,
+            "fraction": "1/1"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 1,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 1
+          },
+          "searchLatencyMs": {
+            "mean": 0.6791999912820756,
+            "p95": 0.692599976900965
+          }
+        }
+      }
+    },
+    "무근거": {
+      "compare": {
+        "lex": {
+          "evidenceQuestions": 0,
+          "totalQuestions": 6,
+          "Hit@1": {
+            "n": 0,
+            "total": 0,
+            "fraction": "N/A (no evidence questions)"
+          },
+          "Hit@3": {
+            "n": 0,
+            "total": 0,
+            "fraction": "N/A (no evidence questions)"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 0,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 6
+          },
+          "searchLatencyMs": {
+            "mean": 0.916516660557439,
+            "p95": 1.211299968417734
+          }
+        },
+        "vector": {
+          "evidenceQuestions": 0,
+          "totalQuestions": 6,
+          "Hit@1": {
+            "n": 0,
+            "total": 0,
+            "fraction": "N/A (no evidence questions)"
+          },
+          "Hit@3": {
+            "n": 0,
+            "total": 0,
+            "fraction": "N/A (no evidence questions)"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 0,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 6
+          },
+          "searchLatencyMs": {
+            "mean": 0.6661333318334073,
+            "p95": 0.6729000015184283
+          }
+        }
+      },
+      "holdout": {
+        "lex": {
+          "evidenceQuestions": 0,
+          "totalQuestions": 4,
+          "Hit@1": {
+            "n": 0,
+            "total": 0,
+            "fraction": "N/A (no evidence questions)"
+          },
+          "Hit@3": {
+            "n": 0,
+            "total": 0,
+            "fraction": "N/A (no evidence questions)"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 0,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 4
+          },
+          "searchLatencyMs": {
+            "mean": 1.0662999848136678,
+            "p95": 1.5928000211715698
+          }
+        },
+        "vector": {
+          "evidenceQuestions": 0,
+          "totalQuestions": 4,
+          "Hit@1": {
+            "n": 0,
+            "total": 0,
+            "fraction": "N/A (no evidence questions)"
+          },
+          "Hit@3": {
+            "n": 0,
+            "total": 0,
+            "fraction": "N/A (no evidence questions)"
+          },
+          "confusionCounts": {
+            "evidence_accepted": 0,
+            "evidence_rejected": 0,
+            "noEvidence_accepted": 0,
+            "noEvidence_rejected": 4
+          },
+          "searchLatencyMs": {
+            "mean": 0.6845000170869753,
+            "p95": 0.7066000252962112
+          }
+        }
+      }
+    }
+  }
+}
