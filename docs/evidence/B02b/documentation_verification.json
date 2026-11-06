@@ -1,0 +1,26 @@
+{
+  "scope": "documentation only; cached scores and frozen thresholds",
+  "regenerationCommand": ".\\rag-runtime\\.venv\\Scripts\\python.exe scripts/report_retrieval.py",
+  "readmeRegenerationIdentical": true,
+  "existingTableNumbersUnchanged": true,
+  "tableSetNames": [
+    "비교20",
+    "확인10"
+  ],
+  "analysisSections": [
+    "Q22 vector",
+    "Q21 lex",
+    "Q23 lex"
+  ],
+  "protectedFileSha256BeforeAndAfter": {
+    "retrieval_eval.json": "1ca72d0c2090ff58033eb1b9db6c6d159f6630a415ef31f923bc71bee27fb6fb",
+    "frozen_thresholds.json": "4ed0d8c9a9200efd04ac4d200e58b296eca6fd367ce5b06f4bb782f20d3586ed",
+    "confirm_once.json": "f288516177430c5261e29eb985acf9bc12d5e0f70b94c4a5004e528d194db5f0"
+  },
+  "readmeSha256Utf8Lf": "0f7f8da202436760c93567a69dab5b741ef99f15247184191ecda3c058755521",
+  "modelRuns": 0,
+  "searchRuns": 0,
+  "thresholdChanges": 0,
+  "pytestCommand": ".\\rag-runtime\\.venv\\Scripts\\python.exe -m pytest -q tests/rag/test_saved_evidence.py",
+  "pytestSummary": "1 passed in 0.04s"
+}

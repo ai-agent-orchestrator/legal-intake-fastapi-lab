@@ -9,6 +9,52 @@ sys.path.insert(0,str(ROOT))
 from app.rag.evaluation import metrics
 from app.rag.schemas import Evidence
 
+SET_NAMES = {"compare":"비교20", "holdout":"확인10"}
+
+
+def rejection_analysis(report, frozen):
+    """Explain saved decisions only; never fit thresholds or execute retrieval."""
+    if frozen["thresholds"] != report["thresholds"]:
+        raise ValueError("Frozen thresholds do not match saved evaluation")
+    lines = []
+    for qid, mode in (("Q22","vector"),("Q21","lex"),("Q23","lex")):
+        row = next(r for r in report["rows"] if r["questionId"]==qid)
+        top = row[mode]["allDocumentScores"]
+        first, second = top[0], top[1] if len(top)>1 else None
+        gap = first["score"]-second["score"] if second else None
+        rule = frozen["thresholds"][mode]
+        positives = [r for r in report["rows"] if r["split"]=="compare" and r["expectedDocumentIds"]]
+        min_top = min((r[mode]["allDocumentScores"][0]["score"],r["questionId"]) for r in positives)
+        pairs = [r for r in positives if len(r[mode]["allDocumentScores"])>1]
+        min_gap = min((r[mode]["allDocumentScores"][0]["score"]-r[mode]["allDocumentScores"][1]["score"],
+                       r["questionId"]) for r in pairs)
+        absolute_ok = first["score"] >= rule["tau_abs"]
+        gap_ok = gap is not None and gap >= rule["tau_gap"]
+        reason = []
+        if not absolute_ok:
+            reason.append("절대값 조건 미달")
+        if mode=="vector" and not gap_ok:
+            reason.append("간격 조건 미달")
+        if row[mode]["status"] != "BELOW_THRESHOLD" or not reason:
+            raise ValueError("Saved rejection is inconsistent with its frozen gate")
+        lines += ["",f"### {qid} {mode} 거절 분석", "",
+            f"- 세트: {SET_NAMES[row['split']]}. 질문 유형: {', '.join(row['tags'])}. 정답 문서: {', '.join(row['expectedDocumentIds'])}.",
+            f"- 1위: {first['document_id']} / 점수 `{first['score']}`. 2위: " +
+            (f"{second['document_id']} / 점수 `{second['score']}`." if second else "없음(저장된 검색 결과가 1문서)."),
+            f"- 절대값: top1 `{first['score']}` {'>=' if absolute_ok else '<'} tau_abs `{rule['tau_abs']}` → {'통과' if absolute_ok else '미달'}."]
+        if mode=="vector":
+            lines.append(f"- 간격: gap `{gap}` {'>=' if gap_ok else '<'} tau_gap `{rule['tau_gap']}` → {'통과' if gap_ok else '미달'}.")
+        else:
+            lines.append(f"- 간격: {'`'+str(gap)+'`' if gap is not None else '계산 불가(2위 없음)'}. tau_gap 저장값 `{rule['tau_gap']}`; lex는 간격 조건을 적용하지 않음.")
+        lines += [f"- 비교20 근거 {len(positives)}문항의 최저 top1: `{min_top[0]}` ({min_top[1]}). "
+                  f"{qid} top1은 이 값보다 {'높음' if first['score']>min_top[0] else '낮음' if first['score']<min_top[0] else '같음'}.",
+                  f"- 비교20 근거의 최저 gap: `{min_gap[0]}` ({min_gap[1]}, 2문서 이상 반환된 {len(pairs)}문항 기준). " +
+                  (f"{qid} gap은 이 값보다 {'낮음' if gap<min_gap[0] else '높음' if gap>min_gap[0] else '같음'}." if gap is not None else f"{qid}는 2위가 없어 gap 비교 불가."),
+                  f"- 거절 조건: {', '.join(reason)}. " +
+                  ("정답이 1위여도 근거 판정 gate를 통과하지 못함." if first['document_id'] in row['expectedDocumentIds'] else "정답 문서를 찾지 못한 순위 실패도 동반됨."),
+                  "", "확인 결과로 재조정하지 않음. 60문항 이상에서 다시 보정할 후보."]
+    return lines
+
 
 def recompute(report):
     rows = []
@@ -29,6 +75,7 @@ def recompute(report):
 
 
 def write_report(report, target):
+    frozen = json.loads((ROOT/"docs/evidence/B02b/frozen_thresholds.json").read_text(encoding="utf-8"))
     recalculated = recompute(report)
     if recalculated != report["metrics"]:
         raise ValueError("Stored metrics do not match per-query evidence")
@@ -37,7 +84,7 @@ def write_report(report, target):
         "이 문서는 `retrieval_eval.json`의 질문별 결과에서 다시 계산했습니다. 모델이나 확인 세트 검색을 재실행하지 않습니다.", "",
         "## 문서 단위 검색 순위", "",
         "| 세트 | 방식 | Hit@1 | Hit@3 | 근거 질문 분모 |", "|---|---|---|---|---|"]
-    for split, label in [("compare","비교20"),("holdout","확인10 (단회)")]:
+    for split, label in SET_NAMES.items():
         for mode in ("lex","vector"):
             value = recalculated[split][mode]
             text.append(f"| {label} | {mode} | {value['Hit@1']['fraction']} | {value['Hit@3']['fraction']} | {value['evidenceQuestions']} |")
@@ -47,7 +94,7 @@ def write_report(report, target):
     for split in ("compare","holdout"):
         for mode in ("lex","vector"):
             c = recalculated[split][mode]["confusionCounts"]
-            text.append(f"| {split} | {mode} | {c['evidence_accepted']} | {c['evidence_rejected']} | {c['noEvidence_accepted']} | {c['noEvidence_rejected']} |")
+            text.append(f"| {SET_NAMES[split]} | {mode} | {c['evidence_accepted']} | {c['evidence_rejected']} | {c['noEvidence_accepted']} | {c['noEvidence_rejected']} |")
     text += ["", "## 유형별 결과 (태그 중복 가능)", "",
         "| 유형 | 세트 | 방식 | Hit@1 | Hit@3 | 근거 거절 | 무근거 오수용 |", "|---|---|---|---|---|---|---|"]
     for tag in ("의역","법률 용어","합성 PII","무근거"):
@@ -55,7 +102,7 @@ def write_report(report, target):
             for mode in ("lex","vector"):
                 value = recalculated["byTag"][tag][split][mode]
                 c = value["confusionCounts"]
-                text.append(f"| {tag} | {split} | {mode} | {value['Hit@1']['fraction']} | {value['Hit@3']['fraction']} | {c['evidence_rejected']} | {c['noEvidence_accepted']} |")
+                text.append(f"| {tag} | {SET_NAMES[split]} | {mode} | {value['Hit@1']['fraction']} | {value['Hit@3']['fraction']} | {c['evidence_rejected']} | {c['noEvidence_accepted']} |")
     text += ["", "## 지연", "",
         "| 세트 | 방식 | 검색 평균 ms | 검색 p95 ms | 질문 임베딩 평균 ms | 질문 임베딩 p95 ms |", "|---|---|---|---|---|---|"]
     for split in ("compare","holdout"):
@@ -66,7 +113,7 @@ def write_report(report, target):
             # the E5 evaluation overhead to the lex baseline.
             mean = f"{sum(times)/len(times):.3f}" if mode=="vector" else "N/A"
             p95 = f"{times[math.ceil(.95*len(times))-1]:.3f}" if mode=="vector" else "N/A"
-            text.append(f"| {split} | {mode} | {latency['mean']:.3f} | {latency['p95']:.3f} | {mean} | {p95} |")
+            text.append(f"| {SET_NAMES[split]} | {mode} | {latency['mean']:.3f} | {latency['p95']:.3f} | {mean} | {p95} |")
     text += ["", "검색 시간에는 모델 초기 로딩을 포함하지 않습니다. E5는 CPU 4 threads, 문서 batch2·질문 batch1, float32입니다. 문서30개 encode는 embedding_documents.json, 모델 로딩 시간은 각 embedding JSON에 별도 기록했습니다. p95는 nearest-rank입니다.", "",
         "## 실패·주의할 질문", "",
         "| ID | 세트 | 방식 | 관찰 |", "|---|---|---|---|"]
@@ -83,7 +130,8 @@ def write_report(report, target):
             if row[mode]["status"] != "OK":
                 observations.append("관련성 gate에서 근거 없음 판정")
             if observations:
-                text.append(f"| {row['questionId']} | {row['split']} | {mode} | {' / '.join(observations)} |")
+                text.append(f"| {row['questionId']} | {SET_NAMES[row['split']]} | {mode} | {' / '.join(observations)} |")
+    text += rejection_analysis(report, frozen)
     text += ["", "## 고정 조건과 한계", "",
         "- 모델: intfloat/multilingual-e5-large-instruct / revision 274baa43b0e13e37fafa6428dbc7938e62e5c439. 질문 instruction 있음, 문서에는 없음. 최종 길이를 검사하며 조용히 truncate하지 않습니다.",
         "- 비교20만으로 임계값을 고정하고 frozen_thresholds.json SHA를 confirm_once.json에 기록한 뒤 확인10을 1회 검색했습니다. 확인 결과를 본 재조정은 없습니다.",
