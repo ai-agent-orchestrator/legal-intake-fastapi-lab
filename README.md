@@ -28,7 +28,7 @@ FastAPI 기반 상담 준비 안내와 법률 마케팅 도구를 만드는 공�
 |---|---|
 | 루트 MVP | 동기 접수 등록·조회 + 비동기 안내 3개 API 구현. 기존 테스트 23개 |
 | 선별 기반 `4fcc698` | 결정 DTO·불변 문맥·용량 관리자·예산 장부·위험 저장소 |
-| L01 NeMo 래퍼 / L02 문맥·세션 위험 | 로컬 작업 폴더에 구현 중이며 아직 미커밋. 실제 NeMo 포함 최근 시험 기록은 95 passed |
+| L01 NeMo 래퍼 / L02 문맥·세션 위험 | 개발 브랜치의 별도 기준 커밋으로 보존. 실제 NeMo 포함 기존 시험 기록은 95 passed; 재실행·추가 시험은 docs/evidence에 구분 |
 | LangChain·LangGraph·LangSmith·E5·memvid RAG | 필수 개발 대상으로 설계. 아직 구현·실모델·원격 연동 검증 전 |
 | 법률 마케팅 게시판·M01/M02 | 후속 구현. 보존본의 실패한 마케팅 검사 코드를 완료본으로 사용하지 않음 |
 | 생성 모델 | 현재 OpenAI 비동기 어댑터와 fake client. Llama 어댑터는 개발 예정 |
@@ -156,7 +156,7 @@ uv run pytest -q -m "not nemo"
 - [Claude 검수 요청서](docs/claude-rag-review-dark-tablet.html) · [Markdown](docs/CLAUDE_RAG_DESIGN_REVIEW.md)
 - [전체 보안 이전 목표](docs/SECURITY_MIGRATION_PLAN.md) · [마케팅 게시판 계약](docs/LEGAL_MARKETING_BOARD.md)
 
-HTML은 내려받아 브라우저에서 엽니다. GitHub에서 바로 읽으려면 Markdown이나 PDF를 이용합니다. 현재 단계는 검수용 초안이며 Claude 검수를 이미 받았다는 뜻은 아닙니다.
+HTML은 내려받아 브라우저에서 엽니다. GitHub에서 바로 읽으려면 Markdown이나 PDF를 이용합니다. Claude 검수 의견과 사용자 최종 지시를 반영한 [확정 RAG v1](docs/RAG_V1_PLAN.md)이 종전 초안보다 우선합니다. 이번 구현은 합성 자료의 S0~B02b이며 실제 접수 연결과 LangChain·LangGraph·LangSmith 설치는 B03 이후입니다. 계획 검수와 코드 시험 통과는 구분합니다.
 
 ## 10. 저장소 발전 순서
 

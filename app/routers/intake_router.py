@@ -1,7 +1,8 @@
 import logging
 from threading import current_thread
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Header
+from typing import Annotated
 
 from app.dependencies import GuidanceServiceDep, IntakeServiceDep
 from app.schemas.intake import GuidanceResponse, IntakeCreateRequest, IntakeResponse
@@ -23,6 +24,8 @@ def find_intake(intake_id: int, service: IntakeServiceDep) -> IntakeResponse:
 
 
 @router.post("/{intake_id}/guidance", response_model=GuidanceResponse)
-async def create_guidance(intake_id: int, service: GuidanceServiceDep) -> GuidanceResponse:
+async def create_guidance(intake_id: int, service: GuidanceServiceDep,
+    session_id: Annotated[str | None, Header(alias="X-Session-ID", min_length=1, max_length=128, pattern=r"^[A-Za-z0-9_.:-]+$")] = None,
+) -> GuidanceResponse:
     logger.info("[guidance] thread=%s intakeId=%s", current_thread().name, intake_id)
-    return await service.create_guidance(intake_id)
+    return await service.create_guidance(intake_id, session_id)
