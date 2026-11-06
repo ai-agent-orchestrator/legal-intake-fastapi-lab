@@ -1,0 +1,72 @@
+[
+  {
+    "documentId": "G01",
+    "caseType": "CIVIL",
+    "title": "빌려준 돈과 차용 기록",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G01.md"
+  },
+  {
+    "documentId": "G02",
+    "caseType": "CIVIL",
+    "title": "임대차 보증금 반환 준비",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G02.md"
+  },
+  {
+    "documentId": "G03",
+    "caseType": "CIVIL",
+    "title": "물품 계약 해제와 환불 기록",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G03.md"
+  },
+  {
+    "documentId": "G04",
+    "caseType": "CRIMINAL",
+    "title": "온라인 거래 사기 의심 자료",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G04.md"
+  },
+  {
+    "documentId": "G05",
+    "caseType": "CRIMINAL",
+    "title": "모욕 명예훼손 게시글 보관",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G05.md"
+  },
+  {
+    "documentId": "G06",
+    "caseType": "CRIMINAL",
+    "title": "고소 이후 보충 설명 준비",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G06.md"
+  },
+  {
+    "documentId": "G07",
+    "caseType": "FAMILY",
+    "title": "이혼 상담의 생활 자료 정리",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G07.md"
+  },
+  {
+    "documentId": "G08",
+    "caseType": "FAMILY",
+    "title": "상속 상담의 가족 재산 목록",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G08.md"
+  },
+  {
+    "documentId": "G09",
+    "caseType": "OTHER",
+    "title": "미지급 임금 상담 준비",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G09.md"
+  },
+  {
+    "documentId": "G10",
+    "caseType": "OTHER",
+    "title": "행정 통지와 이의 상담 자료",
+    "sourceVersion": "synthetic-1",
+    "file": "fixtures/rag/guides/G10.md"
+  }
+]

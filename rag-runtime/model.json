@@ -1,0 +1,8 @@
+{
+  "embeddingModel": "intfloat/multilingual-e5-large-instruct",
+  "pinnedRevision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+  "dimension": 1024,
+  "maxInputTokens": 512,
+  "queryInstruction": "Given a legal intake summary, retrieve relevant synthetic legal preparation guides.",
+  "source": "https://huggingface.co/intfloat/multilingual-e5-large-instruct/tree/274baa43b0e13e37fafa6428dbc7938e62e5c439"
+}

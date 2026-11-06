@@ -1,0 +1,123 @@
+{
+  "actualTokenizer": {
+    "embeddingModel": "intfloat/multilingual-e5-large-instruct",
+    "pinnedRevision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+    "dimension": 1024,
+    "maxInputTokens": 512,
+    "queryInstruction": "Given a legal intake summary, retrieve relevant synthetic legal preparation guides.",
+    "source": "https://huggingface.co/intfloat/multilingual-e5-large-instruct/tree/274baa43b0e13e37fafa6428dbc7938e62e5c439"
+  },
+  "offline": true,
+  "weightsLoaded": false,
+  "documents": [
+    {
+      "documentId": "G01",
+      "caseType": "CIVIL",
+      "tokens": 666,
+      "sha256": "447612bb34fc5ab721a81c8ca89b9449bebc9c768abf79d379242c5f66173d44"
+    },
+    {
+      "documentId": "G02",
+      "caseType": "CIVIL",
+      "tokens": 648,
+      "sha256": "0b47a917e410a642c89e15dc81139b79d3937b89f3a3eb59a21a01f11fa89044"
+    },
+    {
+      "documentId": "G03",
+      "caseType": "CIVIL",
+      "tokens": 623,
+      "sha256": "feda87cc00a5f81dd12f78d272fb4708d69ffce6883f81802acf8bea98223310"
+    },
+    {
+      "documentId": "G04",
+      "caseType": "CRIMINAL",
+      "tokens": 626,
+      "sha256": "a9864d55ab9dbd7d0760062ab1e5fbbfeb4cc6c8c482aa078c12476ee7479e86"
+    },
+    {
+      "documentId": "G05",
+      "caseType": "CRIMINAL",
+      "tokens": 611,
+      "sha256": "602d7e0815ced7d140fa96cc7a7e903a107ecb631f78fc7b2886442489aec3da"
+    },
+    {
+      "documentId": "G06",
+      "caseType": "CRIMINAL",
+      "tokens": 607,
+      "sha256": "842fa5bbe0043e4c86fcfa52b7f17a116ae2ef04c00dbdc5197c50f610a89188"
+    },
+    {
+      "documentId": "G07",
+      "caseType": "FAMILY",
+      "tokens": 606,
+      "sha256": "a700f0f2477609d30ffff3961d695971dc7af9c1068248ca6ecc693821f398eb"
+    },
+    {
+      "documentId": "G08",
+      "caseType": "FAMILY",
+      "tokens": 608,
+      "sha256": "6b06de291abd41241e3eb45e6c5a75c901ac3241279964c7befe954aae5d99ef"
+    },
+    {
+      "documentId": "G09",
+      "caseType": "OTHER",
+      "tokens": 620,
+      "sha256": "9c5dd05824c33c88678dd603f259943356208854cc9a2a6d325a6613666af014"
+    },
+    {
+      "documentId": "G10",
+      "caseType": "OTHER",
+      "tokens": 603,
+      "sha256": "89a16fe297241bcdae87072a9d20c8d152290ca606422fc9b8d7c7ab6a9e541f"
+    }
+  ],
+  "caseCounts": {
+    "CIVIL": 3,
+    "CRIMINAL": 3,
+    "FAMILY": 2,
+    "OTHER": 2
+  },
+  "chunkCount": 30,
+  "maxChunkTokens": 293,
+  "chunksPerDocument": {
+    "G01": 3,
+    "G02": 3,
+    "G03": 3,
+    "G04": 3,
+    "G05": 3,
+    "G06": 3,
+    "G07": 3,
+    "G08": 3,
+    "G09": 3,
+    "G10": 3
+  },
+  "chunkMetadataFields": [
+    "caseType",
+    "chunkId",
+    "chunkerVersion",
+    "contentHash",
+    "documentId",
+    "embeddingModel",
+    "indexVersion",
+    "maskingVersion",
+    "pinnedRevision",
+    "policyVersion",
+    "sourceVersion",
+    "title",
+    "tokenCount"
+  ],
+  "maxFinalQueryTokens": 63,
+  "evaluationSha256": "7b37c81c77a79b59ead8f5afe5ce868c89791f816c901d095b8cea979dcf9643",
+  "splits": {
+    "compare": {
+      "count": 20,
+      "evidence": 14,
+      "noEvidence": 6
+    },
+    "holdout": {
+      "count": 10,
+      "evidence": 6,
+      "noEvidence": 4
+    }
+  }
+}

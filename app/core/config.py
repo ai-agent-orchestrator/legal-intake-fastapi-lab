@@ -12,6 +12,7 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8", extra="ignore",
     )
     fake_llm: bool = True
+    rag_enabled: bool = False  # Reserved; no RAG wiring in the synthetic-only v1 scope.
     fake_llm_delay_seconds: float = Field(default=0.2, ge=0)
     openai_api_key: SecretStr | None = None
     openai_model: str = "gpt-6-luna"
