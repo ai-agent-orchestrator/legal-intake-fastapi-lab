@@ -1,0 +1,71 @@
+{
+ "platform": "Linux-6.18.44-fc-v242-x86_64-with-glibc2.39",
+ "python": "3.13.18",
+ "memvid_sdk": "2.0.160",
+ "dimension": 1024,
+ "required": [
+  "telemetry_off",
+  "put_external_vectors",
+  "query_vector_search",
+  "score_direction",
+  "lexical_search",
+  "dimension_mismatch_put",
+  "dimension_mismatch_query",
+  "seal_and_reopen",
+  "title_roundtrip",
+  "no_network_attempts",
+  "pointer_swap_while_open"
+ ],
+ "results": {
+  "telemetry_off": {
+   "pass": true,
+   "detail": "0"
+  },
+  "put_external_vectors": {
+   "pass": true,
+   "detail": ""
+  },
+  "query_vector_search": {
+   "pass": true,
+   "detail": "[('GUIDE-002:c01:v1', 0.9517), ('GUIDE-004:c01:v1', 0.3028), ('GUIDE-000:c01:v1', 0.2948)]"
+  },
+  "score_direction": {
+   "pass": true,
+   "detail": "higher score = closer"
+  },
+  "title_roundtrip": {
+   "pass": true,
+   "detail": "provenance via title"
+  },
+  "lexical_search": {
+   "pass": true,
+   "detail": "['GUIDE-000:c01:v1']"
+  },
+  "dimension_mismatch_put": {
+   "pass": true,
+   "detail": "VecDimensionMismatchError"
+  },
+  "dimension_mismatch_query": {
+   "pass": true,
+   "detail": "VecDimensionMismatchError"
+  },
+  "seal_and_reopen": {
+   "pass": true,
+   "detail": ""
+  },
+  "pointer_swap_while_open": {
+   "pass": true,
+   "detail": ""
+  },
+  "info_replace_open_mv2": {
+   "pass": true,
+   "detail": "replace allowed"
+  },
+  "no_network_attempts": {
+   "pass": true,
+   "detail": "[]"
+  }
+ },
+ "all_required_pass": true,
+ "sha256": "9e1384a84b9cef90d8235b3fb7a0746d1a559d1998bec622b6921baeec178e10"
+}
