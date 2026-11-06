@@ -1,0 +1,270 @@
+{
+  "sdk": "memvid-sdk==2.0.160",
+  "actualSdk": true,
+  "vectorSource": "deterministic artificial 1024D unit basis; NOT E5",
+  "network": "Python sockets blocked; MEMVID_TELEMETRY=0; no keys supplied",
+  "checks": {
+    "external_document_vectors": {
+      "pass": true,
+      "evidence": {
+        "frameIds": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    },
+    "query_vector_search": {
+      "pass": true,
+      "evidence": {
+        "query": "synthetic",
+        "hits": [
+          {
+            "frame_id": 0,
+            "uri": "mv2://frames/0",
+            "title": "synthetic A",
+            "rank": 1,
+            "score": 1.0,
+            "matches": 1,
+            "snippet": "synthetic alpha loan preparation title: synthetic A chunkId: \"A:0\" documentId: \"A\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "text": "synthetic alpha loan preparation title: synthetic A chunkId: \"A:0\" documentId: \"A\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "tags": [],
+            "labels": [],
+            "track": null,
+            "created_at": "2026-11-06T06:40:45Z",
+            "content_dates": []
+          },
+          {
+            "frame_id": 1,
+            "uri": "mv2://frames/1",
+            "title": "synthetic B",
+            "rank": 2,
+            "score": 0.2928932309150696,
+            "matches": 1,
+            "snippet": "synthetic beta rent preparation title: synthetic B chunkId: \"B:0\" documentId: \"B\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "text": "synthetic beta rent preparation title: synthetic B chunkId: \"B:0\" documentId: \"B\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "tags": [],
+            "labels": [],
+            "track": null,
+            "created_at": "2026-11-06T06:40:45Z",
+            "content_dates": []
+          },
+          {
+            "frame_id": 2,
+            "uri": "mv2://frames/2",
+            "title": "synthetic C",
+            "rank": 3,
+            "score": 0.0,
+            "matches": 1,
+            "snippet": "synthetic gamma inheritance preparation title: synthetic C chunkId: \"C:0\" documentId: \"C\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "text": "synthetic gamma inheritance preparation title: synthetic C chunkId: \"C:0\" documentId: \"C\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "tags": [],
+            "labels": [],
+            "track": null,
+            "created_at": "2026-11-06T06:40:45Z",
+            "content_dates": []
+          }
+        ],
+        "took_ms": 0,
+        "total_hits": 3,
+        "engine": "hybrid",
+        "context": "### [1] frames/0 — synthetic A\nsynthetic alpha loan preparation\ntitle: synthetic A\nchunkId: \"A:0\"\ndocumentId: \"A\"\nmemvid.embedding.dimension: 1024\nmemvid.embedding.model: synthetic-basis-1024\nmemvid.embedding.provider: external\ntestMarker: \"synthetic-only\"\n(matches: 1)\n\n### [2] frames/1 — synthetic B\nsynthetic beta rent preparation\ntitle: synthetic B\nchunkId: \"B:0\"\ndocumentId: \"B\"\nmemvid.embedding.dimension: 1024\nmemvid.embedding.model: synthetic-basis-1024\nmemvid.embedding.provider: external\ntestMarker: \"synthetic-only\"\n(matches: 1)\n\n### [3] frames/2 — synthetic C\nsynthetic gamma inheritance preparation\ntitle: synthetic C\nchunkId: \"C:0\"\ndocumentId: \"C\"\nmemvid.embedding.dimension: 1024\nmemvid.embedding.model: synthetic-basis-1024\nmemvid.embedding.provider: external\ntestMarker: \"synthetic-only\"\n(matches: 1)"
+      }
+    },
+    "lex_search": {
+      "pass": true,
+      "evidence": {
+        "query": "loan",
+        "hits": [
+          {
+            "frame_id": 0,
+            "uri": "mv2://frames/0",
+            "title": "synthetic A",
+            "rank": 1,
+            "score": 2.0296194553375244,
+            "matches": 1,
+            "snippet": "synthetic alpha loan preparation title: synthetic A chunkId: \"A:0\" documentId: \"A\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "text": "synthetic alpha loan preparation title: synthetic A chunkId: \"A:0\" documentId: \"A\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "tags": [],
+            "labels": [],
+            "track": null,
+            "created_at": "2026-11-06T06:40:45Z",
+            "content_dates": []
+          }
+        ],
+        "took_ms": 1,
+        "total_hits": 1,
+        "engine": "tantivy",
+        "context": "### [1] frames/0 — synthetic A\nsynthetic alpha loan preparation\ntitle: synthetic A\nchunkId: \"A:0\"\ndocumentId: \"A\"\nmemvid.embedding.dimension: 1024\nmemvid.embedding.model: synthetic-basis-1024\nmemvid.embedding.provider: external\ntestMarker: \"synthetic-only\"\n(matches: 1)"
+      }
+    },
+    "metadata_return": {
+      "pass": false,
+      "evidence": [
+        {
+          "keys": [
+            "content_dates",
+            "created_at",
+            "frame_id",
+            "labels",
+            "matches",
+            "rank",
+            "score",
+            "snippet",
+            "tags",
+            "text",
+            "title",
+            "track",
+            "uri"
+          ],
+          "metadata": null
+        },
+        {
+          "keys": [
+            "content_dates",
+            "created_at",
+            "frame_id",
+            "labels",
+            "matches",
+            "rank",
+            "score",
+            "snippet",
+            "tags",
+            "text",
+            "title",
+            "track",
+            "uri"
+          ],
+          "metadata": null
+        },
+        {
+          "keys": [
+            "content_dates",
+            "created_at",
+            "frame_id",
+            "labels",
+            "matches",
+            "rank",
+            "score",
+            "snippet",
+            "tags",
+            "text",
+            "title",
+            "track",
+            "uri"
+          ],
+          "metadata": null
+        }
+      ]
+    },
+    "query_dimension_mismatch_rejected": {
+      "pass": true,
+      "evidence": {
+        "type": "VecDimensionMismatchError",
+        "message": "MV014: Vector dimension mismatch (expected 1024, got 1023)"
+      }
+    },
+    "stored_dimension_mismatch_rejected": {
+      "pass": true,
+      "evidence": {
+        "type": "VecDimensionMismatchError",
+        "message": "MV014: Vector dimension mismatch (expected 1024, got 1023)"
+      }
+    },
+    "score_direction": {
+      "pass": true,
+      "evidence": [
+        {
+          "title": "synthetic A",
+          "score": 1.0
+        },
+        {
+          "title": "synthetic B",
+          "score": 0.2928932309150696
+        },
+        {
+          "title": "synthetic C",
+          "score": 0.0
+        }
+      ]
+    },
+    "reopen_same_results": {
+      "pass": true,
+      "evidence": {
+        "query": "synthetic",
+        "hits": [
+          {
+            "frame_id": 0,
+            "uri": "mv2://frames/0",
+            "title": "synthetic A",
+            "rank": 1,
+            "score": 1.0,
+            "matches": 1,
+            "snippet": "synthetic alpha loan preparation title: synthetic A chunkId: \"A:0\" documentId: \"A\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "text": "synthetic alpha loan preparation title: synthetic A chunkId: \"A:0\" documentId: \"A\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "tags": [],
+            "labels": [],
+            "track": null,
+            "created_at": "2026-11-06T06:40:45Z",
+            "content_dates": []
+          },
+          {
+            "frame_id": 1,
+            "uri": "mv2://frames/1",
+            "title": "synthetic B",
+            "rank": 2,
+            "score": 0.2928932309150696,
+            "matches": 1,
+            "snippet": "synthetic beta rent preparation title: synthetic B chunkId: \"B:0\" documentId: \"B\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "text": "synthetic beta rent preparation title: synthetic B chunkId: \"B:0\" documentId: \"B\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "tags": [],
+            "labels": [],
+            "track": null,
+            "created_at": "2026-11-06T06:40:45Z",
+            "content_dates": []
+          },
+          {
+            "frame_id": 2,
+            "uri": "mv2://frames/2",
+            "title": "synthetic C",
+            "rank": 3,
+            "score": 0.0,
+            "matches": 1,
+            "snippet": "synthetic gamma inheritance preparation title: synthetic C chunkId: \"C:0\" documentId: \"C\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "text": "synthetic gamma inheritance preparation title: synthetic C chunkId: \"C:0\" documentId: \"C\" memvid.embedding.dimension: 1024 memvid.embedding.model: synthetic-basis-1024 memvid.embedding.provider: external testMarker: \"synthetic-only\"",
+            "tags": [],
+            "labels": [],
+            "track": null,
+            "created_at": "2026-11-06T06:40:45Z",
+            "content_dates": []
+          }
+        ],
+        "took_ms": 0,
+        "total_hits": 3,
+        "engine": "hybrid",
+        "context": "### [1] frames/0 — synthetic A\nsynthetic alpha loan preparation\ntitle: synthetic A\nchunkId: \"A:0\"\ndocumentId: \"A\"\nmemvid.embedding.dimension: 1024\nmemvid.embedding.model: synthetic-basis-1024\nmemvid.embedding.provider: external\ntestMarker: \"synthetic-only\"\n(matches: 1)\n\n### [2] frames/1 — synthetic B\nsynthetic beta rent preparation\ntitle: synthetic B\nchunkId: \"B:0\"\ndocumentId: \"B\"\nmemvid.embedding.dimension: 1024\nmemvid.embedding.model: synthetic-basis-1024\nmemvid.embedding.provider: external\ntestMarker: \"synthetic-only\"\n(matches: 1)\n\n### [3] frames/2 — synthetic C\nsynthetic gamma inheritance preparation\ntitle: synthetic C\nchunkId: \"C:0\"\ndocumentId: \"C\"\nmemvid.embedding.dimension: 1024\nmemvid.embedding.model: synthetic-basis-1024\nmemvid.embedding.provider: external\ntestMarker: \"synthetic-only\"\n(matches: 1)"
+      }
+    },
+    "windows_open_replace_observed": {
+      "pass": true,
+      "evidence": {
+        "behavior": "rejected while open",
+        "winerror": 5,
+        "type": "PermissionError"
+      }
+    },
+    "windows_open_delete_observed": {
+      "pass": true,
+      "evidence": "allowed while open"
+    },
+    "failure_no_silent_fallback": {
+      "pass": true,
+      "evidence": {
+        "type": "FileNotFoundError",
+        "message": "MV013: I/O error: 지정된 파일을 찾을 수 없습니다. (os error 2)"
+      }
+    }
+  },
+  "allMandatoryPassed": false,
+  "nextAction": "STOP; no alternative store or E5 weights"
+}
