@@ -4,9 +4,11 @@ FastAPI 기반 상담 준비 안내와 법률 마케팅 도구를 만드는 공�
 
 [한국어](README.md) | [English](README.en.md)
 
+> **2026-11-06 개발 브랜치 최신:** B02a 우회 조건부 통과 후 **실제 E5+memvid B02b 완료**. 합성 안내문10·청크30·평가30, 확인 근거6개에서 vector Hit@1/3 6/6, lex 5/6. vector도 임계값으로 근거1개를 거절했으므로 순위와 판정은 구분합니다. [실측 결과](docs/evidence/B02b/README.md) · [실행 보고](docs/evidence/SUMMARY.md) · [초보용 임베딩·의미 검색·코사인·Golden Set](docs/EMBEDDING_RETRIEVAL_STUDY.md) · [태블릿 다크 모드](docs/embedding-retrieval-dark-tablet.html). 실제 접수·guidance API에는 연결하지 않았습니다.
+
 ## 1. 개발 방향과 필수 구성
 
-첫 기능은 **합성 안내문 10개에서 근거를 찾아 기존 안내 API가 답하도록 만드는 것**입니다. 생성은 Llama 계열, 검색 임베딩은 로컬 `multilingual-e5-large-instruct`를 우선 검토합니다. 정확한 모델·실행 환경은 검수 후 확정합니다. Qwen은 기본 실행 범위에서 제외합니다.
+현재 범위는 **합성 안내문 10개로 임베딩·검색을 구현하고 공부하는 것**입니다. 실제 E5 고정 revision·CPU float32·memvid 검색 평가를 완료했습니다. 기존 안내 API 연결과 Llama 생성은 후속이며 Llama는 설치하지 않았습니다. Qwen은 기본 실행 범위에서 제외합니다.
 
 | 구성 | 역할 | 최소 적용 |
 |---|---|---|
@@ -29,7 +31,8 @@ FastAPI 기반 상담 준비 안내와 법률 마케팅 도구를 만드는 공�
 | 루트 MVP | 동기 접수 등록·조회 + 비동기 안내 3개 API 구현. 기존 테스트 23개 |
 | 선별 기반 `4fcc698` | 결정 DTO·불변 문맥·용량 관리자·예산 장부·위험 저장소 |
 | L01 NeMo 래퍼 / L02 문맥·세션 위험 | 개발 브랜치의 별도 기준 커밋으로 보존. 실제 NeMo 포함 기존 시험 기록은 95 passed; 재실행·추가 시험은 docs/evidence에 구분 |
-| LangChain·LangGraph·LangSmith·E5·memvid RAG | 필수 개발 대상으로 설계. 아직 구현·실모델·원격 연동 검증 전 |
+| E5·memvid 검색 | 이 브랜치에서 실제 E5 오프라인 임베딩·30청크 활성화·lex/vector 30질문 평가 완료. 결과와 한계는 B02b 증거 참조 |
+| LangChain·LangGraph·LangSmith | 최종 필수 범위. Claude의 B03~B05 뼈대와의 통합·실생성·원격 평가는 이 브랜치에서 미실행 |
 | 법률 마케팅 게시판·M01/M02 | 후속 구현. 보존본의 실패한 마케팅 검사 코드를 완료본으로 사용하지 않음 |
 | 생성 모델 | 현재 OpenAI 비동기 어댑터와 fake client. Llama 어댑터는 개발 예정 |
 
