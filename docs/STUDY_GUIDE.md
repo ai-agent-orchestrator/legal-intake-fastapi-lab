@@ -1,5 +1,7 @@
 # 처음부터 이해하는 Legal Intake 비동기 FastAPI
 
+> **추가 공부 자료:** [LangChain·LangGraph·LangSmith·RAG 기본안](rag-basic-dark-tablet.html) · [개발 전 구조 설계](rag-architecture-dark-tablet.html) · [Claude 검수 요청서](claude-rag-review-dark-tablet.html).
+
 비전공자를 위한 공부용 설명자료 · 2026-11-04
 
 최신 확장은 **인증·인가를 제외한 AI 보안 전체의 FastAPI 이전**입니다. [9개 action 전체 흐름과 다음 구현 목표](security-migration.html) · [설계 원문](SECURITY_MIGRATION_PLAN.md)을 함께 보세요. 기존 접수 MVP와 아직 구현하지 않은 보안 확장을 구분합니다.

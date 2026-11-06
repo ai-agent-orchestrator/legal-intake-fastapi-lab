@@ -8,5 +8,6 @@
 *.mmd text eol=lf
 *.example text eol=lf
 *.lock text eol=lf
+*.pdf binary
 .gitattributes text eol=lf
 .gitignore text eol=lf

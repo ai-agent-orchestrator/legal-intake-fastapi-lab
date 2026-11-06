@@ -1,5 +1,8 @@
 # FastAPI 실험용 백엔드 설계 — DRAFT
 
+> **2026-11-06 검수용 기본안:** [구조 설계안](RAG_ARCHITECTURE_REVIEW.md)과 [공부 문서](RAG_BASIC_DESIGN.md)를 추가했습니다.
+> 최대 11개 API 구성과 LangChain·LangGraph·LangSmith·memvid 검색을 다룹니다. 아래 21개는 이전 후보 목록이며, 새 기본안은 Claude 검수 후 최종 확정합니다.
+
 **최신 범위:** 인증·인가는 제외한다. AI 보안 action 9개와 서비스의 비용·위험·용량·취소 처리를 FastAPI로 이전하는 목표는 [전체 이전 계획](SECURITY_MIGRATION_PLAN.md)과 [흐름도](security-migration.html)를 기준으로 한다. 현재 MVP 코드와 확장 설계를 구분한다.
 
 **현재 구현 상태:** 사용자가 선택한 동기 접수 등록·조회 + 비동기 안내 3개 MVP는 루트 app/에 구현했다. 테스트 23개와 실제 uv 개발 서버·fake HTTP·MainThread를 확인했다. [MVP 실행 안내](RUN_MVP.md) 참조. 아래 21개 API·NeMo 9개 내용은 후속 확장 설계이며 현재 구현 목록과 다르다.

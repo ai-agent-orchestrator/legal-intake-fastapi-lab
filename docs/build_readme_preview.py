@@ -35,13 +35,13 @@ study = (DOCS / 'study-guide.html').read_text(encoding='utf-8')
 style = re.search(r'<style>(.*?)</style>', study, flags=re.S).group(1)
 nav = ''.join(f'<a href="#{a}">{escape(t)}</a>' for a,t in toc)
 html = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>legal-intake-fastapi-lab · README</title><style>{style}</style></head><body>
-<header class="top"><strong>LEGAL INTAKE / PROJECT README</strong><span>HOWTO 01 + 02 + 03 · 2026-11-04</span><a href="../README.md">Markdown 원문</a><a href="study-guide.html">공부자료</a><a href="backend-dark-tablet.html">흐름도</a></header>
+<header class="top"><strong>LEGAL INTAKE / PROJECT README</strong><span>SECURITY + RETRIEVAL · 2026-11-06</span><a href="../README.md">Markdown 원문</a><a href="rag-basic-dark-tablet.html">기본 공부자료</a><a href="rag-architecture-dark-tablet.html">구조 검수</a></header>
 <div class="layout"><details class="toc" open><summary>README 목차</summary><nav aria-label="README 목차">{nav}</nav></details><article>{body}<footer class="bottom">현재 MVP·리뷰 참고본·후속 확장 설계의 구현 상태를 구분합니다.</footer></article></div></body></html>'''
 (DOCS / 'readme-preview.html').write_text(html, encoding='utf-8')
-assert len(toc) == 13
+assert len(toc) == 10
 missing = [str(p) for p in local_targets if not p.exists()]
 assert not missing, missing
 assert len(re.findall(r'^```', source, flags=re.M)) % 2 == 0
-for topic in ['HOWTO-chap01', 'HOWTO-chap02', 'HOWTO-chap03', '① → ③ → ②', 'dependency_overrides', 'lifespan', 'parametrize', 'p95', 'check_request_budget', '법률 마케팅 게시판', 'check_marketing_response', '21개', '아직 구현']:
+for topic in ['LangChain', 'LangGraph', 'LangSmith', 'RAG', '임베딩', '벡터 RAG', 'memvid', '코사인 유사도', '최대 11개', 'lifespan', 'check_request_budget', 'check_marketing_response', 'reasonCode/detailCode', 'Claude 검수', '미커밋']:
     assert topic in source, topic
 print(f'README verified: {len(source.splitlines())} lines, {len(toc)} sections; local links and code fences valid.')
