@@ -5,3 +5,8 @@ __pycache__/
 .coverage
 htmlcov/
 .env
+.venv-security/
+.uv-cache/
+data/
+*.mv2
+*.mv2.*
