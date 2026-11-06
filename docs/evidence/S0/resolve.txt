@@ -1,0 +1,2 @@
+Using CPython 3.12.10 interpreter at: C:\Users\Codelab\AppData\Local\Programs\Python\Python312\python.exe
+Resolved 126 packages in 1.12s
