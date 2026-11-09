@@ -10,6 +10,7 @@ import unicodedata
 
 RULE_VERSION = "marketing-guarantees-2026-11-09-v1"
 MAX_OUTPUT_CHARS = 8000
+RULE_IDS = frozenset({"WIN_100_PERCENT", "UNCONDITIONAL_WIN", "COMPENSATION_PROMISE"})
 
 
 class Decision(StrEnum):
@@ -18,7 +19,10 @@ class Decision(StrEnum):
 
 
 class MarketingError(ValueError):
-    pass
+    """A failed inspection has no publishable draft."""
+    def __init__(self, code: str):
+        self.code = code
+        super().__init__(code)
 
 
 @dataclass(frozen=True)
@@ -52,6 +56,11 @@ def _view(text: str) -> str:
 
 
 def check_marketing_response(text: str) -> MarketingDecision:
+    """Inspect the complete M01/M02 text and exclude affirmative guarantees.
+
+    Safe-draft transformation is idempotent. A later inspection of that safe
+    text can be ALLOW; callers must retain the original REVIEW metadata.
+    """
     if not isinstance(text, str) or not text.strip() or len(text) > MAX_OUTPUT_CHARS:
         raise MarketingError("MARKETING_INVALID_OUTPUT")
     safe_parts, matched = [], set()
