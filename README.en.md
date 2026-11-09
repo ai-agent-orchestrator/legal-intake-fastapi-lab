@@ -30,7 +30,7 @@ LangChain, LangGraph, LangSmith, RAG, embeddings, vector search and memvid are *
 
 Defined phone, email and national-ID patterns are masked before storage. Guidance rechecks and masks stored input before provider transmission, then inspects the complete output, masks it and validates context before returning. Registration policy blocks return HTTP 200 with `blocked=true` without saving. Registration and guidance accept an optional `X-Session-ID` grouping key, which is not authentication. Normal response shapes and the existing three APIs remain unchanged.
 
-Security/marketing regression passed **196 local cases on Python 3.14 and 267 cases including real NeMo on Python 3.12**, excluding RAG tests. Standalone policy cores use only the standard library and pass isolated file-import tests. Existing RAG failures were neither fixed nor rerun here; this is not a full-repository pass. Real NeMo with a fake provider is distinct from paid live generation. [Implementation, logs and masking measurements](docs/MARKETING_IMPLEMENTATION_2026-11-09.md).
+Security/marketing regression passed **214 local cases on Python 3.14 and 285 cases including real NeMo on Python 3.12**, excluding RAG tests. Standalone policy cores use only the standard library and pass isolated file-import tests. Existing RAG failures were neither fixed nor rerun here; this is not a full-repository pass. Real NeMo with a fake provider is distinct from paid live generation. [Implementation, logs and masking measurements](docs/MARKETING_IMPLEMENTATION_2026-11-09.md).
 
 Keep recovery branch `wip/codex-legal-snapshot` separate from `main`.
 

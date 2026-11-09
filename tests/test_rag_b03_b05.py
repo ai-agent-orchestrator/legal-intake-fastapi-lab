@@ -167,7 +167,14 @@ def armed_tracing(monkeypatch):
         if hasattr(Client, name):
             monkeypatch.setattr(Client, name, lambda self, *a, _n=name, **k: calls.append(_n))
 
+    real_connect = socket.socket.connect
+
     def refuse(self, address, *a, **k):
+        # asyncio on Windows builds its self-pipe with a loopback socketpair (127.0.0.1:<ephemeral>).
+        # That is internal plumbing, not an upload, so it is allowed. The fake LangSmith endpoint
+        # (127.0.0.1:9) and every non-loopback address stay blocked and recorded.
+        if isinstance(address, tuple) and address[0] == "127.0.0.1" and address[1] != 9:
+            return real_connect(self, address, *a, **k)
         calls.append(f"socket:{address}")
         raise OSError("blocked")
     monkeypatch.setattr(socket.socket, "connect", refuse)
