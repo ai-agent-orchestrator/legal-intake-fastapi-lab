@@ -1,0 +1,355 @@
+{
+  "fixture_version": "synthetic-privacy-scope-2026-11-09-v1",
+  "label_note": "합성 평가용 임시 정답. 공개 형식 예시와 안내 문구는 비민감 대조군. 실제 적용 정책 승인이 아님.",
+  "candidate_version": "masking-scope-candidates-2026-11-09-v1",
+  "bundles": {
+    "NAME": "name-label-v1",
+    "ADDRESS": "address-label-v1",
+    "CASE_NUMBER": "case-pattern-v1"
+  },
+  "runtime_enabled": false,
+  "reports": {
+    "canonical": {
+      "by_type": {
+        "NAME": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "entities": 4,
+          "cases": 8
+        },
+        "ADDRESS": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "entities": 4,
+          "cases": 8
+        },
+        "CASE_NUMBER": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "entities": 4,
+          "cases": 8
+        }
+      },
+      "case_results": [
+        {
+          "case_id": "N1",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "N2",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "N3",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "N4",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "N5",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "N6",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "N7",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "N8",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "A1",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "A2",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "A3",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "A4",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "A5",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "A6",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "A7",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "A8",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "C1",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "C2",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "C3",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "C4",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "C5",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "C6",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "C7",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "C8",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      ]
+    },
+    "candidate": {
+      "by_type": {
+        "NAME": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2,
+          "entities": 4,
+          "cases": 8
+        },
+        "ADDRESS": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2,
+          "entities": 4,
+          "cases": 8
+        },
+        "CASE_NUMBER": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2,
+          "entities": 4,
+          "cases": 8
+        }
+      },
+      "case_results": [
+        {
+          "case_id": "N1",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "N2",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "N3",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "N4",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "N5",
+          "tp": 0,
+          "fp": 1,
+          "fn": 0
+        },
+        {
+          "case_id": "N6",
+          "tp": 0,
+          "fp": 1,
+          "fn": 0
+        },
+        {
+          "case_id": "N7",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "N8",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "A1",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "A2",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "A3",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "A4",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "A5",
+          "tp": 0,
+          "fp": 1,
+          "fn": 0
+        },
+        {
+          "case_id": "A6",
+          "tp": 0,
+          "fp": 1,
+          "fn": 0
+        },
+        {
+          "case_id": "A7",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "A8",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "C1",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "C2",
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "C3",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "C4",
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        {
+          "case_id": "C5",
+          "tp": 0,
+          "fp": 1,
+          "fn": 0
+        },
+        {
+          "case_id": "C6",
+          "tp": 0,
+          "fp": 1,
+          "fn": 0
+        },
+        {
+          "case_id": "C7",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        {
+          "case_id": "C8",
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      ]
+    }
+  }
+}

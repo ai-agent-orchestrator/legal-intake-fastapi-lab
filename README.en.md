@@ -24,17 +24,19 @@ LangChain, LangGraph, LangSmith, RAG, embeddings, vector search and memvid are *
 | Root MVP | Three APIs: synchronous create/retrieve and asynchronous guidance; 23 original tests |
 | Selected foundation `4fcc698` | Decision DTOs, immutable context, admission manager, budget ledger, risk store |
 | L01 NeMo wrapper / L02 context and session risk | Security input-action foundation implemented; real NeMo tests are run separately ([record](docs/L01_L02_IMPLEMENTATION.md)) |
-| Nine security actions | Development branch, 2026-11-09: eight implemented and integrated, including input policy, masking, output policy and admission/budget boundaries. Marketing check remains unimplemented. [Status, tests and limitations](docs/SECURITY_INPUT_ACTIONS_2026-11-09.md) |
-| Marketing board and M01/M02 | Planned; failed marketing checks in the recovery snapshot are not treated as completed work |
+| Nine security actions | All nine implemented and integrated on `feat/marketing-actions`, including the standalone marketing core and thin adapter. [Status and limitations](docs/MARKETING_IMPLEMENTATION_2026-11-09.md) |
+| Marketing board and M01/M02 | Connected to the 11-operation serving app. Only checked, masked drafts are returned/stored; no external publishing |
 | RAG/search code | Still in the repository but out of scope here; to be moved to the research repo |
 
 Defined phone, email and national-ID patterns are masked before storage. Guidance rechecks and masks stored input before provider transmission, then inspects the complete output, masks it and validates context before returning. Registration policy blocks return HTTP 200 with `blocked=true` without saving. Registration and guidance accept an optional `X-Session-ID` grouping key, which is not authentication. Normal response shapes and the existing three APIs remain unchanged.
 
-Security regression passed **153 local cases on Python 3.14 and 211 cases including real NeMo on Python 3.12**, excluding RAG tests. The standalone policy core uses only the standard library; app/NeMo adapters are separate. The two existing RAG failures were neither fixed nor rerun; this is not a full-repository pass. Actual NeMo rail execution with a fake provider is distinct from a paid live-provider call. See the linked record for logs and the tested source hashes.
+Security/marketing regression passed **196 local cases on Python 3.14 and 267 cases including real NeMo on Python 3.12**, excluding RAG tests. Standalone policy cores use only the standard library and pass isolated file-import tests. Existing RAG failures were neither fixed nor rerun here; this is not a full-repository pass. Real NeMo with a fake provider is distinct from paid live generation. [Implementation, logs and masking measurements](docs/MARKETING_IMPLEMENTATION_2026-11-09.md).
 
 Keep recovery branch `wip/codex-legal-snapshot` separate from `main`.
 
-| Current root API | Execution | Contract |
+`create_app` preserves the three-operation MVP below. The serving target `app.main:app` uses `create_full_app` and exposes all eleven operations.
+
+| MVP API | Execution | Contract |
 |---|---|---|
 | POST `/api/intakes` | `def` | 201, invalid input 422 |
 | GET `/api/intakes/{intake_id}` | `def` | 200, missing intake 404 |
@@ -56,7 +58,7 @@ In-memory records disappear on restart. Fake/mock tests and real provider verifi
 | `check_marketing_response` | Flag guarantee/exaggeration wording for human review |
 | `record_risk_event` | Record confirmed policy blocks without duplication |
 
-The service owns capacity acquisition, budget reservation, calling, settlement and release, including timeout/cancellation cleanup. Separate function tests from actual NeMo rail execution and decision consumption. Not all nine actions are implemented and integrated yet.
+The service owns capacity acquisition, budget reservation, calling, settlement and release, including timeout/cancellation cleanup. All nine actions are integrated at their applicable boundaries. Marketing uses full-output policy checking, marketing review, final masking and context validation. Paid live-provider calls remain unverified.
 
 ### Marketing hardening: `check_marketing_response`
 
@@ -68,7 +70,7 @@ Internal decisions are `ALLOW/BLOCK/TRANSFORM/REVIEW`; reasons are `reasonCode/d
 
 ## 4. At most 11 application APIs
 
-This is the review target; only the original three are implemented in the root app.
+The serving app `app.main:app` implements the following eleven operations. The legacy MVP factory remains separately tested without changing its existing three-path regression test.
 
 | Group | Operations | Count |
 |---|---|---|

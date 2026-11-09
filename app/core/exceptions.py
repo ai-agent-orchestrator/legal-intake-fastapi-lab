@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from app.security.decisions import PolicyBlocked, SecurityError
+from app.marketing.board_core import BoardError
 
 
 class IntakeNotFoundError(Exception):
@@ -17,6 +18,11 @@ class AiRequestError(Exception):
 
 
 def register_exception_handlers(app: FastAPI) -> None:
+    @app.exception_handler(BoardError)
+    async def handle_board(_: Request, exc: BoardError):
+        return JSONResponse(status_code=exc.status, content={"code": exc.code,
+                            "description": "게시판 요청을 완료하지 못했습니다."})
+
     @app.exception_handler(RequestValidationError)
     async def handle_validation(_: Request, exc: RequestValidationError):
         # FastAPI's default detail includes the rejected input and may echo PII.

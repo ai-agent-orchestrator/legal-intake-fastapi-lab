@@ -1,0 +1,18 @@
+........................................................................ [ 26%]
+........................................................................ [ 53%]
+........................................................................ [ 80%]
+...................................................                      [100%]
+============================== warnings summary ===============================
+tests/test_l02_input_only_risk.py: 4 warnings
+tests/test_marketing_actions.py: 3 warnings
+tests/test_marketing_api.py: 10 warnings
+tests/test_nemo_integration.py: 14 warnings
+tests/test_paid_call_service.py: 9 warnings
+tests/test_policy_actions.py: 1 warning
+tests/test_security_pipeline.py: 12 warnings
+tests/test_session_security.py: 18 warnings
+  C:\myLectureWs\legal-intake-fastapi-lab\security-runtime\.venv\Lib\site-packages\nemoguardrails\library\jailbreak_detection\rail_config.py:77: DeprecationWarning: Use 'nim_base_url' instead. This field will be removed in a future version.
+    if self.nim_url and not self.nim_base_url:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+267 passed, 71 warnings in 23.38s
