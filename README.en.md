@@ -137,7 +137,7 @@ Until the move is complete these files remain in the repository but **are not pa
 | Order | Role |
 |---|---|
 | ① `legal-intake-fastapi-lab` (this repo) | Validate intake, security and marketing features in standalone FastAPI |
-| ③ `python-memvid-guardrail` | Extract validated security components as reusable modules |
+| ③ [`langchain-rag-research-agent`](https://github.com/ai-agent-orchestrator/langchain-rag-research-agent) (formerly python-memvid-guardrail) | Extract validated security components as reusable modules |
 | ② `spring-fastapi-async-refactor` | Connect Spring authentication/authorization to FastAPI AI services |
 | Research multi-agent repo | Complete the LangChain/LangGraph/RAG search tool separately |
 | Later | Separate private commercialization |

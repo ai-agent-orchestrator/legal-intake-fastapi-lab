@@ -14,11 +14,11 @@
 | 저장소 | 역할 | main 상태 (2026-11-07) |
 |---|---|---|
 | `legal-intake-fastapi-lab` (이 저장소) | 원래 접수 설계 + 보안 action 9개 + 마케팅 강화 (API 최대 11개). 마스킹의 기준 | README·README.en·이 문서 반영. 코드 이전 전 |
-| `python-memvid-guardrail` → **`langchain-rag-research-agent`로 개명 예정** | 재사용 검색·브리프 모듈(Edge Equalizer). 이 저장소에서 뺀 RAG 내용 + 기존 검색 설계 + 추가 요구사항 | README v1.0(ko/en)·설계 검수·다이어그램(ko/en)·공부 가이드 PDF 반영. 구현 전 |
+| **`langchain-rag-research-agent`** (구 `python-memvid-guardrail`, 2026-11-09 개명 완료) | 재사용 검색·브리프 모듈(Edge Equalizer). 이 저장소에서 뺀 RAG 내용 + 기존 검색 설계 + 추가 요구사항 | README v1.0(ko/en)·설계 검수·다이어그램(ko/en)·공부 가이드 PDF 반영. 구현 전 |
 | `spring-fastapi-async-refactor` | Spring Boot 제어 + FastAPI + memvid 하이브리드 | **아직 변경 없음.** 하이브리드 내용이 아직 연구 저장소 `docs/legacy/`에 있음 |
 | `ai-multi-agent-orchestration` | 허브. 멀티 에이전트 2개 소개 | 반영 완료 (planned → extension, Multi-agent 1·2 소개) |
 
-저장소 이름 변경은 대표님이 GitHub 설정에서 직접 합니다(이 세션은 설정 변경 권한이 없음). **이름이 바뀌기 전까지 코드와 문서의 `python-memvid-guardrail`은 그대로 둡니다.** 바뀐 뒤 링크를 일괄 수정합니다(6절 할 일 ⑦).
+**저장소 개명은 2026-11-09 완료**했습니다(옛 주소는 새 이름으로 자동 연결). 새 원격 주소는 `https://github.com/ai-agent-orchestrator/langchain-rag-research-agent`이므로 로컬 clone은 `git remote set-url origin <새 주소>`로 바꾸세요.
 
 ## 2. 발전 순서와 제약 (README 기준, 변경 없음)
 
@@ -96,7 +96,7 @@ Codex의 B03 보고서(`feat/security-input-actions` 브랜치, 커밋 `a99eff7`
 
 ## 6. 월요일에 할 일 (순서대로)
 
-1. **이름 변경 확인.** 대표님이 `python-memvid-guardrail` → `langchain-rag-research-agent` 개명을 했는지 확인합니다. 안 했으면 ⑦은 보류.
+1. **개명 반영 확인.** 개명 완료. 로컬 clone의 원격 주소를 새 이름으로 바꿉니다. (이 저장소·허브·연구 저장소의 문서 링크는 정리 완료)
 2. **보안 action 현황 재확인** (3절 표를 코드와 대조, README 2절 상태 정정).
 3. **`check_input_policy`, `mask_personal_data` 구현·시험.** 연구 저장소가 의존하므로 최우선. 함수 단위 시험과 실제 NeMo rail 시험을 구분합니다. 이어서 `check_output_policy`, 용량·예산 action 래핑(`check_generation_admission`, `check_request_budget`).
 4. **서비스 경계**: `용량 확보 → 예산 예약 → 호출 → 정산 → 슬롯 반환`. timeout·취소·실패에서도 정리를 보장하고 시험.
