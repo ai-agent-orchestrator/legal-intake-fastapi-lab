@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from hashlib import sha256
 from uuid import uuid4
 
-POLICY_VERSION = "legal-2026-11-06-v1"
+POLICY_VERSION = "legal-2026-11-09-v2"
 
 
 def fingerprint(text: str) -> str:

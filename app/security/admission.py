@@ -1,4 +1,5 @@
 import asyncio
+import math
 from contextlib import asynccontextmanager
 
 from app.security.decisions import SecurityError
@@ -7,6 +8,8 @@ from app.security.decisions import SecurityError
 class AdmissionManager:
     """Bounded, single-event-loop queue. No await between owning/releasing and counters."""
     def __init__(self, concurrent: int, waiters: int, timeout: float):
+        if concurrent < 1 or waiters < 0 or not math.isfinite(timeout) or timeout <= 0:
+            raise ValueError("invalid admission limits")
         self.limit, self.max_waiters, self.timeout = concurrent, waiters, timeout
         self.active = self.waiting = 0
         self._semaphore = asyncio.Semaphore(concurrent)

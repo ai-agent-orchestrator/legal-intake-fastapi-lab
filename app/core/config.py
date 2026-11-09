@@ -1,5 +1,6 @@
 from functools import lru_cache
 from pathlib import Path
+from decimal import Decimal
 from typing import Literal
 
 from pydantic import Field, SecretStr
@@ -22,6 +23,15 @@ class Settings(BaseSettings):
     risk_ttl_seconds: float = Field(default=1800, gt=0)
     risk_max_sessions: int = Field(default=1000, ge=1)
     risk_block_threshold: int = Field(default=3, ge=1)
+    generation_concurrent: int = Field(default=2, ge=1)
+    generation_waiters: int = Field(default=4, ge=0)
+    generation_wait_seconds: float = Field(default=0.5, gt=0, allow_inf_nan=False)
+    generation_timeout_seconds: float = Field(default=30, gt=0, allow_inf_nan=False)
+    budget_limit_usd: Decimal = Field(default=Decimal("1.00"), ge=0, allow_inf_nan=False)
+    generation_reservation_usd: Decimal = Field(default=Decimal("0.01"), gt=0, allow_inf_nan=False)
+    # Operator-configured prices; no price or billing accuracy is inferred.
+    input_usd_per_million_tokens: Decimal | None = Field(default=None, ge=0, allow_inf_nan=False)
+    output_usd_per_million_tokens: Decimal | None = Field(default=None, ge=0, allow_inf_nan=False)
 
 
 @lru_cache

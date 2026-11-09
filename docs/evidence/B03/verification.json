@@ -1,0 +1,13 @@
+{
+  "protectedBlobCount": 52,
+  "changedProtectedBlobs": {},
+  "pytestExitCode": 1,
+  "summary": "2 failed, 134 passed, 36 warnings in 14.12s",
+  "phase2Started": false,
+  "E5EncodeRuns": 0,
+  "confirm10SearchRuns": 0,
+  "thresholdChanges": 0,
+  "mergeState": "quit without commit; dependencies left uncommitted",
+  "rawLocalLog": "data/B03/pytest_merge.raw.txt (ignored)",
+  "rawLogSha256Utf8Lf": "8ec2eb8146003331c171b1e81c6ace75d6a604e1e6e70ede1bfe5e798ced7032"
+}

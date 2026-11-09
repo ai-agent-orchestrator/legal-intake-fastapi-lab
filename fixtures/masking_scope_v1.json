@@ -1,0 +1,30 @@
+{
+  "version": "synthetic-privacy-scope-2026-11-09-v1",
+  "label_note": "합성 평가용 임시 정답. 공개 형식 예시와 안내 문구는 비민감 대조군. 실제 적용 정책 승인이 아님.",
+  "cases": [
+    {"id":"N1","category":"NAME","text":"성명: 합성가","entities":["합성가"]},
+    {"id":"N2","category":"NAME","text":"이름: 가상나","entities":["가상나"]},
+    {"id":"N3","category":"NAME","text":"합성다가 상담 자료를 준비했습니다.","entities":["합성다"]},
+    {"id":"N4","category":"NAME","text":"문의자는 가상라입니다.","entities":["가상라"]},
+    {"id":"N5","category":"NAME","text":"이름: 자료목록","entities":[]},
+    {"id":"N6","category":"NAME","text":"성명: 입력예시","entities":[]},
+    {"id":"N7","category":"NAME","text":"별칭: 방문자","entities":[]},
+    {"id":"N8","category":"NAME","text":"제목: 상담 안내","entities":[]},
+    {"id":"A1","category":"ADDRESS","text":"주소: 가상시 예시구 합성로 10","entities":["가상시 예시구 합성로 10"]},
+    {"id":"A2","category":"ADDRESS","text":"주소：가상시 연습구 예시길 20","entities":["가상시 연습구 예시길 20"]},
+    {"id":"A3","category":"ADDRESS","text":"가상시 예시구 합성로 30에서 상담합니다.","entities":["가상시 예시구 합성로 30"]},
+    {"id":"A4","category":"ADDRESS","text":"우편은 가상시 연습구 예시길 40으로 보냅니다.","entities":["가상시 연습구 예시길 40"]},
+    {"id":"A5","category":"ADDRESS","text":"주소: 아래 안내 참고","entities":[]},
+    {"id":"A6","category":"ADDRESS","text":"주소: 웹사이트에서 확인","entities":[]},
+    {"id":"A7","category":"ADDRESS","text":"주소 입력란을 확인하세요.","entities":[]},
+    {"id":"A8","category":"ADDRESS","text":"법률사무소 위치 안내","entities":[]},
+    {"id":"C1","category":"CASE_NUMBER","text":"사건번호: 2026가단00001","entities":["2026가단00001"]},
+    {"id":"C2","category":"CASE_NUMBER","text":"사건 2026고단00002","entities":["2026고단00002"]},
+    {"id":"C3","category":"CASE_NUMBER","text":"사건번호: 2026카합00003","entities":["2026카합00003"]},
+    {"id":"C4","category":"CASE_NUMBER","text":"사건번호: 2026구합00004","entities":["2026구합00004"]},
+    {"id":"C5","category":"CASE_NUMBER","text":"예시 형식은 2026가단00000입니다.","entities":[]},
+    {"id":"C6","category":"CASE_NUMBER","text":"테스트 문자열 2026고단00000","entities":[]},
+    {"id":"C7","category":"CASE_NUMBER","text":"날짜 2026-11-09","entities":[]},
+    {"id":"C8","category":"CASE_NUMBER","text":"접수번호 SYN-2026-0001","entities":[]}
+  ]
+}

@@ -24,7 +24,7 @@ uv run fastapi dev --host 127.0.0.1 --port 8012
 uv 캐시·Python 바로가기 문제로 실행이 막히면 이미 설치된 프로젝트 Python을 직접 사용할 수 있습니다.
 
 ```powershell
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8012
+.\.venv\Scripts\python.exe -m uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8012
 ```
 
 Swagger: http://127.0.0.1:8012/docs

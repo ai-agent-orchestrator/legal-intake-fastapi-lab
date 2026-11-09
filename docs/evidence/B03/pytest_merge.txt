@@ -1,0 +1,339 @@
+[Published traceback: synthetic vector arrays redacted; raw local copy data/B03/pytest_merge.raw.txt is ignored.]
+............F........................................................... [ 52%]
+........................F.......................................         [100%]
+================================== FAILURES ===================================
+___ test_native_thirty_chunks_reopen_and_every_self_top1_before_activation ____
+
+chunks = [Chunk(text='합성 보증금 계약서 준비 자료 0', metadata={'chunkId': 'C000', 'documentId': 'D000', 'contentHash': '23bb6459933714770...54c1ad962aa3', 'embeddingModel': 'synthetic-unit', 'pinnedRevision': 'unit-revision', 'indexVersion': 'unit-v1'}), ...]
+[synthetic embedding arrays redacted]
+index_dir = WindowsPath('C:/Users/Codelab/AppData/Local/Temp/pytest-of-Codelab/pytest-127/test_native_thirty_chunks_reop0')
+index_version = 'unit-v1', embedding_model = 'synthetic-unit'
+pinned_revision = 'unit-revision'
+
+    def publish_index(chunks, vectors, *, index_dir, index_version, embedding_model, pinned_revision):
+        """Only activate after seal/reopen, exact vector count and EVERY self-top1 pass.
+    
+        Old active.json is never touched by a failed write/check. Immutable version
+        files may remain for inspection; they are never used as a silent fallback.
+        """
+        index_dir = Path(index_dir)
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", index_version):
+            raise RetrievalUnavailable()
+        chunks = [checked_chunk(c) for c in chunks]
+        vectors = [checked_vector(v) for v in vectors]
+        ids = [c.metadata["chunkId"] for c in chunks]
+        if not chunks or len(chunks) != len(vectors) or len(set(ids)) != len(ids):
+            raise RetrievalUnavailable()
+        for c in chunks:
+            if (c.metadata.get("embeddingModel"), c.metadata.get("pinnedRevision"), c.metadata.get("indexVersion")) != (
+                    embedding_model, pinned_revision, index_version):
+                raise RetrievalUnavailable()
+        index_dir.mkdir(parents=True, exist_ok=True)
+        path = index_dir / (index_version + ".mv2")
+        manifest_file = index_dir / (index_version + ".manifest.json")
+        if path.exists() or manifest_file.exists():
+            raise FileExistsError(index_version)
+        sdk = load_memvid()
+        mem = None
+        try:
+            mem = sdk.create(str(path), enable_vec=True, enable_lex=True)
+            for start in range(0, len(chunks), PUT_BATCH):
+                records = [{"title": c.metadata["chunkId"], "label": "synthetic-guide",
+                            "text": c.text, "metadata": {}} for c in chunks[start:start+PUT_BATCH]]
+>               mem.put_many(records, embeddings=vectors[start:start+PUT_BATCH],
+                             opts={"enable_embedding": False},
+                             embedding_identity={"provider": "external", "model": embedding_model})
+
+app\rag\index.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <memvid_sdk.Memvid object at 0x0000025F481EFFB0>
+requests = [{'title': 'C000', 'label': 'synthetic-guide', 'text': '합성 보증금 계약서 준비 자료 0', 'metadata': {}}, {'title': 'C001', 'label... 4', 'metadata': {}}, {'title': 'C005', 'label': 'synthetic-guide', 'text': '합성 보증금 계약서 준비 자료 5', 'metadata': {}}, ...]
+[synthetic embedding arrays redacted]
+embedder = None
+embedding_identity = {'provider': 'external', 'model': 'synthetic-unit'}
+opts = {'enable_embedding': False}
+
+    def put_many(
+        self,
+        requests: Sequence[Mapping[str, Any]],
+        *,
+        embeddings: Optional[Sequence[Sequence[float]]] = None,
+        embedder: Optional["embeddings.EmbeddingProvider"] = None,
+        embedding_identity: Optional[Mapping[str, Any]] = None,
+        opts: Optional[Mapping[str, Any]] = None,
+    ) -> List[str]:
+        """
+        Batch ingestion of multiple documents in a single operation.
+    
+        Eliminates Python FFI overhead by processing all documents in Rust,
+        providing 100x+ speedup compared to individual put() calls.
+    
+        Args:
+            requests: List of document dictionaries, each containing:
+                - title (str, required): Document title
+                - label (str, required): Primary label/category
+                - text (str, required): Document content
+                - uri (str, optional): Document URI
+                - metadata (dict, optional): Key-value metadata
+                - tags (list[str], optional): List of tags
+                - labels (list[str], optional): Additional labels
+    
+            opts: Optional dict with batch operation settings:
+                - compression_level (int): 0=none, 1=fast, 3=default, 11=max (default: 3)
+                - disable_auto_checkpoint (bool): Skip auto-checkpoint during batch (default: True)
+                - skip_sync (bool): Skip fsync for maximum speed (default: False)
+                - enable_embedding (bool): Generate embeddings (default: False)
+                - auto_tag (bool): Auto-extract tags (default: False)
+                - extract_dates (bool): Extract dates from content (default: False)
+    
+        Returns:
+            List of frame IDs as strings
+    
+        Example:
+            >>> docs = [
+            ...     {"title": "Doc 1", "label": "news", "text": "First document..."},
+            ...     {"title": "Doc 2", "label": "news", "text": "Second document..."},
+            ... ]
+            >>> frame_ids = mem.put_many(docs)
+            >>> print(f"Ingested {len(frame_ids)} documents")
+        """
+        if not requests:
+            return []
+    
+        if embedder is not None and embeddings is not None:
+            raise ValueError("Pass either embeddings=... or embedder=..., not both")
+    
+        if embedder is not None and embeddings is None:
+            # Embed each document's *chunks* separately instead of the whole
+            # document. Sending a long document to the embedder as a single
+            # string overflows GPU/accelerator memory on large models
+            # (memvid/memvid#219); chunking first also yields chunk-aligned
+            # vectors that match how the core stores the document.
+            for i, req in enumerate(requests):
+                if not isinstance(req, Mapping):
+                    raise ValueError(f"Request {i} must be a dict, got {type(req)}")
+                for field in ("title", "label", "text"):
+                    if field not in req:
+                        raise ValueError(f"Request {i} missing required field '{field}'")
+            if embedding_identity is None:
+                embedding_identity = _embedding_identity_from_embedder(embedder)
+            return self._put_each_with_chunk_embedder(requests, embedder, embedding_identity)
+    
+        # Validate each request has required fields
+        for i, req in enumerate(requests):
+            if not isinstance(req, Mapping):
+                raise ValueError(f"Request {i} must be a dict, got {type(req)}")
+            if "title" not in req:
+                raise ValueError(f"Request {i} missing required field 'title'")
+            if "label" not in req:
+                raise ValueError(f"Request {i} missing required field 'label'")
+            if "text" not in req:
+                raise ValueError(f"Request {i} missing required field 'text'")
+    
+        # Convert requests to list of dicts (ensure mutable for FFI)
+        validated_requests = []
+        for req in requests:
+            doc = {
+                "title": req["title"],
+                "label": req["label"],
+                "text": req["text"],
+            }
+            if "uri" in req and req["uri"] is not None:
+                doc["uri"] = req["uri"]
+            if "metadata" in req:
+                doc["metadata"] = dict(req["metadata"])
+            else:
+                doc["metadata"] = {}
+            if "tags" in req:
+                doc["tags"] = list(req["tags"])
+            else:
+                doc["tags"] = []
+            if "labels" in req:
+                doc["labels"] = list(req["labels"])
+            else:
+                doc["labels"] = []
+            validated_requests.append(doc)
+    
+        embedding_dimension: Optional[int] = None
+        if embeddings is not None:
+            if len(embeddings) != len(validated_requests):
+                raise ValueError(
+                    f"Embeddings length ({len(embeddings)}) must match requests length ({len(validated_requests)})"
+                )
+            if embeddings:
+                embedding_dimension = len(embeddings[0])
+                for i, vec in enumerate(embeddings):
+                    if len(vec) != embedding_dimension:
+                        raise ValueError(
+                            f"Embeddings must have consistent dimension (expected {embedding_dimension}, got {len(vec)} at index {i})"
+                        )
+    
+        if embedding_identity is not None and embeddings is not None:
+            for doc in validated_requests:
+                meta = doc.get("metadata")
+                if not isinstance(meta, dict):
+                    meta = {}
+                    doc["metadata"] = meta
+                _apply_embedding_identity_metadata(meta, embedding_identity, embedding_dimension)
+    
+        # Prepare options dict for FFI
+        opts_dict = {}
+        if opts:
+            if "compression_level" in opts:
+                opts_dict["compression_level"] = opts["compression_level"]
+            if "disable_auto_checkpoint" in opts:
+                opts_dict["disable_auto_checkpoint"] = opts["disable_auto_checkpoint"]
+            if "skip_sync" in opts:
+                opts_dict["skip_sync"] = opts["skip_sync"]
+            if "enable_embedding" in opts:
+                opts_dict["enable_embedding"] = opts["enable_embedding"]
+            if "embedding_model" in opts:
+                opts_dict["embedding_model"] = opts["embedding_model"]
+            if "auto_tag" in opts:
+                opts_dict["auto_tag"] = opts["auto_tag"]
+            if "extract_dates" in opts:
+                opts_dict["extract_dates"] = opts["extract_dates"]
+    
+        # Call FFI binding (GIL will be released in Rust)
+>       frame_ids = self._core.put_many(validated_requests, embeddings, opts_dict if opts_dict else None)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       memvid_sdk.MemvidError: MV999: Tantivy error: An IO error occurred: '액세스가 거부되었습니다. (os error 5)'
+
+rag-runtime\.venv\Lib\site-packages\memvid_sdk\__init__.py:1884: MemvidError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/Codelab/AppData/Local/Temp/pytest-of-Codelab/pytest-127/test_native_thirty_chunks_reop0')
+
+    def test_native_thirty_chunks_reopen_and_every_self_top1_before_activation(tmp_path):
+        chunks, vectors = synthetic_rows()
+>       manifest = publish_index(chunks, vectors, index_dir=tmp_path, index_version="unit-v1",
+                                 embedding_model="synthetic-unit", pinned_revision="unit-revision")
+
+tests\rag\test_index.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+chunks = [Chunk(text='합성 보증금 계약서 준비 자료 0', metadata={'chunkId': 'C000', 'documentId': 'D000', 'contentHash': '23bb6459933714770...54c1ad962aa3', 'embeddingModel': 'synthetic-unit', 'pinnedRevision': 'unit-revision', 'indexVersion': 'unit-v1'}), ...]
+[synthetic embedding arrays redacted]
+index_dir = WindowsPath('C:/Users/Codelab/AppData/Local/Temp/pytest-of-Codelab/pytest-127/test_native_thirty_chunks_reop0')
+index_version = 'unit-v1', embedding_model = 'synthetic-unit'
+pinned_revision = 'unit-revision'
+
+    def publish_index(chunks, vectors, *, index_dir, index_version, embedding_model, pinned_revision):
+        """Only activate after seal/reopen, exact vector count and EVERY self-top1 pass.
+    
+        Old active.json is never touched by a failed write/check. Immutable version
+        files may remain for inspection; they are never used as a silent fallback.
+        """
+        index_dir = Path(index_dir)
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", index_version):
+            raise RetrievalUnavailable()
+        chunks = [checked_chunk(c) for c in chunks]
+        vectors = [checked_vector(v) for v in vectors]
+        ids = [c.metadata["chunkId"] for c in chunks]
+        if not chunks or len(chunks) != len(vectors) or len(set(ids)) != len(ids):
+            raise RetrievalUnavailable()
+        for c in chunks:
+            if (c.metadata.get("embeddingModel"), c.metadata.get("pinnedRevision"), c.metadata.get("indexVersion")) != (
+                    embedding_model, pinned_revision, index_version):
+                raise RetrievalUnavailable()
+        index_dir.mkdir(parents=True, exist_ok=True)
+        path = index_dir / (index_version + ".mv2")
+        manifest_file = index_dir / (index_version + ".manifest.json")
+        if path.exists() or manifest_file.exists():
+            raise FileExistsError(index_version)
+        sdk = load_memvid()
+        mem = None
+        try:
+            mem = sdk.create(str(path), enable_vec=True, enable_lex=True)
+            for start in range(0, len(chunks), PUT_BATCH):
+                records = [{"title": c.metadata["chunkId"], "label": "synthetic-guide",
+                            "text": c.text, "metadata": {}} for c in chunks[start:start+PUT_BATCH]]
+                mem.put_many(records, embeddings=vectors[start:start+PUT_BATCH],
+                             opts={"enable_embedding": False},
+                             embedding_identity={"provider": "external", "model": embedding_model})
+            mem.seal()
+        except Exception as error:
+>           raise RetrievalUnavailable() from error
+E           app.rag.schemas.RetrievalUnavailable: RETRIEVAL_UNAVAILABLE
+
+app\rag\index.py:99: RetrievalUnavailable
+_________ test_serving_guard_blocks_tracing_even_when_env_enables_it __________
+
+armed_tracing = ["socket:('127.0.0.1', 60580)"]
+
+    def test_serving_guard_blocks_tracing_even_when_env_enables_it(armed_tracing):
+        with serving_trace_guard():
+            _invoke_chain()
+            graph = make_graph(lambda t: Outcome("OK", EV), [])
+>           asyncio.run(graph.ainvoke({"request_text": "합성 010-1234-5678"}, config=serving_config()))
+
+tests\test_rag_b03_b05.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+           ^^^^^^^^^^^^^^^^^^^^
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+C:\myLectureWs\legal-intake-fastapi-lab\rag-runtime\.venv\Lib\site-packages\_pytest\unraisableexception.py:29: RuntimeWarning: coroutine 'Pregel.ainvoke' was never awaited
+  gc.collect()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+C:\myLectureWs\legal-intake-fastapi-lab\rag-runtime\.venv\Lib\site-packages\_pytest\unraisableexception.py:63: PytestUnraisableExceptionWarning: Exception ignored in: <function BaseEventLoop.__del__ at 0x0000025F1B0289A0>
+
+Traceback (most recent call last):
+  File "C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 732, in __del__
+    self.close()
+  File "C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 697, in close
+    self._close_self_pipe()
+  File "C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 779, in _close_self_pipe
+    self._ssock.close()
+    ^^^^^^^^^^^
+AttributeError: 'ProactorEventLoop' object has no attribute '_ssock'
+
+Enable tracemalloc to get traceback where the object was allocated.
+See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+  warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+                               ^^^^^^^^^^^^^^^^^^^
+C:\Users\Codelab\AppData\Local\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <socket.socket [closed] fd=-1, family=2, type=1, proto=0>
+address = ('127.0.0.1', 60580), a = (), k = {}
+
+    def refuse(self, address, *a, **k):
+        calls.append(f"socket:{address}")
+>       raise OSError("blocked")
+E       OSError: blocked
+
+tests\test_rag_b03_b05.py:172: OSError
+============================== warnings summary ===============================
+tests/test_l02_input_only_risk.py: 4 warnings
+tests/test_nemo_integration.py: 14 warnings
+tests/test_session_security.py: 18 warnings
+  C:\myLectureWs\legal-intake-fastapi-lab\rag-runtime\.venv\Lib\site-packages\nemoguardrails\library\jailbreak_detection\rail_config.py:77: DeprecationWarning: Use 'nim_base_url' instead. This field will be removed in a future version.
+    if self.nim_url and not self.nim_base_url:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/rag/test_index.py::test_native_thirty_chunks_reopen_and_every_self_top1_before_activation
+FAILED tests/test_rag_b03_b05.py::test_serving_guard_blocks_tracing_even_when_env_enables_it
+2 failed, 134 passed, 36 warnings in 14.12s
+Failed to get info from http://127.0.0.1:9: LangSmithConnectionError('Connection error caused failure to GET /info in LangSmith API. Please confirm your LANGCHAIN_ENDPOINT. ConnectionError(MaxRetryError(\'HTTPConnectionPool(host=\\\'127.0.0.1\\\', port=9): Max retries exceeded with url: /info (Caused by NewConnectionError("HTTPConnection(host=\\\'127.0.0.1\\\', port=9): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다"))\'))\nContent-Length: None\nAPI Key: lsv2_***************st')
+Run compression is not enabled. Please update to the latest version of LangSmith. Falling back to regular multipart ingestion.
