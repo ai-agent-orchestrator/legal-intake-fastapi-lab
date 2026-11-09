@@ -14,6 +14,8 @@ class Reservation:
 class BudgetStore:
     """Single-process USD ledger. Mutation has no await points, including cleanup."""
     def __init__(self, limit: Decimal):
+        if not limit.is_finite() or limit < 0:
+            raise ValueError("invalid budget limit")
         self.limit, self.spent = limit, Decimal(0)
         self.reservations: dict[str, Reservation] = {}
         self._lock = Lock()

@@ -20,12 +20,12 @@ RepositoryDep = Annotated[IntakeRepository, Depends(get_repository)]
 LlmDep = Annotated[LlmClient, Depends(get_llm_client)]
 
 
-def get_intake_service(repository: RepositoryDep) -> IntakeService:
-    return IntakeService(repository)
+def get_intake_service(request: Request, repository: RepositoryDep) -> IntakeService:
+    return IntakeService(repository, request.app.state.session_guard)
 
 
 def get_guidance_service(request: Request, repository: RepositoryDep, llm: LlmDep) -> GuidanceService:
-    return GuidanceService(repository, llm, request.app.state.session_guard)
+    return GuidanceService(repository, llm, request.app.state.session_guard, request.app.state.paid_calls)
 
 
 IntakeServiceDep = Annotated[IntakeService, Depends(get_intake_service)]

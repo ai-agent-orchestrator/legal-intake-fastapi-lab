@@ -12,6 +12,11 @@ from app.security.risk_store import RiskStore
 from app.security.session_actions import SessionRiskActions
 from app.security.session_guard import ContextSessionGuard
 from app.security.nemo_adapter import NemoAdapter
+from app.security.policy_actions import policy_registry
+from app.security.resource_actions import ResourceActions
+from app.security.admission import AdmissionManager
+from app.security.budget_store import BudgetStore
+from app.services.paid_call_service import PaidCallService
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -19,7 +24,15 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def lifespan(application: FastAPI):
         config = settings if settings is not None else get_settings()
         risk = RiskStore(config.risk_ttl_seconds, config.risk_max_sessions, config.risk_block_threshold)
-        adapter = NemoAdapter(SessionRiskActions(risk).registry(), config.guardrail_backend)
+        admission = AdmissionManager(config.generation_concurrent, config.generation_waiters,
+                                     config.generation_wait_seconds)
+        budget = BudgetStore(config.budget_limit_usd)
+        adapter = NemoAdapter({**SessionRiskActions(risk).registry(), **policy_registry(),
+                               **ResourceActions(admission, budget).registry()}, config.guardrail_backend)
+        application.state.admission = admission
+        application.state.budget_store = budget
+        application.state.paid_calls = PaidCallService(adapter, admission, budget,
+            config.generation_reservation_usd, config.generation_timeout_seconds)
         application.state.risk_store = risk
         application.state.session_guard = ContextSessionGuard(adapter)
         application.state.intake_repository = IntakeRepository()

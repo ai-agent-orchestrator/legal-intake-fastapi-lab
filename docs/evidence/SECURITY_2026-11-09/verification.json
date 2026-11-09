@@ -1,0 +1,61 @@
+{
+  "protectedAfter": {
+    "rag-runtime/uv.lock": "67EC3E645B9ED614311975D534B77342ABDC6699DF5B889328764C1DCE0254F2",
+    "rag-runtime/pyproject.toml": "4516519DFB640532FF7C7418DAD0C807A09E95C78892595BB6FE014BEB9F091A",
+    "docs/evidence/B02b/frozen_thresholds.json": "4ED0D8C9A9200EFD04AC4D200E58B296ECA6FD367CE5B06F4BB782F20D3586ED",
+    "docs/evidence/B03/README.md": "D48741CF4FD7221DF98B035B1637E339E9B81B64965E6699C83B0F7382547F77",
+    "docs/evidence/B02b/retrieval_eval.json": "1CA72D0C2090FF58033EB1B9DB6C6D159F6630A415EF31F923BC71BEE27FB6FB"
+  },
+  "E5Reencodes": 0,
+  "protectedBefore": {
+    "rag-runtime/uv.lock": "67EC3E645B9ED614311975D534B77342ABDC6699DF5B889328764C1DCE0254F2",
+    "rag-runtime/pyproject.toml": "4516519DFB640532FF7C7418DAD0C807A09E95C78892595BB6FE014BEB9F091A",
+    "docs/evidence/B02b/retrieval_eval.json": "1CA72D0C2090FF58033EB1B9DB6C6D159F6630A415EF31F923BC71BEE27FB6FB",
+    "docs/evidence/B03/README.md": "D48741CF4FD7221DF98B035B1637E339E9B81B64965E6699C83B0F7382547F77",
+    "docs/evidence/B02b/frozen_thresholds.json": "4ED0D8C9A9200EFD04AC4D200E58B296ECA6FD367CE5B06F4BB782F20D3586ED"
+  },
+  "ragTestsRun": 0,
+  "paidProviderCalls": 0,
+  "date": "2026-11-09",
+  "localCommand": ".venv/Scripts/python.exe -m pytest -q -m \"not nemo\" [8 security files listed in implementation record]",
+  "testedSources": {
+    "app/clients/llm_client.py": "154e0367466ee67299e0d922f3392da3c2be65447453b473b72c03c14bbd8510",
+    "app/main.py": "e0e6032d8e0fdb5a959e9c9bb9bbd3b87f62f8a26b782ff930916033f81d7d30",
+    "app/core/exceptions.py": "2316202d46fc7d172a9a70867d914ae80e5c709f5f6feb4950c304b5f5ba1f60",
+    "app/security/policy_core.py": "4f9dd626f1ce71285437ccace3cf868ccfb1e7db4bf89164281828326f938f52",
+    "app/services/guidance_service.py": "facaf7e034ebbe7070365c03631beca932825b00a65abf0b55480e4f84806409",
+    "app/security/budget_store.py": "92b8dae40b118e8149a364e39294ba16e5574f4f763851995a164c969bd471b3",
+    "tests/test_paid_call_service.py": "1e887436ce30b9918e65b3c099c63cef18adc48d5b24a919f1c7644048c3f608",
+    "app/services/paid_call_service.py": "3b48fd30c1fc4642d952bf0794dba1da3d8b1ba0e4505aa0db3b55a00cb4aba9",
+    "app/security/context.py": "a66adf86a766196a653dd7ce96f0592f9a8296da0d57e075c9b27c2c5abd1ba8",
+    "app/security/admission.py": "eb86d6b9ba0029482b39021c41e33d3864ce698bdfd7edde10da550b8b143d4e",
+    "tests/test_usage_accounting.py": "1db11f92551a07d409cbdff1e62a75927e431340a1d4cd7f8f7fe4ce006da30b",
+    "app/services/intake_service.py": "db4cf6d4657f318fc6d8d94920b76e2c666d32ac7d9e40402eb5d1bc839675bf",
+    "app/security/policy_actions.py": "9ccd2dbac560a66b3f8c489458972ec097b58e3d5a87ea6359c30587fcb53a5b",
+    "tests/test_policy_actions.py": "af0a7ffdb646ba37531b24f5d0702f302b94ec0e97c6813b68b286ea668ad678",
+    "app/security/session_actions.py": "e833ceb7ea46b8fb22e3ae0c22dde9dd8fb0595f428237eabc8bd87fd50bfa2f",
+    "tests/test_security_pipeline.py": "31528063d1faaf18f31744103066acbe7b6ff5e4e0670cf92db3c58f1f71cb5a",
+    "app/security/resource_actions.py": "5249008bdf6ca64bb5521ebaac95d31a007b6a15efc6aafd644fea2d17f32832",
+    "app/security/session_guard.py": "c36c07a79abf6d225a5a40bf3dae51dfdd7f91034ca9305f0d5ac96a620c4119",
+    "tests/test_session_security.py": "3fe00f5a7519cc1d8b01bd4677101146ed87202b7b0e963d043ae4d619fb9b06",
+    "app/routers/intake_router.py": "145dd45fd15a4e82486f9ca36a85bc51b5bd97d9dc7e1bb5f65323255bf22dfd",
+    "app/core/config.py": "e05be23045c45de355bd7322cafebd5addf3ce17f82e48758e7aead23bbf30bd",
+    "app/dependencies.py": "98f1ded9d784eecdb83243304d8ffcdd1cbbfcd5af2a07d27018f80572a290e9"
+  },
+  "localSummary": "153 passed, 58 deselected in 1.98s",
+  "protectedFilesUnchanged": true,
+  "baselineCommit": "53a0cad82520b0fbf72e28ac91742aeecb086c38",
+  "sourceHashAlgorithm": "SHA256 of UTF-8 text normalized to LF",
+  "nemoSummary": "211 passed, 58 warnings in 12.05s",
+  "branch": "feat/security-input-actions",
+  "nemoCommand": "security-runtime/.venv/Scripts/python.exe -m pytest -q [same 8 security files]",
+  "confirmSetSearches": 0,
+  "researchProtocolIntegration": "D3 settled; standalone standard-library core tested; O4 package extraction and research protocol integration not performed",
+  "mainDesignCommit": "4207df6",
+  "formattingOnlyAfterFullSuite": {
+    "change": "Removed trailing blank line at EOF; core policy test rerun recorded separately",
+    "file": "app/security/policy_core.py",
+    "beforeSha256": "2a5f43e25deb382df728589c6059c3bdce9c7c3a141930aadf353a6949e3b84c",
+    "afterSha256": "4f9dd626f1ce71285437ccace3cf868ccfb1e7db4bf89164281828326f938f52"
+  }
+}

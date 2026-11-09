@@ -24,9 +24,13 @@ LangChain, LangGraph, LangSmith, RAG, embeddings, vector search and memvid are *
 | Root MVP | Three APIs: synchronous create/retrieve and asynchronous guidance; 23 original tests |
 | Selected foundation `4fcc698` | Decision DTOs, immutable context, admission manager, budget ledger, risk store |
 | L01 NeMo wrapper / L02 context and session risk | Security input-action foundation implemented; real NeMo tests are run separately ([record](docs/L01_L02_IMPLEMENTATION.md)) |
-| Nine security actions | Partly implemented; full integration in progress |
+| Nine security actions | Development branch, 2026-11-09: eight implemented and integrated, including input policy, masking, output policy and admission/budget boundaries. Marketing check remains unimplemented. [Status, tests and limitations](docs/SECURITY_INPUT_ACTIONS_2026-11-09.md) |
 | Marketing board and M01/M02 | Planned; failed marketing checks in the recovery snapshot are not treated as completed work |
 | RAG/search code | Still in the repository but out of scope here; to be moved to the research repo |
+
+Defined phone, email and national-ID patterns are masked before storage. Guidance rechecks and masks stored input before provider transmission, then inspects the complete output, masks it and validates context before returning. Registration policy blocks return HTTP 200 with `blocked=true` without saving. Registration and guidance accept an optional `X-Session-ID` grouping key, which is not authentication. Normal response shapes and the existing three APIs remain unchanged.
+
+Security regression passed **153 local cases on Python 3.14 and 211 cases including real NeMo on Python 3.12**, excluding RAG tests. The standalone policy core uses only the standard library; app/NeMo adapters are separate. The two existing RAG failures were neither fixed nor rerun; this is not a full-repository pass. Actual NeMo rail execution with a fake provider is distinct from a paid live-provider call. See the linked record for logs and the tested source hashes.
 
 Keep recovery branch `wip/codex-legal-snapshot` separate from `main`.
 

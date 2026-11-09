@@ -12,9 +12,11 @@ logger = logging.getLogger("uvicorn.error")
 
 
 @router.post("", response_model=IntakeResponse, status_code=201)
-def register_intake(body: IntakeCreateRequest, service: IntakeServiceDep) -> IntakeResponse:
+def register_intake(body: IntakeCreateRequest, service: IntakeServiceDep,
+    session_id: Annotated[str | None, Header(alias="X-Session-ID", min_length=1, max_length=128, pattern=r"^[A-Za-z0-9_.:-]+$")] = None,
+) -> IntakeResponse:
     logger.info("[register] thread=%s", current_thread().name)
-    return service.register(body)
+    return service.register(body, session_id)
 
 
 @router.get("/{intake_id}", response_model=IntakeResponse)

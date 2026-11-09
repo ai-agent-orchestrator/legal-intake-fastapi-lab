@@ -7,6 +7,7 @@ from app.repositories.intake_repository import IntakeRepository
 from app.schemas.intake import GuidanceResponse
 from app.security.context import Envelope, RequestContext, fingerprint
 from app.security.session_guard import ContextSessionGuard
+from app.services.paid_call_service import PaidCallService
 
 
 INSTRUCTIONS = (
@@ -18,25 +19,35 @@ INSTRUCTIONS = (
 
 
 class GuidanceService:
-    def __init__(self, repository: IntakeRepository, llm_client: LlmClient, guard: ContextSessionGuard):
+    def __init__(self, repository: IntakeRepository, llm_client: LlmClient, guard: ContextSessionGuard,
+                 paid_calls: PaidCallService):
         self.repository = repository
         self.llm_client = llm_client
         self.guard = guard
+        self.paid_calls = paid_calls
 
     async def create_guidance(self, intake_id: int, session_id: str | None = None) -> GuidanceResponse:
         intake = await to_thread.run_sync(self.repository.find_by_id, intake_id)
         # 안내에 불필요한 의뢰인 이름은 외부 AI 프롬프트에 넣지 않는다.
-        prompt = json.dumps({
+        fields = {
             "caseType": intake.case_type,
             "coreStatement": intake.core_statement,
             "desiredNextStep": intake.desired_next_step,
-        }, ensure_ascii=False)
+        }
+        prompt = json.dumps(fields, ensure_ascii=False)
         context = RequestContext.create(session_id, f"intake:{intake_id}:{fingerprint(prompt)}", "guidance")
-        source = await self.guard.begin(context, Envelope.bind(context, prompt))
+        await self.guard.begin(context, Envelope.bind(context, prompt))
+        combined = "\n".join(value for value in fields.values() if value is not None)
+        await self.guard.protect_input(context, Envelope.bind(context, combined))
+        for name, value in fields.items():
+            if value is not None:
+                fields[name] = (await self.guard.protect_input(context, Envelope.bind(context, value))).text
+        source = Envelope.bind(context, json.dumps(fields, ensure_ascii=False))
         generated = await self._generate(source)
-        answer = await self.guard.publish(context, generated)
+        safe = await self.guard.protect_output(context, generated)
+        answer = await self.guard.publish(context, safe)
         return GuidanceResponse(intake_id=intake.intake_id, answer=answer, model=self.llm_client.model)
 
     async def _generate(self, source: Envelope) -> Envelope:
-        answer = await self.llm_client.ask(INSTRUCTIONS, source.text)
+        answer = await self.paid_calls.call(source, self.llm_client, INSTRUCTIONS)
         return Envelope.bind(source.context, answer)

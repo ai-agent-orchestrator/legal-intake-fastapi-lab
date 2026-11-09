@@ -158,7 +158,12 @@ def test_foreign_generated_response_returns_sanitized_500(backend, monkeypatch):
 @pytest.mark.parametrize("backend", BACKENDS)
 def test_nemo_action_failure_returns_503_without_calling_provider(backend, monkeypatch):
     application = create_app(Settings(_env_file=None, fake_llm=True, guardrail_backend=backend))
+    original = SessionRiskActions.check_session_risk
     def failure(self, source):
+        # Registration now checks the session too; inject failure specifically at
+        # guidance, the boundary this regression has always exercised.
+        if source.context.profile != "guidance":
+            return original(self, source)
         raise RuntimeError("private body and key")
     monkeypatch.setattr(SessionRiskActions, "check_session_risk", failure)
     provider = SimpleNamespace(model="test", ask=AsyncMock())
