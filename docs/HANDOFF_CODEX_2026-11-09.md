@@ -102,7 +102,7 @@ Codex의 B03 보고서(`feat/security-input-actions` 브랜치, 커밋 `a99eff7`
 4. **서비스 경계**: `용량 확보 → 예산 예약 → 호출 → 정산 → 슬롯 반환`. timeout·취소·실패에서도 정리를 보장하고 시험.
 5. **게시판·후기 → M01 요약 / M02 답변 초안.** 전체 출력 검사 후 `check_marketing_response`를 통과시키고, 최종 마스킹·문맥 확인 뒤에만 반환. 자동 게시 없음.
 6. **RAG 코드 이전**(3절 이전 후보): 연구 저장소의 M0~M1(패키지 뼈대·검색, B02b 재현)이 준비된 뒤에 복사 → 검증 → 제거. 대표 D2(import 이름)가 정해진 뒤가 좋습니다.
-7. **개명 후 링크 정리**: 이 저장소 README·README.en·문서의 `python-memvid-guardrail`을 새 이름으로 수정.
+7. ~~개명 후 링크 정리~~ **완료** (legal-intake README·README.en·preview, 허브 README, 연구 저장소 README·MODULE_DESIGN). `spring-fastapi-async-refactor`에 옛 이름이 있는지는 하이브리드 이전(8번) 때 확인합니다.
 8. **하이브리드 내용 이전**(별도 작업): 연구 저장소 `docs/legacy/`의 하이브리드 README 2개와 `docs/hybrid-contract-design.ko.md`, `docs/study-guide.ko.md`, 하이브리드 PDF 3개, 아키텍처·보안·비용·Python 실행 다이어그램을 `spring-fastapi-async-refactor`의 `docs/hybrid/`로 옮깁니다. 새 브랜치에서 하고 main에는 PR로 합칩니다. 이전 후 연구 저장소에서 제거.
 
 ## 7. 연구 저장소 구현 순서 (정본 `DESIGN.ko.md` 10절)
