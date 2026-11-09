@@ -144,7 +144,7 @@ uv run pytest -q -m "not nemo"
 | 순서 | 역할 |
 |---|---|
 | ① 현재 `legal-intake-fastapi-lab` | FastAPI 단독에서 접수·보안·마케팅 기능 검증 |
-| ③ `python-memvid-guardrail` | 검증한 보안 부품을 재사용 모듈로 분리 |
+| ③ [`langchain-rag-research-agent`](https://github.com/ai-agent-orchestrator/langchain-rag-research-agent) (구 python-memvid-guardrail) | 검증한 보안 부품을 재사용 모듈로 분리 |
 | ② `spring-fastapi-async-refactor` | Spring 인증·인가와 FastAPI AI 서비스 연결 |
 | 리서치 multi-agent 저장소 | LangChain·LangGraph·RAG 검색 도구를 따로 완성 |
 | 이후 | 검증한 기능을 기반으로 별도 비공개 상업화 개발 |
